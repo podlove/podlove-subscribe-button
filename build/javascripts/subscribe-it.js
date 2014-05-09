@@ -160,17 +160,20 @@ SubscribePopup = (function() {
   };
 
   SubscribePopup.prototype.addButtons = function() {
-    var clientData, clientId, platform, _ref;
+    var clientData, clientId, platform, _ref, _results;
     platform = SubscribeIt.UA.detect();
     _ref = SubscribeIt.Clients;
+    _results = [];
     for (clientId in _ref) {
       if (!__hasProp.call(_ref, clientId)) continue;
       clientData = _ref[clientId];
-      if (clientData.platform.indexOf(platform) === -1) {
-        return;
+      if (clientData.platform.indexOf(platform) !== -1) {
+        _results.push(this.addButton(clientData));
+      } else {
+        _results.push(void 0);
       }
-      this.addButton(clientData);
     }
+    return _results;
   };
 
   SubscribePopup.prototype.addButton = function(client) {

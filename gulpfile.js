@@ -34,5 +34,5 @@ gulp.task('watch', function() {
   // Watch .js files
   gulp.watch('./src/javascripts/*.coffee', ['javascripts'])
   // Watch .html files
-  gulp.watch(['./button.html', './popup.html'], ['html'])
+  gulp.watch(['./src/button.html', './src/popup.html'], ['html'])
 })
