@@ -24,6 +24,7 @@ If everything went right you should see a button that will open a popup with sub
 
 Install requirements
 
+    gem install sass
     npm install gulp gulp-util gulp-coffee gulp-ruby-sass gulp-watch gulp-uglify gulp-concat uglify-js
 
 Use gulp to build the project or start the watcher:
@@ -31,6 +32,10 @@ Use gulp to build the project or start the watcher:
     gulp
 
     gulp watch
+
+## Contribution
+
+If you find a bug please use [Github Issues](https://github.com/benzimmer/podlove-subscribe-it/issues) to report it. If you want to add a feature or fix a bug please fork the repository, make your changes in a feature branch and open a pull-request.
 
 ## License
 
