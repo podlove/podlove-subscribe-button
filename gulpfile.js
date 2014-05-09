@@ -3,6 +3,8 @@ var gulp = require('gulp'),
     sass = require('gulp-ruby-sass'),
     coffee = require('gulp-coffee'),
     watch = require('gulp-watch')
+    uglify = require('gulp-uglify')
+    concat = require('gulp-concat')
 
 gulp.task('stylesheets', function() {
   return gulp.src('./src/stylesheets/*.scss')
@@ -13,6 +15,9 @@ gulp.task('stylesheets', function() {
 gulp.task('javascripts', function() {
   gulp.src('./src/javascripts/*.coffee')
     .pipe(coffee({bare: true}).on('error', gutil.log))
+    .pipe(gulp.dest('./build/javascripts'))
+    .pipe(uglify())
+    .pipe(concat('subscribe-it.min.js'))
     .pipe(gulp.dest('./build/javascripts'))
 })
 
