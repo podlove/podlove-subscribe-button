@@ -1,0 +1,37 @@
+{
+  "name": "podlove-subscribe-it",
+  "title": "Podlove Subscribe It",
+  "homepage": "https://benzimmer.github.io/podlove-subscribe-it/",
+  "version": "0.0.1",
+  "contributors": [{
+    "name": "Benjamin Zimmer",
+    "email": "ben@podigee.com",
+    "url": "https://www.podigee.com"
+  }],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:benzimmer/podlove-subscribe-it.git"
+  },
+  "bugs": {
+    "url": "https://github.com/benzimmer/podlove-subscribe-it/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "keywords": [
+    "podcasting",
+    "podcast",
+    "subscribe",
+    "subscription"
+  ],
+  "devDependencies": {
+    "gulp": "~3.5.2",
+    "gulp-util": "~2.2.14",
+    "gulp-coffee": "~1.4.1",
+    "gulp-ruby-sass": "~0.3.0",
+    "gulp-watch": "~0.5.0"
+  }
+}
