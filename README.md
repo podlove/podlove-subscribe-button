@@ -4,12 +4,12 @@
 
 Put
 
-    build/javascripts/subscribe-it.min.js
-    build/stylesheets/subscribe-it.css
+    build/subscribe-it.min.js
+    build/subscribe-it.css
     build/button.html
     build/popup.html
 
-onto a publicly available server. Then add a script tag to the place where you want the button to appear:
+into the same folder on a publicly available server. Then add a script tag to the place where you want the button to appear:
 
     <script name="subscribe-it" src="http://example.com/subscribe-it.min.js" data-url="http://example.com/feed.xml" data-lang="en"></script>
 

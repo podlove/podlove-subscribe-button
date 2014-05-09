@@ -9,16 +9,16 @@ var gulp = require('gulp'),
 gulp.task('stylesheets', function() {
   return gulp.src('./src/stylesheets/*.scss')
     .pipe(sass({style: 'expanded'}))
-    .pipe(gulp.dest('./build/stylesheets'))
+    .pipe(gulp.dest('./build'))
 })
 
 gulp.task('javascripts', function() {
   gulp.src('./src/javascripts/*.coffee')
     .pipe(coffee({bare: true}).on('error', gutil.log))
-    .pipe(gulp.dest('./build/javascripts'))
+    .pipe(gulp.dest('./build'))
     .pipe(uglify())
     .pipe(concat('subscribe-it.min.js'))
-    .pipe(gulp.dest('./build/javascripts'))
+    .pipe(gulp.dest('./build'))
 })
 
 gulp.task('html', function() {

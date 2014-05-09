@@ -26,9 +26,13 @@ class SubscribeIt
   constructor: (scriptElem) ->
     @scriptElem = scriptElem
 
+    @extractScriptPath()
     @extractFeedUrl()
     @extractButtonLanguage()
     @renderIframe()
+
+  extractScriptPath: () ->
+    @pathPrefix = @scriptElem.src.match(/(^.*\/)/)[0]
 
   extractFeedUrl: () ->
     @feedUrl = @scriptElem.dataset.url.replace(/^https?:\/\//, '')
@@ -42,14 +46,14 @@ class SubscribeIt
 
   buildIframe: () ->
     iframe = document.createElement('iframe')
-    iframe.src = 'button.html?language=' + @buttonLanguage
+    iframe.src = "#{@pathPrefix}button.html?language=#{@buttonLanguage}"
     iframe.style.border = 'none'
     iframe.style.display = 'inline-block'
     iframe.style.overflow = 'hidden'
 
     iframe.onload = () =>
       iframe.contentDocument.addEventListener 'click', (event) =>
-        new SubscribePopupIframe(iframe, @feedUrl)
+        new SubscribePopupIframe(iframe, @feedUrl, @pathPrefix)
 
     new IframeResizer('resizeButton', iframe)
 
@@ -58,16 +62,17 @@ class SubscribeIt
 new SubscribeIt.init()
 
 class SubscribePopupIframe
-  constructor: (buttonIframe, feedUrl) ->
+  constructor: (buttonIframe, feedUrl, pathPrefix) ->
     @buttonIframe = buttonIframe
     @feedUrl = feedUrl
+    @pathPrefix = pathPrefix
 
     @insert()
     @addCloseListener()
 
   build: () ->
     iframe = document.createElement('iframe')
-    iframe.src = 'popup.html?feedUrl=' + @feedUrl
+    iframe.src = "#{@pathPrefix}popup.html?feedUrl=#{@feedUrl}"
     iframe.style.border = 'none'
     iframe.style.position = 'absolute'
 
