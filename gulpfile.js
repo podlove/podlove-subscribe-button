@@ -21,11 +21,18 @@ gulp.task('javascripts', function() {
     .pipe(gulp.dest('./build/javascripts'))
 })
 
-gulp.task('default', ['stylesheets', 'javascripts'])
+gulp.task('html', function() {
+  gulp.src(['./button.html', './popup.html'])
+    .pipe(gulp.dest('./build'))
+})
+
+gulp.task('default', ['stylesheets', 'javascripts', 'html'])
 
 gulp.task('watch', function() {
   // Watch .scss files
   gulp.watch('./src/stylesheets/*.scss', ['stylesheets'])
   // Watch .js files
   gulp.watch('./src/javascripts/*.coffee', ['javascripts'])
+  // Watch .html files
+  gulp.watch(['./button.html', './popup.html'], ['html'])
 })

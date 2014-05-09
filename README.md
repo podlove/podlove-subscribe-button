@@ -6,6 +6,8 @@ Put
 
     build/javascripts/subscribe-it.min.js
     build/stylesheets/subscribe-it.css
+    build/button.html
+    build/popup.html
 
 onto a publicly available server. Then add a script tag to the place where you want the button to appear:
 
