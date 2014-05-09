@@ -24,7 +24,7 @@ If everything went right you should see a button that will open a popup with sub
 
 Install requirements
 
-    npm install gulp gulp-util gulp-coffee gulp-ruby-sass gulp-watch
+    npm install gulp gulp-util gulp-coffee gulp-ruby-sass gulp-watch gulp-uglify gulp-concat uglify-js
 
 Use gulp to build the project or start the watcher:
 
