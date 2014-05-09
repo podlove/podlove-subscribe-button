@@ -116,9 +116,8 @@ class SubscribePopup
   addButtons: () ->
     platform = SubscribeIt.UA.detect()
     for own clientId, clientData of SubscribeIt.Clients
-      return if clientData.platform.indexOf(platform) == -1
-
-      @addButton(clientData)
+      unless clientData.platform.indexOf(platform) == -1
+        @addButton(clientData)
 
   addButton: (client) ->
     link = document.createElement('a')
