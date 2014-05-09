@@ -4,12 +4,12 @@
 
 Put
 
-    build/javascripts/subscribe-it.js
+    build/javascripts/subscribe-it.min.js
     build/stylesheets/subscribe-it.css
 
 onto a publicly available server. Then add a script tag to the place where you want the button to appear:
 
-    <script name="subscribe-it" src="http://example.com/subscribe-it.js" data-url="http://example.com/feed.xml" data-lang="en"></script>
+    <script name="subscribe-it" src="http://example.com/subscribe-it.min.js" data-url="http://example.com/feed.xml" data-lang="en"></script>
 
 There are currently two options you can set:
 
@@ -27,7 +27,7 @@ Install requirements
 Use gulp to build the project or start the watcher:
 
     gulp
-    
+
     gulp watch
 
 ## License
