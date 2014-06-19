@@ -262,6 +262,16 @@ SubscribeIt.Translations = {
 };
 
 SubscribeIt.Clients = {
+  applepodcastsapp: {
+    title: 'Apple Podcasts',
+    scheme: 'pcast',
+    platform: ['ios']
+  },
+  downcast: {
+    title: 'Downcast',
+    scheme: 'downcast',
+    platform: ['ios', 'mac']
+  },
   instacast: {
     title: 'Instacast',
     scheme: 'instacast',
@@ -271,10 +281,5 @@ SubscribeIt.Clients = {
     title: 'PocketCasts',
     scheme: 'pcast',
     platform: ['ios', 'android']
-  },
-  applepodcastsapp: {
-    title: 'Apple Podcasts',
-    scheme: 'pcast',
-    platform: ['ios']
   }
 };
