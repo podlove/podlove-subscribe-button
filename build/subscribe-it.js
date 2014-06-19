@@ -157,10 +157,13 @@ SubscribePopupIframe = (function() {
 
 SubscribePopup = (function() {
   function SubscribePopup() {
+    var loc;
     this.body = document.getElementById('subscribe-it-popup');
     this.container = document.getElementById('subscribe-it-list-container');
     this.closeButton = document.getElementById('subscribe-it-popup-close-button');
     this.list = document.getElementById('subscribe-it-list');
+    loc = window.location;
+    this.pathPrefix = loc.href.replace(loc.search, '').match(/(^.*\/)/)[0];
     this.addCloseHandler();
     this.extractFeedUrl();
     this.addButtons();
@@ -200,12 +203,15 @@ SubscribePopup = (function() {
   };
 
   SubscribePopup.prototype.addButton = function(client) {
-    var item, link;
+    var icon, item, link;
     link = document.createElement('a');
     item = document.createElement('li');
+    icon = document.createElement('img');
     link.href = client.scheme + '://' + this.feedUrl;
     link.target = '_blank';
     link.innerHTML = client.title;
+    icon.src = "" + this.pathPrefix + "images/" + client.icon;
+    link.insertBefore(icon, link.firstChild);
     item.appendChild(link);
     return this.list.appendChild(item);
   };
@@ -293,12 +299,14 @@ SubscribeIt.Clients = {
   downcast: {
     title: 'Downcast',
     scheme: 'downcast',
-    platform: ['ios', 'mac']
+    platform: ['ios', 'mac'],
+    icon: 'downcast.png'
   },
   instacast: {
     title: 'Instacast',
     scheme: 'instacast',
-    platform: ['ios', 'mac']
+    platform: ['ios', 'mac'],
+    icon: 'instacast.png'
   },
   pocketcasts: {
     title: 'PocketCasts',

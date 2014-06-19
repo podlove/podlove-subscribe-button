@@ -116,6 +116,10 @@ class SubscribePopup
     @container = document.getElementById('subscribe-it-list-container')
     @closeButton = document.getElementById('subscribe-it-popup-close-button')
     @list = document.getElementById('subscribe-it-list')
+
+    loc = window.location
+    @pathPrefix = loc.href.replace(loc.search, '').match(/(^.*\/)/)[0]
+
     @addCloseHandler()
     @extractFeedUrl()
     @addButtons()
@@ -141,10 +145,15 @@ class SubscribePopup
   addButton: (client) ->
     link = document.createElement('a')
     item = document.createElement('li')
+    icon = document.createElement('img')
+
 
     link.href = client.scheme + '://' + @feedUrl
     link.target = '_blank'
     link.innerHTML = client.title
+
+    icon.src = "#{@pathPrefix}images/#{client.icon}"
+    link.insertBefore(icon, link.firstChild)
     item.appendChild(link)
 
     @list.appendChild(item)
@@ -211,10 +220,12 @@ SubscribeIt.Clients =
     title: 'Downcast'
     scheme: 'downcast'
     platform: ['ios', 'mac']
+    icon: 'downcast.png'
   instacast:
     title: 'Instacast'
     scheme: 'instacast'
     platform: ['ios', 'mac']
+    icon: 'instacast.png'
   pocketcasts:
     title: 'PocketCasts'
     scheme: 'pcast'

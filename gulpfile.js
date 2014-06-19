@@ -22,11 +22,16 @@ gulp.task('javascripts', function() {
 })
 
 gulp.task('html', function() {
-  gulp.src(['./button.html', './popup.html'])
+  gulp.src(['./src/button.html', './src/popup.html'])
     .pipe(gulp.dest('./build'))
 })
 
-gulp.task('default', ['stylesheets', 'javascripts', 'html'])
+gulp.task('images', function() {
+  gulp.src(['./src/images/*'])
+    .pipe(gulp.dest('./build/images'))
+})
+
+gulp.task('default', ['stylesheets', 'javascripts', 'html', 'images'])
 
 gulp.task('watch', function() {
   // Watch .scss files
@@ -35,4 +40,6 @@ gulp.task('watch', function() {
   gulp.watch('./src/javascripts/*.coffee', ['javascripts'])
   // Watch .html files
   gulp.watch(['./src/button.html', './src/popup.html'], ['html'])
+  // Watch images files
+  gulp.watch(['./src/images/*'], ['images'])
 })

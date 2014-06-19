@@ -78,7 +78,6 @@ body {
   border-radius: 3px;
   list-style: none;
   margin: 0 auto;
-  padding: 10px 5px;
 }
 #subscribe-it-popup #subscribe-it-list li + li {
   margin-top: 10px;
@@ -86,7 +85,15 @@ body {
 #subscribe-it-popup #subscribe-it-list li a {
   color: #fff;
   display: block;
+  line-height: 24px;
+  padding: 5px 0;
   text-decoration: none;
+}
+#subscribe-it-popup #subscribe-it-list li img {
+  height: 20px;
+  margin-right: 5px;
+  position: relative;
+  top: 4px;
 }
 #subscribe-it-popup .subscribe-it-link-input {
   background: transparent;
