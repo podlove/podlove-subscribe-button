@@ -107,12 +107,14 @@ SubscribePopupIframe = (function() {
   SubscribePopupIframe.prototype.build = function() {
     var iframe;
     iframe = document.createElement('iframe');
+    iframe.className = "subscribe-it-popup-iframe";
     iframe.src = "" + this.pathPrefix + "popup.html?feedUrl=" + this.feedUrl;
     iframe.style.border = 'none';
     iframe.style.position = 'absolute';
-    iframe.style.top = this.buttonDimensions().bottom + 'px';
-    iframe.style.left = this.buttonDimensions().left + 'px';
-    new IframeResizer('resizePopup', iframe);
+    iframe.style.height = '100vh';
+    iframe.style.width = '100vw';
+    iframe.style.top = 0;
+    iframe.style.left = 0;
     return this.iframe = iframe;
   };
 
@@ -125,17 +127,24 @@ SubscribePopupIframe = (function() {
   };
 
   SubscribePopupIframe.prototype.addCloseListener = function() {
-    var removePopup;
+    var reactToPopupMessage, removePopup;
     document.body.addEventListener('click', function() {
       return document.body.dispatchEvent(new Event('click.subscribe-it'));
     });
-    removePopup = (function(_this) {
+    reactToPopupMessage = function(event) {
+      if (JSON.parse(event.data).message === 'closepopup') {
+        return removePopup();
+      }
+    };
+    window.addEventListener('message', reactToPopupMessage, false);
+    document.body.addEventListener('click.subscribe-it', removePopup);
+    return removePopup = (function(_this) {
       return function() {
         _this.remove();
-        return document.body.removeEventListener('click.subscribe-it', removePopup);
+        document.body.removeEventListener('click.subscribe-it', removePopup);
+        return window.removeEventListener('message', reactToPopupMessage, false);
       };
     })(this);
-    return document.body.addEventListener('click.subscribe-it', removePopup);
   };
 
   SubscribePopupIframe.prototype.buttonDimensions = function() {
@@ -148,12 +157,26 @@ SubscribePopupIframe = (function() {
 
 SubscribePopup = (function() {
   function SubscribePopup() {
+    this.body = document.getElementById('subscribe-it-popup');
+    this.container = document.getElementById('subscribe-it-list-container');
+    this.closeButton = document.getElementById('subscribe-it-popup-close-button');
     this.list = document.getElementById('subscribe-it-list');
+    this.addCloseHandler();
     this.extractFeedUrl();
     this.addButtons();
     this.addLinkField();
-    this.resizeIframe();
+    this.centerContainer();
   }
+
+  SubscribePopup.prototype.addCloseHandler = function() {
+    var close;
+    close = function() {
+      return window.parent.postMessage("{\"message\": \"closepopup\"}", '*');
+    };
+    return this.closeButton.addEventListener('click', function() {
+      return close();
+    });
+  };
 
   SubscribePopup.prototype.extractFeedUrl = function() {
     return this.feedUrl = window.location.search.split('=')[1];
@@ -189,23 +212,23 @@ SubscribePopup = (function() {
 
   SubscribePopup.prototype.addLinkField = function() {
     var input, item;
+    this.inputContainer = document.getElementById('subscribe-it-feed-link-input');
     input = document.createElement('input');
     input.value = this.feedUrl;
     input.onclick = function() {
       return this.select();
     };
-    item = document.createElement('li');
+    item = document.createElement('div');
     item.className = 'subscribe-it-link-input';
     item.appendChild(input);
-    return this.list.appendChild(item);
+    return this.inputContainer.appendChild(item);
   };
 
-  SubscribePopup.prototype.resizeIframe = function() {
-    var height, resizeData, width;
-    height = document.body.offsetHeight;
-    width = document.body.offsetWidth;
-    resizeData = IframeResizer.buildData('resizePopup', height, width);
-    return window.parent.postMessage(resizeData, '*');
+  SubscribePopup.prototype.centerContainer = function() {
+    var bodyHeight, height;
+    height = this.container.clientHeight;
+    bodyHeight = this.body.clientHeight;
+    return this.container.style.marginTop = "" + ((bodyHeight - height) / 2) + "px";
   };
 
   return SubscribePopup;

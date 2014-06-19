@@ -72,14 +72,15 @@ class SubscribePopupIframe
 
   build: () ->
     iframe = document.createElement('iframe')
+    iframe.className = "subscribe-it-popup-iframe"
     iframe.src = "#{@pathPrefix}popup.html?feedUrl=#{@feedUrl}"
     iframe.style.border = 'none'
     iframe.style.position = 'absolute'
 
-    iframe.style.top = @buttonDimensions().bottom + 'px'
-    iframe.style.left = @buttonDimensions().left + 'px'
-
-    new IframeResizer('resizePopup', iframe)
+    iframe.style.height = '100vh'
+    iframe.style.width = '100vw'
+    iframe.style.top = 0
+    iframe.style.left = 0
 
     @iframe = iframe
 
@@ -93,22 +94,40 @@ class SubscribePopupIframe
     document.body.addEventListener 'click', () ->
       document.body.dispatchEvent(new Event('click.subscribe-it'))
 
+    reactToPopupMessage = (event) ->
+      if JSON.parse(event.data).message == 'closepopup'
+        removePopup()
+
+    window.addEventListener('message', reactToPopupMessage, false)
+
+    document.body.addEventListener 'click.subscribe-it', removePopup
+
     removePopup = () =>
       @remove()
       document.body.removeEventListener 'click.subscribe-it', removePopup
-
-    document.body.addEventListener 'click.subscribe-it', removePopup
+      window.removeEventListener('message', reactToPopupMessage, false)
 
   buttonDimensions: () ->
     @buttonRect ?= @buttonIframe.getBoundingClientRect()
 
 class SubscribePopup
   constructor: () ->
+    @body = document.getElementById('subscribe-it-popup')
+    @container = document.getElementById('subscribe-it-list-container')
+    @closeButton = document.getElementById('subscribe-it-popup-close-button')
     @list = document.getElementById('subscribe-it-list')
+    @addCloseHandler()
     @extractFeedUrl()
     @addButtons()
     @addLinkField()
-    @resizeIframe()
+    @centerContainer()
+
+  addCloseHandler: () ->
+    close = () ->
+      window.parent.postMessage("{\"message\": \"closepopup\"}", '*')
+
+    @closeButton.addEventListener 'click', () ->
+      close()
 
   extractFeedUrl: () ->
     @feedUrl = window.location.search.split('=')[1]
@@ -131,22 +150,22 @@ class SubscribePopup
     @list.appendChild(item)
 
   addLinkField: () ->
+    @inputContainer = document.getElementById('subscribe-it-feed-link-input')
     input = document.createElement('input')
     input.value = @feedUrl
     input.onclick = () ->
       this.select()
 
-    item = document.createElement('li')
+    item = document.createElement('div')
     item.className = 'subscribe-it-link-input'
     item.appendChild(input)
 
-    @list.appendChild(item)
+    @inputContainer.appendChild(item)
 
-  resizeIframe: () ->
-    height = document.body.offsetHeight
-    width = document.body.offsetWidth
-    resizeData = IframeResizer.buildData('resizePopup', height, width)
-    window.parent.postMessage(resizeData, '*')
+  centerContainer: () ->
+    height = @container.clientHeight
+    bodyHeight = @body.clientHeight
+    @container.style.marginTop = "#{(bodyHeight - height)/2}px"
 
 class SubscribeButton
   constructor: () ->
