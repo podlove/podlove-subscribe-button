@@ -76,8 +76,9 @@ SubscribeIt = (function() {
     iframe = document.createElement('iframe');
     iframe.src = "" + this.pathPrefix + "button.html?language=" + this.buttonLanguage;
     iframe.style.border = 'none';
-    iframe.style.display = 'inline-block';
+    iframe.style.display = 'block';
     iframe.style.overflow = 'hidden';
+    iframe.className = 'podlove-subscribe-button';
     iframe.onload = (function(_this) {
       return function() {
         return iframe.contentDocument.addEventListener('click', function(event) {

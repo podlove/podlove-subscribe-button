@@ -48,8 +48,9 @@ class SubscribeIt
     iframe = document.createElement('iframe')
     iframe.src = "#{@pathPrefix}button.html?language=#{@buttonLanguage}"
     iframe.style.border = 'none'
-    iframe.style.display = 'inline-block'
+    iframe.style.display = 'block'
     iframe.style.overflow = 'hidden'
+    iframe.className = 'podlove-subscribe-button'
 
     iframe.onload = () =>
       iframe.contentDocument.addEventListener 'click', (event) =>
