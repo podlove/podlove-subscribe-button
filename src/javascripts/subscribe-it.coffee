@@ -226,7 +226,7 @@ SubscribeIt.Clients =
   beyondpod:
     title: 'BeyondPod'
     scheme: 'pcast'
-    platform: ['ios']
+    platform: ['android']
   downcast:
     title: 'Downcast'
     scheme: 'downcast'
