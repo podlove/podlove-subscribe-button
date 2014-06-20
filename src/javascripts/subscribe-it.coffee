@@ -215,8 +215,16 @@ SubscribeIt.Translations =
     fr: 'S\'Abonner'
 
 SubscribeIt.Clients =
+  antennapod:
+    title: 'AntennaPod'
+    scheme: 'pcast'
+    platform: ['android']
   applepodcastsapp:
     title: 'Apple Podcasts'
+    scheme: 'pcast'
+    platform: ['ios']
+  beyondpod:
+    title: 'BeyondPod'
     scheme: 'pcast'
     platform: ['ios']
   downcast:
@@ -237,4 +245,8 @@ SubscribeIt.Clients =
   pocketcasts:
     title: 'PocketCasts'
     scheme: 'pcast'
-    platform: ['ios', 'android']
+    platform: ['android', 'ios']
+  podcatchr:
+    title: 'podcatchr'
+    scheme: 'podcat'
+    platform: ['ios']
