@@ -109,10 +109,11 @@ body {
 
 @media (max-width: 430px) {
   #subscribe-it-popup {
+    margin-top: 0 !important;
     width: 90%;
   }
 }
-@media (max-height: 430px) {
+@media (max-height: 500px) {
   #subscribe-it-list-container {
     height: 70%;
     margin-top: 0 !important;
