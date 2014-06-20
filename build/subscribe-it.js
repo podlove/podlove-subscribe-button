@@ -341,5 +341,10 @@ SubscribeIt.Clients = {
     title: 'podcatchr',
     scheme: 'podcat',
     platform: ['ios']
+  },
+  windowstest: {
+    title: 'Subscribe',
+    scheme: 'wp-podcast',
+    platform: 'windowsPhone'
   }
 };
