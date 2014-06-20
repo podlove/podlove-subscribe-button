@@ -170,6 +170,7 @@ class SubscribePopup
     @inputContainer = document.getElementById('subscribe-it-feed-link-input')
     input = document.createElement('input')
     input.value = @feedUrl
+    input.style.textAlign = 'center'
     input.onclick = () ->
       this.select()
 

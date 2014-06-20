@@ -229,6 +229,7 @@ SubscribePopup = (function() {
     this.inputContainer = document.getElementById('subscribe-it-feed-link-input');
     input = document.createElement('input');
     input.value = this.feedUrl;
+    input.style.textAlign = 'center';
     input.onclick = function() {
       return this.select();
     };
