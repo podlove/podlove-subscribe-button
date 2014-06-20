@@ -125,7 +125,13 @@ class SubscribePopup
     @extractFeedUrl()
     @addButtons()
     @addLinkField()
+
+
     @centerContainer()
+    window.setInterval (() =>
+      @centerContainer()
+    ), 1000
+
 
   addCloseHandler: () ->
     close = () ->
@@ -178,10 +184,6 @@ class SubscribePopup
     height = @container.clientHeight
     bodyHeight = @body.clientHeight
     @container.style.marginTop = "#{(bodyHeight - height)/2}px"
-
-    window.setInterval (() =>
-      @centerContainer()
-    ), 1000
 
 class SubscribeButton
   constructor: () ->

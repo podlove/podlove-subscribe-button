@@ -170,6 +170,11 @@ SubscribePopup = (function() {
     this.addButtons();
     this.addLinkField();
     this.centerContainer();
+    window.setInterval(((function(_this) {
+      return function() {
+        return _this.centerContainer();
+      };
+    })(this)), 1000);
   }
 
   SubscribePopup.prototype.addCloseHandler = function() {
@@ -237,12 +242,7 @@ SubscribePopup = (function() {
     var bodyHeight, height;
     height = this.container.clientHeight;
     bodyHeight = this.body.clientHeight;
-    this.container.style.marginTop = "" + ((bodyHeight - height) / 2) + "px";
-    return window.setInterval(((function(_this) {
-      return function() {
-        return _this.centerContainer();
-      };
-    })(this)), 1000);
+    return this.container.style.marginTop = "" + ((bodyHeight - height) / 2) + "px";
   };
 
   return SubscribePopup;
