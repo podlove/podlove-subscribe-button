@@ -251,8 +251,8 @@ SubscribeIt.Clients =
     title: 'PocketCasts'
     scheme: 'pcast'
     platform: ['android', 'ios']
-  podcatchr:
-    title: 'podcatchr'
+  podcat:
+    title: 'Podcat'
     scheme: 'podcat'
     platform: ['ios']
   windowstest:

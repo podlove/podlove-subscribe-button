@@ -337,8 +337,8 @@ SubscribeIt.Clients = {
     scheme: 'pcast',
     platform: ['android', 'ios']
   },
-  podcatchr: {
-    title: 'podcatchr',
+  podcat: {
+    title: 'Podcat',
     scheme: 'podcat',
     platform: ['ios']
   },
