@@ -237,7 +237,12 @@ SubscribePopup = (function() {
     var bodyHeight, height;
     height = this.container.clientHeight;
     bodyHeight = this.body.clientHeight;
-    return this.container.style.marginTop = "" + ((bodyHeight - height) / 2) + "px";
+    this.container.style.marginTop = "" + ((bodyHeight - height) / 2) + "px";
+    return window.setInterval(((function(_this) {
+      return function() {
+        return _this.centerContainer();
+      };
+    })(this)), 1000);
   };
 
   return SubscribePopup;

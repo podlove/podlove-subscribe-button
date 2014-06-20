@@ -179,6 +179,10 @@ class SubscribePopup
     bodyHeight = @body.clientHeight
     @container.style.marginTop = "#{(bodyHeight - height)/2}px"
 
+    window.setInterval (() =>
+      @centerContainer()
+    ), 1000
+
 class SubscribeButton
   constructor: () ->
     lang = window.location.search.split('=')[1]
