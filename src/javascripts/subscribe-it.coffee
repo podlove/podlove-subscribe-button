@@ -126,7 +126,6 @@ class SubscribePopup
     @addButtons()
     @addLinkField()
 
-
     @centerContainer()
     window.setInterval (() =>
       @centerContainer()

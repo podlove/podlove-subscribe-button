@@ -112,3 +112,10 @@ body {
     width: 90%;
   }
 }
+@media (max-height: 430px) {
+  #subscribe-it-list-container {
+    height: 70%;
+    margin-top: 0 !important;
+    overflow-y: scroll;
+  }
+}
