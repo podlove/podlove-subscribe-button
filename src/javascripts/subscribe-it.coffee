@@ -146,15 +146,17 @@ class SubscribePopup
   addButton: (client) ->
     link = document.createElement('a')
     item = document.createElement('li')
-    icon = document.createElement('img')
 
 
     link.href = client.scheme + '://' + @feedUrl
     link.target = '_blank'
     link.innerHTML = client.title
 
-    icon.src = "#{@pathPrefix}images/#{client.icon}"
-    link.insertBefore(icon, link.firstChild)
+    if client.icon
+      icon = document.createElement('img')
+      icon.src = "#{@pathPrefix}images/#{client.icon}"
+      link.insertBefore(icon, link.firstChild)
+
     item.appendChild(link)
 
     @list.appendChild(item)

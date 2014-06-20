@@ -207,12 +207,14 @@ SubscribePopup = (function() {
     var icon, item, link;
     link = document.createElement('a');
     item = document.createElement('li');
-    icon = document.createElement('img');
     link.href = client.scheme + '://' + this.feedUrl;
     link.target = '_blank';
     link.innerHTML = client.title;
-    icon.src = "" + this.pathPrefix + "images/" + client.icon;
-    link.insertBefore(icon, link.firstChild);
+    if (client.icon) {
+      icon = document.createElement('img');
+      icon.src = "" + this.pathPrefix + "images/" + client.icon;
+      link.insertBefore(icon, link.firstChild);
+    }
     item.appendChild(link);
     return this.list.appendChild(item);
   };
