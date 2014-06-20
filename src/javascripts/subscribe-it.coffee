@@ -255,7 +255,11 @@ SubscribeIt.Clients =
     title: 'Podcat'
     scheme: 'podcat'
     platform: ['ios']
+  windowspodcastsapp:
+    title: 'Podcasts'
+    scheme: 'podcast'
+    platform: 'windowsPhone'
   windowstest:
-    title: 'Subscribe'
+    title: 'Other App'
     scheme: 'wp-podcast'
     platform: 'windowsPhone'
