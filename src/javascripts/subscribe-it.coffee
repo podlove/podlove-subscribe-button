@@ -233,6 +233,7 @@ SubscribeIt.Clients =
     title: 'iTunes'
     scheme: 'itpc'
     platform: ['mac']
+    icon: 'itunes.png'
   pocketcasts:
     title: 'PocketCasts'
     scheme: 'pcast'

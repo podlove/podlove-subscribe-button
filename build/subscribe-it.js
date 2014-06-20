@@ -314,7 +314,8 @@ SubscribeIt.Clients = {
   itunes: {
     title: 'iTunes',
     scheme: 'itpc',
-    platform: ['mac']
+    platform: ['mac'],
+    icon: 'itunes.png'
   },
   pocketcasts: {
     title: 'PocketCasts',
