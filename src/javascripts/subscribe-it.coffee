@@ -227,6 +227,10 @@ SubscribeIt.Clients =
     scheme: 'instacast'
     platform: ['ios', 'mac']
     icon: 'instacast.png'
+  itunes:
+    title: 'iTunes'
+    scheme: 'itpc'
+    platform: ['mac']
   pocketcasts:
     title: 'PocketCasts'
     scheme: 'pcast'
