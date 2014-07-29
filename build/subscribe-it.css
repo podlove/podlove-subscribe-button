@@ -125,7 +125,6 @@ body {
   font-family: Helvetica;
   font-size: 20px;
   margin: 10px 0 0;
-  text-align: center;
 }
 #subscribe-it-popup h2 {
   font-size: 16px;
@@ -174,6 +173,9 @@ body {
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   color: #353535;
+}
+#subscribe-it-popup #subscribe-it-popup-modal-left img {
+  width: 100px;
 }
 #subscribe-it-popup #subscribe-it-popup-modal-middle {
   background-color: #353535;

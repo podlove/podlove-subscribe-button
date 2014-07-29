@@ -56,6 +56,7 @@ SubscribeIt = (function() {
     this.extractFeedUrl();
     this.extractButtonLanguage();
     this.extractButtonSize();
+    this.extractPodcastData();
     this.renderIframe();
   }
 
@@ -73,6 +74,13 @@ SubscribeIt = (function() {
 
   SubscribeIt.prototype.extractButtonSize = function() {
     return this.buttonSize = this.scriptElem.dataset.size || 'medium';
+  };
+
+  SubscribeIt.prototype.extractPodcastData = function() {
+    var string;
+    if (string = this.scriptElem.dataset.podcast) {
+      return this.podcast = JSON.parse(string.replace(/'/g, '"'));
+    }
   };
 
   SubscribeIt.prototype.buttonParams = function() {
@@ -101,7 +109,7 @@ SubscribeIt = (function() {
     iframe.onload = (function(_this) {
       return function() {
         return iframe.contentDocument.addEventListener('click', function(event) {
-          return new SubscribePopupIframe(iframe, _this.feedUrl, _this.pathPrefix);
+          return new SubscribePopupIframe(iframe, _this.feedUrl, _this.pathPrefix, _this.podcast);
         });
       };
     })(this);
@@ -116,10 +124,11 @@ SubscribeIt = (function() {
 new SubscribeIt.init();
 
 SubscribePopupIframe = (function() {
-  function SubscribePopupIframe(buttonIframe, feedUrl, pathPrefix) {
+  function SubscribePopupIframe(buttonIframe, feedUrl, pathPrefix, podcast) {
     this.buttonIframe = buttonIframe;
     this.feedUrl = feedUrl;
     this.pathPrefix = pathPrefix;
+    this.podcast = podcast;
     this.insert();
     this.addCloseListener();
   }
@@ -128,7 +137,7 @@ SubscribePopupIframe = (function() {
     var iframe;
     iframe = document.createElement('iframe');
     iframe.className = "subscribe-it-popup-iframe";
-    iframe.src = "" + this.pathPrefix + "popup.html?feedUrl=" + this.feedUrl;
+    iframe.src = "" + this.pathPrefix + "popup.html?feedUrl=" + this.feedUrl + "&podcastName=" + this.podcast.name + "&podcastCoverUrl=" + this.podcast.coverUrl;
     iframe.style.border = 'none';
     iframe.style.position = 'absolute';
     iframe.style.height = '100vh';
@@ -178,17 +187,47 @@ SubscribePopupIframe = (function() {
 SubscribePopup = (function() {
   function SubscribePopup() {
     var loc;
+    this.extractParams();
     this.body = document.getElementById('subscribe-it-popup');
     this.container = document.getElementById('subscribe-it-list-container');
     this.closeButton = document.getElementById('subscribe-it-popup-close-button');
+    this.leftSide = document.getElementById('subscribe-it-popup-modal-left');
     this.list = document.getElementById('subscribe-it-list');
     loc = window.location;
     this.pathPrefix = loc.href.replace(loc.search, '').match(/(^.*\/)/)[0];
     this.addCloseHandler();
-    this.extractFeedUrl();
     this.addButtons();
-    this.addLinkField();
+    this.addPodcastInfo();
   }
+
+  SubscribePopup.prototype.addPodcastInfo = function() {
+    var image, name;
+    name = document.createElement('div');
+    name.innerHTML = this.params.podcastName;
+    this.leftSide.appendChild(name);
+    image = document.createElement('img');
+    image.src = this.params.podcastCoverUrl;
+    return this.leftSide.appendChild(image);
+  };
+
+  SubscribePopup.prototype.extractParams = function() {
+    var param, split, string, _i, _len, _results;
+    string = window.location.search.replace(/^\?/, '');
+    split = string.split('&');
+    this.params = {};
+    _results = [];
+    for (_i = 0, _len = split.length; _i < _len; _i++) {
+      param = split[_i];
+      _results.push(this.buildParamObject(param, this.params));
+    }
+    return _results;
+  };
+
+  SubscribePopup.prototype.buildParamObject = function(string, object) {
+    var array;
+    array = string.split('=');
+    return object[array[0]] = decodeURIComponent(array[1]);
+  };
 
   SubscribePopup.prototype.addCloseHandler = function() {
     var close;
@@ -198,10 +237,6 @@ SubscribePopup = (function() {
     return this.closeButton.addEventListener('click', function() {
       return close();
     });
-  };
-
-  SubscribePopup.prototype.extractFeedUrl = function() {
-    return this.feedUrl = window.location.search.split('=')[1];
   };
 
   SubscribePopup.prototype.addButtons = function() {
@@ -226,7 +261,7 @@ SubscribePopup = (function() {
     text = document.createElement('span');
     link = document.createElement('a');
     item = document.createElement('li');
-    link.href = client.scheme + '://' + this.feedUrl;
+    link.href = client.scheme + '://' + this.params.feedUrl;
     link.target = '_blank';
     text.innerHTML = client.title;
     link.appendChild(text);
@@ -243,7 +278,7 @@ SubscribePopup = (function() {
     var input, item;
     this.inputContainer = document.getElementById('subscribe-it-feed-link-input');
     input = document.createElement('input');
-    input.value = this.feedUrl;
+    input.value = this.params.feedUrl;
     input.style.textAlign = 'center';
     input.onclick = function() {
       return this.select();
@@ -252,13 +287,6 @@ SubscribePopup = (function() {
     item.className = 'subscribe-it-link-input';
     item.appendChild(input);
     return this.inputContainer.appendChild(item);
-  };
-
-  SubscribePopup.prototype.centerContainer = function() {
-    var bodyHeight, height;
-    height = this.container.clientHeight;
-    bodyHeight = this.body.clientHeight;
-    return this.container.style.marginTop = "" + ((bodyHeight - height) / 2) + "px";
   };
 
   return SubscribePopup;

@@ -31,6 +31,7 @@ class SubscribeIt
     @extractFeedUrl()
     @extractButtonLanguage()
     @extractButtonSize()
+    @extractPodcastData()
     @renderIframe()
 
   extractScriptPath: () ->
@@ -44,6 +45,10 @@ class SubscribeIt
 
   extractButtonSize: () ->
     @buttonSize = @scriptElem.dataset.size || 'medium'
+
+  extractPodcastData: () ->
+    if string = @scriptElem.dataset.podcast
+      @podcast = JSON.parse(string.replace(/'/g, '"'))
 
   buttonParams: () ->
     {
@@ -67,7 +72,7 @@ class SubscribeIt
 
     iframe.onload = () =>
       iframe.contentDocument.addEventListener 'click', (event) =>
-        new SubscribePopupIframe(iframe, @feedUrl, @pathPrefix)
+        new SubscribePopupIframe(iframe, @feedUrl, @pathPrefix, @podcast)
 
     new IframeResizer('resizeButton', iframe)
 
@@ -76,10 +81,11 @@ class SubscribeIt
 new SubscribeIt.init()
 
 class SubscribePopupIframe
-  constructor: (buttonIframe, feedUrl, pathPrefix) ->
+  constructor: (buttonIframe, feedUrl, pathPrefix, podcast) ->
     @buttonIframe = buttonIframe
     @feedUrl = feedUrl
     @pathPrefix = pathPrefix
+    @podcast = podcast
 
     @insert()
     @addCloseListener()
@@ -87,7 +93,7 @@ class SubscribePopupIframe
   build: () ->
     iframe = document.createElement('iframe')
     iframe.className = "subscribe-it-popup-iframe"
-    iframe.src = "#{@pathPrefix}popup.html?feedUrl=#{@feedUrl}"
+    iframe.src = "#{@pathPrefix}popup.html?feedUrl=#{@feedUrl}&podcastName=#{@podcast.name}&podcastCoverUrl=#{@podcast.coverUrl}"
     iframe.style.border = 'none'
     iframe.style.position = 'absolute'
 
@@ -126,24 +132,41 @@ class SubscribePopupIframe
 
 class SubscribePopup
   constructor: () ->
+    @extractParams()
+
     @body = document.getElementById('subscribe-it-popup')
     @container = document.getElementById('subscribe-it-list-container')
     @closeButton = document.getElementById('subscribe-it-popup-close-button')
+    @leftSide = document.getElementById('subscribe-it-popup-modal-left')
     @list = document.getElementById('subscribe-it-list')
 
     loc = window.location
     @pathPrefix = loc.href.replace(loc.search, '').match(/(^.*\/)/)[0]
 
     @addCloseHandler()
-    @extractFeedUrl()
     @addButtons()
-    @addLinkField()
+    #@addLinkField()
 
-    #@centerContainer()
-    #window.setInterval (() =>
-      #@centerContainer()
-    #), 1000
+    @addPodcastInfo()
 
+  addPodcastInfo: () ->
+    name = document.createElement('div')
+    name.innerHTML = @params.podcastName
+    @leftSide.appendChild(name)
+
+    image = document.createElement('img')
+    image.src = @params.podcastCoverUrl
+    @leftSide.appendChild(image)
+
+  extractParams: () ->
+    string = window.location.search.replace(/^\?/, '')
+    split = string.split('&')
+    @params = {}
+    @buildParamObject(param, @params) for param in split
+
+  buildParamObject: (string, object) ->
+    array = string.split('=')
+    object[array[0]] = decodeURIComponent(array[1])
 
   addCloseHandler: () ->
     close = () ->
@@ -151,9 +174,6 @@ class SubscribePopup
 
     @closeButton.addEventListener 'click', () ->
       close()
-
-  extractFeedUrl: () ->
-    @feedUrl = window.location.search.split('=')[1]
 
   addButtons: () ->
     platform = SubscribeIt.UA.detect()
@@ -167,7 +187,7 @@ class SubscribePopup
     item = document.createElement('li')
 
 
-    link.href = client.scheme + '://' + @feedUrl
+    link.href = client.scheme + '://' + @params.feedUrl
     link.target = '_blank'
 
     text.innerHTML = client.title
@@ -185,7 +205,7 @@ class SubscribePopup
   addLinkField: () ->
     @inputContainer = document.getElementById('subscribe-it-feed-link-input')
     input = document.createElement('input')
-    input.value = @feedUrl
+    input.value = @params.feedUrl
     input.style.textAlign = 'center'
     input.onclick = () ->
       this.select()
@@ -195,11 +215,6 @@ class SubscribePopup
     item.appendChild(input)
 
     @inputContainer.appendChild(item)
-
-  centerContainer: () ->
-    height = @container.clientHeight
-    bodyHeight = @body.clientHeight
-    @container.style.marginTop = "#{(bodyHeight - height)/2}px"
 
 class SubscribeButton
   constructor: () ->
