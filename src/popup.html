@@ -4,14 +4,23 @@
     <link rel="stylesheet" href="subscribe-it.css"></script>
   </head>
   <body id="subscribe-it-popup">
-    <div id="subscribe-it-list-container">
-      <span id="subscribe-it-popup-close-button">&times;</span>
-      <h1>Subscribe to Podcast</h1>
-      <h2>Choose client</h2>
-      <ul id="subscribe-it-list"></ul>
+    <div id="subscribe-it-popup-modal">
+      <div id="subscribe-it-popup-modal-inner">
+        <span id="subscribe-it-popup-close-button">&times;</span>
 
-      <h2>Or copy feed link</h2>
-      <div id="subscribe-it-feed-link-input"></div>
+        <div id="subscribe-it-popup-modal-left">
+          <h1>Subscribe to Podcast</h1>
+        </div>
+
+        <div id="subscribe-it-popup-modal-middle">
+          <ul id="subscribe-it-list"></ul>
+
+          <!--<div id="subscribe-it-feed-link-input"></div>-->
+        </div>
+
+        <div id="subscribe-it-popup-modal-right">
+        </div>
+      </div>
     </div>
 
     <script src="subscribe-it.js"></script>

@@ -139,10 +139,10 @@ class SubscribePopup
     @addButtons()
     @addLinkField()
 
-    @centerContainer()
-    window.setInterval (() =>
-      @centerContainer()
-    ), 1000
+    #@centerContainer()
+    #window.setInterval (() =>
+      #@centerContainer()
+    #), 1000
 
 
   addCloseHandler: () ->
@@ -162,13 +162,16 @@ class SubscribePopup
         @addButton(clientData)
 
   addButton: (client) ->
+    text = document.createElement('span')
     link = document.createElement('a')
     item = document.createElement('li')
 
 
     link.href = client.scheme + '://' + @feedUrl
     link.target = '_blank'
-    link.innerHTML = client.title
+
+    text.innerHTML = client.title
+    link.appendChild(text)
 
     if client.icon
       icon = document.createElement('img')
@@ -229,7 +232,7 @@ class SubscribeButton
     #borderRight = parseInt(styles.borderRightWidth, 10)
     height = parseInt(styles.height, 10)
     width = parseInt(styles.width, 10)
-    newHeight = height# + borderTop + borderBottom
+    newHeight = height + 2 # + borderTop + borderBottom
     newWidth = width# + borderLeft + borderRight - 2
 
     resizeData = IframeResizer.buildData('resizeButton', newHeight, newWidth, @params.id)

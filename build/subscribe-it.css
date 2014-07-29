@@ -4,6 +4,7 @@ html {
 }
 
 body {
+  font-family: 'Roboto';
   margin: 0;
   overflow: hidden;
 }
@@ -33,7 +34,6 @@ body {
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: 'Roboto';
   font-weight: bold;
   position: relative;
   text-shadow: 0 1px 0 rgba(0, 0, 1, 0.08);
@@ -115,11 +115,11 @@ body {
 
 #subscribe-it-popup {
   background: rgba(0, 0, 0, 0.7);
-  border-radius: 3px;
-  height: 100%;
+  color: #fff;
+  height: 80%;
   margin: 0 auto;
   padding: 10px 0;
-  width: 400px;
+  width: 800px;
 }
 #subscribe-it-popup h1, #subscribe-it-popup h2 {
   font-family: Helvetica;
@@ -131,57 +131,110 @@ body {
   font-size: 16px;
 }
 #subscribe-it-popup #subscribe-it-popup-close-button {
+  background-color: #ace6ca;
+  color: #7bae95;
+  border-radius: 50px;
   cursor: pointer;
   font-size: 20px;
-  line-height: 10px;
+  line-height: 11px;
+  padding: 6px 7px 8px 7px;
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 15px;
+  top: 15px;
 }
-#subscribe-it-popup #subscribe-it-list-container {
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  box-shadow: 0 0 10px 0 #222;
-  padding: 30px;
+#subscribe-it-popup #subscribe-it-popup-modal {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  box-shadow: 0 0 5px 0 #222;
+  height: 100%;
+  padding: 10px;
+  overflow: hidden;
   position: relative;
 }
-#subscribe-it-popup #subscribe-it-list-container h1 {
+#subscribe-it-popup #subscribe-it-popup-modal #subscribe-it-popup-modal-inner {
+  height: 100%;
+}
+#subscribe-it-popup #subscribe-it-popup-modal #subscribe-it-popup-modal-inner h1 {
   margin: 0 0 15px;
 }
-#subscribe-it-popup #subscribe-it-list-container h2 {
+#subscribe-it-popup #subscribe-it-popup-modal #subscribe-it-popup-modal-inner h2 {
   margin: 15px 0 5px;
   text-align: left;
 }
+#subscribe-it-popup #subscribe-it-popup-modal-left,
+#subscribe-it-popup #subscribe-it-popup-modal-middle,
+#subscribe-it-popup #subscribe-it-popup-modal-right {
+  float: left;
+  height: 100%;
+  padding: 34px 25px;
+  width: 260px;
+}
+#subscribe-it-popup #subscribe-it-popup-modal-left {
+  background-color: #fff9eb;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  color: #353535;
+}
+#subscribe-it-popup #subscribe-it-popup-modal-middle {
+  background-color: #353535;
+  padding-left: 0;
+  padding-right: 0;
+}
+#subscribe-it-popup #subscribe-it-popup-modal-right {
+  background-color: #7bae95;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
 #subscribe-it-popup #subscribe-it-list {
   display: block;
-  font-family: Helvetica;
   left: 0;
   margin: 0;
   padding: 0;
-  text-align: center;
 }
 #subscribe-it-popup #subscribe-it-list li {
-  background: #0961E5;
-  border-radius: 3px;
   list-style: none;
   margin: 0 auto;
+  padding: 5px 25px;
+  position: relative;
+  z-index: 10;
+}
+#subscribe-it-popup #subscribe-it-list li:hover {
+  background-color: #f35701;
+}
+#subscribe-it-popup #subscribe-it-list li:hover:after {
+  left: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+#subscribe-it-popup #subscribe-it-list li:hover:after {
+  border-color: rgba(136, 183, 213, 0);
+  border-left-color: #f35701;
+  border-width: 24px;
+  margin-top: -24px;
 }
 #subscribe-it-popup #subscribe-it-list li + li {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 #subscribe-it-popup #subscribe-it-list li a {
   color: #fff;
   display: block;
   line-height: 24px;
-  padding: 5px 0;
   text-decoration: none;
 }
 #subscribe-it-popup #subscribe-it-list li img {
-  height: 20px;
-  margin-right: 5px;
+  height: 32px;
+  margin-right: 10px;
   position: relative;
   top: 4px;
+}
+#subscribe-it-popup #subscribe-it-list li span {
+  position: relative;
+  top: -5px;
 }
 #subscribe-it-popup .subscribe-it-link-input {
   background: transparent;
@@ -195,10 +248,23 @@ body {
   width: 98%;
 }
 
-@media (max-width: 430px) {
+@media (max-width: 800px) {
   #subscribe-it-popup {
     margin-top: 0 !important;
-    width: 90%;
+    width: 280px;
+  }
+
+  #subscribe-it-popup-modal-left,
+  #subscribe-it-popup-modal-right {
+    display: none;
+  }
+
+  #subscribe-it-popup-modal-middle {
+    border-radius: 15px;
+  }
+
+  #subscribe-it-list li:hover:after {
+    display: none;
   }
 }
 @media (max-height: 500px) {

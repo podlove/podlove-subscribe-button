@@ -188,12 +188,6 @@ SubscribePopup = (function() {
     this.extractFeedUrl();
     this.addButtons();
     this.addLinkField();
-    this.centerContainer();
-    window.setInterval(((function(_this) {
-      return function() {
-        return _this.centerContainer();
-      };
-    })(this)), 1000);
   }
 
   SubscribePopup.prototype.addCloseHandler = function() {
@@ -228,12 +222,14 @@ SubscribePopup = (function() {
   };
 
   SubscribePopup.prototype.addButton = function(client) {
-    var icon, item, link;
+    var icon, item, link, text;
+    text = document.createElement('span');
     link = document.createElement('a');
     item = document.createElement('li');
     link.href = client.scheme + '://' + this.feedUrl;
     link.target = '_blank';
-    link.innerHTML = client.title;
+    text.innerHTML = client.title;
+    link.appendChild(text);
     if (client.icon) {
       icon = document.createElement('img');
       icon.src = "" + this.pathPrefix + "images/" + client.icon;
@@ -305,7 +301,7 @@ SubscribeButton = (function() {
     styles = document.defaultView.getComputedStyle(elem);
     height = parseInt(styles.height, 10);
     width = parseInt(styles.width, 10);
-    newHeight = height;
+    newHeight = height + 2;
     newWidth = width;
     resizeData = IframeResizer.buildData('resizeButton', newHeight, newWidth, this.params.id);
     return window.parent.postMessage(resizeData, '*');
