@@ -1,9 +1,10 @@
 class IframeResizer
   constructor: (listenTo, iframe, offset = {}, callback) ->
-    window.addEventListener('message', ((event) ->
+    window.addEventListener('message', ((event) =>
       resizeData = JSON.parse(event.data)
 
-      return unless resizeData.id == listenTo
+      return unless resizeData.id == iframe.id
+      return unless resizeData.listenTo == listenTo
 
       height = resizeData.height + (offset.height || 0)
       width = resizeData.width + (offset.width || 0)
@@ -13,8 +14,8 @@ class IframeResizer
       callback(iframe) if callback?
     ), false)
 
-  @buildData: (id, height, width) ->
-    "{\"id\": \"#{id}\", \"height\": #{height}, \"width\": #{width}}"
+  @buildData: (listenTo, height, width, iframeId) ->
+    "{\"id\": \"#{iframeId}\", \"listenTo\": \"#{listenTo}\", \"height\": #{height}, \"width\": #{width}}"
 
 
 class SubscribeIt
@@ -29,6 +30,7 @@ class SubscribeIt
     @extractScriptPath()
     @extractFeedUrl()
     @extractButtonLanguage()
+    @extractButtonSize()
     @renderIframe()
 
   extractScriptPath: () ->
@@ -40,17 +42,28 @@ class SubscribeIt
   extractButtonLanguage: () ->
     @buttonLanguage = @scriptElem.dataset.lang || 'en'
 
+  extractButtonSize: () ->
+    @buttonSize = @scriptElem.dataset.size || 'medium'
+
+  buttonParams: () ->
+    {
+      size: @buttonSize,
+      language: @buttonLanguage,
+    }
+
   renderIframe: () ->
     iframe = @buildIframe()
     @scriptElem.parentElement.replaceChild(iframe, @scriptElem)
 
   buildIframe: () ->
+    id = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
     iframe = document.createElement('iframe')
-    iframe.src = "#{@pathPrefix}button.html?language=#{@buttonLanguage}"
+    iframe.src = "#{@pathPrefix}button.html?language=#{@buttonLanguage}&size=#{@buttonSize}&id=#{id}"
     iframe.style.border = 'none'
     iframe.style.display = 'block'
     iframe.style.overflow = 'hidden'
     iframe.className = 'podlove-subscribe-button'
+    iframe.id = id
 
     iframe.onload = () =>
       iframe.contentDocument.addEventListener 'click', (event) =>
@@ -187,13 +200,39 @@ class SubscribePopup
 
 class SubscribeButton
   constructor: () ->
-    lang = window.location.search.split('=')[1]
-    elem = document.getElementById('subscribe-it-button')
-    elem.innerHTML = SubscribeIt.Translations.button[lang]
+    @extractParams()
 
-    height = elem.offsetHeight
-    width = elem.clientWidth
-    resizeData = IframeResizer.buildData('resizeButton', height, width)
+    lang = window.location.search.split('=')[1]
+    size = window.location.search.split('=')[1]
+    elem = document.getElementById('subscribe-it-button')
+    elem.className = @params.size
+    elem.innerHTML = "<span>#{SubscribeIt.Translations.button[@params.language]}</span>"
+
+    @resizeIframe(elem)
+
+  extractParams: () ->
+    string = window.location.search.replace(/^\?/, '')
+    split = string.split('&')
+    @params = {}
+    @buildParamObject(param, @params) for param in split
+
+  buildParamObject: (string, object) ->
+    array = string.split('=')
+    object[array[0]] = array[1]
+
+  resizeIframe: (elem) ->
+    styles = document.defaultView.getComputedStyle(elem)
+
+    #borderTop = parseInt(styles.borderTopWidth, 10)
+    #borderBottom = parseInt(styles.borderBottomWidth, 10)
+    #borderLeft = parseInt(styles.borderLeftWidth, 10)
+    #borderRight = parseInt(styles.borderRightWidth, 10)
+    height = parseInt(styles.height, 10)
+    width = parseInt(styles.width, 10)
+    newHeight = height# + borderTop + borderBottom
+    newWidth = width# + borderLeft + borderRight - 2
+
+    resizeData = IframeResizer.buildData('resizeButton', newHeight, newWidth, @params.id)
     window.parent.postMessage(resizeData, '*')
 
 SubscribeIt.UA = (() ->

@@ -6,24 +6,29 @@ IframeResizer = (function() {
     if (offset == null) {
       offset = {};
     }
-    window.addEventListener('message', (function(event) {
-      var height, resizeData, width;
-      resizeData = JSON.parse(event.data);
-      if (resizeData.id !== listenTo) {
-        return;
-      }
-      height = resizeData.height + (offset.height || 0);
-      width = resizeData.width + (offset.width || 0);
-      iframe.style.height = "" + height + "px";
-      iframe.style.width = "" + width + "px";
-      if (callback != null) {
-        return callback(iframe);
-      }
-    }), false);
+    window.addEventListener('message', ((function(_this) {
+      return function(event) {
+        var height, resizeData, width;
+        resizeData = JSON.parse(event.data);
+        if (resizeData.id !== iframe.id) {
+          return;
+        }
+        if (resizeData.listenTo !== listenTo) {
+          return;
+        }
+        height = resizeData.height + (offset.height || 0);
+        width = resizeData.width + (offset.width || 0);
+        iframe.style.height = "" + height + "px";
+        iframe.style.width = "" + width + "px";
+        if (callback != null) {
+          return callback(iframe);
+        }
+      };
+    })(this)), false);
   }
 
-  IframeResizer.buildData = function(id, height, width) {
-    return "{\"id\": \"" + id + "\", \"height\": " + height + ", \"width\": " + width + "}";
+  IframeResizer.buildData = function(listenTo, height, width, iframeId) {
+    return "{\"id\": \"" + iframeId + "\", \"listenTo\": \"" + listenTo + "\", \"height\": " + height + ", \"width\": " + width + "}";
   };
 
   return IframeResizer;
@@ -50,6 +55,7 @@ SubscribeIt = (function() {
     this.extractScriptPath();
     this.extractFeedUrl();
     this.extractButtonLanguage();
+    this.extractButtonSize();
     this.renderIframe();
   }
 
@@ -65,6 +71,17 @@ SubscribeIt = (function() {
     return this.buttonLanguage = this.scriptElem.dataset.lang || 'en';
   };
 
+  SubscribeIt.prototype.extractButtonSize = function() {
+    return this.buttonSize = this.scriptElem.dataset.size || 'medium';
+  };
+
+  SubscribeIt.prototype.buttonParams = function() {
+    return {
+      size: this.buttonSize,
+      language: this.buttonLanguage
+    };
+  };
+
   SubscribeIt.prototype.renderIframe = function() {
     var iframe;
     iframe = this.buildIframe();
@@ -72,13 +89,15 @@ SubscribeIt = (function() {
   };
 
   SubscribeIt.prototype.buildIframe = function() {
-    var iframe;
+    var id, iframe;
+    id = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
     iframe = document.createElement('iframe');
-    iframe.src = "" + this.pathPrefix + "button.html?language=" + this.buttonLanguage;
+    iframe.src = "" + this.pathPrefix + "button.html?language=" + this.buttonLanguage + "&size=" + this.buttonSize + "&id=" + id;
     iframe.style.border = 'none';
     iframe.style.display = 'block';
     iframe.style.overflow = 'hidden';
     iframe.className = 'podlove-subscribe-button';
+    iframe.id = id;
     iframe.onload = (function(_this) {
       return function() {
         return iframe.contentDocument.addEventListener('click', function(event) {
@@ -252,15 +271,45 @@ SubscribePopup = (function() {
 
 SubscribeButton = (function() {
   function SubscribeButton() {
-    var elem, height, lang, resizeData, width;
+    var elem, lang, size;
+    this.extractParams();
     lang = window.location.search.split('=')[1];
+    size = window.location.search.split('=')[1];
     elem = document.getElementById('subscribe-it-button');
-    elem.innerHTML = SubscribeIt.Translations.button[lang];
-    height = elem.offsetHeight;
-    width = elem.clientWidth;
-    resizeData = IframeResizer.buildData('resizeButton', height, width);
-    window.parent.postMessage(resizeData, '*');
+    elem.className = this.params.size;
+    elem.innerHTML = "<span>" + SubscribeIt.Translations.button[this.params.language] + "</span>";
+    this.resizeIframe(elem);
   }
+
+  SubscribeButton.prototype.extractParams = function() {
+    var param, split, string, _i, _len, _results;
+    string = window.location.search.replace(/^\?/, '');
+    split = string.split('&');
+    this.params = {};
+    _results = [];
+    for (_i = 0, _len = split.length; _i < _len; _i++) {
+      param = split[_i];
+      _results.push(this.buildParamObject(param, this.params));
+    }
+    return _results;
+  };
+
+  SubscribeButton.prototype.buildParamObject = function(string, object) {
+    var array;
+    array = string.split('=');
+    return object[array[0]] = array[1];
+  };
+
+  SubscribeButton.prototype.resizeIframe = function(elem) {
+    var height, newHeight, newWidth, resizeData, styles, width;
+    styles = document.defaultView.getComputedStyle(elem);
+    height = parseInt(styles.height, 10);
+    width = parseInt(styles.width, 10);
+    newHeight = height;
+    newWidth = width;
+    resizeData = IframeResizer.buildData('resizeButton', newHeight, newWidth, this.params.id);
+    return window.parent.postMessage(resizeData, '*');
+  };
 
   return SubscribeButton;
 

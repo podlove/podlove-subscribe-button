@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
+
 html {
   height: 100%;
 }
@@ -14,13 +16,107 @@ body {
 }
 
 #subscribe-it-button {
-  background: #0961E5;
+  background-image: -moz-linear-gradient(bottom, rgba(0,0,1,.05) 0%, rgba(255,255,255,.05) 100%);
+  background-image: -o-linear-gradient(bottom, rgba(0,0,1,.05) 0%, rgba(255,255,255,.05) 100%);
+  background-image: -webkit-linear-gradient(bottom, rgba(0,0,1,.05) 0%, rgba(255,255,255,.05) 100%);
+  background-image: linear-gradient(bottom, rgba(0,0,1,.05) 0%, rgba(255,255,255,.05) 100%);
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDc3IDIwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9ImhhdDAiIGdyYWRpZW50VW5pdHM9Im9iamVjdEJvdW5kaW5nQm94IiB4MT0iNTAlIiB5MT0iMTAwJSIgeDI9IjUwJSIgeTI9Ii0xLjQyMTA4NTQ3MTUyMDJlLTE0JSI+CjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMDAiIHN0b3Atb3BhY2l0eT0iMC4wNSIvPgo8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZlZmUiIHN0b3Atb3BhY2l0eT0iMC4wNSIvPgogICA8L2xpbmVhckdyYWRpZW50PgoKPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9Ijc3IiBoZWlnaHQ9IjIwIiBmaWxsPSJ1cmwoI2hhdDApIiAvPgo8L3N2Zz4=);
+  background-color: #75ad91;
+  background-clip: padding-box;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border: 1px solid #456757;
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: 'Helvetica';
-  padding: 10px;
+  font-family: 'Roboto';
+  font-weight: bold;
   position: relative;
+  text-shadow: 0 1px 0 rgba(0, 0, 1, .08);
+
+  &:before {
+    background: url('images/podcast-icon-small.png') no-repeat;
+    background-size: cover;
+    content: '';
+    display: inline-block;
+    height: 14px;
+    margin: 1px 0 0 2px;
+    width: 11px;
+  }
+
+  span {
+    display: inline-block;
+    left: 0;
+    position: relative;
+    text-align: center;
+    top: -3px;
+    width: 60px;
+  }
+}
+
+#subscribe-it-button.small {
+  font-size: 11px;
+  height: 18px;
+  width: 75px;
+}
+
+
+#subscribe-it-button:hover {
+  background-color: #75c39d;
+}
+
+#subscribe-it-button:active {
+  background-color: #61937b;
+}
+
+#subscribe-it-button.medium {
+  -moz-box-shadow: inset 0 -2px 0 rgba(0,0,1,.2), inset 0 0 10px rgba(70,103,87,.32);
+  -webkit-box-shadow: inset 0 -2px 0 rgba(0,0,1,.2), inset 0 0 10px rgba(70,103,87,.32);
+  box-shadow: inset 0 -2px 0 rgba(0,0,1,.2), inset 0 0 10px rgba(70,103,87,.32);
+  font-size: 13px;
+  height: 28px;
+  padding: 4px;
+  width: 95px;
+
+  &:before {
+    background: url('images/podcast-icon-medium.png') no-repeat;
+    background-size: cover;
+    height: 17px;
+    margin-left: 0;
+    width: 13px;
+  }
+
+  span {
+    top: -4px;
+    width: 72px;
+  }
+}
+
+#subscribe-it-button.big {
+  border-width: 2px;
+  -moz-box-shadow: 0 2px 0 rgba(0,0,1,.2), inset 0 -3px 0 rgba(0,0,1,.2);
+  -webkit-box-shadow: 0 2px 0 rgba(0,0,1,.2), inset 0 -3px 0 rgba(0,0,1,.2);
+  box-shadow: 0 2px 0 rgba(0,0,1,.2), inset 0 -3px 0 rgba(0,0,1,.2);
+  font-size: 19px;
+  height: 46px;
+  padding: 4px;
+  width: 151px;
+
+  &:before {
+    background: url('images/podcast-icon-big.png') no-repeat;
+    background-size: cover;
+    height: 27px;
+    margin-top: 2px;
+    width: 21px;
+  }
+
+  span {
+    top: -6px;
+    width: 116px;
+  }
 }
 
 #subscribe-it-popup {

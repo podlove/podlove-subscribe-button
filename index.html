@@ -2,18 +2,66 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
     <style>
       body {
+        font-family: 'Roboto';
+        color: #444;
         height: 100%;
-        padding-top: 100px;
+        margin: 0 auto;
+        padding-top: 25px;
+        text-align: center;
+        width: 50%;
+      }
+
+      body.dark {
+        background: #444;
+        color: #fff;
+      }
+
+      body .darktoggle {
+        color: #444;
+      }
+
+      body .lighttoggle {
+        color: #fff;
+        display: none;
+      }
+
+      body.dark .darktoggle {
+        display: none;
+      }
+
+      body.dark .lighttoggle {
+        display: block;
       }
 
       .podlove-subscribe-button {
-        margin: 0 auto;
+        margin: 0 auto 25px;
       }
     </style>
   </head>
   <body>
-    <script name="subscribe-it" src="build/subscribe-it.js" data-url="http://das-sendezentrum.de/feed/m4a/" data-lang="en"></script>
+    <h1>Podlove Subscribe Button</h1>
+    <h2>Small</h2>
+    <script name="subscribe-it" src="build/subscribe-it.js" data-url="http://das-sendezentrum.de/feed/m4a/" data-lang="en" data-size="small"></script>
+
+    <h2>Medium</h2>
+    <script name="subscribe-it" src="build/subscribe-it.js" data-url="http://das-sendezentrum.de/feed/m4a/" data-lang="en" data-size="medium"></script>
+
+    <h2>Big</h2>
+    <script name="subscribe-it" src="build/subscribe-it.js" data-url="http://das-sendezentrum.de/feed/m4a/" data-lang="en" data-size="big"></script>
+
+    <a href="#" onclick="darkMode()" class="darktoggle">Toggle Dark Background</a>
+    <a href="#" onclick="lightMode()" class="lighttoggle">Toggle Light Background</a>
   </body>
+
+  <script>
+    darkMode= function() {
+      document.body.className = 'dark'
+    }
+    lightMode= function() {
+      document.body.className = ''
+    }
+  </script>
 </html>
