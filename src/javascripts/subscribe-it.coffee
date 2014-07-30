@@ -297,48 +297,58 @@ SubscribeIt.Clients =
     title: 'AntennaPod'
     scheme: 'pcast'
     platform: ['android']
+    icon: 'android/antennapod.png'
   applepodcastsapp:
     title: 'Apple Podcasts'
     scheme: 'pcast'
     platform: ['ios']
+    icon: 'ios/podcasts.jpg'
   beyondpod:
     title: 'BeyondPod'
     scheme: 'pcast'
     platform: ['android']
+    icon: 'android/beyondpod.png'
   downcast:
     title: 'Downcast'
     scheme: 'downcast'
-    platform: ['ios', 'mac']
-    icon: 'downcast.png'
+    platform: ['mac']
+    icon: 'mac/downcast.png'
+  downcastmac:
+    title: 'Downcast'
+    scheme: 'downcast'
+    platform: ['ios']
+    icon: 'ios/downcast.jpg'
   instacast:
     title: 'Instacast'
     scheme: 'instacast'
-    platform: ['ios', 'mac']
-    icon: 'instacast.png'
+    platform: ['ios']
+    icon: 'ios/instacast.png'
+  instacastmac:
+    title: 'Instacast'
+    scheme: 'instacast'
+    platform: ['mac']
+    icon: 'mac/instacast.png'
   itunes:
     title: 'iTunes'
     scheme: 'itpc'
     platform: ['mac']
-    icon: 'itunes.png'
+    icon: 'mac/itunes.png'
   pocketcasts:
     title: 'PocketCasts'
     scheme: 'pcast'
     platform: ['android']
-    icon: 'pocketcasts.png'
-  pocketcasts:
+    icon: 'android/pocketcasts.png'
+  pocketcastsios:
     title: 'PocketCasts'
     scheme: 'pktc'
     platform: ['ios']
-    icon: 'pocketcasts.png'
+    icon: 'ios/pocketcasts.png'
   podcat:
     title: 'Podcat'
     scheme: 'podcat'
     platform: ['ios']
+    icon: 'ios/podcat.png'
   windowspodcastsapp:
     title: 'Podcasts'
     scheme: 'podcast'
-    platform: 'windowsPhone'
-  windowstest:
-    title: 'Other App'
-    scheme: 'wp-podcast'
     platform: 'windowsPhone'

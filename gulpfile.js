@@ -33,7 +33,7 @@ gulp.task('html', function() {
 })
 
 gulp.task('images', function() {
-  gulp.src(['./src/images/*'])
+  gulp.src(['./src/images/**'])
     .pipe(gulp.dest('./build/images'))
     .pipe(connect.reload())
 })
