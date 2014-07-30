@@ -93,7 +93,7 @@ class SubscribePopupIframe
   build: () ->
     iframe = document.createElement('iframe')
     iframe.className = "subscribe-it-popup-iframe"
-    iframe.src = "#{@pathPrefix}popup.html?feedUrl=#{@feedUrl}&podcastName=#{@podcast.name}&podcastCoverUrl=#{@podcast.coverUrl}"
+    iframe.src = "#{@pathPrefix}popup.html?feedUrl=#{@feedUrl}#{@podcastInfo()}"
     iframe.style.border = 'none'
     iframe.style.position = 'absolute'
 
@@ -103,6 +103,12 @@ class SubscribePopupIframe
     iframe.style.left = 0
 
     @iframe = iframe
+
+  podcastInfo: () ->
+    string = ''
+    return string unless @podcast
+    string += "&podcastName=#{@podcast.name}" if @podcast.name
+    string += "&podcastCoverUrl=#{@podcast.coverUrl}" if @podcast.coverUrl
 
   insert: () ->
     document.body.appendChild(@build())
@@ -150,13 +156,15 @@ class SubscribePopup
     @addPodcastInfo()
 
   addPodcastInfo: () ->
-    name = document.createElement('div')
-    name.innerHTML = @params.podcastName
-    @leftSide.appendChild(name)
+    if @params.podcastName
+      name = document.createElement('div')
+      name.innerHTML = @params.podcastName
+      @leftSide.appendChild(name)
 
-    image = document.createElement('img')
-    image.src = @params.podcastCoverUrl
-    @leftSide.appendChild(image)
+    if @params.podcastCoverUrl
+      image = document.createElement('img')
+      image.src = @params.podcastCoverUrl
+      @leftSide.appendChild(image)
 
   extractParams: () ->
     string = window.location.search.replace(/^\?/, '')

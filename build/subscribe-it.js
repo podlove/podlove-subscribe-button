@@ -137,7 +137,7 @@ SubscribePopupIframe = (function() {
     var iframe;
     iframe = document.createElement('iframe');
     iframe.className = "subscribe-it-popup-iframe";
-    iframe.src = "" + this.pathPrefix + "popup.html?feedUrl=" + this.feedUrl + "&podcastName=" + this.podcast.name + "&podcastCoverUrl=" + this.podcast.coverUrl;
+    iframe.src = "" + this.pathPrefix + "popup.html?feedUrl=" + this.feedUrl + (this.podcastInfo());
     iframe.style.border = 'none';
     iframe.style.position = 'absolute';
     iframe.style.height = '100vh';
@@ -145,6 +145,20 @@ SubscribePopupIframe = (function() {
     iframe.style.top = 0;
     iframe.style.left = 0;
     return this.iframe = iframe;
+  };
+
+  SubscribePopupIframe.prototype.podcastInfo = function() {
+    var string;
+    string = '';
+    if (!this.podcast) {
+      return string;
+    }
+    if (this.podcast.name) {
+      string += "&podcastName=" + this.podcast.name;
+    }
+    if (this.podcast.coverUrl) {
+      return string += "&podcastCoverUrl=" + this.podcast.coverUrl;
+    }
   };
 
   SubscribePopupIframe.prototype.insert = function() {
@@ -202,12 +216,16 @@ SubscribePopup = (function() {
 
   SubscribePopup.prototype.addPodcastInfo = function() {
     var image, name;
-    name = document.createElement('div');
-    name.innerHTML = this.params.podcastName;
-    this.leftSide.appendChild(name);
-    image = document.createElement('img');
-    image.src = this.params.podcastCoverUrl;
-    return this.leftSide.appendChild(image);
+    if (this.params.podcastName) {
+      name = document.createElement('div');
+      name.innerHTML = this.params.podcastName;
+      this.leftSide.appendChild(name);
+    }
+    if (this.params.podcastCoverUrl) {
+      image = document.createElement('img');
+      image.src = this.params.podcastCoverUrl;
+      return this.leftSide.appendChild(image);
+    }
   };
 
   SubscribePopup.prototype.extractParams = function() {
