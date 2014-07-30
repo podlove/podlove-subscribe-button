@@ -187,9 +187,16 @@ body {
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     color: rgb(53, 53, 53);
+    font-size: 14px;
+
+    strong {
+      display: block;
+    }
 
     img {
-      width: 100px;
+      border: 1px solid #535353;
+      margin: 5px 0 10px;
+      width: 150px;
     }
   }
 

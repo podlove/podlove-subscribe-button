@@ -157,8 +157,6 @@ class SubscribePopup
     @addPodcastInfo()
 
   addPodcastInfo: () ->
-    heading = @leftSide.getElementsByTagName('h1')[0]
-    heading.innerHTML = SubscribeIt.Translations.subscribe[@params.language]
     if @params.podcastName
       name = document.createElement('div')
       name.innerHTML = @params.podcastName
@@ -168,6 +166,14 @@ class SubscribePopup
       image = document.createElement('img')
       image.src = @params.podcastCoverUrl
       @leftSide.appendChild(image)
+
+    heading = document.createElement('strong')
+    heading.innerHTML = SubscribeIt.Translations.subscribe[@params.language]
+    @leftSide.appendChild(heading)
+
+    explanation = document.createElement('p')
+    explanation.innerHTML = SubscribeIt.Translations.explanation[@params.language]
+    @leftSide.appendChild(explanation)
 
   extractParams: () ->
     string = window.location.search.replace(/^\?/, '')
@@ -286,11 +292,12 @@ SubscribeIt.Translations =
   button:
     de: 'Abonnieren'
     en: 'Subscribe'
-    fr: 'S\'Abonner'
   subscribe:
     de: 'Podcast Abonnieren'
     en: 'Subscribe to Podcast'
-    fr: 'S\'Abonner Podcast'
+  explanation:
+    de: 'Um diesen Podcast zu abonnieren, bitte einen Client in der Mitte auswählen.'
+    en: 'Please choose a client from the middle to subscribe to this Podcast.'
 
 SubscribeIt.Clients =
   antennapod:

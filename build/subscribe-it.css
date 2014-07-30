@@ -173,9 +173,15 @@ body {
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   color: #353535;
+  font-size: 14px;
+}
+#subscribe-it-popup #subscribe-it-popup-modal-left strong {
+  display: block;
 }
 #subscribe-it-popup #subscribe-it-popup-modal-left img {
-  width: 100px;
+  border: 1px solid #535353;
+  margin: 5px 0 10px;
+  width: 150px;
 }
 #subscribe-it-popup #subscribe-it-popup-modal-middle {
   background-color: #353535;

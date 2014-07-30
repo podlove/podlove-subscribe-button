@@ -216,9 +216,7 @@ SubscribePopup = (function() {
   }
 
   SubscribePopup.prototype.addPodcastInfo = function() {
-    var heading, image, name;
-    heading = this.leftSide.getElementsByTagName('h1')[0];
-    heading.innerHTML = SubscribeIt.Translations.subscribe[this.params.language];
+    var explanation, heading, image, name;
     if (this.params.podcastName) {
       name = document.createElement('div');
       name.innerHTML = this.params.podcastName;
@@ -227,8 +225,14 @@ SubscribePopup = (function() {
     if (this.params.podcastCoverUrl) {
       image = document.createElement('img');
       image.src = this.params.podcastCoverUrl;
-      return this.leftSide.appendChild(image);
+      this.leftSide.appendChild(image);
     }
+    heading = document.createElement('strong');
+    heading.innerHTML = SubscribeIt.Translations.subscribe[this.params.language];
+    this.leftSide.appendChild(heading);
+    explanation = document.createElement('p');
+    explanation.innerHTML = SubscribeIt.Translations.explanation[this.params.language];
+    return this.leftSide.appendChild(explanation);
   };
 
   SubscribePopup.prototype.extractParams = function() {
@@ -388,13 +392,15 @@ SubscribeIt.UAs = {
 SubscribeIt.Translations = {
   button: {
     de: 'Abonnieren',
-    en: 'Subscribe',
-    fr: 'S\'Abonner'
+    en: 'Subscribe'
   },
   subscribe: {
     de: 'Podcast Abonnieren',
-    en: 'Subscribe to Podcast',
-    fr: 'S\'Abonner Podcast'
+    en: 'Subscribe to Podcast'
+  },
+  explanation: {
+    de: 'Um diesen Podcast zu abonnieren, bitte einen Client in der Mitte auswählen.',
+    en: 'Please choose a client from the middle to subscribe to this Podcast.'
   }
 };
 
