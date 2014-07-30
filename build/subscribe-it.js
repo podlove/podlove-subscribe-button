@@ -69,7 +69,7 @@ SubscribeIt = (function() {
   };
 
   SubscribeIt.prototype.extractButtonLanguage = function() {
-    return this.buttonLanguage = this.scriptElem.dataset.lang || 'en';
+    return this.buttonLanguage = this.scriptElem.dataset.language || 'en';
   };
 
   SubscribeIt.prototype.extractButtonSize = function() {
@@ -109,7 +109,7 @@ SubscribeIt = (function() {
     iframe.onload = (function(_this) {
       return function() {
         return iframe.contentDocument.addEventListener('click', function(event) {
-          return new SubscribePopupIframe(iframe, _this.feedUrl, _this.pathPrefix, _this.podcast);
+          return new SubscribePopupIframe(iframe, _this.feedUrl, _this.pathPrefix, _this.podcast, _this.buttonLanguage);
         });
       };
     })(this);
@@ -124,11 +124,12 @@ SubscribeIt = (function() {
 new SubscribeIt.init();
 
 SubscribePopupIframe = (function() {
-  function SubscribePopupIframe(buttonIframe, feedUrl, pathPrefix, podcast) {
+  function SubscribePopupIframe(buttonIframe, feedUrl, pathPrefix, podcast, language) {
     this.buttonIframe = buttonIframe;
     this.feedUrl = feedUrl;
     this.pathPrefix = pathPrefix;
     this.podcast = podcast;
+    this.language = language;
     this.insert();
     this.addCloseListener();
   }
@@ -137,7 +138,7 @@ SubscribePopupIframe = (function() {
     var iframe;
     iframe = document.createElement('iframe');
     iframe.className = "subscribe-it-popup-iframe";
-    iframe.src = "" + this.pathPrefix + "popup.html?feedUrl=" + this.feedUrl + (this.podcastInfo());
+    iframe.src = "" + this.pathPrefix + "popup.html?feedUrl=" + this.feedUrl + "&language=" + this.language + (this.podcastInfo());
     iframe.style.border = 'none';
     iframe.style.position = 'absolute';
     iframe.style.height = '100vh';
@@ -215,7 +216,9 @@ SubscribePopup = (function() {
   }
 
   SubscribePopup.prototype.addPodcastInfo = function() {
-    var image, name;
+    var heading, image, name;
+    heading = this.leftSide.getElementsByTagName('h1')[0];
+    heading.innerHTML = SubscribeIt.Translations.subscribe[this.params.language];
     if (this.params.podcastName) {
       name = document.createElement('div');
       name.innerHTML = this.params.podcastName;
@@ -387,6 +390,11 @@ SubscribeIt.Translations = {
     de: 'Abonnieren',
     en: 'Subscribe',
     fr: 'S\'Abonner'
+  },
+  subscribe: {
+    de: 'Podcast Abonnieren',
+    en: 'Subscribe to Podcast',
+    fr: 'S\'Abonner Podcast'
   }
 };
 

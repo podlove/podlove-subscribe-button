@@ -41,7 +41,7 @@ class SubscribeIt
     @feedUrl = @scriptElem.dataset.url.replace(/^https?:\/\//, '')
 
   extractButtonLanguage: () ->
-    @buttonLanguage = @scriptElem.dataset.lang || 'en'
+    @buttonLanguage = @scriptElem.dataset.language || 'en'
 
   extractButtonSize: () ->
     @buttonSize = @scriptElem.dataset.size || 'medium'
@@ -72,7 +72,7 @@ class SubscribeIt
 
     iframe.onload = () =>
       iframe.contentDocument.addEventListener 'click', (event) =>
-        new SubscribePopupIframe(iframe, @feedUrl, @pathPrefix, @podcast)
+        new SubscribePopupIframe(iframe, @feedUrl, @pathPrefix, @podcast, @buttonLanguage)
 
     new IframeResizer('resizeButton', iframe)
 
@@ -81,11 +81,12 @@ class SubscribeIt
 new SubscribeIt.init()
 
 class SubscribePopupIframe
-  constructor: (buttonIframe, feedUrl, pathPrefix, podcast) ->
+  constructor: (buttonIframe, feedUrl, pathPrefix, podcast, language) ->
     @buttonIframe = buttonIframe
     @feedUrl = feedUrl
     @pathPrefix = pathPrefix
     @podcast = podcast
+    @language = language
 
     @insert()
     @addCloseListener()
@@ -93,7 +94,7 @@ class SubscribePopupIframe
   build: () ->
     iframe = document.createElement('iframe')
     iframe.className = "subscribe-it-popup-iframe"
-    iframe.src = "#{@pathPrefix}popup.html?feedUrl=#{@feedUrl}#{@podcastInfo()}"
+    iframe.src = "#{@pathPrefix}popup.html?feedUrl=#{@feedUrl}&language=#{@language}#{@podcastInfo()}"
     iframe.style.border = 'none'
     iframe.style.position = 'absolute'
 
@@ -156,6 +157,8 @@ class SubscribePopup
     @addPodcastInfo()
 
   addPodcastInfo: () ->
+    heading = @leftSide.getElementsByTagName('h1')[0]
+    heading.innerHTML = SubscribeIt.Translations.subscribe[@params.language]
     if @params.podcastName
       name = document.createElement('div')
       name.innerHTML = @params.podcastName
@@ -284,6 +287,10 @@ SubscribeIt.Translations =
     de: 'Abonnieren'
     en: 'Subscribe'
     fr: 'S\'Abonner'
+  subscribe:
+    de: 'Podcast Abonnieren'
+    en: 'Subscribe to Podcast'
+    fr: 'S\'Abonner Podcast'
 
 SubscribeIt.Clients =
   antennapod:
