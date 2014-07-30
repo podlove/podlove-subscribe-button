@@ -308,7 +308,13 @@ SubscribeIt.Clients =
   pocketcasts:
     title: 'PocketCasts'
     scheme: 'pcast'
-    platform: ['android', 'ios']
+    platform: ['android']
+    icon: 'pocketcasts.png'
+  pocketcasts:
+    title: 'PocketCasts'
+    scheme: 'pktc'
+    platform: ['ios']
+    icon: 'pocketcasts.png'
   podcat:
     title: 'Podcat'
     scheme: 'podcat'
