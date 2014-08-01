@@ -207,6 +207,7 @@ SubscribePopup = (function() {
     this.container = document.getElementById('subscribe-it-list-container');
     this.closeButton = document.getElementById('subscribe-it-popup-close-button');
     this.leftSide = document.getElementById('subscribe-it-popup-modal-left');
+    this.rightSide = document.getElementById('subscribe-it-popup-modal-right');
     this.list = document.getElementById('subscribe-it-list');
     loc = window.location;
     this.pathPrefix = loc.href.replace(loc.search, '').match(/(^.*\/)/)[0];
@@ -272,11 +273,7 @@ SubscribePopup = (function() {
     for (clientId in _ref) {
       if (!__hasProp.call(_ref, clientId)) continue;
       clientData = _ref[clientId];
-      if (clientData.platform.indexOf(platform) !== -1) {
-        _results.push(this.addButton(clientData));
-      } else {
-        _results.push(void 0);
-      }
+      _results.push(this.addButton(clientData));
     }
     return _results;
   };
@@ -296,7 +293,72 @@ SubscribePopup = (function() {
       link.insertBefore(icon, link.firstChild);
     }
     item.appendChild(link);
-    return this.list.appendChild(item);
+    this.list.appendChild(item);
+    return this.addButtonAction(item, client);
+  };
+
+  SubscribePopup.prototype.addButtonAction = function(button, client) {
+    var target;
+    target = document.getElementById('subscribe-it-popup-modal-helptext');
+    this.addButtonHover(target, button, client);
+    return this.addButtonClick(target, button, client);
+  };
+
+  SubscribePopup.prototype.addButtonHover = function(target, button, client) {
+    button.addEventListener('mouseenter', (function(_this) {
+      return function(event) {
+        var helpText, text;
+        if (button.parentNode.className === 'clicked') {
+          return;
+        }
+        helpText = document.createElement('p');
+        text = SubscribeIt.Translations.help[_this.params.language];
+        text = SubscribeIt.Template.render(text, {
+          clientName: client.title
+        });
+        helpText.innerHTML = text;
+        return target.appendChild(helpText);
+      };
+    })(this));
+    return button.addEventListener('mouseleave', (function(_this) {
+      return function(event) {
+        if (button.parentNode.className === 'clicked') {
+          return;
+        }
+        return target.innerHTML = '';
+      };
+    })(this));
+  };
+
+  SubscribePopup.prototype.addButtonClick = function(target, button, client) {
+    return button.addEventListener('click', (function(_this) {
+      return function(event) {
+        var installButton, installText, text;
+        button.parentNode.className = 'clicked';
+        target.innerHTML = '';
+        if (client.install) {
+          installText = document.createElement('p');
+          text = SubscribeIt.Translations.clicked.install.text[_this.params.language];
+          text = SubscribeIt.Template.render(text, {
+            clientName: client.title
+          });
+          installText.innerHTML = "" + text;
+          target.appendChild(installText);
+          installButton = document.createElement('a');
+          installButton.className = 'subscribe-it-install-button';
+          installButton.target = '_blank';
+          installButton.href = client.install;
+          text = SubscribeIt.Translations.clicked.install.button[_this.params.language];
+          installButton.innerHTML = SubscribeIt.Template.render(text, {
+            clientName: client.title
+          });
+          return target.appendChild(installButton);
+        } else {
+          text = SubscribeIt.Translations.clicked.noinstall.text[_this.params.language];
+          return target.innerHTML = "" + text;
+        }
+      };
+    })(this));
   };
 
   SubscribePopup.prototype.addLinkField = function() {
@@ -364,6 +426,35 @@ SubscribeButton = (function() {
 
 })();
 
+SubscribeIt.Template = {
+  render: function(tmpl, vals) {
+    var noEscapeRepr, noEscapeRgxp, repr, rgxp;
+    tmpl = tmpl || "";
+    vals = vals || {};
+    rgxp = /\{([^{}]*)}/g;
+    noEscapeRgxp = /\{{([^{}]*)}}/g;
+    repr = function(str, match) {
+      var value;
+      value = vals[match];
+      if (typeof value === "string" || typeof value === "number") {
+        return value;
+      } else {
+        return str;
+      }
+    };
+    noEscapeRepr = function(str, match) {
+      var value;
+      value = vals[match];
+      if (typeof value === "string" || typeof value === "number") {
+        return value;
+      } else {
+        return str;
+      }
+    };
+    return tmpl.replace(noEscapeRgxp, noEscapeRepr);
+  }
+};
+
 SubscribeIt.UA = (function() {
   return {
     detect: function() {
@@ -401,6 +492,28 @@ SubscribeIt.Translations = {
   explanation: {
     de: 'Um diesen Podcast zu abonnieren, bitte einen Client in der Mitte auswählen.',
     en: 'Please choose a client from the middle to subscribe to this Podcast.'
+  },
+  help: {
+    de: 'Podcast abonnieren mit <strong>{{clientName}}</strong>',
+    en: 'Subscribe to Podcast with <strong>{{clientName}}</strong>'
+  },
+  clicked: {
+    noinstall: {
+      text: {
+        de: 'Falls nach dem Klick nichts passiert sein sollte, ist vermutlich kein Client installiert.',
+        en: 'If nothing happened after the click you probably have not installed a Client.'
+      }
+    },
+    install: {
+      text: {
+        de: 'Falls nach dem Klick nichts passiert sein sollte, kannst du <strong>{{clientName}}</strong> hier installieren:',
+        en: 'If nothing happened after the click you can install <strong>{{clientName}}</strong> here:'
+      },
+      button: {
+        de: '{{clientName}} Installieren',
+        en: 'Install {{clientName}}'
+      }
+    }
   }
 };
 
@@ -409,13 +522,15 @@ SubscribeIt.Clients = {
     title: 'AntennaPod',
     scheme: 'pcast',
     platform: ['android'],
-    icon: 'android/antennapod.png'
+    icon: 'android/antennapod.png',
+    install: 'https://play.google.com/store/apps/details?id=de.danoeh.antennapod'
   },
   applepodcastsapp: {
     title: 'Apple Podcasts',
     scheme: 'pcast',
     platform: ['ios'],
-    icon: 'ios/podcasts.jpg'
+    icon: 'ios/podcasts.jpg',
+    install: 'https://itunes.apple.com/de/app/podcasts/id525463029'
   },
   beyondpod: {
     title: 'BeyondPod',

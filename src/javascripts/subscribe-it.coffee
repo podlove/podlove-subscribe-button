@@ -145,6 +145,7 @@ class SubscribePopup
     @container = document.getElementById('subscribe-it-list-container')
     @closeButton = document.getElementById('subscribe-it-popup-close-button')
     @leftSide = document.getElementById('subscribe-it-popup-modal-left')
+    @rightSide = document.getElementById('subscribe-it-popup-modal-right')
     @list = document.getElementById('subscribe-it-list')
 
     loc = window.location
@@ -195,8 +196,8 @@ class SubscribePopup
   addButtons: () ->
     platform = SubscribeIt.UA.detect()
     for own clientId, clientData of SubscribeIt.Clients
-      unless clientData.platform.indexOf(platform) == -1
-        @addButton(clientData)
+      #unless clientData.platform.indexOf(platform) == -1
+      @addButton(clientData)
 
   addButton: (client) ->
     text = document.createElement('span')
@@ -218,6 +219,52 @@ class SubscribePopup
     item.appendChild(link)
 
     @list.appendChild(item)
+
+    @addButtonAction(item, client)
+
+  addButtonAction: (button, client) ->
+    target = document.getElementById('subscribe-it-popup-modal-helptext')
+    @addButtonHover(target, button, client)
+    @addButtonClick(target, button, client)
+
+  addButtonHover: (target, button, client) ->
+    button.addEventListener 'mouseenter', (event) =>
+      return if button.parentNode.className == 'clicked'
+
+      helpText = document.createElement('p')
+      text = SubscribeIt.Translations.help[@params.language]
+      text = SubscribeIt.Template.render(text, {clientName: client.title})
+      helpText.innerHTML = text
+      target.appendChild(helpText)
+
+    button.addEventListener 'mouseleave', (event) =>
+      return if button.parentNode.className == 'clicked'
+      target.innerHTML = ''
+
+  addButtonClick: (target, button, client) ->
+    button.addEventListener 'click', (event) =>
+      button.parentNode.className = 'clicked'
+
+      target.innerHTML = ''
+
+      if client.install
+        installText = document.createElement('p')
+        text = SubscribeIt.Translations.clicked.install.text[@params.language]
+        text = SubscribeIt.Template.render(text, {clientName: client.title})
+        installText.innerHTML = "#{text}"
+        target.appendChild(installText)
+
+        installButton = document.createElement('a')
+        installButton.className = 'subscribe-it-install-button'
+        installButton.target = '_blank'
+        installButton.href = client.install
+        text = SubscribeIt.Translations.clicked.install.button[@params.language]
+        installButton.innerHTML = SubscribeIt.Template.render(text, {clientName: client.title})
+        target.appendChild(installButton)
+
+      else
+        text = SubscribeIt.Translations.clicked.noinstall.text[@params.language]
+        target.innerHTML = "#{text}"
 
   addLinkField: () ->
     @inputContainer = document.getElementById('subscribe-it-feed-link-input')
@@ -270,6 +317,30 @@ class SubscribeButton
     resizeData = IframeResizer.buildData('resizeButton', newHeight, newWidth, @params.id)
     window.parent.postMessage(resizeData, '*')
 
+SubscribeIt.Template =
+  render: (tmpl, vals) ->
+    # default to doing no harm
+    tmpl = tmpl or ""
+    vals = vals or {}
+
+    # regular expression for matching our placeholders; e.g., #{my-cLaSs_name77}
+    rgxp = /\{([^{}]*)}/g
+
+      # regex for text (markup) that should not be escaped; e..g., #{{html_content}}
+    noEscapeRgxp = /\{{([^{}]*)}}/g
+
+      # function to making replacements
+    repr = (str, match) ->
+      value = vals[match]
+      (if (typeof value is "string" or typeof value is "number") then value else str)
+
+      # non-escaped text (HTML)
+    noEscapeRepr = (str, match) ->
+      value = vals[match]
+      (if (typeof value is "string" or typeof value is "number") then value else str)
+
+    tmpl.replace noEscapeRgxp, noEscapeRepr
+
 SubscribeIt.UA = (() ->
   {
     detect: () ->
@@ -298,6 +369,21 @@ SubscribeIt.Translations =
   explanation:
     de: 'Um diesen Podcast zu abonnieren, bitte einen Client in der Mitte auswählen.'
     en: 'Please choose a client from the middle to subscribe to this Podcast.'
+  help:
+    de: 'Podcast abonnieren mit <strong>{{clientName}}</strong>'
+    en: 'Subscribe to Podcast with <strong>{{clientName}}</strong>'
+  clicked:
+    noinstall:
+      text:
+        de: 'Falls nach dem Klick nichts passiert sein sollte, ist vermutlich kein Client installiert.'
+        en: 'If nothing happened after the click you probably have not installed a Client.'
+    install:
+      text:
+        de: 'Falls nach dem Klick nichts passiert sein sollte, kannst du <strong>{{clientName}}</strong> hier installieren:'
+        en: 'If nothing happened after the click you can install <strong>{{clientName}}</strong> here:'
+      button:
+        de: '{{clientName}} Installieren'
+        en: 'Install {{clientName}}'
 
 SubscribeIt.Clients =
   antennapod:
@@ -305,11 +391,13 @@ SubscribeIt.Clients =
     scheme: 'pcast'
     platform: ['android']
     icon: 'android/antennapod.png'
+    install: 'https://play.google.com/store/apps/details?id=de.danoeh.antennapod'
   applepodcastsapp:
     title: 'Apple Podcasts'
     scheme: 'pcast'
     platform: ['ios']
     icon: 'ios/podcasts.jpg'
+    install: 'https://itunes.apple.com/de/app/podcasts/id525463029'
   beyondpod:
     title: 'BeyondPod'
     scheme: 'pcast'

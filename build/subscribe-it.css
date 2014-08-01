@@ -17,7 +17,8 @@ body {
   box-sizing: border-box;
 }
 
-#subscribe-it-button {
+#subscribe-it-button, .subscribe-it-install-button,
+.subscribe-it-button {
   background-image: -moz-linear-gradient(bottom, rgba(0, 0, 1, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%);
   background-image: -o-linear-gradient(bottom, rgba(0, 0, 1, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%);
   background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 1, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%);
@@ -38,7 +39,8 @@ body {
   position: relative;
   text-shadow: 0 1px 0 rgba(0, 0, 1, 0.08);
 }
-#subscribe-it-button:before {
+#subscribe-it-button:before, .subscribe-it-install-button:before,
+.subscribe-it-button:before {
   background: url("images/podcast-icon-small.png") no-repeat;
   background-size: cover;
   content: '';
@@ -47,7 +49,8 @@ body {
   margin: 1px 0 0 2px;
   width: 11px;
 }
-#subscribe-it-button span {
+#subscribe-it-button span, .subscribe-it-install-button span,
+.subscribe-it-button span {
   display: inline-block;
   left: 0;
   position: relative;
@@ -56,21 +59,24 @@ body {
   width: 60px;
 }
 
-#subscribe-it-button.small {
+#subscribe-it-button.small, .small.subscribe-it-install-button {
   font-size: 11px;
   height: 18px;
   width: 75px;
 }
 
-#subscribe-it-button:hover {
+#subscribe-it-button:hover, .subscribe-it-install-button:hover,
+.subscribe-it-button:hover {
   background-color: #75c39d;
 }
 
-#subscribe-it-button:active {
+#subscribe-it-button:active, .subscribe-it-install-button:active,
+.subscribe-it-button:active {
   background-color: #61937b;
 }
 
-#subscribe-it-button.medium {
+#subscribe-it-button.medium, .medium.subscribe-it-install-button,
+.subscribe-it-button.medium {
   -moz-box-shadow: inset 0 -2px 0 rgba(0, 0, 1, 0.2), inset 0 0 10px rgba(70, 103, 87, 0.32);
   -webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 1, 0.2), inset 0 0 10px rgba(70, 103, 87, 0.32);
   box-shadow: inset 0 -2px 0 rgba(0, 0, 1, 0.2), inset 0 0 10px rgba(70, 103, 87, 0.32);
@@ -79,19 +85,21 @@ body {
   padding: 4px;
   width: 95px;
 }
-#subscribe-it-button.medium:before {
+#subscribe-it-button.medium:before, .medium.subscribe-it-install-button:before,
+.subscribe-it-button.medium:before {
   background: url("images/podcast-icon-medium.png") no-repeat;
   background-size: cover;
   height: 17px;
   margin-left: 0;
   width: 13px;
 }
-#subscribe-it-button.medium span {
+#subscribe-it-button.medium span, .medium.subscribe-it-install-button span,
+.subscribe-it-button.medium span {
   top: -4px;
   width: 72px;
 }
 
-#subscribe-it-button.big {
+#subscribe-it-button.big, .big.subscribe-it-install-button {
   border-width: 2px;
   -moz-box-shadow: 0 2px 0 rgba(0, 0, 1, 0.2), inset 0 -3px 0 rgba(0, 0, 1, 0.2);
   -webkit-box-shadow: 0 2px 0 rgba(0, 0, 1, 0.2), inset 0 -3px 0 rgba(0, 0, 1, 0.2);
@@ -101,16 +109,26 @@ body {
   padding: 4px;
   width: 151px;
 }
-#subscribe-it-button.big:before {
+#subscribe-it-button.big:before, .big.subscribe-it-install-button:before {
   background: url("images/podcast-icon-big.png") no-repeat;
   background-size: cover;
   height: 27px;
   margin-top: 2px;
   width: 21px;
 }
-#subscribe-it-button.big span {
+#subscribe-it-button.big span, .big.subscribe-it-install-button span {
   top: -6px;
   width: 116px;
+}
+
+.subscribe-it-install-button {
+  display: inline-block;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+.subscribe-it-install-button:before {
+  display: none;
 }
 
 #subscribe-it-popup {
@@ -192,6 +210,7 @@ body {
   background-color: #7bae95;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+  font-size: 14px;
 }
 #subscribe-it-popup #subscribe-it-list {
   display: block;

@@ -16,7 +16,8 @@ body {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
 
-#subscribe-it-button {
+#subscribe-it-button,
+.subscribe-it-button {
   background-image: -moz-linear-gradient(bottom, rgba(0,0,1,.05) 0%, rgba(255,255,255,.05) 100%);
   background-image: -o-linear-gradient(bottom, rgba(0,0,1,.05) 0%, rgba(255,255,255,.05) 100%);
   background-image: -webkit-linear-gradient(bottom, rgba(0,0,1,.05) 0%, rgba(255,255,255,.05) 100%);
@@ -64,15 +65,18 @@ body {
 }
 
 
-#subscribe-it-button:hover {
+#subscribe-it-button:hover,
+.subscribe-it-button:hover {
   background-color: #75c39d;
 }
 
-#subscribe-it-button:active {
+#subscribe-it-button:active,
+.subscribe-it-button:active {
   background-color: #61937b;
 }
 
-#subscribe-it-button.medium {
+#subscribe-it-button.medium,
+.subscribe-it-button.medium {
   -moz-box-shadow: inset 0 -2px 0 rgba(0,0,1,.2), inset 0 0 10px rgba(70,103,87,.32);
   -webkit-box-shadow: inset 0 -2px 0 rgba(0,0,1,.2), inset 0 0 10px rgba(70,103,87,.32);
   box-shadow: inset 0 -2px 0 rgba(0,0,1,.2), inset 0 0 10px rgba(70,103,87,.32);
@@ -116,6 +120,19 @@ body {
   span {
     top: -6px;
     width: 116px;
+  }
+}
+
+.subscribe-it-install-button {
+  @extend #subscribe-it-button;
+
+  display: inline-block;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+
+  &:before {
+    display: none;
   }
 }
 
@@ -210,6 +227,7 @@ body {
     background-color: rgb(123, 174, 149);
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
+    font-size: 14px;
   }
 
   #subscribe-it-list {
