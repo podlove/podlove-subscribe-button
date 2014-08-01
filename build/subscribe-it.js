@@ -65,7 +65,7 @@ SubscribeIt = (function() {
   };
 
   SubscribeIt.prototype.extractFeedUrl = function() {
-    return this.feedUrl = this.scriptElem.dataset.url.replace(/^https?:\/\//, '');
+    return this.feedUrl = this.scriptElem.dataset.url;
   };
 
   SubscribeIt.prototype.extractButtonLanguage = function() {
@@ -319,7 +319,7 @@ SubscribePopup = (function() {
     text = document.createElement('span');
     link = document.createElement('a');
     item = document.createElement('li');
-    link.href = client.scheme + '://' + this.params.feedUrl;
+    link.href = client.scheme + '://' + this.params.feedUrl.replace(/^https?:\/\//, '');
     link.target = '_blank';
     text.innerHTML = client.title;
     link.appendChild(text);

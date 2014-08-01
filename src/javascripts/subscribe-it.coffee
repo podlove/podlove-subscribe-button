@@ -38,7 +38,7 @@ class SubscribeIt
     @pathPrefix = @scriptElem.src.match(/(^.*\/)/)[0]
 
   extractFeedUrl: () ->
-    @feedUrl = @scriptElem.dataset.url.replace(/^https?:\/\//, '')
+    @feedUrl = @scriptElem.dataset.url
 
   extractButtonLanguage: () ->
     @buttonLanguage = @scriptElem.dataset.language || 'en'
@@ -235,7 +235,7 @@ class SubscribePopup
     link = document.createElement('a')
     item = document.createElement('li')
 
-    link.href = client.scheme + '://' + @params.feedUrl
+    link.href = client.scheme + '://' + @params.feedUrl.replace(/^https?:\/\//, '')
     link.target = '_blank'
 
     text.innerHTML = client.title
