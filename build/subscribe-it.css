@@ -156,8 +156,16 @@ body {
   line-height: 11px;
   padding: 6px 7px 8px 7px;
   position: absolute;
-  right: 15px;
-  top: 15px;
+  right: 10px;
+  top: 10px;
+  z-index: 10;
+}
+#subscribe-it-popup .subscribe-it-back-button {
+  font-size: 14px;
+  left: 25px;
+  position: absolute;
+  text-decoration: underline;
+  top: 10px;
 }
 #subscribe-it-popup #subscribe-it-popup-modal {
   background-color: rgba(255, 255, 255, 0.3);
@@ -169,7 +177,10 @@ body {
   position: relative;
 }
 #subscribe-it-popup #subscribe-it-popup-modal #subscribe-it-popup-modal-inner {
+  border-radius: 15px;
   height: 100%;
+  overflow: hidden;
+  position: relative;
 }
 #subscribe-it-popup #subscribe-it-popup-modal #subscribe-it-popup-modal-inner h1 {
   margin: 0 0 15px;
@@ -188,8 +199,6 @@ body {
 }
 #subscribe-it-popup #subscribe-it-popup-modal-left {
   background-color: #fff9eb;
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
   color: #353535;
   font-size: 14px;
 }
@@ -208,8 +217,6 @@ body {
 }
 #subscribe-it-popup #subscribe-it-popup-modal-right {
   background-color: #7bae95;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
   font-size: 14px;
 }
 #subscribe-it-popup #subscribe-it-list {
@@ -282,12 +289,47 @@ body {
   }
 
   #subscribe-it-popup-modal-left,
+  #subscribe-it-popup-modal-middle,
   #subscribe-it-popup-modal-right {
-    display: none;
+    left: 0;
+    position: absolute;
+    top: 0;
+    -webkit-transition: left 0.5s;
+    transition: left 0.5s;
   }
 
-  #subscribe-it-popup-modal-middle {
-    border-radius: 15px;
+  .show-left #subscribe-it-popup-modal-left,
+  .show-left #subscribe-it-popup-modal-middle,
+  .show-left #subscribe-it-popup-modal-right {
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+  .show-left #subscribe-it-popup-modal-middle {
+    left: 100%;
+  }
+  .show-left #subscribe-it-popup-modal-right {
+    left: 200%;
+  }
+
+  .show-middle #subscribe-it-popup-modal-left {
+    left: -100%;
+  }
+  .show-middle #subscribe-it-popup-modal-middle {
+    left: 0;
+  }
+  .show-middle #subscribe-it-popup-modal-right {
+    left: 100%;
+  }
+
+  .show-right #subscribe-it-popup-modal-left {
+    left: -200%;
+  }
+  .show-right #subscribe-it-popup-modal-middle {
+    left: -100%;
+  }
+  .show-right #subscribe-it-popup-modal-right {
+    left: 0;
   }
 
   #subscribe-it-list li:hover:after {

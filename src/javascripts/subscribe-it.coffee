@@ -145,6 +145,7 @@ class SubscribePopup
     @container = document.getElementById('subscribe-it-list-container')
     @closeButton = document.getElementById('subscribe-it-popup-close-button')
     @leftSide = document.getElementById('subscribe-it-popup-modal-left')
+    @middle = document.getElementById('subscribe-it-popup-modal-middle')
     @rightSide = document.getElementById('subscribe-it-popup-modal-right')
     @list = document.getElementById('subscribe-it-list')
 
@@ -153,6 +154,8 @@ class SubscribePopup
 
     @addCloseHandler()
     @addButtons()
+
+
     #@addLinkField()
 
     @addPodcastInfo()
@@ -176,6 +179,15 @@ class SubscribePopup
     explanation.innerHTML = SubscribeIt.Translations.explanation[@params.language]
     @leftSide.appendChild(explanation)
 
+    nextButton = document.createElement('a')
+    nextButton.className = 'subscribe-it-install-button'
+    nextButton.innerHTML = SubscribeIt.Translations.next[@params.language]
+
+    nextButton.addEventListener 'click', (event) ->
+      this.parentNode.parentNode.className = 'show-middle'
+
+    @leftSide.appendChild(nextButton)
+
   extractParams: () ->
     string = window.location.search.replace(/^\?/, '')
     split = string.split('&')
@@ -194,10 +206,21 @@ class SubscribePopup
       close()
 
   addButtons: () ->
+    @addBackButton(@middle, 'show-left')
+    @addBackButton(@rightSide, 'show-middle')
+
     platform = SubscribeIt.UA.detect()
     for own clientId, clientData of SubscribeIt.Clients
-      #unless clientData.platform.indexOf(platform) == -1
-      @addButton(clientData)
+      unless clientData.platform.indexOf(platform) == -1
+        @addButton(clientData)
+
+  addBackButton: (addTo, targetClassName) ->
+    backButton = document.createElement('a')
+    backButton.className = 'subscribe-it-back-button'
+    backButton.innerHTML = SubscribeIt.Translations.back[@params.language]
+    backButton.addEventListener 'click', (event) ->
+      this.parentNode.parentNode.className = targetClassName
+    addTo.appendChild(backButton)
 
   addButton: (client) ->
     text = document.createElement('span')
@@ -265,6 +288,8 @@ class SubscribePopup
       else
         text = SubscribeIt.Translations.clicked.noinstall.text[@params.language]
         target.innerHTML = "#{text}"
+
+      event.currentTarget.parentNode.parentNode.parentNode.className = 'show-right'
 
   addLinkField: () ->
     @inputContainer = document.getElementById('subscribe-it-feed-link-input')
@@ -372,6 +397,12 @@ SubscribeIt.Translations =
   help:
     de: 'Podcast abonnieren mit <strong>{{clientName}}</strong>'
     en: 'Subscribe to Podcast with <strong>{{clientName}}</strong>'
+  next:
+    de: 'Weiter'
+    en: 'Next'
+  back:
+    de: 'Zurück'
+    en: 'Back'
   clicked:
     noinstall:
       text:

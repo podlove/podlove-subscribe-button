@@ -207,6 +207,7 @@ SubscribePopup = (function() {
     this.container = document.getElementById('subscribe-it-list-container');
     this.closeButton = document.getElementById('subscribe-it-popup-close-button');
     this.leftSide = document.getElementById('subscribe-it-popup-modal-left');
+    this.middle = document.getElementById('subscribe-it-popup-modal-middle');
     this.rightSide = document.getElementById('subscribe-it-popup-modal-right');
     this.list = document.getElementById('subscribe-it-list');
     loc = window.location;
@@ -217,7 +218,7 @@ SubscribePopup = (function() {
   }
 
   SubscribePopup.prototype.addPodcastInfo = function() {
-    var explanation, heading, image, name;
+    var explanation, heading, image, name, nextButton;
     if (this.params.podcastName) {
       name = document.createElement('div');
       name.innerHTML = this.params.podcastName;
@@ -233,7 +234,14 @@ SubscribePopup = (function() {
     this.leftSide.appendChild(heading);
     explanation = document.createElement('p');
     explanation.innerHTML = SubscribeIt.Translations.explanation[this.params.language];
-    return this.leftSide.appendChild(explanation);
+    this.leftSide.appendChild(explanation);
+    nextButton = document.createElement('a');
+    nextButton.className = 'subscribe-it-install-button';
+    nextButton.innerHTML = SubscribeIt.Translations.next[this.params.language];
+    nextButton.addEventListener('click', function(event) {
+      return this.parentNode.parentNode.className = 'show-middle';
+    });
+    return this.leftSide.appendChild(nextButton);
   };
 
   SubscribePopup.prototype.extractParams = function() {
@@ -267,15 +275,32 @@ SubscribePopup = (function() {
 
   SubscribePopup.prototype.addButtons = function() {
     var clientData, clientId, platform, _ref, _results;
+    this.addBackButton(this.middle, 'show-left');
+    this.addBackButton(this.rightSide, 'show-middle');
     platform = SubscribeIt.UA.detect();
     _ref = SubscribeIt.Clients;
     _results = [];
     for (clientId in _ref) {
       if (!__hasProp.call(_ref, clientId)) continue;
       clientData = _ref[clientId];
-      _results.push(this.addButton(clientData));
+      if (clientData.platform.indexOf(platform) !== -1) {
+        _results.push(this.addButton(clientData));
+      } else {
+        _results.push(void 0);
+      }
     }
     return _results;
+  };
+
+  SubscribePopup.prototype.addBackButton = function(addTo, targetClassName) {
+    var backButton;
+    backButton = document.createElement('a');
+    backButton.className = 'subscribe-it-back-button';
+    backButton.innerHTML = SubscribeIt.Translations.back[this.params.language];
+    backButton.addEventListener('click', function(event) {
+      return this.parentNode.parentNode.className = targetClassName;
+    });
+    return addTo.appendChild(backButton);
   };
 
   SubscribePopup.prototype.addButton = function(client) {
@@ -352,11 +377,12 @@ SubscribePopup = (function() {
           installButton.innerHTML = SubscribeIt.Template.render(text, {
             clientName: client.title
           });
-          return target.appendChild(installButton);
+          target.appendChild(installButton);
         } else {
           text = SubscribeIt.Translations.clicked.noinstall.text[_this.params.language];
-          return target.innerHTML = "" + text;
+          target.innerHTML = "" + text;
         }
+        return event.currentTarget.parentNode.parentNode.parentNode.className = 'show-right';
       };
     })(this));
   };
@@ -496,6 +522,14 @@ SubscribeIt.Translations = {
   help: {
     de: 'Podcast abonnieren mit <strong>{{clientName}}</strong>',
     en: 'Subscribe to Podcast with <strong>{{clientName}}</strong>'
+  },
+  next: {
+    de: 'Weiter',
+    en: 'Next'
+  },
+  back: {
+    de: 'Zurück',
+    en: 'Back'
   },
   clicked: {
     noinstall: {
