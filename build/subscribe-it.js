@@ -158,7 +158,10 @@ SubscribePopupIframe = (function() {
       string += "&podcastName=" + this.podcast.name;
     }
     if (this.podcast.coverUrl) {
-      return string += "&podcastCoverUrl=" + this.podcast.coverUrl;
+      string += "&podcastCoverUrl=" + this.podcast.coverUrl;
+    }
+    if (this.podcast.subtitle) {
+      return string += "&podcastSubtitle=" + this.podcast.subtitle;
     }
   };
 
@@ -214,15 +217,21 @@ SubscribePopup = (function() {
     this.pathPrefix = loc.href.replace(loc.search, '').match(/(^.*\/)/)[0];
     this.addCloseHandler();
     this.addButtons();
+    this.addOtherClientButton();
     this.addPodcastInfo();
   }
 
   SubscribePopup.prototype.addPodcastInfo = function() {
-    var explanation, heading, image, name, nextButton;
+    var explanation, heading, image, name, nextButton, subtitle;
     if (this.params.podcastName) {
-      name = document.createElement('div');
+      name = document.createElement('strong');
       name.innerHTML = this.params.podcastName;
       this.leftSide.appendChild(name);
+    }
+    if (this.params.podcastSubtitle) {
+      subtitle = document.createElement('div');
+      subtitle.innerHTML = this.params.podcastSubtitle;
+      this.leftSide.appendChild(subtitle);
     }
     if (this.params.podcastCoverUrl) {
       image = document.createElement('img');
@@ -322,6 +331,30 @@ SubscribePopup = (function() {
     return this.addButtonAction(item, client);
   };
 
+  SubscribePopup.prototype.addOtherClientButton = function() {
+    var icon, item, link, text;
+    text = document.createElement('span');
+    link = document.createElement('a');
+    item = document.createElement('li');
+    link.href = '#';
+    text.innerHTML = SubscribeIt.Translations.otherClient[this.params.language];
+    link.appendChild(text);
+    icon = document.createElement('img');
+    icon.src = "" + this.pathPrefix + "images/rss.png";
+    link.insertBefore(icon, link.firstChild);
+    item.appendChild(link);
+    this.list.appendChild(item);
+    return item.addEventListener('click', (function(_this) {
+      return function(event) {
+        var paragraph;
+        paragraph = document.createElement('p');
+        paragraph.innerHTML = SubscribeIt.Translations.otherClientHelp[_this.params.language];
+        _this.rightSide.appendChild(paragraph);
+        return _this.addLinkField(_this.rightSide);
+      };
+    })(this));
+  };
+
   SubscribePopup.prototype.addButtonAction = function(button, client) {
     var target;
     target = document.getElementById('subscribe-it-popup-modal-helptext');
@@ -336,6 +369,7 @@ SubscribePopup = (function() {
         if (button.parentNode.className === 'clicked') {
           return;
         }
+        target.innerHTML = '';
         helpText = document.createElement('p');
         text = SubscribeIt.Translations.help[_this.params.language];
         text = SubscribeIt.Template.render(text, {
@@ -387,9 +421,8 @@ SubscribePopup = (function() {
     })(this));
   };
 
-  SubscribePopup.prototype.addLinkField = function() {
+  SubscribePopup.prototype.addLinkField = function(target) {
     var input, item;
-    this.inputContainer = document.getElementById('subscribe-it-feed-link-input');
     input = document.createElement('input');
     input.value = this.params.feedUrl;
     input.style.textAlign = 'center';
@@ -399,7 +432,7 @@ SubscribePopup = (function() {
     item = document.createElement('div');
     item.className = 'subscribe-it-link-input';
     item.appendChild(input);
-    return this.inputContainer.appendChild(item);
+    return target.appendChild(item);
   };
 
   return SubscribePopup;
@@ -523,6 +556,14 @@ SubscribeIt.Translations = {
     de: 'Podcast abonnieren mit <strong>{{clientName}}</strong>',
     en: 'Subscribe to Podcast with <strong>{{clientName}}</strong>'
   },
+  otherClient: {
+    de: 'Anderer Client',
+    en: 'Other client'
+  },
+  otherClientHelp: {
+    de: 'Kopiere die URL und füge sie in deinem Podcast Client hinzu.',
+    en: 'Copy URL and add it to your Podcast Client.'
+  },
   next: {
     de: 'Weiter',
     en: 'Next'
@@ -544,8 +585,8 @@ SubscribeIt.Translations = {
         en: 'If nothing happened after the click you can install <strong>{{clientName}}</strong> here:'
       },
       button: {
-        de: '{{clientName}} Installieren',
-        en: 'Install {{clientName}}'
+        de: '{{clientName}} Herunterladen',
+        en: 'Download {{clientName}}'
       }
     }
   }

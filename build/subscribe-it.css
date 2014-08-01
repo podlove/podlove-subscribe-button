@@ -281,12 +281,8 @@ body {
   position: relative;
   top: -5px;
 }
-#subscribe-it-popup .subscribe-it-link-input {
-  background: transparent;
-  padding: 0;
-}
 #subscribe-it-popup .subscribe-it-link-input input {
-  border: 1px solid #0961E5;
+  border: 1px solid #444;
   border-radius: 3px;
   margin-left: -3px;
   padding: 10px 5px;

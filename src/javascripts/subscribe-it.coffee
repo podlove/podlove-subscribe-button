@@ -110,6 +110,7 @@ class SubscribePopupIframe
     return string unless @podcast
     string += "&podcastName=#{@podcast.name}" if @podcast.name
     string += "&podcastCoverUrl=#{@podcast.coverUrl}" if @podcast.coverUrl
+    string += "&podcastSubtitle=#{@podcast.subtitle}" if @podcast.subtitle
 
   insert: () ->
     document.body.appendChild(@build())
@@ -155,16 +156,20 @@ class SubscribePopup
     @addCloseHandler()
     @addButtons()
 
-
-    #@addLinkField()
+    @addOtherClientButton()
 
     @addPodcastInfo()
 
   addPodcastInfo: () ->
     if @params.podcastName
-      name = document.createElement('div')
+      name = document.createElement('strong')
       name.innerHTML = @params.podcastName
       @leftSide.appendChild(name)
+
+    if @params.podcastSubtitle
+      subtitle = document.createElement('div')
+      subtitle.innerHTML = @params.podcastSubtitle
+      @leftSide.appendChild(subtitle)
 
     if @params.podcastCoverUrl
       image = document.createElement('img')
@@ -227,7 +232,6 @@ class SubscribePopup
     link = document.createElement('a')
     item = document.createElement('li')
 
-
     link.href = client.scheme + '://' + @params.feedUrl
     link.target = '_blank'
 
@@ -245,6 +249,31 @@ class SubscribePopup
 
     @addButtonAction(item, client)
 
+  addOtherClientButton: () ->
+    text = document.createElement('span')
+    link = document.createElement('a')
+    item = document.createElement('li')
+
+    link.href = '#'
+
+    text.innerHTML = SubscribeIt.Translations.otherClient[@params.language]
+    link.appendChild(text)
+
+    icon = document.createElement('img')
+    icon.src = "#{@pathPrefix}images/rss.png"
+    link.insertBefore(icon, link.firstChild)
+
+    item.appendChild(link)
+
+    @list.appendChild(item)
+
+    item.addEventListener 'click', (event) =>
+      paragraph = document.createElement('p')
+      paragraph.innerHTML  = SubscribeIt.Translations.otherClientHelp[@params.language]
+      @rightSide.appendChild(paragraph)
+
+      @addLinkField(@rightSide)
+
   addButtonAction: (button, client) ->
     target = document.getElementById('subscribe-it-popup-modal-helptext')
     @addButtonHover(target, button, client)
@@ -253,6 +282,8 @@ class SubscribePopup
   addButtonHover: (target, button, client) ->
     button.addEventListener 'mouseenter', (event) =>
       return if button.parentNode.className == 'clicked'
+
+      target.innerHTML = ''
 
       helpText = document.createElement('p')
       text = SubscribeIt.Translations.help[@params.language]
@@ -291,8 +322,7 @@ class SubscribePopup
 
       event.currentTarget.parentNode.parentNode.parentNode.className = 'show-right'
 
-  addLinkField: () ->
-    @inputContainer = document.getElementById('subscribe-it-feed-link-input')
+  addLinkField: (target) ->
     input = document.createElement('input')
     input.value = @params.feedUrl
     input.style.textAlign = 'center'
@@ -303,7 +333,7 @@ class SubscribePopup
     item.className = 'subscribe-it-link-input'
     item.appendChild(input)
 
-    @inputContainer.appendChild(item)
+    target.appendChild(item)
 
 class SubscribeButton
   constructor: () ->
@@ -397,6 +427,12 @@ SubscribeIt.Translations =
   help:
     de: 'Podcast abonnieren mit <strong>{{clientName}}</strong>'
     en: 'Subscribe to Podcast with <strong>{{clientName}}</strong>'
+  otherClient:
+    de: 'Anderer Client'
+    en: 'Other client'
+  otherClientHelp:
+    de: 'Kopiere die URL und füge sie in deinem Podcast Client hinzu.'
+    en: 'Copy URL and add it to your Podcast Client.'
   next:
     de: 'Weiter'
     en: 'Next'
@@ -413,8 +449,8 @@ SubscribeIt.Translations =
         de: 'Falls nach dem Klick nichts passiert sein sollte, kannst du <strong>{{clientName}}</strong> hier installieren:'
         en: 'If nothing happened after the click you can install <strong>{{clientName}}</strong> here:'
       button:
-        de: '{{clientName}} Installieren'
-        en: 'Install {{clientName}}'
+        de: '{{clientName}} Herunterladen'
+        en: 'Download {{clientName}}'
 
 SubscribeIt.Clients =
   antennapod:
