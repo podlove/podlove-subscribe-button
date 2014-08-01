@@ -202,7 +202,7 @@ body {
 #subscribe-it-popup #subscribe-it-popup-modal-right {
   float: left;
   height: 100%;
-  padding: 34px 25px;
+  padding: 25px 20px;
   width: 260px;
 }
 #subscribe-it-popup #subscribe-it-popup-modal-left {
@@ -226,9 +226,18 @@ body {
   padding-left: 0;
   padding-right: 0;
 }
+#subscribe-it-popup #subscribe-it-popup-modal-middle > strong {
+  display: block;
+  margin: 0 0 10px 25px;
+}
 #subscribe-it-popup #subscribe-it-popup-modal-right {
   background-color: #7bae95;
   font-size: 14px;
+}
+#subscribe-it-popup #subscribe-it-popup-modal-right .subscribe-it-done-button {
+  bottom: 10px;
+  position: absolute;
+  right: 10px;
 }
 #subscribe-it-popup #subscribe-it-list {
   display: block;

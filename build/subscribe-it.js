@@ -216,7 +216,7 @@ SubscribePopup = (function() {
     loc = window.location;
     this.pathPrefix = loc.href.replace(loc.search, '').match(/(^.*\/)/)[0];
     this.addCloseHandler();
-    this.addButtons();
+    this.addList();
     this.addOtherClientButton();
     this.addPodcastInfo();
   }
@@ -282,8 +282,10 @@ SubscribePopup = (function() {
     });
   };
 
-  SubscribePopup.prototype.addButtons = function() {
-    var clientData, clientId, platform, _ref, _results;
+  SubscribePopup.prototype.addList = function() {
+    var clientData, clientId, heading, platform, _ref, _results;
+    heading = document.getElementById('subscribe-it-list-heading');
+    heading.innerHTML = SubscribeIt.Translations.launchClient[this.params.language];
     this.addBackButton(this.middle, 'show-left');
     this.addBackButton(this.rightSide, 'show-middle');
     platform = SubscribeIt.UA.detect();
@@ -392,7 +394,7 @@ SubscribePopup = (function() {
   SubscribePopup.prototype.addButtonClick = function(target, button, client) {
     return button.addEventListener('click', (function(_this) {
       return function(event) {
-        var installButton, installText, text;
+        var doneButton, installButton, installText, text;
         button.parentNode.className = 'clicked';
         target.innerHTML = '';
         if (client.install) {
@@ -416,6 +418,14 @@ SubscribePopup = (function() {
           text = SubscribeIt.Translations.clicked.noinstall.text[_this.params.language];
           target.innerHTML = "" + text;
         }
+        doneButton = document.createElement('a');
+        doneButton.className = 'subscribe-it-install-button subscribe-it-done-button';
+        doneButton.href = '#';
+        doneButton.addEventListener('click', function() {
+          return window.parent.postMessage("{\"message\": \"closepopup\"}", '*');
+        });
+        doneButton.innerHTML = SubscribeIt.Translations.done[_this.params.language];
+        target.appendChild(doneButton);
         return event.currentTarget.parentNode.parentNode.parentNode.className = 'show-right';
       };
     })(this));
@@ -544,6 +554,10 @@ SubscribeIt.Translations = {
     de: 'Abonnieren',
     en: 'Subscribe'
   },
+  done: {
+    de: 'Fertig',
+    en: 'Done'
+  },
   subscribe: {
     de: 'Podcast Abonnieren',
     en: 'Subscribe to Podcast'
@@ -555,6 +569,10 @@ SubscribeIt.Translations = {
   help: {
     de: 'Podcast abonnieren mit <strong>{{clientName}}</strong>',
     en: 'Subscribe to Podcast with <strong>{{clientName}}</strong>'
+  },
+  launchClient: {
+    de: 'Client öffnen',
+    en: 'Launch client'
   },
   otherClient: {
     de: 'Anderer Client',

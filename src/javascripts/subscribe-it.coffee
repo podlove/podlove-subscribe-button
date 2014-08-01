@@ -154,7 +154,7 @@ class SubscribePopup
     @pathPrefix = loc.href.replace(loc.search, '').match(/(^.*\/)/)[0]
 
     @addCloseHandler()
-    @addButtons()
+    @addList()
 
     @addOtherClientButton()
 
@@ -210,7 +210,10 @@ class SubscribePopup
     @closeButton.addEventListener 'click', () ->
       close()
 
-  addButtons: () ->
+  addList: () ->
+    heading = document.getElementById('subscribe-it-list-heading')
+    heading.innerHTML = SubscribeIt.Translations.launchClient[@params.language]
+
     @addBackButton(@middle, 'show-left')
     @addBackButton(@rightSide, 'show-middle')
 
@@ -320,6 +323,14 @@ class SubscribePopup
         text = SubscribeIt.Translations.clicked.noinstall.text[@params.language]
         target.innerHTML = "#{text}"
 
+      doneButton = document.createElement('a')
+      doneButton.className = 'subscribe-it-install-button subscribe-it-done-button'
+      doneButton.href = '#'
+      doneButton.addEventListener 'click', ->
+        window.parent.postMessage("{\"message\": \"closepopup\"}", '*')
+      doneButton.innerHTML = SubscribeIt.Translations.done[@params.language]
+      target.appendChild(doneButton)
+
       event.currentTarget.parentNode.parentNode.parentNode.className = 'show-right'
 
   addLinkField: (target) ->
@@ -418,6 +429,9 @@ SubscribeIt.Translations =
   button:
     de: 'Abonnieren'
     en: 'Subscribe'
+  done:
+    de: 'Fertig'
+    en: 'Done'
   subscribe:
     de: 'Podcast Abonnieren'
     en: 'Subscribe to Podcast'
@@ -427,6 +441,9 @@ SubscribeIt.Translations =
   help:
     de: 'Podcast abonnieren mit <strong>{{clientName}}</strong>'
     en: 'Subscribe to Podcast with <strong>{{clientName}}</strong>'
+  launchClient:
+    de: 'Client öffnen'
+    en: 'Launch client'
   otherClient:
     de: 'Anderer Client'
     en: 'Other client'

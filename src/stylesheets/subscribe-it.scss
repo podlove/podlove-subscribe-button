@@ -215,7 +215,7 @@ body {
   #subscribe-it-popup-modal-right {
     float: left;
     height: 100%;
-    padding: 34px 25px;
+    padding: 25px 20px;
     width: 260px;
   }
 
@@ -243,11 +243,22 @@ body {
     background-color: rgb(53, 53, 53);
     padding-left: 0;
     padding-right: 0;
+
+    & > strong {
+      display: block;
+      margin: 0 0 10px 25px;
+    }
   }
 
   #subscribe-it-popup-modal-right {
     background-color: rgb(123, 174, 149);
     font-size: 14px;
+
+    .subscribe-it-done-button {
+      bottom: 10px;
+      position: absolute;
+      right: 10px;
+    }
   }
 
   #subscribe-it-list {
