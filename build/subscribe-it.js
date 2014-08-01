@@ -576,13 +576,13 @@ SubscribeIt.Clients = {
     title: 'Downcast',
     scheme: 'downcast',
     platform: ['ios'],
-    icon: 'ios/downcast.png'
+    icon: 'ios/downcast.jpg'
   },
   downcastmac: {
     title: 'Downcast',
     scheme: 'downcast',
     platform: ['mac'],
-    icon: 'mac/downcast.jpg',
+    icon: 'mac/downcast.png',
     install: 'https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4'
   },
   instacast: {
