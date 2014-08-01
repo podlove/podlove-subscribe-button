@@ -437,13 +437,14 @@ SubscribeIt.Clients =
   downcast:
     title: 'Downcast'
     scheme: 'downcast'
-    platform: ['mac']
-    icon: 'mac/downcast.png'
+    platform: ['ios']
+    icon: 'ios/downcast.png'
   downcastmac:
     title: 'Downcast'
     scheme: 'downcast'
-    platform: ['ios']
-    icon: 'ios/downcast.jpg'
+    platform: ['mac']
+    icon: 'mac/downcast.jpg'
+    install: 'https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4'
   instacast:
     title: 'Instacast'
     scheme: 'instacast'
@@ -454,6 +455,7 @@ SubscribeIt.Clients =
     scheme: 'instacast'
     platform: ['mac']
     icon: 'mac/instacast.png'
+    install: 'https://itunes.apple.com/de/app/instacast/id733258666?mt=12&uo=4'
   itunes:
     title: 'iTunes'
     scheme: 'itpc'
