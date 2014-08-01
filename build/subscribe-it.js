@@ -319,7 +319,7 @@ SubscribePopup = (function() {
     text = document.createElement('span');
     link = document.createElement('a');
     item = document.createElement('li');
-    link.href = client.scheme + '://' + this.params.feedUrl.replace(/^https?:\/\//, '');
+    link.href = client.scheme + this.params.feedUrl.replace(/^https?:\/\//, '');
     link.target = '_blank';
     text.innerHTML = client.title;
     link.appendChild(text);
@@ -613,77 +613,77 @@ SubscribeIt.Translations = {
 SubscribeIt.Clients = {
   antennapod: {
     title: 'AntennaPod',
-    scheme: 'pcast',
+    scheme: 'pcast://',
     platform: ['android'],
     icon: 'android/antennapod.png',
     install: 'https://play.google.com/store/apps/details?id=de.danoeh.antennapod'
   },
   applepodcastsapp: {
     title: 'Apple Podcasts',
-    scheme: 'pcast',
+    scheme: 'pcast://',
     platform: ['ios'],
     icon: 'ios/podcasts.jpg',
     install: 'https://itunes.apple.com/de/app/podcasts/id525463029'
   },
   beyondpod: {
     title: 'BeyondPod',
-    scheme: 'pcast',
+    scheme: 'pcast://',
     platform: ['android'],
     icon: 'android/beyondpod.png'
   },
   downcast: {
     title: 'Downcast',
-    scheme: 'downcast',
+    scheme: 'downcast://',
     platform: ['ios'],
     icon: 'ios/downcast.jpg'
   },
   downcastmac: {
     title: 'Downcast',
-    scheme: 'downcast',
+    scheme: 'downcast://',
     platform: ['mac'],
     icon: 'mac/downcast.png',
     install: 'https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4'
   },
   instacast: {
     title: 'Instacast',
-    scheme: 'instacast',
+    scheme: 'instacast://',
     platform: ['ios'],
     icon: 'ios/instacast.png'
   },
   instacastmac: {
     title: 'Instacast',
-    scheme: 'instacast',
+    scheme: 'instacast://',
     platform: ['mac'],
     icon: 'mac/instacast.png',
     install: 'https://itunes.apple.com/de/app/instacast/id733258666?mt=12&uo=4'
   },
   itunes: {
     title: 'iTunes',
-    scheme: 'itpc',
+    scheme: 'itpc://',
     platform: ['mac'],
     icon: 'mac/itunes.png'
   },
   pocketcasts: {
     title: 'PocketCasts',
-    scheme: 'pcast',
+    scheme: 'pcast://',
     platform: ['android'],
     icon: 'android/pocketcasts.png'
   },
   pocketcastsios: {
     title: 'PocketCasts',
-    scheme: 'pktc',
+    scheme: 'pktc://',
     platform: ['ios'],
     icon: 'ios/pocketcasts.png'
   },
   podcat: {
     title: 'Podcat',
-    scheme: 'podcat',
+    scheme: 'podcat://',
     platform: ['ios'],
     icon: 'ios/podcat.png'
   },
   windowspodcastsapp: {
     title: 'Podcasts',
-    scheme: 'podcast',
+    scheme: 'podcast://',
     platform: 'windowsPhone'
   }
 };
