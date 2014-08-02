@@ -487,17 +487,25 @@ SubscribeIt.Clients =
     scheme: 'pcast://'
     platform: ['android']
     icon: 'android/beyondpod@2x.png'
+    install: 'https://play.google.com/store/apps/details?id=mobi.beyondpod'
   downcast:
     title: 'Downcast'
     scheme: 'downcast://'
     platform: ['ios']
     icon: 'ios/downcast@2x.png'
+    install: 'https://itunes.apple.com/de/app/downcast/id393858566'
   downcastosx:
     title: 'Downcast'
     scheme: 'downcast://'
     platform: ['osx']
     icon: 'osx/downcast@2x.png'
     install: 'https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4'
+  icatcher:
+    title: 'iCatcher'
+    scheme: 'icatcher://'
+    platform: ['ios']
+    icon: 'ios/icatcher@2x.png'
+    install: 'https://itunes.apple.com/de/app/icatcher!-podcast-app/id414419105'
   instacast:
     title: 'Instacast'
     scheme: 'instacast://'
@@ -514,21 +522,36 @@ SubscribeIt.Clients =
     scheme: 'itpc://'
     platform: ['osx']
     icon: 'osx/itunes@2x.png'
+    install: 'http://www.apple.com/itunes/'
   pocketcasts:
     title: 'PocketCasts'
     scheme: 'pcast://'
     platform: ['android']
     icon: 'android/pocketcasts@2x.png'
-  pocketcastsios:
-    title: 'PocketCasts'
-    scheme: 'pktc://'
-    platform: ['ios']
-    icon: 'ios/pocketcasts@2x.png'
-  podcat:
-    title: 'Podcat'
-    scheme: 'podcat://'
-    platform: ['ios']
-    icon: 'ios/podcat@2x.png'
+    install: 'https://play.google.com/store/apps/details?id=au.com.shiftyjelly.pocketcasts'
+  #pocketcastsios:
+    #title: 'PocketCasts'
+    #scheme: 'pktc://'
+    #platform: ['ios']
+    #icon: 'ios/pocketcasts@2x.png'
+    #install: 'https://itunes.apple.com/de/app/pocket-casts/id414834813'
+  #podcat:
+    #title: 'Podcat'
+    #scheme: 'podcat://'
+    #platform: ['ios']
+    #icon: 'ios/podcat@2x.png'
+  podkicker:
+    title: 'Podkicker'
+    scheme: 'pcast://'
+    platform: ['android']
+    icon: 'android/podkicker@2x.png'
+    install: 'https://play.google.com/store/apps/details?id=ait.podka'
+  upod:
+    title: 'uPod'
+    scheme: 'pcast://'
+    platform: ['android']
+    icon: 'android/upod@2x.png'
+    install: 'https://play.google.com/store/apps/details?id=mobi.upod.app'
   windowspodcastsapp:
     title: 'Podcasts'
     scheme: 'podcast://'
