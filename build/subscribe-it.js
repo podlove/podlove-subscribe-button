@@ -242,6 +242,7 @@ SubscribePopup = (function() {
     heading.innerHTML = SubscribeIt.Translations.subscribe[this.params.language];
     this.leftSide.appendChild(heading);
     explanation = document.createElement('p');
+    explanation.className = 'subscribe-it-explanation';
     explanation.innerHTML = SubscribeIt.Translations.explanation[this.params.language];
     this.leftSide.appendChild(explanation);
     nextButton = document.createElement('a');

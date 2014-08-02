@@ -181,6 +181,7 @@ class SubscribePopup
     @leftSide.appendChild(heading)
 
     explanation = document.createElement('p')
+    explanation.className = 'subscribe-it-explanation'
     explanation.innerHTML = SubscribeIt.Translations.explanation[@params.language]
     @leftSide.appendChild(explanation)
 

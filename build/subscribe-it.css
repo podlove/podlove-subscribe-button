@@ -304,6 +304,10 @@ body {
   }
   #subscribe-it-popup #subscribe-it-popup-modal-left > a {
     display: block;
+    margin-top: 20px;
+  }
+  #subscribe-it-popup #subscribe-it-popup-modal-left > .subscribe-it-explanation {
+    display: none;
   }
   #subscribe-it-popup #subscribe-it-popup-modal-left,
   #subscribe-it-popup #subscribe-it-popup-modal-middle,
