@@ -545,7 +545,7 @@ SubscribeIt.UAs = {
   android: /android/i,
   ios: /(ipad|iphone|ipod)/i,
   linux: /linux/i,
-  mac: /macintosh/i,
+  osx: /macintosh/i,
   windowsPhone: /windows phone/i
 };
 
@@ -615,71 +615,71 @@ SubscribeIt.Clients = {
     title: 'AntennaPod',
     scheme: 'pcast://',
     platform: ['android'],
-    icon: 'android/antennapod.png',
+    icon: 'android/antennapod@2x.png',
     install: 'https://play.google.com/store/apps/details?id=de.danoeh.antennapod'
   },
   applepodcastsapp: {
     title: 'Apple Podcasts',
     scheme: 'pcast://',
     platform: ['ios'],
-    icon: 'ios/podcasts.jpg',
+    icon: 'ios/podcasts@2x.png',
     install: 'https://itunes.apple.com/de/app/podcasts/id525463029'
   },
   beyondpod: {
     title: 'BeyondPod',
     scheme: 'pcast://',
     platform: ['android'],
-    icon: 'android/beyondpod.png'
+    icon: 'android/beyondpod@2x.png'
   },
   downcast: {
     title: 'Downcast',
     scheme: 'downcast://',
     platform: ['ios'],
-    icon: 'ios/downcast.jpg'
+    icon: 'ios/downcast@2x.png'
   },
-  downcastmac: {
+  downcastosx: {
     title: 'Downcast',
     scheme: 'downcast://',
-    platform: ['mac'],
-    icon: 'mac/downcast.png',
+    platform: ['osx'],
+    icon: 'osx/downcast@2x.png',
     install: 'https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4'
   },
   instacast: {
     title: 'Instacast',
     scheme: 'instacast://',
     platform: ['ios'],
-    icon: 'ios/instacast.png'
+    icon: 'ios/instacast@2x.png'
   },
-  instacastmac: {
+  instacastosx: {
     title: 'Instacast',
     scheme: 'instacast://',
-    platform: ['mac'],
-    icon: 'mac/instacast.png',
+    platform: ['osx'],
+    icon: 'osx/instacast@2x.png',
     install: 'https://itunes.apple.com/de/app/instacast/id733258666?mt=12&uo=4'
   },
   itunes: {
     title: 'iTunes',
     scheme: 'itpc://',
-    platform: ['mac'],
-    icon: 'mac/itunes.png'
+    platform: ['osx'],
+    icon: 'osx/itunes@2x.png'
   },
   pocketcasts: {
     title: 'PocketCasts',
     scheme: 'pcast://',
     platform: ['android'],
-    icon: 'android/pocketcasts.png'
+    icon: 'android/pocketcasts@2x.png'
   },
   pocketcastsios: {
     title: 'PocketCasts',
     scheme: 'pktc://',
     platform: ['ios'],
-    icon: 'ios/pocketcasts.png'
+    icon: 'ios/pocketcasts@2x.png'
   },
   podcat: {
     title: 'Podcat',
     scheme: 'podcat://',
     platform: ['ios'],
-    icon: 'ios/podcat.png'
+    icon: 'ios/podcat@2x.png'
   },
   windowspodcastsapp: {
     title: 'Podcasts',
