@@ -41,13 +41,13 @@ body {
 }
 #subscribe-it-button:before, .subscribe-it-install-button:before,
 .subscribe-it-button:before {
-  background: url("images/podcast-icon-small.png") no-repeat;
+  background: url("images/icon-small@2x.png") no-repeat;
   background-size: cover;
   content: '';
   display: inline-block;
   height: 14px;
-  margin: 1px 0 0 2px;
-  width: 11px;
+  margin: 2px 0 0 2px;
+  width: 12px;
 }
 #subscribe-it-button span, .subscribe-it-install-button span,
 .subscribe-it-button span {
@@ -56,7 +56,7 @@ body {
   position: relative;
   text-align: center;
   top: -3px;
-  width: 60px;
+  width: 59px;
 }
 
 #subscribe-it-button.small, .small.subscribe-it-install-button {
@@ -87,16 +87,16 @@ body {
 }
 #subscribe-it-button.medium:before, .medium.subscribe-it-install-button:before,
 .subscribe-it-button.medium:before {
-  background: url("images/podcast-icon-medium.png") no-repeat;
+  background: url("images/icon-medium@2x.png") no-repeat;
   background-size: cover;
   height: 17px;
-  margin-left: 0;
-  width: 13px;
+  margin: 1px 0 0 0;
+  width: 15px;
 }
 #subscribe-it-button.medium span, .medium.subscribe-it-install-button span,
 .subscribe-it-button.medium span {
   top: -4px;
-  width: 72px;
+  width: 70px;
 }
 
 #subscribe-it-button.big, .big.subscribe-it-install-button {
@@ -110,15 +110,15 @@ body {
   width: 151px;
 }
 #subscribe-it-button.big:before, .big.subscribe-it-install-button:before {
-  background: url("images/podcast-icon-big.png") no-repeat;
+  background: url("images/icon-big@2x.png") no-repeat;
   background-size: cover;
   height: 27px;
   margin-top: 2px;
-  width: 21px;
+  width: 24px;
 }
 #subscribe-it-button.big span, .big.subscribe-it-install-button span {
   top: -6px;
-  width: 116px;
+  width: 112px;
 }
 
 .subscribe-it-install-button {

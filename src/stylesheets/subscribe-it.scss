@@ -39,13 +39,13 @@ body {
   text-shadow: 0 1px 0 rgba(0, 0, 1, .08);
 
   &:before {
-    background: url('images/podcast-icon-small.png') no-repeat;
+    background: url('images/icon-small@2x.png') no-repeat;
     background-size: cover;
     content: '';
     display: inline-block;
     height: 14px;
-    margin: 1px 0 0 2px;
-    width: 11px;
+    margin: 2px 0 0 2px;
+    width: 12px;
   }
 
   span {
@@ -54,7 +54,7 @@ body {
     position: relative;
     text-align: center;
     top: -3px;
-    width: 60px;
+    width: 59px;
   }
 }
 
@@ -86,16 +86,16 @@ body {
   width: 95px;
 
   &:before {
-    background: url('images/podcast-icon-medium.png') no-repeat;
+    background: url('images/icon-medium@2x.png') no-repeat;
     background-size: cover;
     height: 17px;
-    margin-left: 0;
-    width: 13px;
+    margin: 1px 0 0 0;
+    width: 15px;
   }
 
   span {
     top: -4px;
-    width: 72px;
+    width: 70px;
   }
 }
 
@@ -110,16 +110,16 @@ body {
   width: 151px;
 
   &:before {
-    background: url('images/podcast-icon-big.png') no-repeat;
+    background: url('images/icon-big@2x.png') no-repeat;
     background-size: cover;
     height: 27px;
     margin-top: 2px;
-    width: 21px;
+    width: 24px;
   }
 
   span {
     top: -6px;
-    width: 116px;
+    width: 112px;
   }
 }
 
