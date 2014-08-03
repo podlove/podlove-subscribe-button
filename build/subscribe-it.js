@@ -353,16 +353,14 @@ SubscribePopup = (function() {
         paragraph = document.createElement('p');
         paragraph.innerHTML = SubscribeIt.Translations.otherClientHelp[_this.params.language];
         _this.rightSide.appendChild(paragraph);
-        return _this.addLinkField(_this.rightSide);
+        return _this.addLinkField(_this.rightSide, item);
       };
     })(this));
   };
 
   SubscribePopup.prototype.addButtonAction = function(button, client) {
-    var target;
-    target = document.getElementById('subscribe-it-popup-modal-helptext');
-    this.addButtonHover(target, button, client);
-    return this.addButtonClick(target, button, client);
+    this.addButtonHover(this.rightSide, button, client);
+    return this.addButtonClick(this.rightSide, button, client);
   };
 
   SubscribePopup.prototype.addButtonHover = function(target, button, client) {
@@ -432,8 +430,9 @@ SubscribePopup = (function() {
     })(this));
   };
 
-  SubscribePopup.prototype.addLinkField = function(target) {
+  SubscribePopup.prototype.addLinkField = function(target, button) {
     var input, item;
+    button.parentNode.className = 'clicked';
     input = document.createElement('input');
     input.value = this.params.feedUrl;
     input.style.textAlign = 'center';

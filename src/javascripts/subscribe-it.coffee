@@ -276,12 +276,11 @@ class SubscribePopup
       paragraph.innerHTML  = SubscribeIt.Translations.otherClientHelp[@params.language]
       @rightSide.appendChild(paragraph)
 
-      @addLinkField(@rightSide)
+      @addLinkField(@rightSide, item)
 
   addButtonAction: (button, client) ->
-    target = document.getElementById('subscribe-it-popup-modal-helptext')
-    @addButtonHover(target, button, client)
-    @addButtonClick(target, button, client)
+    @addButtonHover(@rightSide, button, client)
+    @addButtonClick(@rightSide, button, client)
 
   addButtonHover: (target, button, client) ->
     button.addEventListener 'mouseenter', (event) =>
@@ -334,7 +333,9 @@ class SubscribePopup
 
       event.currentTarget.parentNode.parentNode.parentNode.className = 'show-right'
 
-  addLinkField: (target) ->
+  addLinkField: (target, button) ->
+    button.parentNode.className = 'clicked'
+
     input = document.createElement('input')
     input.value = @params.feedUrl
     input.style.textAlign = 'center'
