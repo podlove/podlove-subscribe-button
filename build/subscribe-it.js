@@ -719,7 +719,7 @@ SubscribeIt.Clients = {
   },
   windowspodcastsapp: {
     title: 'Podcasts',
-    scheme: 'podcast://',
+    scheme: 'wp-podcast://',
     platform: 'windowsPhone'
   }
 };

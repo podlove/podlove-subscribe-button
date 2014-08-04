@@ -567,5 +567,5 @@ SubscribeIt.Clients =
     install: 'https://play.google.com/store/apps/details?id=mobi.upod.app'
   windowspodcastsapp:
     title: 'Podcasts'
-    scheme: 'podcast://'
+    scheme: 'wp-podcast://'
     platform: 'windowsPhone'
