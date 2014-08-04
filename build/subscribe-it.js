@@ -680,7 +680,8 @@ SubscribeIt.Clients = {
     title: 'Instacast',
     scheme: 'instacast://',
     platform: ['ios'],
-    icon: 'ios/instacast@2x.png'
+    icon: 'ios/instacast@2x.png',
+    install: 'https://itunes.apple.com/de/app/instacast-4-podcast-client/id577056377'
   },
   instacastosx: {
     title: 'Instacast',
