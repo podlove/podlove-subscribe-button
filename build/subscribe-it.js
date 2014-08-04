@@ -207,7 +207,7 @@ SubscribePopup = (function() {
     var loc;
     this.extractParams();
     this.body = document.getElementById('subscribe-it-popup');
-    this.container = document.getElementById('subscribe-it-list-container');
+    this.modal = document.getElementById('subscribe-it-popup-modal');
     this.closeButton = document.getElementById('subscribe-it-popup-close-button');
     this.leftSide = document.getElementById('subscribe-it-popup-modal-left');
     this.middle = document.getElementById('subscribe-it-popup-modal-middle');
@@ -219,7 +219,30 @@ SubscribePopup = (function() {
     this.addList();
     this.addOtherClientButton();
     this.addPodcastInfo();
+    this.adjustHeight();
   }
+
+  SubscribePopup.prototype.adjustHeight = function() {
+    var clientHeights, maxHeight, panel, panels, _i, _len, _results;
+    panels = [this.leftSide, this.middle, this.rightSide];
+    clientHeights = (function() {
+      var _i, _len, _results;
+      _results = [];
+      for (_i = 0, _len = panels.length; _i < _len; _i++) {
+        panel = panels[_i];
+        _results.push(panel.clientHeight);
+      }
+      return _results;
+    })();
+    maxHeight = Math.max.apply(null, clientHeights);
+    panels.push(this.modal);
+    _results = [];
+    for (_i = 0, _len = panels.length; _i < _len; _i++) {
+      panel = panels[_i];
+      _results.push(panel.style.height = "" + maxHeight + "px");
+    }
+    return _results;
+  };
 
   SubscribePopup.prototype.addPodcastInfo = function() {
     var explanation, heading, image, name, nextButton, subtitle;

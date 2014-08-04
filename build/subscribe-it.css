@@ -141,6 +141,7 @@ body {
   color: #fff;
   display: table-cell;
   margin: 0 auto;
+  overflow-y: scroll;
   padding: 10px 0;
   vertical-align: middle;
   width: 100%;
@@ -177,7 +178,6 @@ body {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 25px;
   box-shadow: 0 0 5px 0 #222;
-  height: 410px;
   margin: 0 auto;
   padding: 10px;
   overflow: hidden;
@@ -223,6 +223,7 @@ body {
 }
 #subscribe-it-popup #subscribe-it-popup-modal-middle {
   background-color: #353535;
+  height: auto;
   padding-left: 0;
   padding-right: 0;
 }

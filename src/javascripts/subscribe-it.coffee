@@ -143,7 +143,7 @@ class SubscribePopup
     @extractParams()
 
     @body = document.getElementById('subscribe-it-popup')
-    @container = document.getElementById('subscribe-it-list-container')
+    @modal = document.getElementById('subscribe-it-popup-modal')
     @closeButton = document.getElementById('subscribe-it-popup-close-button')
     @leftSide = document.getElementById('subscribe-it-popup-modal-left')
     @middle = document.getElementById('subscribe-it-popup-modal-middle')
@@ -154,11 +154,22 @@ class SubscribePopup
     @pathPrefix = loc.href.replace(loc.search, '').match(/(^.*\/)/)[0]
 
     @addCloseHandler()
+
     @addList()
 
     @addOtherClientButton()
 
     @addPodcastInfo()
+
+    @adjustHeight()
+
+  adjustHeight: () ->
+    panels = [@leftSide, @middle, @rightSide]
+    clientHeights = (panel.clientHeight for panel in panels)
+    maxHeight = Math.max.apply(null, clientHeights)
+    panels.push(@modal)
+    for panel in panels
+      (panel.style.height = "#{maxHeight}px")
 
   addPodcastInfo: () ->
     if @params.podcastName
