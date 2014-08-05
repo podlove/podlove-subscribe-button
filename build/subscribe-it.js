@@ -307,22 +307,17 @@ SubscribePopup = (function() {
   };
 
   SubscribePopup.prototype.addList = function() {
-    var clientData, clientId, heading, platform, _ref, _results;
+    var client, clients, heading, platform, _i, _len, _results;
     heading = document.getElementById('subscribe-it-list-heading');
     heading.innerHTML = SubscribeIt.Translations.launchClient[this.params.language];
     this.addBackButton(this.middle, 'show-left');
     this.addBackButton(this.rightSide, 'show-middle');
     platform = SubscribeIt.UA.detect();
-    _ref = SubscribeIt.Clients;
+    clients = SubscribeIt.Utils.shuffle(SubscribeIt.Clients[platform]);
     _results = [];
-    for (clientId in _ref) {
-      if (!__hasProp.call(_ref, clientId)) continue;
-      clientData = _ref[clientId];
-      if (clientData.platform.indexOf(platform) !== -1) {
-        _results.push(this.addButton(clientData));
-      } else {
-        _results.push(void 0);
-      }
+    for (_i = 0, _len = clients.length; _i < _len; _i++) {
+      client = clients[_i];
+      _results.push(this.addButton(client));
     }
     return _results;
   };
@@ -547,6 +542,20 @@ SubscribeIt.Template = {
   }
 };
 
+SubscribeIt.Utils = {
+  shuffle: function(array) {
+    var i, j, t;
+    i = array.length;
+    while (--i > 0) {
+      j = ~~(Math.random() * (i + 1));
+      t = array[j];
+      array[j] = array[i];
+      array[i] = t;
+    }
+    return array;
+  }
+};
+
 SubscribeIt.UA = (function() {
   return {
     detect: function() {
@@ -634,93 +643,92 @@ SubscribeIt.Translations = {
 };
 
 SubscribeIt.Clients = {
-  antennapod: {
-    title: 'AntennaPod',
-    scheme: 'pcast://',
-    platform: ['android'],
-    icon: 'android/antennapod@2x.png',
-    install: 'https://play.google.com/store/apps/details?id=de.danoeh.antennapod'
-  },
-  applepodcastsapp: {
-    title: 'Apple Podcasts',
-    scheme: 'pcast://',
-    platform: ['ios'],
-    icon: 'ios/podcasts@2x.png',
-    install: 'https://itunes.apple.com/de/app/podcasts/id525463029'
-  },
-  beyondpod: {
-    title: 'BeyondPod',
-    scheme: 'pcast://',
-    platform: ['android'],
-    icon: 'android/beyondpod@2x.png',
-    install: 'https://play.google.com/store/apps/details?id=mobi.beyondpod'
-  },
-  downcast: {
-    title: 'Downcast',
-    scheme: 'downcast://',
-    platform: ['ios'],
-    icon: 'ios/downcast@2x.png',
-    install: 'https://itunes.apple.com/de/app/downcast/id393858566'
-  },
-  downcastosx: {
-    title: 'Downcast',
-    scheme: 'downcast://',
-    platform: ['osx'],
-    icon: 'osx/downcast@2x.png',
-    install: 'https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4'
-  },
-  icatcher: {
-    title: 'iCatcher',
-    scheme: 'icatcher://',
-    platform: ['ios'],
-    icon: 'ios/icatcher@2x.png',
-    install: 'https://itunes.apple.com/de/app/icatcher!-podcast-app/id414419105'
-  },
-  instacast: {
-    title: 'Instacast',
-    scheme: 'instacast://',
-    platform: ['ios'],
-    icon: 'ios/instacast@2x.png',
-    install: 'https://itunes.apple.com/de/app/instacast-4-podcast-client/id577056377'
-  },
-  instacastosx: {
-    title: 'Instacast',
-    scheme: 'instacast://',
-    platform: ['osx'],
-    icon: 'osx/instacast@2x.png',
-    install: 'https://itunes.apple.com/de/app/instacast/id733258666?mt=12&uo=4'
-  },
-  itunes: {
-    title: 'iTunes',
-    scheme: 'itpc://',
-    platform: ['osx'],
-    icon: 'osx/itunes@2x.png',
-    install: 'http://www.apple.com/itunes/'
-  },
-  pocketcasts: {
-    title: 'PocketCasts',
-    scheme: 'pcast://',
-    platform: ['android'],
-    icon: 'android/pocketcasts@2x.png',
-    install: 'https://play.google.com/store/apps/details?id=au.com.shiftyjelly.pocketcasts'
-  },
-  podkicker: {
-    title: 'Podkicker',
-    scheme: 'pcast://',
-    platform: ['android'],
-    icon: 'android/podkicker@2x.png',
-    install: 'https://play.google.com/store/apps/details?id=ait.podka'
-  },
-  upod: {
-    title: 'uPod',
-    scheme: 'pcast://',
-    platform: ['android'],
-    icon: 'android/upod@2x.png',
-    install: 'https://play.google.com/store/apps/details?id=mobi.upod.app'
-  },
-  windowspodcastsapp: {
-    title: 'Podcasts',
-    scheme: 'wp-podcast://',
-    platform: 'windowsPhone'
-  }
+  android: [
+    {
+      title: 'AntennaPod',
+      scheme: 'pcast://',
+      platform: ['android'],
+      icon: 'android/antennapod@2x.png',
+      install: 'https://play.google.com/store/apps/details?id=de.danoeh.antennapod'
+    }, {
+      title: 'BeyondPod',
+      scheme: 'pcast://',
+      platform: ['android'],
+      icon: 'android/beyondpod@2x.png',
+      install: 'https://play.google.com/store/apps/details?id=mobi.beyondpod'
+    }, {
+      title: 'PocketCasts',
+      scheme: 'pcast://',
+      platform: ['android'],
+      icon: 'android/pocketcasts@2x.png',
+      install: 'https://play.google.com/store/apps/details?id=au.com.shiftyjelly.pocketcasts'
+    }, {
+      title: 'Podkicker',
+      scheme: 'pcast://',
+      platform: ['android'],
+      icon: 'android/podkicker@2x.png',
+      install: 'https://play.google.com/store/apps/details?id=ait.podka'
+    }, {
+      title: 'uPod',
+      scheme: 'pcast://',
+      platform: ['android'],
+      icon: 'android/upod@2x.png',
+      install: 'https://play.google.com/store/apps/details?id=mobi.upod.app'
+    }
+  ],
+  ios: [
+    {
+      title: 'Apple Podcasts',
+      scheme: 'pcast://',
+      platform: ['ios'],
+      icon: 'ios/podcasts@2x.png',
+      install: 'https://itunes.apple.com/de/app/podcasts/id525463029'
+    }, {
+      title: 'Downcast',
+      scheme: 'downcast://',
+      platform: ['ios'],
+      icon: 'ios/downcast@2x.png',
+      install: 'https://itunes.apple.com/de/app/downcast/id393858566'
+    }, {
+      title: 'iCatcher',
+      scheme: 'icatcher://',
+      platform: ['ios'],
+      icon: 'ios/icatcher@2x.png',
+      install: 'https://itunes.apple.com/de/app/icatcher!-podcast-app/id414419105'
+    }, {
+      title: 'Instacast',
+      scheme: 'instacast://',
+      platform: ['ios'],
+      icon: 'ios/instacast@2x.png',
+      install: 'https://itunes.apple.com/de/app/instacast-4-podcast-client/id577056377'
+    }
+  ],
+  osx: [
+    {
+      title: 'Downcast',
+      scheme: 'downcast://',
+      platform: ['osx'],
+      icon: 'osx/downcast@2x.png',
+      install: 'https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4'
+    }, {
+      title: 'Instacast',
+      scheme: 'instacast://',
+      platform: ['osx'],
+      icon: 'osx/instacast@2x.png',
+      install: 'https://itunes.apple.com/de/app/instacast/id733258666?mt=12&uo=4'
+    }, {
+      title: 'iTunes',
+      scheme: 'itpc://',
+      platform: ['osx'],
+      icon: 'osx/itunes@2x.png',
+      install: 'http://www.apple.com/itunes/'
+    }
+  ],
+  windowsPhone: [
+    {
+      title: 'Podcasts',
+      scheme: 'wp-podcast://',
+      platform: 'windowsPhone'
+    }
+  ]
 };
