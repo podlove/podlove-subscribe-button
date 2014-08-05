@@ -239,8 +239,8 @@ class SubscribePopup
     @addBackButton(@middle, 'show-left')
     @addBackButton(@rightSide, 'show-middle')
 
-    platform = SubscribeIt.UA.detect()
-    clients = SubscribeIt.Utils.shuffle(SubscribeIt.Clients[platform])
+    @platform = SubscribeIt.UA.detect()
+    clients = SubscribeIt.Utils.shuffle(SubscribeIt.Clients[@platform])
     for client in clients
       @addButton(client)
 
@@ -311,6 +311,8 @@ class SubscribePopup
     @addButtonClick(@helptext, button, client)
 
   addButtonHover: (target, button, client) ->
+    return if @platform == 'ios'
+
     button.addEventListener 'mouseenter', (event) =>
       return if button.parentNode.className == 'clicked'
 

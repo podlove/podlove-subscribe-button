@@ -319,13 +319,13 @@ SubscribePopup = (function() {
   };
 
   SubscribePopup.prototype.addList = function() {
-    var client, clients, heading, platform, _i, _len, _results;
+    var client, clients, heading, _i, _len, _results;
     heading = document.getElementById('subscribe-it-list-heading');
     heading.innerHTML = SubscribeIt.Translations.launchClient[this.params.language];
     this.addBackButton(this.middle, 'show-left');
     this.addBackButton(this.rightSide, 'show-middle');
-    platform = SubscribeIt.UA.detect();
-    clients = SubscribeIt.Utils.shuffle(SubscribeIt.Clients[platform]);
+    this.platform = SubscribeIt.UA.detect();
+    clients = SubscribeIt.Utils.shuffle(SubscribeIt.Clients[this.platform]);
     _results = [];
     for (_i = 0, _len = clients.length; _i < _len; _i++) {
       client = clients[_i];
@@ -397,6 +397,9 @@ SubscribePopup = (function() {
   };
 
   SubscribePopup.prototype.addButtonHover = function(target, button, client) {
+    if (this.platform === 'ios') {
+      return;
+    }
     button.addEventListener('mouseenter', (function(_this) {
       return function(event) {
         var helpText, text;
