@@ -164,8 +164,6 @@ class SubscribePopup
 
     @adjustHeight()
 
-    @addDoneButton()
-
   addDoneButton: () ->
     doneButton = document.createElement('a')
     doneButton.className = 'subscribe-it-install-button subscribe-it-done-button'
@@ -306,6 +304,8 @@ class SubscribePopup
 
       event.currentTarget.parentNode.parentNode.parentNode.className = 'show-right'
 
+      @addDoneButton()
+
   addButtonAction: (button, client) ->
     @addButtonHover(@helptext, button, client)
     @addButtonClick(@helptext, button, client)
@@ -352,6 +352,8 @@ class SubscribePopup
         target.innerHTML = "#{text}"
 
       event.currentTarget.parentNode.parentNode.parentNode.className = 'show-right'
+
+      @addDoneButton()
 
   addLinkField: (target, button) ->
     button.parentNode.className = 'clicked'

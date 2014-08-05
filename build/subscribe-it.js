@@ -221,7 +221,6 @@ SubscribePopup = (function() {
     this.addOtherClientButton();
     this.addPodcastInfo();
     this.adjustHeight();
-    this.addDoneButton();
   }
 
   SubscribePopup.prototype.addDoneButton = function() {
@@ -387,7 +386,8 @@ SubscribePopup = (function() {
         paragraph.innerHTML = SubscribeIt.Translations.otherClientHelp[_this.params.language];
         _this.helptext.appendChild(paragraph);
         _this.addLinkField(_this.helptext, item);
-        return event.currentTarget.parentNode.parentNode.parentNode.className = 'show-right';
+        event.currentTarget.parentNode.parentNode.parentNode.className = 'show-right';
+        return _this.addDoneButton();
       };
     })(this));
   };
@@ -451,7 +451,8 @@ SubscribePopup = (function() {
           text = SubscribeIt.Translations.clicked.noinstall.text[_this.params.language];
           target.innerHTML = "" + text;
         }
-        return event.currentTarget.parentNode.parentNode.parentNode.className = 'show-right';
+        event.currentTarget.parentNode.parentNode.parentNode.className = 'show-right';
+        return _this.addDoneButton();
       };
     })(this));
   };
