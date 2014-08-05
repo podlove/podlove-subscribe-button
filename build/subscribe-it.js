@@ -696,12 +696,6 @@ SubscribeIt.Clients = {
       icon: 'ios/downcast@2x.png',
       install: 'https://itunes.apple.com/de/app/downcast/id393858566'
     }, {
-      title: 'iCatcher',
-      scheme: 'icatcher://',
-      platform: ['ios'],
-      icon: 'ios/icatcher@2x.png',
-      install: 'https://itunes.apple.com/de/app/icatcher!-podcast-app/id414419105'
-    }, {
       title: 'Instacast',
       scheme: 'instacast://',
       platform: ['ios'],
