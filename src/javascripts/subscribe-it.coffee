@@ -539,6 +539,13 @@ SubscribeIt.Clients =
       install: 'https://itunes.apple.com/de/app/podcasts/id525463029'
     },
     {
+      title: 'Castro'
+      scheme: 'castro://subscribe/'
+      platform: ['ios']
+      icon: 'ios/castro@2x.png'
+      install: 'https://itunes.apple.com/de/app/castro-high-fidelity-podcasts/id723142770'
+    },
+    {
       title: 'Downcast'
       scheme: 'downcast://'
       platform: ['ios']
@@ -558,6 +565,13 @@ SubscribeIt.Clients =
       platform: ['ios']
       icon: 'ios/instacast@2x.png'
       install: 'https://itunes.apple.com/de/app/instacast-4-podcast-client/id577056377'
+    },
+    {
+      title: 'Overcast'
+      scheme: 'overcast://x-callback-url/add?url='
+      platform: ['ios']
+      icon: 'ios/overcast@2x.png'
+      install: 'https://itunes.apple.com/de/app/overcast-podcast-player/id888422857'
     },
     #{
       #title: 'PocketCasts'
