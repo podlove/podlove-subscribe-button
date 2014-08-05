@@ -483,8 +483,8 @@ SubscribeIt.Translations =
     de: 'Kopiere die URL und füge sie in deinem Podcast Client hinzu.'
     en: 'Copy URL and add it to your Podcast Client.'
   next:
-    de: 'Weiter'
-    en: 'Next'
+    de: 'Weiter &rsaquo;'
+    en: 'Next &rsaquo;'
   back:
     de: 'Zurück'
     en: 'Back'
