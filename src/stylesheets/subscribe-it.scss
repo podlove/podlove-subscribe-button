@@ -225,6 +225,7 @@ body {
     background-color: rgb(255, 249, 235);
     color: rgb(53, 53, 53);
     font-size: 14px;
+    min-height: 310px;
 
     a {
       display: none;
@@ -238,6 +239,8 @@ body {
 
     img {
       border: 1px solid #535353;
+      display: block;
+      height: 150px;
       margin: 5px 0 10px;
       width: 150px;
     }
@@ -248,15 +251,16 @@ body {
     height: auto;
     padding-left: 0;
     padding-right: 0;
-    padding-top: 50px;
+    padding-top: 15px;
 
     & > strong {
       display: block;
-      margin: 0 0 10px 25px;
+      margin: 0 0 10px;
+      text-align: center;
     }
 
     .subscribe-it-back-button {
-      left: 25px;
+      left: 15px;
     }
   }
 
@@ -289,7 +293,7 @@ body {
     li {
       list-style: none;
       margin: 0 auto;
-      padding: 5px 25px;
+      padding: 5px 15px;
       position: relative;
       z-index: 10;
 
