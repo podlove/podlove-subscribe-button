@@ -220,7 +220,20 @@ SubscribePopup = (function() {
     this.addOtherClientButton();
     this.addPodcastInfo();
     this.adjustHeight();
+    this.addDoneButton();
   }
+
+  SubscribePopup.prototype.addDoneButton = function() {
+    var doneButton;
+    doneButton = document.createElement('a');
+    doneButton.className = 'subscribe-it-install-button subscribe-it-done-button';
+    doneButton.href = '#';
+    doneButton.addEventListener('click', function() {
+      return window.parent.postMessage("{\"message\": \"closepopup\"}", '*');
+    });
+    doneButton.innerHTML = SubscribeIt.Translations.done[this.params.language];
+    return this.rightSide.appendChild(doneButton);
+  };
 
   SubscribePopup.prototype.adjustHeight = function() {
     var clientHeights, maxHeight, panel, panels, _i, _len, _results;
@@ -239,7 +252,7 @@ SubscribePopup = (function() {
     _results = [];
     for (_i = 0, _len = panels.length; _i < _len; _i++) {
       panel = panels[_i];
-      _results.push(panel.style.height = "" + maxHeight + "px");
+      _results.push(panel.style.height = "" + (maxHeight + 20) + "px");
     }
     return _results;
   };
@@ -325,8 +338,8 @@ SubscribePopup = (function() {
   SubscribePopup.prototype.addBackButton = function(addTo, targetClassName) {
     var backButton;
     backButton = document.createElement('a');
-    backButton.className = 'subscribe-it-back-button';
-    backButton.innerHTML = SubscribeIt.Translations.back[this.params.language];
+    backButton.className = 'subscribe-it-back-button subscribe-it-install-button';
+    backButton.innerHTML = '&lsaquo;';
     backButton.addEventListener('click', function(event) {
       return this.parentNode.parentNode.className = targetClassName;
     });
@@ -377,8 +390,10 @@ SubscribePopup = (function() {
   };
 
   SubscribePopup.prototype.addButtonAction = function(button, client) {
-    this.addButtonHover(this.rightSide, button, client);
-    return this.addButtonClick(this.rightSide, button, client);
+    var target;
+    target = document.getElementById('subscribe-it-popup-modal-helptext');
+    this.addButtonHover(target, button, client);
+    return this.addButtonClick(target, button, client);
   };
 
   SubscribePopup.prototype.addButtonHover = function(target, button, client) {
@@ -411,7 +426,7 @@ SubscribePopup = (function() {
   SubscribePopup.prototype.addButtonClick = function(target, button, client) {
     return button.addEventListener('click', (function(_this) {
       return function(event) {
-        var doneButton, installButton, installText, text;
+        var installButton, installText, text;
         button.parentNode.className = 'clicked';
         target.innerHTML = '';
         if (client.install) {
@@ -435,14 +450,6 @@ SubscribePopup = (function() {
           text = SubscribeIt.Translations.clicked.noinstall.text[_this.params.language];
           target.innerHTML = "" + text;
         }
-        doneButton = document.createElement('a');
-        doneButton.className = 'subscribe-it-install-button subscribe-it-done-button';
-        doneButton.href = '#';
-        doneButton.addEventListener('click', function() {
-          return window.parent.postMessage("{\"message\": \"closepopup\"}", '*');
-        });
-        doneButton.innerHTML = SubscribeIt.Translations.done[_this.params.language];
-        target.appendChild(doneButton);
         return event.currentTarget.parentNode.parentNode.parentNode.className = 'show-right';
       };
     })(this));

@@ -155,23 +155,24 @@ body {
   font-size: 16px;
 }
 #subscribe-it-popup #subscribe-it-popup-close-button {
-  background-color: #ace6ca;
-  color: #7bae95;
-  border-radius: 50px;
   cursor: pointer;
   font-size: 20px;
   line-height: 11px;
   padding: 6px 7px 8px 7px;
   position: absolute;
-  right: 10px;
+  right: 15px;
   top: 10px;
   z-index: 10;
 }
 #subscribe-it-popup .subscribe-it-back-button {
+  cursor: pointer;
   font-size: 14px;
-  left: 25px;
+  display: none;
+  font-size: 24px;
+  line-height: 11px;
+  padding: 6px 10px 9px 9px;
   position: absolute;
-  text-decoration: underline;
+  text-decoration: none;
   top: 10px;
 }
 #subscribe-it-popup #subscribe-it-popup-modal {
@@ -203,6 +204,7 @@ body {
   float: left;
   height: 100%;
   padding: 25px 20px;
+  position: relative;
   width: 260px;
 }
 #subscribe-it-popup #subscribe-it-popup-modal-left {
@@ -212,6 +214,8 @@ body {
 }
 #subscribe-it-popup #subscribe-it-popup-modal-left a {
   display: none;
+  margin-bottom: 20px;
+  width: 100%;
 }
 #subscribe-it-popup #subscribe-it-popup-modal-left strong {
   display: block;
@@ -226,19 +230,30 @@ body {
   height: auto;
   padding-left: 0;
   padding-right: 0;
+  padding-top: 50px;
 }
 #subscribe-it-popup #subscribe-it-popup-modal-middle > strong {
   display: block;
   margin: 0 0 10px 25px;
 }
+#subscribe-it-popup #subscribe-it-popup-modal-middle .subscribe-it-back-button {
+  left: 25px;
+}
 #subscribe-it-popup #subscribe-it-popup-modal-right {
   background-color: #7bae95;
   font-size: 14px;
+  padding-top: 50px;
+}
+#subscribe-it-popup #subscribe-it-popup-modal-right #subscribe-it-popup-modal-helptext {
+  text-align: center;
+}
+#subscribe-it-popup #subscribe-it-popup-modal-right #subscribe-it-popup-modal-helptext p {
+  text-align: left;
 }
 #subscribe-it-popup #subscribe-it-popup-modal-right .subscribe-it-done-button {
-  bottom: 10px;
+  bottom: 35px;
   position: absolute;
-  right: 10px;
+  width: 220px;
 }
 #subscribe-it-popup #subscribe-it-list {
   display: block;
@@ -300,6 +315,9 @@ body {
 }
 
 @media (max-width: 800px) {
+  #subscribe-it-popup .subscribe-it-back-button {
+    display: block;
+  }
   #subscribe-it-popup #subscribe-it-popup-modal {
     width: 280px;
   }

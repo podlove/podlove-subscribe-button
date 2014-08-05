@@ -163,13 +163,24 @@ class SubscribePopup
 
     @adjustHeight()
 
+    @addDoneButton()
+
+  addDoneButton: () ->
+    doneButton = document.createElement('a')
+    doneButton.className = 'subscribe-it-install-button subscribe-it-done-button'
+    doneButton.href = '#'
+    doneButton.addEventListener 'click', ->
+      window.parent.postMessage("{\"message\": \"closepopup\"}", '*')
+    doneButton.innerHTML = SubscribeIt.Translations.done[@params.language]
+    @rightSide.appendChild(doneButton)
+
   adjustHeight: () ->
     panels = [@leftSide, @middle, @rightSide]
     clientHeights = (panel.clientHeight for panel in panels)
     maxHeight = Math.max.apply(null, clientHeights)
     panels.push(@modal)
     for panel in panels
-      (panel.style.height = "#{maxHeight}px")
+      (panel.style.height = "#{maxHeight + 20}px")
 
   addPodcastInfo: () ->
     if @params.podcastName
@@ -236,8 +247,9 @@ class SubscribePopup
 
   addBackButton: (addTo, targetClassName) ->
     backButton = document.createElement('a')
-    backButton.className = 'subscribe-it-back-button'
-    backButton.innerHTML = SubscribeIt.Translations.back[@params.language]
+    backButton.className = 'subscribe-it-back-button subscribe-it-install-button'
+    #backButton.innerHTML = SubscribeIt.Translations.back[@params.language]
+    backButton.innerHTML = '&lsaquo;'
     backButton.addEventListener 'click', (event) ->
       this.parentNode.parentNode.className = targetClassName
     addTo.appendChild(backButton)
@@ -290,8 +302,9 @@ class SubscribePopup
       @addLinkField(@rightSide, item)
 
   addButtonAction: (button, client) ->
-    @addButtonHover(@rightSide, button, client)
-    @addButtonClick(@rightSide, button, client)
+    target = document.getElementById('subscribe-it-popup-modal-helptext')
+    @addButtonHover(target, button, client)
+    @addButtonClick(target, button, client)
 
   addButtonHover: (target, button, client) ->
     button.addEventListener 'mouseenter', (event) =>
@@ -333,14 +346,6 @@ class SubscribePopup
       else
         text = SubscribeIt.Translations.clicked.noinstall.text[@params.language]
         target.innerHTML = "#{text}"
-
-      doneButton = document.createElement('a')
-      doneButton.className = 'subscribe-it-install-button subscribe-it-done-button'
-      doneButton.href = '#'
-      doneButton.addEventListener 'click', ->
-        window.parent.postMessage("{\"message\": \"closepopup\"}", '*')
-      doneButton.innerHTML = SubscribeIt.Translations.done[@params.language]
-      target.appendChild(doneButton)
 
       event.currentTarget.parentNode.parentNode.parentNode.className = 'show-right'
 

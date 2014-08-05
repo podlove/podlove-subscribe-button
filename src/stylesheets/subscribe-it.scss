@@ -162,24 +162,25 @@ body {
   }
 
   #subscribe-it-popup-close-button {
-    background-color: rgb(172, 230, 202);
-    color: rgb(123, 174, 149);
-    border-radius: 50px;
     cursor: pointer;
     font-size: 20px;
     line-height: 11px;
     padding: 6px 7px 8px 7px;
     position: absolute;
-    right: 10px;
+    right: 15px;
     top: 10px;
     z-index: 10;
   }
 
   .subscribe-it-back-button {
+    cursor: pointer;
     font-size: 14px;
-    left: 25px;
+    display: none;
+    font-size: 24px;
+    line-height: 11px;
+    padding: 6px 10px 9px 9px;
     position: absolute;
-    text-decoration: underline;
+    text-decoration: none;
     top: 10px;
   }
 
@@ -216,6 +217,7 @@ body {
     float: left;
     height: 100%;
     padding: 25px 20px;
+    position: relative;
     width: 260px;
   }
 
@@ -226,6 +228,8 @@ body {
 
     a {
       display: none;
+      margin-bottom: 20px;
+      width: 100%;
     }
 
     strong {
@@ -244,21 +248,35 @@ body {
     height: auto;
     padding-left: 0;
     padding-right: 0;
+    padding-top: 50px;
 
     & > strong {
       display: block;
       margin: 0 0 10px 25px;
+    }
+
+    .subscribe-it-back-button {
+      left: 25px;
     }
   }
 
   #subscribe-it-popup-modal-right {
     background-color: rgb(123, 174, 149);
     font-size: 14px;
+    padding-top: 50px;
+
+    #subscribe-it-popup-modal-helptext {
+      text-align: center;
+
+      p {
+        text-align: left;
+      }
+    }
 
     .subscribe-it-done-button {
-      bottom: 10px;
+      bottom: 35px;
       position: absolute;
-      right: 10px;
+      width: 220px;
     }
   }
 
@@ -335,6 +353,10 @@ body {
 
 @media (max-width: 800px) {
   #subscribe-it-popup {
+    .subscribe-it-back-button {
+      display: block;
+    }
+
     #subscribe-it-popup-modal {
       width: 280px;
     }
