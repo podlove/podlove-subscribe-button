@@ -213,6 +213,7 @@ SubscribePopup = (function() {
     this.middle = document.getElementById('subscribe-it-popup-modal-middle');
     this.rightSide = document.getElementById('subscribe-it-popup-modal-right');
     this.list = document.getElementById('subscribe-it-list');
+    this.helptext = document.getElementById('subscribe-it-popup-modal-helptext');
     loc = window.location;
     this.pathPrefix = loc.href.replace(loc.search, '').match(/(^.*\/)/)[0];
     this.addCloseHandler();
@@ -381,19 +382,19 @@ SubscribePopup = (function() {
     return item.addEventListener('click', (function(_this) {
       return function(event) {
         var paragraph;
+        _this.helptext.innerHTML = '';
         paragraph = document.createElement('p');
         paragraph.innerHTML = SubscribeIt.Translations.otherClientHelp[_this.params.language];
-        _this.rightSide.appendChild(paragraph);
-        return _this.addLinkField(_this.rightSide, item);
+        _this.helptext.appendChild(paragraph);
+        _this.addLinkField(_this.helptext, item);
+        return event.currentTarget.parentNode.parentNode.parentNode.className = 'show-right';
       };
     })(this));
   };
 
   SubscribePopup.prototype.addButtonAction = function(button, client) {
-    var target;
-    target = document.getElementById('subscribe-it-popup-modal-helptext');
-    this.addButtonHover(target, button, client);
-    return this.addButtonClick(target, button, client);
+    this.addButtonHover(this.helptext, button, client);
+    return this.addButtonClick(this.helptext, button, client);
   };
 
   SubscribePopup.prototype.addButtonHover = function(target, button, client) {

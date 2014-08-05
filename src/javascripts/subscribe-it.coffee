@@ -149,6 +149,7 @@ class SubscribePopup
     @middle = document.getElementById('subscribe-it-popup-modal-middle')
     @rightSide = document.getElementById('subscribe-it-popup-modal-right')
     @list = document.getElementById('subscribe-it-list')
+    @helptext = document.getElementById('subscribe-it-popup-modal-helptext')
 
     loc = window.location
     @pathPrefix = loc.href.replace(loc.search, '').match(/(^.*\/)/)[0]
@@ -295,16 +296,19 @@ class SubscribePopup
     @list.appendChild(item)
 
     item.addEventListener 'click', (event) =>
+      @helptext.innerHTML = ''
+
       paragraph = document.createElement('p')
       paragraph.innerHTML  = SubscribeIt.Translations.otherClientHelp[@params.language]
-      @rightSide.appendChild(paragraph)
+      @helptext.appendChild(paragraph)
 
-      @addLinkField(@rightSide, item)
+      @addLinkField(@helptext, item)
+
+      event.currentTarget.parentNode.parentNode.parentNode.className = 'show-right'
 
   addButtonAction: (button, client) ->
-    target = document.getElementById('subscribe-it-popup-modal-helptext')
-    @addButtonHover(target, button, client)
-    @addButtonClick(target, button, client)
+    @addButtonHover(@helptext, button, client)
+    @addButtonClick(@helptext, button, client)
 
   addButtonHover: (target, button, client) ->
     button.addEventListener 'mouseenter', (event) =>
