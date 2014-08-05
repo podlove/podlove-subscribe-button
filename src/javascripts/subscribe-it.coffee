@@ -19,12 +19,18 @@ class IframeResizer
 
 
 class SubscribeIt
-  @init: (elemName = 'subscribe-it') ->
-    elems = document.getElementsByName(elemName)
+  @init: (elemName = 'podlove-subscribe') ->
+    elems = document.getElementsByClassName(elemName)
 
-    new SubscribeIt elem for elem in elems
+    return if elems == []
+
+    elems = Array.prototype.slice.call(elems)
+    for elem in elems
+      new SubscribeIt elem
 
   constructor: (scriptElem) ->
+    return unless scriptElem
+
     @scriptElem = scriptElem
 
     @extractScriptPath()
@@ -38,16 +44,16 @@ class SubscribeIt
     @pathPrefix = @scriptElem.src.match(/(^.*\/)/)[0]
 
   extractFeedUrl: () ->
-    @feedUrl = @scriptElem.dataset.url
+    @feedUrl = @scriptElem.getAttribute('data-url')
 
   extractButtonLanguage: () ->
-    @buttonLanguage = @scriptElem.dataset.language || 'en'
+    @buttonLanguage = @scriptElem.getAttribute('data-language') || 'en'
 
   extractButtonSize: () ->
-    @buttonSize = @scriptElem.dataset.size || 'medium'
+    @buttonSize = @scriptElem.getAttribute('data-size') || 'medium'
 
   extractPodcastData: () ->
-    if string = @scriptElem.dataset.podcast
+    if string = @scriptElem.getAttribute('data-podcast')
       @podcast = JSON.parse(string.replace(/'/g, '"'))
 
   buttonParams: () ->
@@ -77,8 +83,6 @@ class SubscribeIt
     new IframeResizer('resizeButton', iframe)
 
     iframe
-
-new SubscribeIt.init()
 
 class SubscribePopupIframe
   constructor: (buttonIframe, feedUrl, pathPrefix, podcast, language) ->
@@ -240,7 +244,9 @@ class SubscribePopup
     @addBackButton(@rightSide, 'show-middle')
 
     @platform = SubscribeIt.UA.detect()
-    clients = SubscribeIt.Utils.shuffle(SubscribeIt.Clients[@platform])
+    clients = SubscribeIt.Clients[@platform]
+    return unless clients
+    clients = SubscribeIt.Utils.shuffle(clients)
     for client in clients
       @addButton(client)
 
@@ -630,3 +636,7 @@ SubscribeIt.Clients =
       platform: 'windowsPhone'
     }
   ]
+
+window.onload = () ->
+  new SubscribeIt.init()
+

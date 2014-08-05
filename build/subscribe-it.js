@@ -39,9 +39,13 @@ SubscribeIt = (function() {
   SubscribeIt.init = function(elemName) {
     var elem, elems, _i, _len, _results;
     if (elemName == null) {
-      elemName = 'subscribe-it';
+      elemName = 'podlove-subscribe';
     }
-    elems = document.getElementsByName(elemName);
+    elems = document.getElementsByClassName(elemName);
+    if (elems === []) {
+      return;
+    }
+    elems = Array.prototype.slice.call(elems);
     _results = [];
     for (_i = 0, _len = elems.length; _i < _len; _i++) {
       elem = elems[_i];
@@ -51,6 +55,9 @@ SubscribeIt = (function() {
   };
 
   function SubscribeIt(scriptElem) {
+    if (!scriptElem) {
+      return;
+    }
     this.scriptElem = scriptElem;
     this.extractScriptPath();
     this.extractFeedUrl();
@@ -65,20 +72,20 @@ SubscribeIt = (function() {
   };
 
   SubscribeIt.prototype.extractFeedUrl = function() {
-    return this.feedUrl = this.scriptElem.dataset.url;
+    return this.feedUrl = this.scriptElem.getAttribute('data-url');
   };
 
   SubscribeIt.prototype.extractButtonLanguage = function() {
-    return this.buttonLanguage = this.scriptElem.dataset.language || 'en';
+    return this.buttonLanguage = this.scriptElem.getAttribute('data-language') || 'en';
   };
 
   SubscribeIt.prototype.extractButtonSize = function() {
-    return this.buttonSize = this.scriptElem.dataset.size || 'medium';
+    return this.buttonSize = this.scriptElem.getAttribute('data-size') || 'medium';
   };
 
   SubscribeIt.prototype.extractPodcastData = function() {
     var string;
-    if (string = this.scriptElem.dataset.podcast) {
+    if (string = this.scriptElem.getAttribute('data-podcast')) {
       return this.podcast = JSON.parse(string.replace(/'/g, '"'));
     }
   };
@@ -120,8 +127,6 @@ SubscribeIt = (function() {
   return SubscribeIt;
 
 })();
-
-new SubscribeIt.init();
 
 SubscribePopupIframe = (function() {
   function SubscribePopupIframe(buttonIframe, feedUrl, pathPrefix, podcast, language) {
@@ -325,7 +330,11 @@ SubscribePopup = (function() {
     this.addBackButton(this.middle, 'show-left');
     this.addBackButton(this.rightSide, 'show-middle');
     this.platform = SubscribeIt.UA.detect();
-    clients = SubscribeIt.Utils.shuffle(SubscribeIt.Clients[this.platform]);
+    clients = SubscribeIt.Clients[this.platform];
+    if (!clients) {
+      return;
+    }
+    clients = SubscribeIt.Utils.shuffle(clients);
     _results = [];
     for (_i = 0, _len = clients.length; _i < _len; _i++) {
       client = clients[_i];
@@ -748,4 +757,8 @@ SubscribeIt.Clients = {
       platform: 'windowsPhone'
     }
   ]
+};
+
+window.onload = function() {
+  return new SubscribeIt.init();
 };
