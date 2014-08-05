@@ -204,7 +204,7 @@ class SubscribePopup
     explanation = document.createElement('p')
     explanation.className = 'subscribe-it-explanation'
     explanation.innerHTML = SubscribeIt.Translations.explanation[@params.language]
-    @leftSide.appendChild(explanation)
+    #@leftSide.appendChild(explanation)
 
     nextButton = document.createElement('a')
     nextButton.className = 'subscribe-it-install-button'

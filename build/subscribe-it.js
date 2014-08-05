@@ -280,7 +280,6 @@ SubscribePopup = (function() {
     explanation = document.createElement('p');
     explanation.className = 'subscribe-it-explanation';
     explanation.innerHTML = SubscribeIt.Translations.explanation[this.params.language];
-    this.leftSide.appendChild(explanation);
     nextButton = document.createElement('a');
     nextButton.className = 'subscribe-it-install-button';
     nextButton.innerHTML = SubscribeIt.Translations.next[this.params.language];
