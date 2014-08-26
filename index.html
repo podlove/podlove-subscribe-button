@@ -42,18 +42,30 @@
     </style>
   </head>
   <body>
+    <script>
+      window.podcastData = {
+        "title": "Newz of the World",
+        "subtitle": "Tim and Mark talk about the Newz™",
+        "description": "Newz of the World is a weekly show about world news. Mark Fonseca Rendeiro and Tim Pritlove come together to present interesting reports and discuss their aspects and possible consequences. Newz of the world wants to be an alternative window to the common media flow and cherry picks interesting developments for you.",
+        "cover": "http://meta.metaebene.me/media/newz/newz-logo-600x600.jpg",
+        "feeds": {
+          "aac": "http://newz-of-the-world.com/feed/m4a",
+          "mp3": "http://newz-of-the-world.com/feed/mp3",
+          "ogg": "http://newz-of-the-world.com/feed/oga",
+          "opus": "http://newz-of-the-world.com/feed/opus"
+        }
+      }
+    </script>
+
     <h1>Podlove Subscribe Button</h1>
     <h2>Small</h2>
-    <script class="podlove-subscribe" src="build/subscribe-it.js" data-url="http://www.staatsbuergerkunde-podcast.de/feed/mp3-rss/" data-language="en" data-size="small" data-podcast="{'name': 'Staatsbürgerkunde', 'coverUrl': 'http://www.staatsbuergerkunde-podcast.de/sbk-cover-1400.jpg', 'subtitle': 'This is an awesome podcast'}"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="en" data-size="small" data-json-data="podcastData"></script>
 
     <h2>Medium</h2>
-    <script class="podlove-subscribe" src="build/subscribe-it.js" data-url="http://www.staatsbuergerkunde-podcast.de/feed/mp3-rss/" data-language="de" data-size="medium" data-podcast="{'name': 'Staatsbürgerkunde', 'coverUrl': 'http://www.staatsbuergerkunde-podcast.de/sbk-cover-1400.jpg', 'subtitle': 'This is an awesome podcast'}"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="en" data-size="medium" data-json-data="podcastData"></script>
 
     <h2>Big</h2>
-    <script class="podlove-subscribe" src="build/subscribe-it.js" data-url="http://das-sendezentrum.de/feed/m4a/" data-language="en" data-size="big"></script>
-
-    <h2>Big with Logo</h2>
-    <script class="podlove-subscribe" src="build/subscribe-it.js" data-url="http://das-sendezentrum.de/feed/m4a/" data-language="en" data-size="logo"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="en" data-size="big" data-json-data="podcastData"></script>
 
     <a href="#" onclick="darkMode()" class="darktoggle">Toggle Dark Background</a>
     <a href="#" onclick="lightMode()" class="lighttoggle">Toggle Light Background</a>
