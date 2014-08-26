@@ -173,6 +173,20 @@ Clients = (function() {
     return this[platform];
   }
 
+  Clients.prototype.rss = {
+    title: 'Other Client (RSS)',
+    icon: 'rss.png'
+  };
+
+  Clients.prototype.cloud = [
+    {
+      title: 'gpodder.net',
+      scheme: 'https://gpodder.net/search/?q=',
+      icon: 'cloud/gpodder@2x.jpg',
+      install: 'https://gpodder.net/'
+    }
+  ];
+
   Clients.prototype.android = [
     {
       title: 'AntennaPod',
@@ -301,7 +315,8 @@ ClientsPanel = (function(_super) {
       title: this.podcast.title,
       subtitle: this.podcast.subtitle,
       clients: this.clients,
-      platform: this.platform
+      platform: this.platform,
+      otherClient: this.otherClient
     };
   };
 
@@ -311,10 +326,13 @@ ClientsPanel = (function(_super) {
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       client = _ref[_i];
       client.icon = "" + pathPrefix + "images/" + client.icon;
-      feedUrl = this.podcast.feeds.aac.replace('http://', '');
-      client.url = "" + client.scheme + feedUrl;
+      feedUrl = this.podcast.feeds.aac;
+      client.url = "" + client.scheme + (feedUrl.replace('http://', ''));
     }
-    return _(this.clients).shuffle();
+    _(this.clients).shuffle();
+    this.otherClient = new Clients('rss');
+    this.otherClient.icon = "" + pathPrefix + "images/" + this.otherClient.icon;
+    return this.otherClient.url = feedUrl;
   };
 
   ClientsPanel.prototype.render = function() {
@@ -339,13 +357,13 @@ ClientsPanel = (function(_super) {
     var client;
     this.parent.moveClients('-100%');
     this.parent.moveFinish('0%');
-    client = _(this.clients).findWhere({
+    client = clientTitle === 'rss' ? this.otherClient : _(this.clients).findWhere({
       title: clientTitle
     });
     return this.parent.finishPanel.render(client);
   };
 
-  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> </div> <ul> {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} </ul> </div>');
+  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> </div> <ul> {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} <li> <a data-client="rss"> <img src="{{otherClient.icon}}"> {{otherClient.title}} </a> </li> </ul> </div>');
 
   return ClientsPanel;
 
@@ -378,15 +396,18 @@ FinishPanel = (function(_super) {
     this.container.empty();
     this.elem = $(this.template(client));
     this.container.append(this.elem);
-    return this.elem.find('.back-button').on('click', (function(_this) {
+    this.elem.find('.back-button').on('click', (function(_this) {
       return function(event) {
         _this.parent.moveClients('0%');
         return _this.parent.moveFinish('100%');
       };
     })(this));
+    return this.elem.find('input').on('click', function() {
+      return this.select();
+    });
   };
 
-  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> </div> <img class="podcast-cover" src="{{icon}}"> <h1>Handing over to<br> {{title}}...</h1> <p>Did something go wrong?</p> <p> <a href="{{url}}" target="_blank"> Try again </a> <br> or <br> <a href="{{install}}" target="_blank"> Install {{title}} from the App Store </a> </p> </div>');
+  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> </div> <img class="podcast-cover" src="{{icon}}"> {{#if scheme}} <h1>Handing over to<br> {{title}}...</h1> <p>Did something go wrong?</p> <p> <a href="{{url}}" target="_blank"> Try again </a> <br> or <br> <a href="{{install}}" target="_blank"> Install {{title}} from the App Store </a> </p> {{else}} <p> Please copy the URL below and add it to your Podcast- or RSS-Client. </p> <input value="{{url}}"> {{/if}} </div>');
 
   return FinishPanel;
 

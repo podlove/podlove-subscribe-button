@@ -21,15 +21,20 @@ class ClientsPanel extends Panel
     subtitle: @podcast.subtitle,
     clients: @clients,
     platform: @platform,
+    otherClient: @otherClient,
   }
 
   prepareClients: (pathPrefix) ->
     for client in @clients
       client.icon = "#{pathPrefix}images/#{client.icon}"
-      feedUrl = @podcast.feeds.aac.replace('http://', '')
-      client.url = "#{client.scheme}#{feedUrl}"
+      feedUrl = @podcast.feeds.aac
+      client.url = "#{client.scheme}#{feedUrl.replace('http://', '')}"
 
     _(@clients).shuffle()
+
+    @otherClient = new Clients('rss')
+    @otherClient.icon = "#{pathPrefix}images/#{@otherClient.icon}"
+    @otherClient.url = feedUrl
 
   render: () ->
     @elem = $(@template(@context()))
@@ -47,7 +52,11 @@ class ClientsPanel extends Panel
     @parent.moveClients('-100%')
     @parent.moveFinish('0%')
 
-    client = _(this.clients).findWhere({title: clientTitle})
+    client = if clientTitle == 'rss'
+      @otherClient
+    else
+      _(this.clients).findWhere({title: clientTitle})
+
     @parent.finishPanel.render(client)
 
   template: Handlebars.compile('
@@ -64,6 +73,12 @@ class ClientsPanel extends Panel
           </a>
         </li>
         {{/each}}
+        <li>
+          <a data-client="rss">
+            <img src="{{otherClient.icon}}">
+            {{otherClient.title}}
+          </a>
+        </li>
       </ul>
     </div>
   ')

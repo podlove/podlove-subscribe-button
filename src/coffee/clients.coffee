@@ -2,6 +2,20 @@ class Clients
   constructor: (platform) ->
     return @[platform]
 
+  rss: {
+    title: 'Other Client (RSS)'
+    icon: 'rss.png'
+  }
+
+  cloud: [
+    {
+      title: 'gpodder.net'
+      scheme: 'https://gpodder.net/search/?q='
+      icon: 'cloud/gpodder@2x.jpg'
+      install: 'https://gpodder.net/'
+    }
+  ]
+
   android: [
     {
       title: 'AntennaPod'
