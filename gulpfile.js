@@ -12,7 +12,8 @@ var gulp = require('gulp'),
 var dest = './dist';
 var paths = {
   stylesheets: ['./src/stylesheets/*.scss'],
-  javascripts: ['./src/coffee/app.coffee'],
+  main_javascript: ['./src/coffee/app.coffee'],
+  javascripts: ['./src/coffee/*.coffee'],
   html: ['./src/html/button.html', './src/html/popup.html'],
   images: ['./src/images/**']
 };
@@ -25,7 +26,7 @@ gulp.task('stylesheets', function() {
 })
 
 gulp.task('javascripts', function() {
-  gulp.src(paths.javascripts, {read: false})
+  gulp.src(paths.main_javascript, {read: false})
     .pipe(browserify({
       transform: ['coffeeify'],
       extensions: ['.coffee']
