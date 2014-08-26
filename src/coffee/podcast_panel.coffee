@@ -1,7 +1,5 @@
 $ = require('../../vendor/zepto-browserify.js').Zepto
 Handlebars = require('../../vendor/handlebars.min.js').Handlebars
-colorThief = require('../../vendor/color-thief.js')
-ColorThief = new colorThief()
 
 Panel = require('./panel.coffee')
 

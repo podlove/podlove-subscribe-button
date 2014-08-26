@@ -1,6 +1,4 @@
 $ = require('../../vendor/zepto-browserify.js').Zepto
-colorThief = require('../../vendor/color-thief.js')
-ColorThief = new colorThief()
 
 Button = require('./button.coffee')
 Popup = require('./popup.coffee')
