@@ -32,7 +32,7 @@ class FinishPanel extends Panel
         or
         <br>
         <a href="{{install}}" target="_blank">
-          Install Instacast from the App Store
+          Install {{title}} from the App Store
         </a>
       </p>
     </div>
