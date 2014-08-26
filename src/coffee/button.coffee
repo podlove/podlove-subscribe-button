@@ -1,0 +1,35 @@
+$ = require('../../vendor/zepto-browserify.js').Zepto
+Utils = require('./utils.coffee')
+Translations = require('./translations.coffee')
+IframeResizer = require('./iframe_resizer.coffee')
+
+class Button
+  constructor: () ->
+    @getOptions()
+    @elem = $('#podlove-subscribe-button')
+
+    @render()
+
+    @resizeIframe()
+
+  render: () ->
+    buttonHtml = "<span>#{Translations.button[@options.language]}</span>"
+    @elem.addClass(@options.size)
+      .html(buttonHtml)
+
+  getOptions: () ->
+    @options = Utils.locationToOptions(window.location.search)
+
+  resizeIframe: () ->
+    height = @elem.height()
+    width = @elem.width()
+
+    resizeData = JSON.stringify({
+      id: @options.id,
+      listenTo: 'resizeButton',
+      height: height,
+      width: width
+    })
+    window.parent.postMessage(resizeData, '*')
+
+module.exports = Button
