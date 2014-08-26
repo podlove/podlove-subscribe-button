@@ -29,7 +29,7 @@ class SubscribeButton
   getOptions: () ->
     options =
       scriptPath: @scriptElem.attr('src').match(/(^.*\/)/)[0].replace(/javascripts\/$/, '')
-      language: @scriptElem.data('language')
+      #language: @scriptElem.data('language')
       size: @scriptElem.data('size')
 
     @options = $.extend(@defaultOptions, options)
