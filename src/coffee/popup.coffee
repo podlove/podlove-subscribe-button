@@ -7,6 +7,7 @@ IframeResizer = require('./iframe_resizer.coffee')
 
 PodcastPanel = require('./podcast_panel.coffee')
 ClientsPanel = require('./clients_panel.coffee')
+FinishPanel = require('./finish_panel.coffee')
 
 class Popup
   constructor: (@podcast, @options) ->
@@ -43,13 +44,15 @@ class Popup
     prefix = '#podlove-subscribe-panel'
     @podcastPanel = new PodcastPanel(@elem.find("#{prefix}-podcast"), @)
     @clientsPanel = new ClientsPanel(@elem.find("#{prefix}-clients"), @)
+    @finishPanel = new FinishPanel(@elem.find("#{prefix}-finish"), @)
 
-  goToClients: () ->
-    @podcastPanel.moveLeft('-100%')
-    @clientsPanel.moveLeft('0%')
+  moveClients: (amount) ->
+    @clientsPanel.moveLeft(amount)
 
-  goToPodcast: () ->
-    @podcastPanel.moveRight('0%')
-    @clientsPanel.moveRight('100%')
+  movePodcast: (amount) ->
+    @podcastPanel.moveLeft(amount)
+
+  moveFinish: (amount) ->
+    @finishPanel.moveLeft(amount)
 
 module.exports = Popup

@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
+@import url(http://fonts.googleapis.com/css?family=Roboto:100,400,700);
 
 html.podlove-subscribe {
   height: 100%;
@@ -220,9 +220,13 @@ body.podlove-subscribe {
     .top-bar {
       background: rgb(26, 26, 26);
       color: #fff;
+      font-size: 18px;
+      font-weight: 100;
       height: 40px;
       left: 0;
+      padding: 7px 0 0 10px;
       position: absolute;
+      text-align: left;
       top: 0;
       width: 100%;
 
@@ -231,6 +235,7 @@ body.podlove-subscribe {
         font-size: 30px;
         left: 0px;
         position: absolute;
+        text-align: center;
         top: -2px;
         width: 40px;
       }
@@ -280,7 +285,7 @@ body.podlove-subscribe {
     li {
       font-size: 22px;
       list-style: none;
-      padding: 10px 20px 10px 60px;
+      //padding: 10px 20px 10px 60px;
       text-align: left;
     }
 
@@ -294,10 +299,30 @@ body.podlove-subscribe {
       left: 20px;
       position: absolute;
     }
+
+    li a {
+      color: #fff;
+      display: block;
+      padding: 10px 20px 10px 60px;
+      text-decoration: none;
+    }
   }
 
   #podlove-subscribe-panel-finish {
     background-color: rgb(123, 174, 149);
+
+    img {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+
+    p a {
+      color: #fff;
+    }
   }
 
   #podlove-subscribe-list {

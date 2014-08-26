@@ -21,7 +21,8 @@ class PodcastPanel extends Panel
     @container.append(@elem)
 
     @elem.find('button').on 'click', (event) =>
-      @parent.goToClients()
+      @parent.moveClients('0%')
+      @parent.movePodcast('-100%')
 
   template: Handlebars.compile('
     <div>
