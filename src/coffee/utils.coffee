@@ -10,4 +10,8 @@ class Utils
 
     options
 
+  @fixIconPath: (client, prefix) ->
+    if client.icon.indexOf(prefix) == -1
+      client.icon = "#{prefix}images/#{client.icon}"
+
 module.exports = Utils

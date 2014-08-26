@@ -35,9 +35,17 @@ class FinishPanel extends Panel
           <br>
           or
           <br>
-          <a href="{{install}}" target="_blank">
-            Install {{title}} from the App Store
-          </a>
+          {{#if install}}
+            <a href="{{install}}" target="_blank">
+              Install {{title}} from the App Store
+            </a>
+          {{/if}}
+
+          {{#if register}}
+            <a href="{{register}}" target="_blank">
+              Register an account with {{title}}
+            </a>
+          {{/if}}
         </p>
       {{else}}
         <p>

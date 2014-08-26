@@ -183,7 +183,7 @@ Clients = (function() {
       title: 'gpodder.net',
       scheme: 'https://gpodder.net/search/?q=',
       icon: 'cloud/gpodder@2x.jpg',
-      install: 'https://gpodder.net/'
+      register: 'https://gpodder.net/'
     }
   ];
 
@@ -280,7 +280,7 @@ module.exports = Clients;
 
 
 },{}],4:[function(require,module,exports){
-var $, Clients, ClientsPanel, Handlebars, Panel, UserAgent, _,
+var $, Clients, ClientsPanel, Handlebars, Panel, UserAgent, Utils, _,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
@@ -289,6 +289,8 @@ $ = require('../../vendor/zepto-browserify.js').Zepto;
 Handlebars = require('../../vendor/handlebars.min.js').Handlebars;
 
 _ = require('../../vendor/underscore-min.js');
+
+Utils = require('./utils.coffee');
 
 Clients = require('./clients.coffee');
 
@@ -305,6 +307,7 @@ ClientsPanel = (function(_super) {
     this.podcast = this.parent.podcast;
     this.platform = new UserAgent().detect();
     this.clients = new Clients(this.platform);
+    this.cloudClients = new Clients('cloud');
     this.prepareClients(this.parent.options.scriptPath);
     this.render();
   }
@@ -316,26 +319,31 @@ ClientsPanel = (function(_super) {
       subtitle: this.podcast.subtitle,
       clients: this.clients,
       platform: this.platform,
-      otherClient: this.otherClient
+      otherClient: this.otherClient,
+      cloudClients: this.cloudClients
     };
   };
 
   ClientsPanel.prototype.prepareClients = function(pathPrefix) {
-    var client, feedUrl, _i, _len, _ref;
+    var client, feedUrl, _i, _j, _len, _len1, _ref, _ref1;
     _ref = this.clients;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       client = _ref[_i];
-      if (client.icon.indexOf(pathPrefix) === -1) {
-        client.icon = "" + pathPrefix + "images/" + client.icon;
-      }
+      Utils.fixIconPath(client, pathPrefix);
       feedUrl = this.podcast.feeds.aac;
       client.url = "" + client.scheme + (feedUrl.replace('http://', ''));
     }
     _(this.clients).shuffle();
-    this.otherClient = new Clients('rss');
-    if (this.otherClient.icon.indexOf(pathPrefix) === -1) {
-      this.otherClient.icon = "" + pathPrefix + "images/" + this.otherClient.icon;
+    _ref1 = this.cloudClients;
+    for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+      client = _ref1[_j];
+      Utils.fixIconPath(client, pathPrefix);
+      feedUrl = this.podcast.feeds.aac;
+      client.url = "" + client.scheme + feedUrl;
     }
+    _(this.cloudClients).shuffle();
+    this.otherClient = new Clients('rss');
+    Utils.fixIconPath(this.otherClient, pathPrefix);
     return this.otherClient.url = feedUrl;
   };
 
@@ -348,26 +356,45 @@ ClientsPanel = (function(_super) {
         return _this.parent.moveClients('100%');
       };
     })(this));
-    return this.elem.find('li a').on('click', (function(_this) {
+    this.elem.find('li a').on('click', (function(_this) {
       return function(event) {
-        var client;
+        var client, platform;
         client = $(event.target).data('client');
-        return _this.showClient(client);
+        platform = $(event.target).data('platform');
+        return _this.showClient(client, platform);
+      };
+    })(this));
+    this.elem.find('.podlove-subscribe-local').on('click', (function(_this) {
+      return function(event) {
+        _this.elem.find('.local-clients').show();
+        _this.elem.find('.cloud-clients').hide();
+        $(event.target).addClass('active');
+        return $(event.target).next().removeClass('active');
+      };
+    })(this));
+    return this.elem.find('.podlove-subscribe-cloud').on('click', (function(_this) {
+      return function(event) {
+        _this.elem.find('.local-clients').hide();
+        _this.elem.find('.cloud-clients').show();
+        $(event.target).addClass('active');
+        return $(event.target).prev().removeClass('active');
       };
     })(this));
   };
 
-  ClientsPanel.prototype.showClient = function(clientTitle) {
+  ClientsPanel.prototype.showClient = function(clientTitle, platform) {
     var client;
     this.parent.moveClients('-100%');
     this.parent.moveFinish('0%');
-    client = clientTitle === 'rss' ? this.otherClient : _(this.clients).findWhere({
+    client = clientTitle === 'rss' ? this.otherClient : platform === 'cloud' ? _(this.cloudClients).findWhere({
+      title: clientTitle
+    }) : _(this.clients).findWhere({
       title: clientTitle
     });
     return this.parent.finishPanel.render(client);
   };
 
-  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> </div> <ul> {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} <li> <a data-client="rss"> <img src="{{otherClient.icon}}"> {{otherClient.title}} </a> </li> </ul> </div>');
+  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> <button class="podlove-subscribe-local active">Local</button> <button class="podlove-subscribe-cloud">Cloud</button> </div> <ul class="local-clients"> {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} <li> <a data-client="rss"> <img src="{{otherClient.icon}}"> {{otherClient.title}} </a> </li> </ul> <ul class="cloud-clients"> {{#each cloudClients}} <li> <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} </ul> </div>');
 
   return ClientsPanel;
 
@@ -377,7 +404,7 @@ module.exports = ClientsPanel;
 
 
 
-},{"../../vendor/handlebars.min.js":13,"../../vendor/underscore-min.js":14,"../../vendor/zepto-browserify.js":15,"./clients.coffee":3,"./panel.coffee":7,"./user_agent.coffee":11}],5:[function(require,module,exports){
+},{"../../vendor/handlebars.min.js":13,"../../vendor/underscore-min.js":14,"../../vendor/zepto-browserify.js":15,"./clients.coffee":3,"./panel.coffee":7,"./user_agent.coffee":11,"./utils.coffee":12}],5:[function(require,module,exports){
 var $, FinishPanel, Handlebars, Panel,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
@@ -411,7 +438,7 @@ FinishPanel = (function(_super) {
     });
   };
 
-  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> </div> <img class="podcast-cover" src="{{icon}}"> {{#if scheme}} <h1>Handing over to<br> {{title}}...</h1> <p>Did something go wrong?</p> <p> <a href="{{url}}" target="_blank"> Try again </a> <br> or <br> <a href="{{install}}" target="_blank"> Install {{title}} from the App Store </a> </p> {{else}} <p> Please copy the URL below and add it to your Podcast- or RSS-Client. </p> <input value="{{url}}"> {{/if}} </div>');
+  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> </div> <img class="podcast-cover" src="{{icon}}"> {{#if scheme}} <h1>Handing over to<br> {{title}}...</h1> <p>Did something go wrong?</p> <p> <a href="{{url}}" target="_blank"> Try again </a> <br> or <br> {{#if install}} <a href="{{install}}" target="_blank"> Install {{title}} from the App Store </a> {{/if}} {{#if register}} <a href="{{register}}" target="_blank"> Register an account with {{title}} </a> {{/if}} </p> {{else}} <p> Please copy the URL below and add it to your Podcast- or RSS-Client. </p> <input value="{{url}}"> {{/if}} </div>');
 
   return FinishPanel;
 
@@ -719,6 +746,12 @@ Utils = (function() {
       options[array[0]] = array[1];
     }
     return options;
+  };
+
+  Utils.fixIconPath = function(client, prefix) {
+    if (client.icon.indexOf(prefix) === -1) {
+      return client.icon = "" + prefix + "images/" + client.icon;
+    }
   };
 
   return Utils;

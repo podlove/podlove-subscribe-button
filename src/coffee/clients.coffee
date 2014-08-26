@@ -12,7 +12,7 @@ class Clients
       title: 'gpodder.net'
       scheme: 'https://gpodder.net/search/?q='
       icon: 'cloud/gpodder@2x.jpg'
-      install: 'https://gpodder.net/'
+      register: 'https://gpodder.net/'
     }
   ]
 

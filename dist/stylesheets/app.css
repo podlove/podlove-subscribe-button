@@ -278,9 +278,38 @@ body.podlove-subscribe {
   padding-left: 0;
   padding-right: 0;
 }
+#podlove-subscribe-popup #podlove-subscribe-panel-clients .top-bar {
+  text-align: center;
+}
+#podlove-subscribe-popup #podlove-subscribe-panel-clients .top-bar button {
+  background: #1a1a1a;
+  border: 1px solid #fff;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  margin: 0;
+  outline: none;
+  position: relative;
+  right: -2px;
+  width: 65px;
+}
+#podlove-subscribe-popup #podlove-subscribe-panel-clients .top-bar button + button {
+  border-radius: 0;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  left: -3px;
+}
+#podlove-subscribe-popup #podlove-subscribe-panel-clients .top-bar button.active {
+  background: #fff;
+  color: #1a1a1a;
+}
 #podlove-subscribe-popup #podlove-subscribe-panel-clients ul {
   margin: 0;
   padding: 0;
+}
+#podlove-subscribe-popup #podlove-subscribe-panel-clients ul.cloud-clients {
+  display: none;
 }
 #podlove-subscribe-popup #podlove-subscribe-panel-clients li {
   font-size: 22px;
