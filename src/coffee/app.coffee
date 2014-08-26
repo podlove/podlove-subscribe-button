@@ -16,9 +16,6 @@ class SubscribeButton
     for elem in elems
       new SubscribeButton(elem)
 
-  @renderButton: () ->
-    new Button()
-
   constructor: (scriptElem) ->
     @scriptElem = $(scriptElem)
 
@@ -65,7 +62,7 @@ class SubscribeButton
     iframe = $('<iframe>')
       .attr('src', buttonUrl)
       .attr('id', id)
-      .addClass('podlove-subscribe-button')
+      .addClass('podlove-subscribe-button-iframe')
       .css({border: 'none', display: 'block', overflow: 'hidden'})
 
     iframe.on 'load', () =>
@@ -80,6 +77,7 @@ class SubscribeButton
     new Popup(@podcast, @options)
 
 window.SubscribeButton = SubscribeButton
+window.Button = Button
 
 # init the button
-$ -> new SubscribeButton.init()
+$ -> SubscribeButton.init()

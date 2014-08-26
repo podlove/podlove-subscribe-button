@@ -16,6 +16,11 @@ body.podlove-subscribe {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
 
+#podlove-subscribe-button-iframe {
+  height: 0;
+  width: 0;
+}
+
 #podlove-subscribe-button,
 .podlove-subscribe-button {
   background-image: -moz-linear-gradient(bottom, rgba(0,0,1,.05) 0%, rgba(255,255,255,.05) 100%);
