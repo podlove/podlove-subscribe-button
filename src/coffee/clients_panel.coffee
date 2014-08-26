@@ -26,14 +26,16 @@ class ClientsPanel extends Panel
 
   prepareClients: (pathPrefix) ->
     for client in @clients
-      client.icon = "#{pathPrefix}images/#{client.icon}"
+      if client.icon.indexOf(pathPrefix) == -1
+        client.icon = "#{pathPrefix}images/#{client.icon}"
       feedUrl = @podcast.feeds.aac
       client.url = "#{client.scheme}#{feedUrl.replace('http://', '')}"
 
     _(@clients).shuffle()
 
     @otherClient = new Clients('rss')
-    @otherClient.icon = "#{pathPrefix}images/#{@otherClient.icon}"
+    if @otherClient.icon.indexOf(pathPrefix) == -1
+      @otherClient.icon = "#{pathPrefix}images/#{@otherClient.icon}"
     @otherClient.url = feedUrl
 
   render: () ->

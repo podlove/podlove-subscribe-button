@@ -325,13 +325,17 @@ ClientsPanel = (function(_super) {
     _ref = this.clients;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       client = _ref[_i];
-      client.icon = "" + pathPrefix + "images/" + client.icon;
+      if (client.icon.indexOf(pathPrefix) === -1) {
+        client.icon = "" + pathPrefix + "images/" + client.icon;
+      }
       feedUrl = this.podcast.feeds.aac;
       client.url = "" + client.scheme + (feedUrl.replace('http://', ''));
     }
     _(this.clients).shuffle();
     this.otherClient = new Clients('rss');
-    this.otherClient.icon = "" + pathPrefix + "images/" + this.otherClient.icon;
+    if (this.otherClient.icon.indexOf(pathPrefix) === -1) {
+      this.otherClient.icon = "" + pathPrefix + "images/" + this.otherClient.icon;
+    }
     return this.otherClient.url = feedUrl;
   };
 
