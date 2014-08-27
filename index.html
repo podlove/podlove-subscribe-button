@@ -36,6 +36,12 @@
         display: block;
       }
 
+      hr {
+        border: none;
+        border-top: 1px solid #ccc;
+        margin: 40px -100px 30px;
+      }
+
       .podlove-subscribe-button-iframe {
         margin: 0 auto 25px;
       }
@@ -69,6 +75,27 @@
 
     <a href="#" onclick="darkMode()" class="darktoggle">Toggle Dark Background</a>
     <a href="#" onclick="lightMode()" class="lighttoggle">Toggle Light Background</a>
+
+    <hr>
+
+    <h2>Please leave your feedback</h2>
+    <p>Please include which browser and OS you are using. If you encounter an error, please list the steps that led to it.</p>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'podlove-subscribe-button-feedback'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
   </body>
 
   <script>
