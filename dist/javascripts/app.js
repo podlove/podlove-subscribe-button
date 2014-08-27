@@ -201,7 +201,7 @@ Clients = (function() {
     }, {
       title: 'PocketCasts',
       scheme: 'pcast://',
-      icon: 'android/pocketcasts@2x.png',
+      icon: 'android/pocketcasts-128@2x.png',
       install: 'https://play.google.com/store/apps/details?id=au.com.shiftyjelly.pocketcasts'
     }, {
       title: 'Podkicker',
