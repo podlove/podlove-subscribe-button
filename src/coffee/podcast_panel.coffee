@@ -27,7 +27,9 @@ class PodcastPanel extends Panel
       <div class="top-bar">
         Subscribe
       </div>
+      {{#if cover}}
       <img class="podcast-cover" src="{{cover}}">
+      {{/if}}
       <h1>{{title}}</h1>
       <p>{{subtitle}}</p>
       <button class="podlove-subscribe-button">Choose Client</button>

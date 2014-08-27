@@ -7,12 +7,15 @@ IframeResizer = require('./iframe_resizer.coffee')
 
 class SubscribeButton
   @init: (selector = '.podlove-subscribe-button') ->
+    subscribeButtons = []
     elems = $(selector)
 
     return if elems.length == 0
 
     for elem in elems
-      new SubscribeButton(elem)
+      subscribeButtons.push(new SubscribeButton(elem))
+
+    window.subscribeButtons = subscribeButtons
 
   constructor: (scriptElem) ->
     @scriptElem = $(scriptElem)
@@ -21,6 +24,11 @@ class SubscribeButton
     @getPodcastData()
     @addCss()
     @renderButtonIframe()
+
+    return @
+
+  update: () ->
+    @getPodcastData()
 
   defaultOptions:
     language: 'en'

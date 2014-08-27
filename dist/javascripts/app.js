@@ -13,20 +13,20 @@ IframeResizer = require('./iframe_resizer.coffee');
 
 SubscribeButton = (function() {
   SubscribeButton.init = function(selector) {
-    var elem, elems, _i, _len, _results;
+    var elem, elems, subscribeButtons, _i, _len;
     if (selector == null) {
       selector = '.podlove-subscribe-button';
     }
+    subscribeButtons = [];
     elems = $(selector);
     if (elems.length === 0) {
       return;
     }
-    _results = [];
     for (_i = 0, _len = elems.length; _i < _len; _i++) {
       elem = elems[_i];
-      _results.push(new SubscribeButton(elem));
+      subscribeButtons.push(new SubscribeButton(elem));
     }
-    return _results;
+    return window.subscribeButtons = subscribeButtons;
   };
 
   function SubscribeButton(scriptElem) {
@@ -35,7 +35,12 @@ SubscribeButton = (function() {
     this.getPodcastData();
     this.addCss();
     this.renderButtonIframe();
+    return this;
   }
+
+  SubscribeButton.prototype.update = function() {
+    return this.getPodcastData();
+  };
 
   SubscribeButton.prototype.defaultOptions = {
     language: 'en',
@@ -549,7 +554,7 @@ PodcastPanel = (function(_super) {
     })(this));
   };
 
-  PodcastPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> Subscribe </div> <img class="podcast-cover" src="{{cover}}"> <h1>{{title}}</h1> <p>{{subtitle}}</p> <button class="podlove-subscribe-button">Choose Client</button> </div>');
+  PodcastPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> Subscribe </div> {{#if cover}} <img class="podcast-cover" src="{{cover}}"> {{/if}} <h1>{{title}}</h1> <p>{{subtitle}}</p> <button class="podlove-subscribe-button">Choose Client</button> </div>');
 
   return PodcastPanel;
 
