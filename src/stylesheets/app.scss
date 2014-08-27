@@ -181,16 +181,21 @@ body.podlove-subscribe {
   }
 
   #podlove-subscribe-popup-modal {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.4);
     border-radius: 25px;
     box-shadow: 0 0 5px 0 #222;
     height: 460px;
     margin: -230px auto 0;
-    padding: 10px;
+    padding: 10px 10px 25px;
     overflow: hidden;
     position: relative;
     top: 50%;
     width: 300px;
+
+    .podlove-logo {
+      margin-top: 6px;
+      width: 130px;
+    }
 
     #podlove-subscribe-popup-modal-inner {
       border-radius: 15px;

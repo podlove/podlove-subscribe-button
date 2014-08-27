@@ -597,7 +597,9 @@ Popup = (function() {
   }
 
   Popup.prototype.render = function() {
-    this.elem = $(this.template());
+    this.elem = $(this.template({
+      scriptPath: this.options.scriptPath
+    }));
     $('body').append(this.elem);
     return this.elem.find('#podlove-subscribe-popup-close-button').on('click', (function(_this) {
       return function() {
@@ -606,7 +608,7 @@ Popup = (function() {
     })(this));
   };
 
-  Popup.prototype.template = Handlebars.compile('<div id="podlove-subscribe-popup" class="podlove-subscribe"> <div id="podlove-subscribe-popup-modal"> <div id="podlove-subscribe-popup-modal-inner" class="show-left"> <span id="podlove-subscribe-popup-close-button" class="podlove-subscribe-install-button">&times;</span> <div id="podlove-subscribe-panel-podcast"></div> <div id="podlove-subscribe-panel-format"></div> <div id="podlove-subscribe-panel-type"></div> <div id="podlove-subscribe-panel-clients"></div> <div id="podlove-subscribe-panel-finish"></div> </div> </div> </div>');
+  Popup.prototype.template = Handlebars.compile('<div id="podlove-subscribe-popup" class="podlove-subscribe"> <div id="podlove-subscribe-popup-modal"> <div id="podlove-subscribe-popup-modal-inner" class="show-left"> <span id="podlove-subscribe-popup-close-button" class="podlove-subscribe-install-button">&times;</span> <div id="podlove-subscribe-panel-podcast"></div> <div id="podlove-subscribe-panel-format"></div> <div id="podlove-subscribe-panel-type"></div> <div id="podlove-subscribe-panel-clients"></div> <div id="podlove-subscribe-panel-finish"></div> </div> <img src="{{scriptPath}}images/podlove@2x.png" class="podlove-logo"> </div> </div>');
 
   Popup.prototype.initPanels = function() {
     var prefix;

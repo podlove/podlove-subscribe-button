@@ -15,7 +15,7 @@ class Popup
     @initPanels()
 
   render: () ->
-    @elem = $(@template())
+    @elem = $(@template({scriptPath: @options.scriptPath}))
     $('body').append(@elem)
     @elem.find('#podlove-subscribe-popup-close-button').on 'click', () =>
       @elem.remove()
@@ -36,6 +36,8 @@ class Popup
 
           <div id="podlove-subscribe-panel-finish"></div>
         </div>
+
+        <img src="{{scriptPath}}images/podlove@2x.png" class="podlove-logo">
       </div>
     </div>
   ')
