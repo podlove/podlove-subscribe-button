@@ -134,12 +134,12 @@ body.podlove-subscribe {
 #podlove-subscribe-popup {
   background: rgba(0, 0, 0, 0.7);
   color: #fff;
-  height: 100vh;
+  height: 100%;
   left: 0;
   margin: 0 auto;
   overflow-y: scroll;
   padding: 0;
-  position: absolute;
+  position: fixed;
   top: 0;
   vertical-align: middle;
   width: 100vw;
