@@ -214,6 +214,7 @@ body.podlove-subscribe {
   #podlove-subscribe-panel-type,
   #podlove-subscribe-panel-clients,
   #podlove-subscribe-panel-finish {
+    border-radius: 15px;
     height: 100%;
     left: 100%;
     padding: 60px 20px 20px;
@@ -253,6 +254,17 @@ body.podlove-subscribe {
     font-size: 14px;
     left: 0;
     padding-bottom: 0;
+
+    .top-bar img {
+      height: 26px;
+      opacity: 0.6;
+    }
+
+    .top-bar span {
+      line-height: 26px;
+      opacity: 0.8;
+      vertical-align: top;
+    }
 
     img.podcast-cover {
       height: 150px;

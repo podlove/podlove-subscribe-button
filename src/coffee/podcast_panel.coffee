@@ -12,6 +12,7 @@ class PodcastPanel extends Panel
     cover: @podcast.cover,
     title: @podcast.title,
     subtitle: @podcast.subtitle,
+    scriptPath: @parent.options.scriptPath,
   }
 
   render: () ->
@@ -25,7 +26,8 @@ class PodcastPanel extends Panel
   template: Handlebars.compile('
     <div>
       <div class="top-bar">
-        Subscribe
+        <img src="{{scriptPath}}/images/icon-big@2x.png">
+        <span>Subscribe</span>
       </div>
       {{#if cover}}
       <img class="podcast-cover" src="{{cover}}">

@@ -543,7 +543,8 @@ PodcastPanel = (function(_super) {
     return {
       cover: this.podcast.cover,
       title: this.podcast.title,
-      subtitle: this.podcast.subtitle
+      subtitle: this.podcast.subtitle,
+      scriptPath: this.parent.options.scriptPath
     };
   };
 
@@ -558,7 +559,7 @@ PodcastPanel = (function(_super) {
     })(this));
   };
 
-  PodcastPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> Subscribe </div> {{#if cover}} <img class="podcast-cover" src="{{cover}}"> {{/if}} <h1>{{title}}</h1> <p>{{subtitle}}</p> <button class="podlove-subscribe-button">Choose Client</button> </div>');
+  PodcastPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span>Subscribe</span> </div> {{#if cover}} <img class="podcast-cover" src="{{cover}}"> {{/if}} <h1>{{title}}</h1> <p>{{subtitle}}</p> <button class="podlove-subscribe-button">Choose Client</button> </div>');
 
   return PodcastPanel;
 

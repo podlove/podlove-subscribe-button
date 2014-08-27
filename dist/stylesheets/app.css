@@ -204,6 +204,7 @@ body.podlove-subscribe {
 #podlove-subscribe-popup #podlove-subscribe-panel-type,
 #podlove-subscribe-popup #podlove-subscribe-panel-clients,
 #podlove-subscribe-popup #podlove-subscribe-panel-finish {
+  border-radius: 15px;
   height: 100%;
   left: 100%;
   padding: 60px 20px 20px;
@@ -247,6 +248,15 @@ body.podlove-subscribe {
   font-size: 14px;
   left: 0;
   padding-bottom: 0;
+}
+#podlove-subscribe-popup #podlove-subscribe-panel-podcast .top-bar img {
+  height: 26px;
+  opacity: 0.6;
+}
+#podlove-subscribe-popup #podlove-subscribe-panel-podcast .top-bar span {
+  line-height: 26px;
+  opacity: 0.8;
+  vertical-align: top;
 }
 #podlove-subscribe-popup #podlove-subscribe-panel-podcast img.podcast-cover {
   height: 150px;
