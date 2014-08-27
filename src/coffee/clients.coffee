@@ -10,9 +10,10 @@ class Clients
   cloud: [
     {
       title: 'gpodder.net'
-      scheme: 'https://gpodder.net/search/?q='
+      scheme: 'http://gpodder.net/subscribe?url='
       icon: 'cloud/gpodder@2x.jpg'
       register: 'https://gpodder.net/'
+      http: true
     }
   ]
 

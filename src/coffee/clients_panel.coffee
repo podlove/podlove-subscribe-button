@@ -38,6 +38,7 @@ class ClientsPanel extends Panel
     for client in @cloudClients
       Utils.fixIconPath(client, pathPrefix)
       feedUrl = @podcast.feeds.aac
+      feedUrl = feedUrl.replace('http://', '') unless client.http
       client.url = "#{client.scheme}#{feedUrl}"
 
     _(@cloudClients).shuffle()

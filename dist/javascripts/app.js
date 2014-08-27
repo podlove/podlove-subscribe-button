@@ -186,9 +186,10 @@ Clients = (function() {
   Clients.prototype.cloud = [
     {
       title: 'gpodder.net',
-      scheme: 'https://gpodder.net/search/?q=',
+      scheme: 'http://gpodder.net/subscribe?url=',
       icon: 'cloud/gpodder@2x.jpg',
-      register: 'https://gpodder.net/'
+      register: 'https://gpodder.net/',
+      http: true
     }
   ];
 
@@ -344,6 +345,9 @@ ClientsPanel = (function(_super) {
       client = _ref1[_j];
       Utils.fixIconPath(client, pathPrefix);
       feedUrl = this.podcast.feeds.aac;
+      if (!client.http) {
+        feedUrl = feedUrl.replace('http://', '');
+      }
       client.url = "" + client.scheme + feedUrl;
     }
     _(this.cloudClients).shuffle();
