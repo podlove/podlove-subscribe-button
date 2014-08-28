@@ -273,7 +273,7 @@ Clients = (function() {
   Clients.prototype.windowsPhone = [
     {
       title: 'Podcasts',
-      scheme: 'wp-podcast://'
+      scheme: 'wp-podcast://Subscribe/?feedUrl='
     }
   ];
 
