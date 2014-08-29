@@ -730,11 +730,11 @@ UserAgent = (function() {
 })();
 
 UAs = {
+  windowsPhone: /windows phone/i,
   android: /android/i,
   ios: /(ipad|iphone|ipod)/i,
   linux: /linux/i,
-  osx: /macintosh/i,
-  windowsPhone: /windows phone/i
+  osx: /macintosh/i
 };
 
 module.exports = UserAgent;
