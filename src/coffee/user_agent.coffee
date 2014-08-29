@@ -7,7 +7,7 @@ class UserAgent
         return ua
 
 UAs =
-  windowsPhone: /windows phone/i
+  windowsPhone: /trident/i
   android: /android/i
   ios: /(ipad|iphone|ipod)/i
   linux: /linux/i

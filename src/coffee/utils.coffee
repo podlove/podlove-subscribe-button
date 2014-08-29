@@ -11,6 +11,8 @@ class Utils
     options
 
   @fixIconPath: (client, prefix) ->
+    return if !client.icon
+
     if client.icon.indexOf(prefix) == -1
       client.icon = "#{prefix}images/#{client.icon}"
 

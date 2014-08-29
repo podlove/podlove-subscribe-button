@@ -87,12 +87,12 @@ class Clients
       icon: 'ios/overcast@2x.png'
       install: 'https://itunes.apple.com/de/app/overcast-podcast-player/id888422857'
     },
-    #{
-      #title: 'PocketCasts'
-      #scheme: 'pktc://'
-      #icon: 'ios/pocketcasts@2x.png'
-      #install: 'https://itunes.apple.com/de/app/pocket-casts/id414834813'
-    #},
+    {
+      title: 'PocketCasts'
+      scheme: 'pktc://subscribe/'
+      icon: 'ios/pocketcasts@2x.png'
+      install: 'https://itunes.apple.com/de/app/pocket-casts/id414834813'
+    },
     #{
       #title: 'Podcat'
       #scheme: 'podcat://'
@@ -125,6 +125,7 @@ class Clients
     {
       title: 'Podcasts'
       scheme: 'wp-podcast://Subscribe/?feedUrl='
+      icon: 'icon-medium@2x.png'
     }
   ]
 

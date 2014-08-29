@@ -248,6 +248,11 @@ Clients = (function() {
       scheme: 'overcast://x-callback-url/add?url=',
       icon: 'ios/overcast@2x.png',
       install: 'https://itunes.apple.com/de/app/overcast-podcast-player/id888422857'
+    }, {
+      title: 'PocketCasts',
+      scheme: 'pktc://subscribe/',
+      icon: 'ios/pocketcasts@2x.png',
+      install: 'https://itunes.apple.com/de/app/pocket-casts/id414834813'
     }
   ];
 
@@ -273,7 +278,8 @@ Clients = (function() {
   Clients.prototype.windowsPhone = [
     {
       title: 'Podcasts',
-      scheme: 'wp-podcast://Subscribe/?feedUrl='
+      scheme: 'wp-podcast://Subscribe/?feedUrl=',
+      icon: 'icon-medium@2x.png'
     }
   ];
 
@@ -730,7 +736,7 @@ UserAgent = (function() {
 })();
 
 UAs = {
-  windowsPhone: /windows phone/i,
+  windowsPhone: /trident/i,
   android: /android/i,
   ios: /(ipad|iphone|ipod)/i,
   linux: /linux/i,
@@ -761,6 +767,9 @@ Utils = (function() {
   };
 
   Utils.fixIconPath = function(client, prefix) {
+    if (!client.icon) {
+      return;
+    }
     if (client.icon.indexOf(prefix) === -1) {
       return client.icon = "" + prefix + "images/" + client.icon;
     }
