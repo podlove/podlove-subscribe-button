@@ -36,8 +36,8 @@ Use gulp to build the project or start the watcher:
 
 ## Contribution
 
-If you find a bug please use [Github Issues](https://github.com/podlove/podlove-subscribe-it/issues) to report it. If you want to add a feature or fix a bug please fork the repository, make your changes in a feature branch and open a pull-request.
+If you find a bug please use [Github Issues](https://github.com/podlove/podlove-subscribe-button/issues) to report it. If you want to add a feature or fix a bug please fork the repository, make your changes in a feature branch and open a pull-request.
 
 ## License
 
-[MIT](https://github.com/podlove/podlove-subscribe-it/blob/master/LICENSE)
+[MIT](https://github.com/podlove/podlove-subscribe-button/blob/master/LICENSE)
