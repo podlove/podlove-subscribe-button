@@ -630,3 +630,11 @@ SubscribeIt.Clients =
       platform: 'windowsPhone'
     }
   ]
+  linux: [
+    {
+      title: 'Clementine'
+      scheme: 'itpc://'
+      icon: 'linux/clementine@2x.png'
+      platform: 'linux'
+    }
+  ]
