@@ -99,7 +99,13 @@ class Clients
       #icon: 'ios/podcat@2x.png'
     #},
   ]
-
+  linux: [
+    {
+      title: 'Clementine'
+      scheme: 'itpc://'
+      icon: 'linux/clementine@2x.png'
+    }
+  ],
   osx: [
     {
       title: 'Downcast'

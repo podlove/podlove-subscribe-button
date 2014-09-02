@@ -256,6 +256,14 @@ Clients = (function() {
     }
   ];
 
+  Clients.prototype.linux = [
+    {
+      title: 'Clementine',
+      scheme: 'itpc://',
+      icon: 'linux/clementine@2x.png'
+    }
+  ];
+
   Clients.prototype.osx = [
     {
       title: 'Downcast',
