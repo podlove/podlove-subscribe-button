@@ -278,7 +278,7 @@ Clients = (function() {
   Clients.prototype.windowsPhone = [
     {
       title: 'Podcasts',
-      scheme: 'wp-podcast://Subscribe/?feedUrl=',
+      scheme: 'pcast:',
       icon: 'icon-medium@2x.png'
     }
   ];
