@@ -190,6 +190,12 @@ Clients = (function() {
       icon: 'cloud/gpodder@2x.jpg',
       register: 'https://gpodder.net/',
       http: true
+    }, {
+      title: 'Player.fm',
+      scheme: 'https://player.fm/series/subscribe?id=',
+      icon: 'cloud/playerfm@2x.png',
+      register: 'https://player.fm/',
+      http: true
     }
   ];
 
