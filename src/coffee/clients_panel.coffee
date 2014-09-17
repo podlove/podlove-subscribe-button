@@ -89,7 +89,7 @@ class ClientsPanel extends Panel
     <div>
       <div class="top-bar">
         <span class="back-button">&lsaquo;</span>
-        <button class="podlove-subscribe-local active">Local</button>
+        <button class="podlove-subscribe-local active">App</button>
         <button class="podlove-subscribe-cloud">Cloud</button>
       </div>
       <ul class="local-clients">

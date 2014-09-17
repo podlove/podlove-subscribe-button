@@ -423,7 +423,7 @@ ClientsPanel = (function(_super) {
     return this.parent.finishPanel.render(client);
   };
 
-  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> <button class="podlove-subscribe-local active">Local</button> <button class="podlove-subscribe-cloud">Cloud</button> </div> <ul class="local-clients"> {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} <li> <a data-client="rss"> <img src="{{otherClient.icon}}"> {{otherClient.title}} </a> </li> </ul> <ul class="cloud-clients"> {{#each cloudClients}} <li> <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} </ul> </div>');
+  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> <button class="podlove-subscribe-local active">App</button> <button class="podlove-subscribe-cloud">Cloud</button> </div> <ul class="local-clients"> {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} <li> <a data-client="rss"> <img src="{{otherClient.icon}}"> {{otherClient.title}} </a> </li> </ul> <ul class="cloud-clients"> {{#each cloudClients}} <li> <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} </ul> </div>');
 
   return ClientsPanel;
 
@@ -571,6 +571,12 @@ PodcastPanel = (function(_super) {
   PodcastPanel.prototype.render = function() {
     this.elem = $(this.template(this.context()));
     this.container.append(this.elem);
+    this.elem.find('#podlove-subscribe-popup-help-button').on('click', (function(_this) {
+      return function(event) {
+        _this.elem.find('#podlove-subscribe-button-help-panel').toggle();
+        return $(event.currentTarget).toggleClass('active');
+      };
+    })(this));
     return this.elem.find('button').on('click', (function(_this) {
       return function(event) {
         _this.parent.moveClients('0%');
@@ -579,7 +585,7 @@ PodcastPanel = (function(_super) {
     })(this));
   };
 
-  PodcastPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span>Subscribe</span> </div> {{#if cover}} <img class="podcast-cover" src="{{cover}}"> {{/if}} <h1>{{title}}</h1> <p>{{subtitle}}</p> <button class="podlove-subscribe-button">Choose Client</button> </div>');
+  PodcastPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span id="podlove-subscribe-popup-help-button"> <span class="questionmark">?</span> <span class="back-button">&lsaquo;</span> </span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> {{#if cover}} <img class="podcast-cover" src="{{cover}}"> {{/if}} <h1>{{title}}</h1> <p>{{subtitle}}</p> <button class="podlove-subscribe-button">Choose Client</button> <div id="podlove-subscribe-button-help-panel"> <h2>Subscribe?</h2> <p>With a subscription podcast episodes will be automatically downloaded to your device.</p> </div> </div>');
 
   return PodcastPanel;
 
@@ -628,7 +634,7 @@ Popup = (function() {
     })(this));
   };
 
-  Popup.prototype.template = Handlebars.compile('<div id="podlove-subscribe-popup" class="podlove-subscribe"> <div id="podlove-subscribe-popup-modal"> <div id="podlove-subscribe-popup-modal-inner" class="show-left"> <span id="podlove-subscribe-popup-close-button" class="podlove-subscribe-install-button">&times;</span> <div id="podlove-subscribe-panel-podcast"></div> <div id="podlove-subscribe-panel-format"></div> <div id="podlove-subscribe-panel-type"></div> <div id="podlove-subscribe-panel-clients"></div> <div id="podlove-subscribe-panel-finish"></div> </div> <img src="{{scriptPath}}images/podlove@2x.png" class="podlove-logo"> </div> </div>');
+  Popup.prototype.template = Handlebars.compile('<div id="podlove-subscribe-popup" class="podlove-subscribe"> <div id="podlove-subscribe-popup-modal"> <div id="podlove-subscribe-popup-modal-inner" class="show-left"> <span id="podlove-subscribe-popup-close-button" class="podlove-subscribe-install-button">&times;</span> <div id="podlove-subscribe-panel-podcast"></div> <div id="podlove-subscribe-panel-format"></div> <div id="podlove-subscribe-panel-type"></div> <div id="podlove-subscribe-panel-clients"></div> <div id="podlove-subscribe-panel-finish"></div> </div> <a href="http://www.podlove.org" title="Podlove" target="_blank"><img src="{{scriptPath}}images/podlove@2x.png" class="podlove-logo"></a> </div> </div>');
 
   Popup.prototype.initPanels = function() {
     var prefix;
