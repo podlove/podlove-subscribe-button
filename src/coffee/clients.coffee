@@ -145,11 +145,11 @@ class Clients
   ]
 
   windowsPhone: [
-    {
-      title: 'Podcasts'
-      scheme: 'pcast:'
-      icon: 'icon-medium@2x.png'
-    }
+    #{
+      #title: 'Podcasts'
+      #scheme: 'pcast:'
+      #icon: 'icon-medium@2x.png'
+    #}
   ]
 
 module.exports = Clients
