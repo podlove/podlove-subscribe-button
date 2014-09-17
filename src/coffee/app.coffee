@@ -37,7 +37,7 @@ class SubscribeButton
 
   getOptions: () ->
     options =
-      scriptPath: @scriptElem.attr('src').match(/(^.*\/)/)[0].replace(/javascripts\/$/, '')
+      scriptPath: @scriptElem.attr('src').match(/(^.*\/)/)[0].replace(/javascripts\/$/, '').replace(/\/$/, '')
       #language: @scriptElem.data('language')
       size: @scriptElem.data('size')
 
@@ -68,7 +68,7 @@ class SubscribeButton
   # builds the button Iframe and attaches the click event listener
   iframe: () ->
     id = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
-    buttonUrl = "#{@options.scriptPath}button.html?id=#{id}&language=#{@options.language}&size=#{@options.size}"
+    buttonUrl = "#{@options.scriptPath}/button.html?id=#{id}&language=#{@options.language}&size=#{@options.size}"
 
     iframe = $('<iframe>')
       .attr('src', buttonUrl)

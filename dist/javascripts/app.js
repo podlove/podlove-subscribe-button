@@ -54,7 +54,7 @@ SubscribeButton = (function() {
   SubscribeButton.prototype.getOptions = function() {
     var options;
     options = {
-      scriptPath: this.scriptElem.attr('src').match(/(^.*\/)/)[0].replace(/javascripts\/$/, ''),
+      scriptPath: this.scriptElem.attr('src').match(/(^.*\/)/)[0].replace(/javascripts\/$/, '').replace(/\/$/, ''),
       size: this.scriptElem.data('size')
     };
     return this.options = $.extend(this.defaultOptions, options);
@@ -96,7 +96,7 @@ SubscribeButton = (function() {
   SubscribeButton.prototype.iframe = function() {
     var buttonUrl, id, iframe;
     id = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-    buttonUrl = "" + this.options.scriptPath + "button.html?id=" + id + "&language=" + this.options.language + "&size=" + this.options.size;
+    buttonUrl = "" + this.options.scriptPath + "/button.html?id=" + id + "&language=" + this.options.language + "&size=" + this.options.size;
     iframe = $('<iframe>').attr('src', buttonUrl).attr('id', id).addClass('podlove-subscribe-button-iframe').css({
       border: 'none',
       display: 'block',
@@ -685,7 +685,7 @@ Popup = (function() {
     })(this));
   };
 
-  Popup.prototype.template = Handlebars.compile('<div id="podlove-subscribe-popup" class="podlove-subscribe"> <div id="podlove-subscribe-popup-modal"> <div id="podlove-subscribe-popup-modal-inner" class="show-left"> <span id="podlove-subscribe-popup-close-button" class="podlove-subscribe-install-button">&times;</span> <div id="podlove-subscribe-panel-podcast"></div> <div id="podlove-subscribe-panel-format"></div> <div id="podlove-subscribe-panel-type"></div> <div id="podlove-subscribe-panel-clients"></div> <div id="podlove-subscribe-panel-finish"></div> </div> <a href="http://www.podlove.org" title="Podlove" target="_blank"><img src="{{scriptPath}}images/podlove@2x.png" class="podlove-logo"></a> </div> </div>');
+  Popup.prototype.template = Handlebars.compile('<div id="podlove-subscribe-popup" class="podlove-subscribe"> <div id="podlove-subscribe-popup-modal"> <div id="podlove-subscribe-popup-modal-inner" class="show-left"> <span id="podlove-subscribe-popup-close-button" class="podlove-subscribe-install-button">&times;</span> <div id="podlove-subscribe-panel-podcast"></div> <div id="podlove-subscribe-panel-format"></div> <div id="podlove-subscribe-panel-type"></div> <div id="podlove-subscribe-panel-clients"></div> <div id="podlove-subscribe-panel-finish"></div> </div> <a href="http://www.podlove.org" title="Podlove" target="_blank"><img src="{{scriptPath}}/images/podlove@2x.png" class="podlove-logo"></a> </div> </div>');
 
   Popup.prototype.initPanels = function() {
     var prefix;
@@ -842,7 +842,7 @@ Utils = (function() {
       return;
     }
     if (client.icon.indexOf(prefix) === -1) {
-      return client.icon = "" + prefix + "images/" + client.icon;
+      return client.icon = "" + prefix + "/images/" + client.icon;
     }
   };
 
