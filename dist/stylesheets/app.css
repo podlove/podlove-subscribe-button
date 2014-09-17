@@ -339,11 +339,6 @@ body.podlove-subscribe {
   padding-left: 0;
   padding-right: 0;
 }
-#podlove-subscribe-popup #podlove-subscribe-panel-clients > div {
-  max-height: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
 #podlove-subscribe-popup #podlove-subscribe-panel-clients .top-bar {
   text-align: center;
 }

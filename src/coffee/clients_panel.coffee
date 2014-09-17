@@ -99,7 +99,7 @@ class ClientsPanel extends Panel
         <button class="podlove-subscribe-cloud">Cloud</button>
       </div>
       <ul class="local-clients">
-        {{#if osDefault}}
+        {{#if osDefault.icon}}
         <li>
           <a href="{{osDefault.url}}" data-client="{{osDefault.title}}" target="_blank">
             <img src="{{osDefault.icon}}">
