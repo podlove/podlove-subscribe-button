@@ -195,6 +195,7 @@ body.podlove-subscribe {
   color: #fff;
   display: none;
   font-weight: 100;
+  font-size: 95%;
   height: 100%;
   left: 0;
   padding: 25px;
@@ -204,6 +205,9 @@ body.podlove-subscribe {
 #podlove-subscribe-popup #podlove-subscribe-button-help-panel > * {
   opacity: 0.8;
   text-align: left;
+}
+#podlove-subscribe-popup #podlove-subscribe-button-help-panel > h2 {
+  margin-top: 0 !important;
 }
 #podlove-subscribe-popup .podlove-subscribe-back-button {
   cursor: pointer;
@@ -217,7 +221,7 @@ body.podlove-subscribe {
   top: 10px;
 }
 #podlove-subscribe-popup #podlove-subscribe-popup-modal {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 25px;
   box-shadow: 0 0 5px 0 #222;
   height: 460px;
