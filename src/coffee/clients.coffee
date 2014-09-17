@@ -27,7 +27,7 @@ class Clients
     },
     {
       title: 'Player.fm'
-      scheme: 'https://player.fm/series/subscribe?id='
+      scheme: 'https://player.fm/subscribe?id='
       icon: 'cloud/playerfm@2x.png'
       register: 'https://player.fm/'
       http: true
@@ -46,6 +46,12 @@ class Clients
       scheme: 'pcast://'
       icon: 'android/beyondpod@2x.png'
       install: 'https://play.google.com/store/apps/details?id=mobi.beyondpod'
+    },
+    {
+      title: 'Player.fm'
+      scheme: 'pcast://'
+      icon: 'android/playerfm@2x.png'
+      install: 'https://play.google.com/store/apps/details?id=fm.player'
     },
     {
       title: 'PocketCasts'

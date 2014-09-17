@@ -205,7 +205,7 @@ Clients = (function() {
       http: true
     }, {
       title: 'Player.fm',
-      scheme: 'https://player.fm/series/subscribe?id=',
+      scheme: 'https://player.fm/subscribe?id=',
       icon: 'cloud/playerfm@2x.png',
       register: 'https://player.fm/',
       http: true
