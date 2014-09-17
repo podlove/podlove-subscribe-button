@@ -12,6 +12,7 @@ class ClientsPanel extends Panel
     @podcast = @parent.podcast
     @platform = new UserAgent().detect()
     @clients = new Clients(@platform)
+    @osDefault = new Clients(@platform, true)
     @cloudClients = new Clients('cloud')
     @prepareClients(@parent.options.scriptPath)
 
@@ -25,23 +26,28 @@ class ClientsPanel extends Panel
     platform: @platform,
     otherClient: @otherClient,
     cloudClients: @cloudClients,
+    osDefault: @osDefault,
   }
 
   prepareClients: (pathPrefix) ->
+    feedUrl = @podcast.feeds.aac
+
     for client in @clients
       Utils.fixIconPath(client, pathPrefix)
-      feedUrl = @podcast.feeds.aac
       client.url = "#{client.scheme}#{feedUrl.replace('http://', '')}"
 
     _(@clients).shuffle()
 
     for client in @cloudClients
       Utils.fixIconPath(client, pathPrefix)
-      feedUrl = @podcast.feeds.aac
       feedUrl = feedUrl.replace('http://', '') unless client.http
       client.url = "#{client.scheme}#{feedUrl}"
 
     _(@cloudClients).shuffle()
+
+    Utils.fixIconPath(@osDefault, pathPrefix)
+    @osDefault.title = 'Let device decide'
+    @osDefault.url = feedUrl
 
     @otherClient = new Clients('rss')
     Utils.fixIconPath(@otherClient, pathPrefix)
@@ -93,6 +99,15 @@ class ClientsPanel extends Panel
         <button class="podlove-subscribe-cloud">Cloud</button>
       </div>
       <ul class="local-clients">
+        {{#if osDefault}}
+        <li>
+          <a href="{{osDefault.url}}" data-client="{{osDefault.title}}" target="_blank">
+            <img src="{{osDefault.icon}}">
+            {{osDefault.title}}
+          </a>
+        </li>
+        {{/if}}
+
         {{#each clients}}
         <li>
           <a href="{{url}}" data-client="{{title}}" target="_blank">

@@ -334,6 +334,11 @@ body.podlove-subscribe {
   padding-left: 0;
   padding-right: 0;
 }
+#podlove-subscribe-popup #podlove-subscribe-panel-clients > div {
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
 #podlove-subscribe-popup #podlove-subscribe-panel-clients .top-bar {
   text-align: center;
 }
@@ -370,6 +375,7 @@ body.podlove-subscribe {
 #podlove-subscribe-popup #podlove-subscribe-panel-clients li {
   font-size: 22px;
   list-style: none;
+  position: relative;
   text-align: left;
 }
 #podlove-subscribe-popup #podlove-subscribe-panel-clients li:hover {
@@ -384,7 +390,7 @@ body.podlove-subscribe {
 #podlove-subscribe-popup #podlove-subscribe-panel-clients li a {
   color: #fff;
   display: block;
-  padding: 10px 20px 10px 60px;
+  padding: 8px 20px 8px 60px;
   text-decoration: none;
 }
 #podlove-subscribe-popup #podlove-subscribe-panel-finish {

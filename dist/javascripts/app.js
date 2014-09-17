@@ -174,13 +174,26 @@ module.exports = Button;
 var Clients;
 
 Clients = (function() {
-  function Clients(platform) {
+  function Clients(platform, osDefault) {
+    if (osDefault == null) {
+      osDefault = false;
+    }
+    if (osDefault) {
+      return this['os_defaults'][platform];
+    }
     return this[platform];
   }
 
   Clients.prototype.rss = {
     title: 'Other Client (RSS)',
     icon: 'rss.png'
+  };
+
+  Clients.prototype.os_defaults = {
+    android: {
+      scheme: 'pcast:',
+      icon: 'android@2x.png'
+    }
   };
 
   Clients.prototype.cloud = [
@@ -210,6 +223,11 @@ Clients = (function() {
       scheme: 'pcast://',
       icon: 'android/beyondpod@2x.png',
       install: 'https://play.google.com/store/apps/details?id=mobi.beyondpod'
+    }, {
+      title: 'Player.fm',
+      scheme: 'pcast://',
+      icon: 'android/playerfm@2x.png',
+      install: 'https://play.google.com/store/apps/details?id=fm.player'
     }, {
       title: 'PocketCasts',
       scheme: 'pcast://',
@@ -289,13 +307,7 @@ Clients = (function() {
     }
   ];
 
-  Clients.prototype.windowsPhone = [
-    {
-      title: 'Podcasts',
-      scheme: 'pcast:',
-      icon: 'icon-medium@2x.png'
-    }
-  ];
+  Clients.prototype.windowsPhone = [];
 
   return Clients;
 
@@ -333,6 +345,7 @@ ClientsPanel = (function(_super) {
     this.podcast = this.parent.podcast;
     this.platform = new UserAgent().detect();
     this.clients = new Clients(this.platform);
+    this.osDefault = new Clients(this.platform, true);
     this.cloudClients = new Clients('cloud');
     this.prepareClients(this.parent.options.scriptPath);
     this.render();
@@ -346,17 +359,18 @@ ClientsPanel = (function(_super) {
       clients: this.clients,
       platform: this.platform,
       otherClient: this.otherClient,
-      cloudClients: this.cloudClients
+      cloudClients: this.cloudClients,
+      osDefault: this.osDefault
     };
   };
 
   ClientsPanel.prototype.prepareClients = function(pathPrefix) {
     var client, feedUrl, _i, _j, _len, _len1, _ref, _ref1;
+    feedUrl = this.podcast.feeds.aac;
     _ref = this.clients;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       client = _ref[_i];
       Utils.fixIconPath(client, pathPrefix);
-      feedUrl = this.podcast.feeds.aac;
       client.url = "" + client.scheme + (feedUrl.replace('http://', ''));
     }
     _(this.clients).shuffle();
@@ -364,13 +378,15 @@ ClientsPanel = (function(_super) {
     for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
       client = _ref1[_j];
       Utils.fixIconPath(client, pathPrefix);
-      feedUrl = this.podcast.feeds.aac;
       if (!client.http) {
         feedUrl = feedUrl.replace('http://', '');
       }
       client.url = "" + client.scheme + feedUrl;
     }
     _(this.cloudClients).shuffle();
+    Utils.fixIconPath(this.osDefault, pathPrefix);
+    this.osDefault.title = 'Let device decide';
+    this.osDefault.url = feedUrl;
     this.otherClient = new Clients('rss');
     Utils.fixIconPath(this.otherClient, pathPrefix);
     return this.otherClient.url = feedUrl;
@@ -423,7 +439,7 @@ ClientsPanel = (function(_super) {
     return this.parent.finishPanel.render(client);
   };
 
-  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> <button class="podlove-subscribe-local active">App</button> <button class="podlove-subscribe-cloud">Cloud</button> </div> <ul class="local-clients"> {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} <li> <a data-client="rss"> <img src="{{otherClient.icon}}"> {{otherClient.title}} </a> </li> </ul> <ul class="cloud-clients"> {{#each cloudClients}} <li> <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} </ul> </div>');
+  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> <button class="podlove-subscribe-local active">App</button> <button class="podlove-subscribe-cloud">Cloud</button> </div> <ul class="local-clients"> {{#if osDefault}} <li> <a href="{{osDefault.url}}" data-client="{{osDefault.title}}" target="_blank"> <img src="{{osDefault.icon}}"> {{osDefault.title}} </a> </li> {{/if}} {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} <li> <a data-client="rss"> <img src="{{otherClient.icon}}"> {{otherClient.title}} </a> </li> </ul> <ul class="cloud-clients"> {{#each cloudClients}} <li> <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} </ul> </div>');
 
   return ClientsPanel;
 

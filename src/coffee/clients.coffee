@@ -1,10 +1,20 @@
 class Clients
-  constructor: (platform) ->
+  constructor: (platform, osDefault=false) ->
+    if osDefault
+      return @['os_defaults'][platform]
+
     return @[platform]
 
   rss: {
     title: 'Other Client (RSS)'
     icon: 'rss.png'
+  }
+
+  os_defaults: {
+    android: {
+      scheme: 'pcast:'
+      icon: 'android@2x.png'
+    }
   }
 
   cloud: [

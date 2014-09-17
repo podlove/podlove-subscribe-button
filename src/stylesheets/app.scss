@@ -354,6 +354,12 @@ body.podlove-subscribe {
     padding-left: 0;
     padding-right: 0;
 
+    & > div {
+      max-height: 100%;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+
     .top-bar {
       text-align: center;
 
@@ -396,7 +402,7 @@ body.podlove-subscribe {
     li {
       font-size: 22px;
       list-style: none;
-      //padding: 10px 20px 10px 60px;
+      position: relative;
       text-align: left;
     }
 
@@ -414,7 +420,7 @@ body.podlove-subscribe {
     li a {
       color: #fff;
       display: block;
-      padding: 10px 20px 10px 60px;
+      padding: 8px 20px 8px 60px;
       text-decoration: none;
     }
   }
