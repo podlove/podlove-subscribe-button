@@ -4,6 +4,7 @@ Button = require('./button.coffee')
 Popup = require('./popup.coffee')
 Utils = require('./utils.coffee')
 IframeResizer = require('./iframe_resizer.coffee')
+IframeClick = require('./iframe_click.coffee')
 
 class SubscribeButton
   @init: (selector = '.podlove-subscribe-button') ->
@@ -54,7 +55,11 @@ class SubscribeButton
     @podcast = data
 
   renderButtonIframe: () ->
-    @scriptElem.replaceWith(@iframe())
+    elem = $('<div>').append(@iframe())
+    $(elem).on 'click', (event) =>
+      @openPopup()
+
+    @scriptElem.replaceWith(elem)
 
   addCss: () ->
     link = $("<link rel='stylesheet' href='#{@options.scriptPath}/stylesheets/app.css'></script>")
@@ -71,15 +76,13 @@ class SubscribeButton
       .addClass('podlove-subscribe-button-iframe')
       .css({border: 'none', display: 'block', overflow: 'hidden'})
 
-    iframe.on 'load', () =>
-      $(iframe[0].contentDocument).on 'click', (event) =>
-        @openPopup()
-
     IframeResizer.listen('resizeButton', iframe)
+
+    IframeClick.listen(iframe, @openPopup)
 
     iframe
 
-  openPopup: () ->
+  openPopup: () =>
     new Popup(@podcast, @options)
 
 window.SubscribeButton = SubscribeButton

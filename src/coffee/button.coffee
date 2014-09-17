@@ -1,7 +1,6 @@
 $ = require('../../vendor/zepto-browserify.js').Zepto
 Utils = require('./utils.coffee')
 Translations = require('./translations.coffee')
-IframeResizer = require('./iframe_resizer.coffee')
 
 class Button
   constructor: () ->
@@ -16,6 +15,8 @@ class Button
     buttonHtml = "<span>#{Translations.button[@options.language]}</span>"
     @elem.addClass(@options.size)
       .html(buttonHtml)
+    @elem.on 'click', (event) ->
+      window.parent.postMessage('clicked', '*')
 
   getOptions: () ->
     @options = Utils.locationToOptions(window.location.search)

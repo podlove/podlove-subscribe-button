@@ -1,7 +1,10 @@
 class IframeResizer
   @listen: (listenTo, iframe, offset = {}, callback) ->
     window.addEventListener('message', ((event) =>
-      resizeData = JSON.parse(event.data)
+      try
+        resizeData = JSON.parse(event.data)
+      catch
+        return
 
       return unless resizeData.id == iframe.attr('id')
       return unless resizeData.listenTo == listenTo
