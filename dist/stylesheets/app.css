@@ -295,6 +295,11 @@ body.podlove-subscribe {
   left: 0;
   padding-bottom: 0;
 }
+#podlove-subscribe-popup #podlove-subscribe-panel-podcast .top-bar img,
+#podlove-subscribe-popup #podlove-subscribe-panel-podcast .top-bar .panel-title {
+  position: relative;
+  left: -5px;
+}
 #podlove-subscribe-popup #podlove-subscribe-panel-podcast .top-bar img {
   height: 26px;
   opacity: 0.6;

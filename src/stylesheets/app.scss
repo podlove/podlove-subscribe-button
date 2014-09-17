@@ -309,6 +309,12 @@ body.podlove-subscribe {
     left: 0;
     padding-bottom: 0;
 
+    .top-bar img,
+    .top-bar .panel-title {
+      position: relative;
+      left: -5px
+    }
+
     .top-bar img {
       height: 26px;
       opacity: 0.6;
