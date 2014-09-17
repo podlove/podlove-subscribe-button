@@ -55,11 +55,7 @@ class SubscribeButton
     @podcast = data
 
   renderButtonIframe: () ->
-    elem = $('<div>').append(@iframe())
-    $(elem).on 'click', (event) =>
-      @openPopup()
-
-    @scriptElem.replaceWith(elem)
+    @scriptElem.replaceWith(@iframe())
 
   addCss: () ->
     link = $("<link rel='stylesheet' href='#{@options.scriptPath}/stylesheets/app.css'></script>")
@@ -74,7 +70,7 @@ class SubscribeButton
       .attr('src', buttonUrl)
       .attr('id', id)
       .addClass('podlove-subscribe-button-iframe')
-      .css({border: 'none', display: 'block', overflow: 'hidden'})
+      .css({border: 'none', display: 'inline-block', overflow: 'hidden'})
 
     IframeResizer.listen('resizeButton', iframe)
 

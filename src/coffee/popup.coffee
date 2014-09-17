@@ -37,7 +37,7 @@ class Popup
           <div id="podlove-subscribe-panel-finish"></div>
         </div>
 
-        <a href="http://www.podlove.org" title="Podlove" target="_blank"><img src="{{scriptPath}}/images/podlove@2x.png" class="podlove-logo"></a>
+        <a href="http://www.podlove.org" title="Podlove" target="_blank" class="podlove-logo"><img src="{{scriptPath}}/images/podlove@2x.png"></a>
       </div>
     </div>
   ')

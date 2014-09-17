@@ -247,8 +247,14 @@ body.podlove-subscribe {
     width: 300px;
 
     .podlove-logo {
-      margin-top: 6px;
-      width: 130px;
+      display: inline-block;
+      text-align: center;
+      width: 100%;
+
+      img {
+        margin-top: 6px;
+        width: 130px;
+      }
     }
 
     #podlove-subscribe-popup-modal-inner {
@@ -313,6 +319,7 @@ body.podlove-subscribe {
     font-size: 14px;
     left: 0;
     padding-bottom: 0;
+    text-align: center;
 
     .top-bar img,
     .top-bar .panel-title {
@@ -434,6 +441,7 @@ body.podlove-subscribe {
 
   #podlove-subscribe-panel-finish {
     background-color: rgb(123, 174, 149);
+    text-align: center;
 
     img {
       margin-top: 30px;
