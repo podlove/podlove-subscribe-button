@@ -353,10 +353,12 @@ body.podlove-subscribe {
   border-bottom-left-radius: 3px;
   color: #fff;
   cursor: pointer;
+  font-size: 12px;
   margin: 0;
   outline: none;
   position: relative;
   right: -2px;
+  top: -1px;
   width: 65px;
 }
 #podlove-subscribe-popup #podlove-subscribe-panel-clients .top-bar button + button {
