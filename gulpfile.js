@@ -5,36 +5,46 @@ var gulp = require('gulp'),
     watch = require('gulp-watch'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
+    browserify = require('gulp-browserify'),
+    rename = require('gulp-rename'),
     connect = require('gulp-connect');
 
-var dest = './build';
+var dest = './dist';
+var paths = {
+  stylesheets: ['./src/stylesheets/*.scss'],
+  main_javascript: ['./src/coffee/app.coffee'],
+  javascripts: ['./src/coffee/*.coffee'],
+  html: ['./src/html/button.html', './src/html/popup.html'],
+  images: ['./src/images/**']
+};
 
 gulp.task('stylesheets', function() {
-  return gulp.src('./src/stylesheets/*.scss')
+  return gulp.src(paths.stylesheets)
     .pipe(sass({style: 'expanded'}))
-    .pipe(gulp.dest(dest))
+    .pipe(gulp.dest('./dist/stylesheets'))
     .pipe(connect.reload())
 })
 
 gulp.task('javascripts', function() {
-  gulp.src('./src/javascripts/*.coffee')
-    .pipe(coffee({bare: true}).on('error', gutil.log))
-    .pipe(gulp.dest(dest))
-    .pipe(uglify())
-    .pipe(concat('subscribe-it.min.js'))
-    .pipe(gulp.dest(dest))
+  gulp.src(paths.main_javascript, {read: false})
+    .pipe(browserify({
+      transform: ['coffeeify'],
+      extensions: ['.coffee']
+    }))
+    .pipe(rename('app.js'))
+    .pipe(gulp.dest('./dist/javascripts'))
     .pipe(connect.reload())
 })
 
 gulp.task('html', function() {
-  gulp.src(['./src/button.html', './src/popup.html'])
-    .pipe(gulp.dest('./build'))
+  gulp.src(paths.html)
+    .pipe(gulp.dest('./dist'))
     .pipe(connect.reload())
 })
 
 gulp.task('images', function() {
-  gulp.src(['./src/images/**'])
-    .pipe(gulp.dest('./build/images'))
+  gulp.src(paths.images)
+    .pipe(gulp.dest('./dist/images'))
     .pipe(connect.reload())
 })
 
@@ -42,13 +52,13 @@ gulp.task('default', ['stylesheets', 'javascripts', 'html', 'images'])
 
 gulp.task('watch', function() {
   // Watch .scss files
-  gulp.watch('./src/stylesheets/*.scss', ['stylesheets'])
+  gulp.watch(paths.stylesheets, ['stylesheets'])
   // Watch .js files
-  gulp.watch('./src/javascripts/*.coffee', ['javascripts'])
+  gulp.watch(paths.javascripts, ['javascripts'])
   // Watch .html files
-  gulp.watch(['./src/button.html', './src/popup.html'], ['html'])
+  gulp.watch(paths.html, ['html'])
   // Watch images files
-  gulp.watch(['./src/images/*'], ['images'])
+  gulp.watch(paths.images, ['images'])
 })
 
 gulp.task('connect', function() {

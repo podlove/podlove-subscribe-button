@@ -11,7 +11,7 @@
         margin: 0 auto;
         padding-top: 25px;
         text-align: center;
-        width: 50%;
+        width: 60%;
       }
 
       body.dark {
@@ -36,35 +36,165 @@
         display: block;
       }
 
-      .podlove-subscribe-button {
+      hr {
+        border: none;
+        border-top: 1px solid #ccc;
+        margin: 40px -100px 30px;
+      }
+
+      .podlove-subscribe-button-iframe {
         margin: 0 auto 25px;
       }
+
+      .feed-form input {
+        font-size: 18px;
+        height: 30px;
+        width: 100%;
+      }
+
+      .feed-form button {
+        background-color: #75ad91;
+        border: 1px solid #456757;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 18px;
+        height: 40px;
+        text-shadow: 0 1px 0 rgba(0, 0, 1, .08);
+        width: 110px;
+      }
+
+      .feed-form button:disabled {
+        background-color: rgb(200, 200, 200);
+        border-color: rgb(240, 240, 240);
+        color: rgb(240, 240, 240);
+      }
+
+      .feed-form .success {
+        background-color: #75ad91;
+        border: 1px solid #456757;
+        border-radius: 2px;
+        color: #fff;
+        display: none;
+        padding: 10px 0;
+        text-shadow: 0 1px 0 rgba(0, 0, 1, .08);
+      }
     </style>
+    <script src="http://zeptojs.com/zepto.min.js"></script>
   </head>
   <body>
+    <script>
+      window.podcastData = {
+        "title": "Newz of the World",
+        "subtitle": "Tim and Mark talk about the Newz™",
+        "description": "Newz of the World is a weekly show about world news. Mark Fonseca Rendeiro and Tim Pritlove come together to present interesting reports and discuss their aspects and possible consequences. Newz of the world wants to be an alternative window to the common media flow and cherry picks interesting developments for you.",
+        "cover": "http://meta.metaebene.me/media/newz/newz-logo-600x600.jpg",
+        "feeds": {
+          "aac": "http://newz-of-the-world.com/feed/m4a",
+          "mp3": "http://newz-of-the-world.com/feed/mp3",
+          "ogg": "http://newz-of-the-world.com/feed/oga",
+          "opus": "http://newz-of-the-world.com/feed/opus"
+        }
+      }
+
+    </script>
+
     <h1>Podlove Subscribe Button</h1>
+
     <h2>Small</h2>
-    <script class="podlove-subscribe" src="build/subscribe-it.js" data-url="http://www.staatsbuergerkunde-podcast.de/feed/mp3-rss/" data-language="en" data-size="small" data-podcast="{'name': 'Staatsbürgerkunde', 'coverUrl': 'http://www.staatsbuergerkunde-podcast.de/sbk-cover-1400.jpg', 'subtitle': 'This is an awesome podcast'}"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="en" data-size="small" data-json-data="podcastData"></script>
 
     <h2>Medium</h2>
-    <script class="podlove-subscribe" src="build/subscribe-it.js" data-url="http://www.staatsbuergerkunde-podcast.de/feed/mp3-rss/" data-language="de" data-size="medium" data-podcast="{'name': 'Staatsbürgerkunde', 'coverUrl': 'http://www.staatsbuergerkunde-podcast.de/sbk-cover-1400.jpg', 'subtitle': 'This is an awesome podcast'}"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="en" data-size="medium" data-json-data="podcastData"></script>
 
     <h2>Big</h2>
-    <script class="podlove-subscribe" src="build/subscribe-it.js" data-url="http://das-sendezentrum.de/feed/m4a/" data-language="en" data-size="big"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="en" data-size="big" data-json-data="podcastData"></script>
 
-    <h2>Big with Logo</h2>
-    <script class="podlove-subscribe" src="build/subscribe-it.js" data-url="http://das-sendezentrum.de/feed/m4a/" data-language="en" data-size="logo"></script>
+    <!--<a href="#" onclick="darkMode()" class="darktoggle">Toggle Dark Background</a>-->
+    <!--<a href="#" onclick="lightMode()" class="lighttoggle">Toggle Light Background</a>-->
 
-    <a href="#" onclick="darkMode()" class="darktoggle">Toggle Dark Background</a>
-    <a href="#" onclick="lightMode()" class="lighttoggle">Toggle Light Background</a>
+    <h2>Use your own podcast data</h2>
+
+    <form class="feed-form">
+      <p>
+        Feed URL
+        <br>
+        <input class="feed-url" placeholder="http://newz-of-the-world.com/feed/m4a">
+      </p>
+      <p>
+        Podcast title
+        <br>
+        <input class="title" placeholder="Newz of the World">
+      </p>
+      <p>
+        Podcast subtitle (optional)
+        <br>
+        <input class="subtitle" placeholder="Tim and Mark talk about the Newz™">
+      </p>
+      <p>
+        Podcast cover URL (optional)
+        <br>
+        <input class="cover" placeholder="http://meta.metaebene.me/media/newz/newz-logo-600x600.jpg">
+      </p>
+      <br>
+      <button disabled>Update</button>
+      <p class="success">Awesome! Now click one of the<br> Subscribe Buttons above!</p>
+    </form>
+
+    <hr>
+
+    <h2>Please leave your feedback</h2>
+    <p>Please include which browser and OS you are using. If you encounter an error, please list the steps that led to it.</p>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'podlove-subscribe-button-feedback'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
   </body>
 
   <script>
-    darkMode= function() {
+    darkMode = function() {
       document.body.className = 'dark'
     }
-    lightMode= function() {
+    lightMode = function() {
       document.body.className = ''
     }
+
+    $('.feed-form input').on('keyup', function(event) {
+      if ($('.feed-form .feed-url').val().length && $('.feed-form .title').val().length) {
+        $('.feed-form button')[0].disabled = false
+      } else {
+        $('.feed-form button')[0].disabled = true
+      }
+    })
+    $('.feed-form').on('submit', function(event) {
+      event.preventDefault()
+      var feedUrl = $('.feed-form .feed-url').val()
+      var title = $('.feed-form .title').val()
+      var subtitle = $('.feed-form .subtitle').val()
+      var cover = $('.feed-form .cover').val()
+      window.podcastData = {
+        "title": title,
+        "subtitle": subtitle,
+        "cover": cover,
+        "feeds": {
+          "aac": feedUrl,
+        }
+      }
+      window.subscribeButtons.forEach(function(button, index, array) {
+        button.update()
+      })
+      $('.feed-form .success').show()
+    })
   </script>
 </html>
