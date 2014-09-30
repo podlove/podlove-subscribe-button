@@ -139,9 +139,11 @@ Button = (function() {
     var buttonHtml;
     buttonHtml = "<span>" + Translations.button[this.options.language] + "</span>";
     this.elem.addClass(this.options.size).html(buttonHtml);
-    return this.elem.on('click', function(event) {
-      return window.parent.postMessage('clicked', '*');
-    });
+    return this.elem.on('click', (function(_this) {
+      return function(event) {
+        return window.parent.postMessage("clicked_" + _this.options.id, '*');
+      };
+    })(this));
   };
 
   Button.prototype.getOptions = function() {
@@ -493,15 +495,19 @@ module.exports = FinishPanel;
 
 
 },{"../../vendor/handlebars.min.js":14,"../../vendor/zepto-browserify.js":16,"./panel.coffee":8}],6:[function(require,module,exports){
-var IframeClick;
+var $, IframeClick;
+
+$ = require('../../vendor/zepto-browserify.js').Zepto;
 
 IframeClick = (function() {
   function IframeClick() {}
 
   IframeClick.listen = function(iframe, callback) {
+    var id;
+    id = $(iframe).attr('id');
     return window.addEventListener('message', ((function(_this) {
       return function(event) {
-        if (event.data !== 'clicked') {
+        if (event.data !== ("clicked_" + id)) {
           return;
         }
         return callback();
@@ -517,7 +523,7 @@ module.exports = IframeClick;
 
 
 
-},{}],7:[function(require,module,exports){
+},{"../../vendor/zepto-browserify.js":16}],7:[function(require,module,exports){
 var IframeResizer;
 
 IframeResizer = (function() {

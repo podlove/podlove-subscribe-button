@@ -15,8 +15,9 @@ class Button
     buttonHtml = "<span>#{Translations.button[@options.language]}</span>"
     @elem.addClass(@options.size)
       .html(buttonHtml)
-    @elem.on 'click', (event) ->
-      window.parent.postMessage('clicked', '*')
+
+    @elem.on 'click', (event) =>
+      window.parent.postMessage("clicked_#{@options.id}", '*')
 
   getOptions: () ->
     @options = Utils.locationToOptions(window.location.search)
