@@ -7,6 +7,8 @@ deploy:
   secret_access_key:
     secure: fL1hmFUG7dhX7vy1J0TjSOQ97sfBQe+RsfadE5y0syl9x5+9d5HOMPV3GsTwaLuRJWAkz5ro+BwmJF6ID4ddDtd9MYWNCPNr37U6eNLdE57QY9+sMhJ0DGyU6GBt8+bLB4y4X5dmLwjvsGdLq+banSqmhsCdIxxPtBW3Cqon5ek=
   bucket: cdn.podlove.org
+  endpoint: cdn.podlove.org.s3-website-eu-west-1.amazonaws.com
+  region: eu-west-1
   local-dir: dist
   upload-dir: subscribe-button
   on:
