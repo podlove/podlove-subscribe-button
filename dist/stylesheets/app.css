@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:100,400,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700);
 html.podlove-subscribe {
   height: 100%;
 }
@@ -194,7 +194,7 @@ body.podlove-subscribe {
 #podlove-subscribe-popup #podlove-subscribe-button-help-panel {
   background: #1a1a1a;
   color: #fff;
-  font-weight: 100;
+  font-weight: 300;
   font-size: 95%;
   height: 100%;
   left: 0;
@@ -280,7 +280,7 @@ body.podlove-subscribe {
   background: #1a1a1a;
   color: #fff;
   font-size: 18px;
-  font-weight: 100;
+  font-weight: 300;
   height: 40px;
   left: 0;
   padding: 7px 0 0 10px;
