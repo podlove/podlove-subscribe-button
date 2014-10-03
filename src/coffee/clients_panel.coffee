@@ -58,7 +58,7 @@ class ClientsPanel extends Panel
     @elem = $(@template(@context()))
     @container.append(@elem)
 
-    @elem.find('.back-button').on 'click', (event) =>
+    @elem.find('.podlove-subscribe-back-button').on 'click', (event) =>
       @parent.movePodcast('0%')
       @parent.moveClients('100%')
 
@@ -95,7 +95,7 @@ class ClientsPanel extends Panel
   template: Handlebars.compile('
     <div>
       <div class="top-bar">
-        <span class="back-button">&lsaquo;</span>
+        <span class="podlove-subscribe-back-button">&lsaquo;</span>
         <img src="{{scriptPath}}/images/icon-big@2x.png">
         <span class="panel-title">Subscribe</span>
       </div>

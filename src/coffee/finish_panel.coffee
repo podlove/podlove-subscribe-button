@@ -16,7 +16,7 @@ class FinishPanel extends Panel
     @elem = $(@template(@context(client)))
     @container.append(@elem)
 
-    @elem.find('.back-button').on 'click', (event) =>
+    @elem.find('.podlove-subscribe-back-button').on 'click', (event) =>
       @parent.moveClients('0%')
       @parent.moveFinish('100%')
 
@@ -26,7 +26,7 @@ class FinishPanel extends Panel
   template: Handlebars.compile('
     <div>
       <div class="top-bar">
-        <span class="back-button">&lsaquo;</span>
+        <span class="podlove-subscribe-back-button">&lsaquo;</span>
         <img src="{{scriptPath}}/images/icon-big@2x.png">
         <span class="panel-title">Subscribe</span>
       </div>

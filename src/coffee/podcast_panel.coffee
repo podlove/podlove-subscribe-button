@@ -32,7 +32,7 @@ class PodcastPanel extends Panel
       <div class="top-bar">
         <span id="podlove-subscribe-popup-help-button">
           <span class="questionmark">?</span>
-          <span class="back-button">&lsaquo;</span>
+          <span class="podlove-subscribe-back-button">&lsaquo;</span>
         </span>
         <img src="{{scriptPath}}/images/icon-big@2x.png">
         <span class="panel-title">Subscribe</span>

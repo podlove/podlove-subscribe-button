@@ -397,7 +397,7 @@ ClientsPanel = (function(_super) {
   ClientsPanel.prototype.render = function() {
     this.elem = $(this.template(this.context()));
     this.container.append(this.elem);
-    this.elem.find('.back-button').on('click', (function(_this) {
+    this.elem.find('.podlove-subscribe-back-button').on('click', (function(_this) {
       return function(event) {
         _this.parent.movePodcast('0%');
         return _this.parent.moveClients('100%');
@@ -441,7 +441,7 @@ ClientsPanel = (function(_super) {
     return this.parent.finishPanel.render(client);
   };
 
-  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> <div class="device-cloud-switch"> <button class="podlove-subscribe-local active">App</button> <button class="podlove-subscribe-cloud">Cloud</button> </div> <div class="client-list"> <ul class="local-clients"> {{#if osDefault.icon}} <li> <a href="{{osDefault.url}}" data-client="{{osDefault.title}}" target="_blank"> <img src="{{osDefault.icon}}"> {{osDefault.title}} </a> </li> {{/if}} {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} <li> <a data-client="rss"> <img src="{{otherClient.icon}}"> {{otherClient.title}} </a> </li> </ul> <ul class="cloud-clients"> {{#each cloudClients}} <li> <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} </ul> </div> </div>');
+  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> <div class="device-cloud-switch"> <button class="podlove-subscribe-local active">App</button> <button class="podlove-subscribe-cloud">Cloud</button> </div> <div class="client-list"> <ul class="local-clients"> {{#if osDefault.icon}} <li> <a href="{{osDefault.url}}" data-client="{{osDefault.title}}" target="_blank"> <img src="{{osDefault.icon}}"> {{osDefault.title}} </a> </li> {{/if}} {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} <li> <a data-client="rss"> <img src="{{otherClient.icon}}"> {{otherClient.title}} </a> </li> </ul> <ul class="cloud-clients"> {{#each cloudClients}} <li> <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} </ul> </div> </div>');
 
   return ClientsPanel;
 
@@ -481,7 +481,7 @@ FinishPanel = (function(_super) {
     this.container.empty();
     this.elem = $(this.template(this.context(client)));
     this.container.append(this.elem);
-    this.elem.find('.back-button').on('click', (function(_this) {
+    this.elem.find('.podlove-subscribe-back-button').on('click', (function(_this) {
       return function(event) {
         _this.parent.moveClients('0%');
         return _this.parent.moveFinish('100%');
@@ -492,7 +492,7 @@ FinishPanel = (function(_super) {
     });
   };
 
-  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> <img class="podcast-cover" src="{{client.icon}}"> {{#if client.scheme}} <h1>Handing over to<br> {{client.title}}...</h1> <p>Did something go wrong?</p> <p> <a href="{{client.url}}" target="_blank"> Try again </a> <br> or <br> {{#if client.install}} <a href="{{client.install}}" target="_blank"> Install {{client.title}} from the App Store </a> {{/if}} {{#if client.register}} <a href="{{client.register}}" target="_blank"> Register an account with {{client.title}} </a> {{/if}} </p> {{else}} <p> Please copy the URL below and add it to your Podcast- or RSS-Client. </p> <input value="{{client.url}}"> {{/if}} </div>');
+  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> <img class="podcast-cover" src="{{client.icon}}"> {{#if client.scheme}} <h1>Handing over to<br> {{client.title}}...</h1> <p>Did something go wrong?</p> <p> <a href="{{client.url}}" target="_blank"> Try again </a> <br> or <br> {{#if client.install}} <a href="{{client.install}}" target="_blank"> Install {{client.title}} from the App Store </a> {{/if}} {{#if client.register}} <a href="{{client.register}}" target="_blank"> Register an account with {{client.title}} </a> {{/if}} </p> {{else}} <p> Please copy the URL below and add it to your Podcast- or RSS-Client. </p> <input value="{{client.url}}"> {{/if}} </div>');
 
   return FinishPanel;
 
@@ -643,7 +643,7 @@ PodcastPanel = (function(_super) {
     })(this));
   };
 
-  PodcastPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span id="podlove-subscribe-popup-help-button"> <span class="questionmark">?</span> <span class="back-button">&lsaquo;</span> </span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> {{#if cover}} <img class="podcast-cover" src="{{cover}}"> {{/if}} <h1>{{title}}</h1> <p>{{subtitle}}</p> <button class="podlove-subscribe-button">Choose Client</button> <div id="podlove-subscribe-button-help-panel"> <h2>Subscribe?</h2> <p>You are about to subscribe to a podcast. This will allow your podcast client program to  automatically download new episodes or access the archive of previously released stuff.</p> <p>The Podlove Subscription Tool helps you to do this. Select your favorite podcast client from a list of potential apps on your device or pick a podcast cloud service on the web that you use.</p> <p>Upon launch, the podcast client should offer you to add the podcast to your list of subscriptions. Use the download link to get the app if not yet available.</p> </div> </div>');
+  PodcastPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span id="podlove-subscribe-popup-help-button"> <span class="questionmark">?</span> <span class="podlove-subscribe-back-button">&lsaquo;</span> </span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> {{#if cover}} <img class="podcast-cover" src="{{cover}}"> {{/if}} <h1>{{title}}</h1> <p>{{subtitle}}</p> <button class="podlove-subscribe-button">Choose Client</button> <div id="podlove-subscribe-button-help-panel"> <h2>Subscribe?</h2> <p>You are about to subscribe to a podcast. This will allow your podcast client program to  automatically download new episodes or access the archive of previously released stuff.</p> <p>The Podlove Subscription Tool helps you to do this. Select your favorite podcast client from a list of potential apps on your device or pick a podcast cloud service on the web that you use.</p> <p>Upon launch, the podcast client should offer you to add the podcast to your list of subscriptions. Use the download link to get the app if not yet available.</p> </div> </div>');
 
   return PodcastPanel;
 

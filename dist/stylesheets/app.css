@@ -173,7 +173,7 @@ body.podlove-subscribe {
   padding-top: 7px;
   width: 22px;
 }
-#podlove-subscribe-popup #podlove-subscribe-popup-help-button .back-button {
+#podlove-subscribe-popup #podlove-subscribe-popup-help-button .podlove-subscribe-back-button {
   display: none;
 }
 #podlove-subscribe-popup #podlove-subscribe-popup-help-button.active {
@@ -183,13 +183,10 @@ body.podlove-subscribe {
 #podlove-subscribe-popup #podlove-subscribe-popup-help-button.active .questionmark {
   display: none;
 }
-#podlove-subscribe-popup #podlove-subscribe-popup-help-button.active .back-button {
+#podlove-subscribe-popup #podlove-subscribe-popup-help-button.active .podlove-subscribe-back-button {
   display: inline;
-  font-weight: 100;
-  height: 40px;
   left: -10px !important;
-  padding-top: 5px;
-  width: 40px;
+  top: -10px !important;
 }
 #podlove-subscribe-popup #podlove-subscribe-button-help-panel {
   background: #1a1a1a;
@@ -218,7 +215,7 @@ body.podlove-subscribe {
   font-size: 14px;
   display: none;
   font-size: 24px;
-  line-height: 11px;
+  line-height: 26px;
   padding: 6px 10px 9px 9px;
   position: absolute;
   text-decoration: none;
@@ -290,13 +287,15 @@ body.podlove-subscribe {
   width: 100%;
   z-index: 1;
 }
-#podlove-subscribe-popup #podlove-subscribe-panel-podcast .top-bar .back-button,
-#podlove-subscribe-popup #podlove-subscribe-panel-format .top-bar .back-button,
-#podlove-subscribe-popup #podlove-subscribe-panel-type .top-bar .back-button,
-#podlove-subscribe-popup #podlove-subscribe-panel-clients .top-bar .back-button,
-#podlove-subscribe-popup #podlove-subscribe-panel-finish .top-bar .back-button {
+#podlove-subscribe-popup #podlove-subscribe-panel-podcast .top-bar .podlove-subscribe-back-button,
+#podlove-subscribe-popup #podlove-subscribe-panel-format .top-bar .podlove-subscribe-back-button,
+#podlove-subscribe-popup #podlove-subscribe-panel-type .top-bar .podlove-subscribe-back-button,
+#podlove-subscribe-popup #podlove-subscribe-panel-clients .top-bar .podlove-subscribe-back-button,
+#podlove-subscribe-popup #podlove-subscribe-panel-finish .top-bar .podlove-subscribe-back-button {
   cursor: pointer;
   font-size: 30px;
+  font-family: Roboto;
+  font-weight: 300;
   left: 0px;
   position: absolute;
   text-align: center;
@@ -364,6 +363,9 @@ body.podlove-subscribe {
   padding-right: 0;
   padding-top: 50px;
 }
+#podlove-subscribe-popup #podlove-subscribe-panel-clients .top-bar .podlove-subscribe-back-button {
+  display: block;
+}
 #podlove-subscribe-popup #podlove-subscribe-panel-clients .device-cloud-switch {
   text-align: center;
   margin-bottom: 10px;
@@ -428,6 +430,9 @@ body.podlove-subscribe {
 }
 #podlove-subscribe-popup #podlove-subscribe-panel-finish {
   text-align: center;
+}
+#podlove-subscribe-popup #podlove-subscribe-panel-finish .top-bar .podlove-subscribe-back-button {
+  display: block;
 }
 #podlove-subscribe-popup #podlove-subscribe-panel-finish img {
   margin-top: 30px;
