@@ -362,16 +362,18 @@ body.podlove-subscribe {
 #podlove-subscribe-popup #podlove-subscribe-panel-clients {
   padding-left: 0;
   padding-right: 0;
+  padding-top: 50px;
 }
 #podlove-subscribe-popup #podlove-subscribe-panel-clients .device-cloud-switch {
   text-align: center;
+  margin-bottom: 10px;
 }
 #podlove-subscribe-popup #podlove-subscribe-panel-clients .device-cloud-switch button {
-  background: #1a1a1a;
+  background: #fff;
   border: 1px solid #1a1a1a;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
-  color: #fff;
+  color: #1a1a1a;
   cursor: pointer;
   font-size: 12px;
   margin: 0;
@@ -388,8 +390,12 @@ body.podlove-subscribe {
   left: -3px;
 }
 #podlove-subscribe-popup #podlove-subscribe-panel-clients .device-cloud-switch button.active {
-  background: #fff;
-  color: #1a1a1a;
+  background: #1a1a1a;
+  color: #fff;
+}
+#podlove-subscribe-popup #podlove-subscribe-panel-clients .client-list {
+  height: 341px;
+  overflow-y: auto;
 }
 #podlove-subscribe-popup #podlove-subscribe-panel-clients ul {
   margin: 0;

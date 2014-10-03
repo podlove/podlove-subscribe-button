@@ -370,16 +370,18 @@ body.podlove-subscribe {
   #podlove-subscribe-panel-clients {
     padding-left: 0;
     padding-right: 0;
+    padding-top: 50px;
 
     .device-cloud-switch {
       text-align: center;
+      margin-bottom: 10px;
 
       button {
-        background: rgb(26, 26, 26);
+        background: #fff;
         border: 1px solid rgb(26, 26, 26);
         border-top-left-radius: 3px;
         border-bottom-left-radius: 3px;
-        color: #fff;
+        color: rgb(26, 26, 26);
         cursor: pointer;
         font-size: 12px;
         margin: 0;
@@ -398,9 +400,14 @@ body.podlove-subscribe {
       }
 
       button.active {
-        background: #fff;
-        color: rgb(26, 26, 26);
+        background: rgb(26, 26, 26);
+        color: #fff;
       }
+    }
+
+    .client-list {
+      height: 341px;
+      overflow-y: auto;
     }
 
     ul {
