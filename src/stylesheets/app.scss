@@ -237,7 +237,7 @@ body.podlove-subscribe {
 
   #podlove-subscribe-popup-modal {
     background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 25px;
+    border-radius: 15px;
     box-shadow: 0 0 5px 0 #222;
     height: 460px;
     margin: -230px auto 0;
@@ -259,7 +259,6 @@ body.podlove-subscribe {
     }
 
     #podlove-subscribe-popup-modal-inner {
-      border-radius: 15px;
       height: 100%;
       overflow: hidden;
       position: relative;
@@ -280,7 +279,8 @@ body.podlove-subscribe {
   #podlove-subscribe-panel-type,
   #podlove-subscribe-panel-clients,
   #podlove-subscribe-panel-finish {
-    border-radius: 15px;
+    background-color: #fff;
+    color: #444;
     height: 100%;
     left: 100%;
     padding: 60px 20px 20px;
@@ -316,7 +316,6 @@ body.podlove-subscribe {
   }
 
   #podlove-subscribe-panel-podcast {
-    color: rgb(53, 53, 53);
     font-size: 14px;
     left: 0;
     padding-bottom: 0;
@@ -345,31 +344,23 @@ body.podlove-subscribe {
     }
 
     button {
-      -moz-box-shadow: 0 2px 0 rgba(0,0,1,.2), inset 0 -6px 0 rgba(0,0,1,.2);
-      -webkit-box-shadow: 0 2px 0 rgba(0,0,1,.2), inset 0 -6px 0 rgba(0,0,1,.2);
-      box-shadow: 0 2px 0 rgba(0,0,1,.2), inset 0 -6px 0 rgba(0,0,1,.2);
-      border: none;
-      border-bottom-left-radius: 15px;
-      border-bottom-right-radius: 15px;
+      -moz-box-shadow: 0 1px 0 rgba(0,0,1,.2), inset 0 -6px 0 rgba(0,0,1,.2);
+      -webkit-box-shadow: 0 1px 0 rgba(0,0,1,.2), inset 0 -6px 0 rgba(0,0,1,.2);
+      box-shadow: 0 1px 0 rgba(0,0,1,.2), inset 0 -6px 0 rgba(0,0,1,.2);
+      border: 1px solid #456757;
+      border-radius: 0;
       bottom: 0;
       font-size: 18px;
       height: 50px;
       left: 0;
-      margin: 0;
+      margin: 0 0 5% 5%;
       outline: none;
       position: absolute;
-      width: 100%;
+      width: 90%;
     }
   }
 
-  #podlove-subscribe-panel-podcast,
-  #podlove-subscribe-panel-format,
-  #podlove-subscribe-panel-type {
-    background-color: rgb(255, 249, 235);
-  }
-
   #podlove-subscribe-panel-clients {
-    background-color: rgb(53, 53, 53);
     padding-left: 0;
     padding-right: 0;
 
@@ -422,7 +413,8 @@ body.podlove-subscribe {
     }
 
     li:hover {
-      background: rgb(250, 116, 1);
+      background: #328398;
+      color: #fff;
       cursor: pointer;
     }
 
@@ -433,7 +425,7 @@ body.podlove-subscribe {
     }
 
     li a {
-      color: #fff;
+      color: inherit;
       display: block;
       padding: 8px 20px 8px 60px;
       text-decoration: none;
@@ -441,7 +433,6 @@ body.podlove-subscribe {
   }
 
   #podlove-subscribe-panel-finish {
-    background-color: rgb(123, 174, 149);
     text-align: center;
 
     img {
@@ -455,7 +446,7 @@ body.podlove-subscribe {
     }
 
     p a {
-      color: #fff;
+      color: inherit;
     }
 
     input {
