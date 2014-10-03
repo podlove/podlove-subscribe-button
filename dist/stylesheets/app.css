@@ -144,7 +144,7 @@ body.podlove-subscribe {
   z-index: 99999;
 }
 #podlove-subscribe-popup h1, #podlove-subscribe-popup h2 {
-  font-family: Helvetica;
+  font-family: Roboto;
   font-size: 20px;
   margin: 10px 0 0;
 }
@@ -191,6 +191,7 @@ body.podlove-subscribe {
 #podlove-subscribe-popup #podlove-subscribe-button-help-panel {
   background: #1a1a1a;
   color: #fff;
+  font-family: Roboto;
   font-weight: 300;
   font-size: 95%;
   height: 100%;
