@@ -20,7 +20,6 @@ SubscribeButton = (function() {
     if (selector == null) {
       selector = '.podlove-subscribe-button';
     }
-    SubscribeButton.addViewportTag();
     subscribeButtons = [];
     elems = $(selector);
     if (elems.length === 0) {
@@ -31,15 +30,6 @@ SubscribeButton = (function() {
       subscribeButtons.push(new SubscribeButton(elem));
     }
     return window.subscribeButtons = subscribeButtons;
-  };
-
-  SubscribeButton.addViewportTag = function() {
-    var tag;
-    if ($('meta[name=viewport]').length) {
-      return;
-    }
-    tag = $('<meta>').attr('name', 'viewport').attr('content', 'width=device-width, initial-scale=1');
-    return $('head').append(tag);
   };
 
   function SubscribeButton(scriptElem) {

@@ -8,7 +8,6 @@ IframeClick = require('./iframe_click.coffee')
 
 class SubscribeButton
   @init: (selector = '.podlove-subscribe-button') ->
-    SubscribeButton.addViewportTag()
     subscribeButtons = []
     elems = $(selector)
 
@@ -18,11 +17,6 @@ class SubscribeButton
       subscribeButtons.push(new SubscribeButton(elem))
 
     window.subscribeButtons = subscribeButtons
-
-  @addViewportTag: () ->
-    return if $('meta[name=viewport]').length
-    tag = $('<meta>').attr('name', 'viewport').attr('content', 'width=device-width, initial-scale=1')
-    $('head').append(tag)
 
   constructor: (scriptElem) ->
     @scriptElem = $(scriptElem)
