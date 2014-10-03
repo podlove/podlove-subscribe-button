@@ -361,7 +361,8 @@ ClientsPanel = (function(_super) {
       platform: this.platform,
       otherClient: this.otherClient,
       cloudClients: this.cloudClients,
-      osDefault: this.osDefault
+      osDefault: this.osDefault,
+      scriptPath: this.parent.options.scriptPath
     };
   };
 
@@ -440,7 +441,7 @@ ClientsPanel = (function(_super) {
     return this.parent.finishPanel.render(client);
   };
 
-  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> <button class="podlove-subscribe-local active">App</button> <button class="podlove-subscribe-cloud">Cloud</button> </div> <ul class="local-clients"> {{#if osDefault.icon}} <li> <a href="{{osDefault.url}}" data-client="{{osDefault.title}}" target="_blank"> <img src="{{osDefault.icon}}"> {{osDefault.title}} </a> </li> {{/if}} {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} <li> <a data-client="rss"> <img src="{{otherClient.icon}}"> {{otherClient.title}} </a> </li> </ul> <ul class="cloud-clients"> {{#each cloudClients}} <li> <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} </ul> </div>');
+  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> <div class="device-cloud-switch"> <button class="podlove-subscribe-local active">App</button> <button class="podlove-subscribe-cloud">Cloud</button> </div> <ul class="local-clients"> {{#if osDefault.icon}} <li> <a href="{{osDefault.url}}" data-client="{{osDefault.title}}" target="_blank"> <img src="{{osDefault.icon}}"> {{osDefault.title}} </a> </li> {{/if}} {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} <li> <a data-client="rss"> <img src="{{otherClient.icon}}"> {{otherClient.title}} </a> </li> </ul> <ul class="cloud-clients"> {{#each cloudClients}} <li> <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} </ul> </div>');
 
   return ClientsPanel;
 
@@ -469,9 +470,16 @@ FinishPanel = (function(_super) {
     this.parent = parent;
   }
 
+  FinishPanel.prototype.context = function(client) {
+    return {
+      client: client,
+      scriptPath: this.parent.options.scriptPath
+    };
+  };
+
   FinishPanel.prototype.render = function(client) {
     this.container.empty();
-    this.elem = $(this.template(client));
+    this.elem = $(this.template(this.context(client)));
     this.container.append(this.elem);
     this.elem.find('.back-button').on('click', (function(_this) {
       return function(event) {
@@ -484,7 +492,7 @@ FinishPanel = (function(_super) {
     });
   };
 
-  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> </div> <img class="podcast-cover" src="{{icon}}"> {{#if scheme}} <h1>Handing over to<br> {{title}}...</h1> <p>Did something go wrong?</p> <p> <a href="{{url}}" target="_blank"> Try again </a> <br> or <br> {{#if install}} <a href="{{install}}" target="_blank"> Install {{title}} from the App Store </a> {{/if}} {{#if register}} <a href="{{register}}" target="_blank"> Register an account with {{title}} </a> {{/if}} </p> {{else}} <p> Please copy the URL below and add it to your Podcast- or RSS-Client. </p> <input value="{{url}}"> {{/if}} </div>');
+  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> <img class="podcast-cover" src="{{client.icon}}"> {{#if client.scheme}} <h1>Handing over to<br> {{client.title}}...</h1> <p>Did something go wrong?</p> <p> <a href="{{client.url}}" target="_blank"> Try again </a> <br> or <br> {{#if client.install}} <a href="{{client.install}}" target="_blank"> Install {{client.title}} from the App Store </a> {{/if}} {{#if client.register}} <a href="{{client.register}}" target="_blank"> Register an account with {{client.title}} </a> {{/if}} </p> {{else}} <p> Please copy the URL below and add it to your Podcast- or RSS-Client. </p> <input value="{{client.url}}"> {{/if}} </div>');
 
   return FinishPanel;
 

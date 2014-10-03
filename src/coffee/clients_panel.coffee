@@ -27,6 +27,7 @@ class ClientsPanel extends Panel
     otherClient: @otherClient,
     cloudClients: @cloudClients,
     osDefault: @osDefault,
+    scriptPath: @parent.options.scriptPath,
   }
 
   prepareClients: (pathPrefix) ->
@@ -95,6 +96,10 @@ class ClientsPanel extends Panel
     <div>
       <div class="top-bar">
         <span class="back-button">&lsaquo;</span>
+        <img src="{{scriptPath}}/images/icon-big@2x.png">
+        <span class="panel-title">Subscribe</span>
+      </div>
+      <div class="device-cloud-switch">
         <button class="podlove-subscribe-local active">App</button>
         <button class="podlove-subscribe-cloud">Cloud</button>
       </div>
@@ -108,6 +113,22 @@ class ClientsPanel extends Panel
         </li>
         {{/if}}
 
+        {{#each clients}}
+        <li>
+          <a href="{{url}}" data-client="{{title}}" target="_blank">
+            <img src="{{icon}}">
+            {{title}}
+          </a>
+        </li>
+        {{/each}}
+        {{#each clients}}
+        <li>
+          <a href="{{url}}" data-client="{{title}}" target="_blank">
+            <img src="{{icon}}">
+            {{title}}
+          </a>
+        </li>
+        {{/each}}
         {{#each clients}}
         <li>
           <a href="{{url}}" data-client="{{title}}" target="_blank">

@@ -318,13 +318,6 @@ body.podlove-subscribe {
         width: 40px;
       }
     }
-  }
-
-  #podlove-subscribe-panel-podcast {
-    font-size: 14px;
-    left: 0;
-    padding-bottom: 0;
-    text-align: center;
 
     .top-bar img,
     .top-bar .panel-title {
@@ -334,6 +327,7 @@ body.podlove-subscribe {
 
     .top-bar img {
       height: 26px;
+      margin: 0;
       opacity: 0.6;
     }
 
@@ -342,6 +336,14 @@ body.podlove-subscribe {
       opacity: 0.8;
       vertical-align: top;
     }
+
+  }
+
+  #podlove-subscribe-panel-podcast {
+    font-size: 14px;
+    left: 0;
+    padding-bottom: 0;
+    text-align: center;
 
     img.podcast-cover {
       height: 150px;
@@ -369,12 +371,12 @@ body.podlove-subscribe {
     padding-left: 0;
     padding-right: 0;
 
-    .top-bar {
+    .device-cloud-switch {
       text-align: center;
 
       button {
         background: rgb(26, 26, 26);
-        border: 1px solid #fff;
+        border: 1px solid rgb(26, 26, 26);
         border-top-left-radius: 3px;
         border-bottom-left-radius: 3px;
         color: #fff;
