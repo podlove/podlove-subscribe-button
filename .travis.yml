@@ -1,6 +1,9 @@
 language: node_js
 before_install: "gem install sass"
 script: "gulp"
+branches:
+  only:
+    - master
 deploy:
   provider: s3
   access_key_id: AKIAJCSHS3G5VYM6ZDWA
