@@ -623,7 +623,7 @@ PodcastPanel = (function(_super) {
     this.container.append(this.elem);
     this.elem.find('#podlove-subscribe-popup-help-button').on('click', (function(_this) {
       return function(event) {
-        _this.elem.find('#podlove-subscribe-button-help-panel').toggle();
+        _this.elem.find('#podlove-subscribe-button-help-panel').toggleClass('visible');
         return $(event.currentTarget).toggleClass('active');
       };
     })(this));

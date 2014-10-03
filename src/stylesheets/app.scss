@@ -204,14 +204,18 @@ body.podlove-subscribe {
   #podlove-subscribe-button-help-panel {
     background: rgb(26, 26, 26);
     color: #fff;
-    display: none;
     font-weight: 100;
     font-size: 95%;
     height: 100%;
     left: 0;
     padding: 25px;
     position: absolute;
-    top: 40px;
+    top: -100%;
+    transition: all 0.3s ease-out;
+
+    &.visible {
+      top: 40px;
+    }
 
     & > * {
       opacity: 0.8;
@@ -302,6 +306,7 @@ body.podlove-subscribe {
       text-align: center;
       top: 0;
       width: 100%;
+      z-index: 1;
 
       .back-button {
         cursor: pointer;

@@ -20,7 +20,7 @@ class PodcastPanel extends Panel
     @container.append(@elem)
 
     @elem.find('#podlove-subscribe-popup-help-button').on 'click', (event) =>
-      @elem.find('#podlove-subscribe-button-help-panel').toggle()
+      @elem.find('#podlove-subscribe-button-help-panel').toggleClass('visible')
       $(event.currentTarget).toggleClass('active')
 
     @elem.find('button').on 'click', (event) =>
