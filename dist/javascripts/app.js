@@ -310,6 +310,43 @@ Clients = (function() {
 
   Clients.prototype.windowsPhone = [];
 
+  Clients.prototype.windows7 = [
+    {
+      title: 'iTunes',
+      scheme: 'itpc://',
+      icon: 'osx/itunes@2x.png',
+      install: 'http://www.apple.com/itunes/'
+    }
+  ];
+
+  Clients.prototype.windows8 = [
+    {
+      title: 'iTunes',
+      scheme: 'itpc://',
+      icon: 'osx/itunes@2x.png',
+      install: 'http://www.apple.com/itunes/'
+    }, {
+      title: 'Podscout',
+      scheme: 'podscout://',
+      icon: 'windows/podscout@2x.png',
+      install: 'http://apps.microsoft.com/windows/de-de/app/podscout/f4316b46-7682-4cea-948b-53d135b2df17'
+    }
+  ];
+
+  Clients.prototype.windows81 = [
+    {
+      title: 'iTunes',
+      scheme: 'itpc://',
+      icon: 'osx/itunes@2x.png',
+      install: 'http://www.apple.com/itunes/'
+    }, {
+      title: 'Podscout',
+      scheme: 'podscout://',
+      icon: 'windows/podscout@2x.png',
+      install: 'http://apps.microsoft.com/windows/de-de/app/podscout/f4316b46-7682-4cea-948b-53d135b2df17'
+    }
+  ];
+
   return Clients;
 
 })();
@@ -814,6 +851,9 @@ UserAgent = (function() {
 })();
 
 UAs = {
+  windows7: /Windows NT 6.1/,
+  windows8: /Windows NT 6.2/,
+  windows81: /Windows NT 6.3/,
   windowsPhone: /trident/i,
   android: /android/i,
   ios: /(ipad|iphone|ipod)/i,

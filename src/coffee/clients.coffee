@@ -158,4 +158,43 @@ class Clients
     #}
   ]
 
+  windows7: [
+    {
+      title: 'iTunes'
+      scheme: 'itpc://'
+      icon: 'osx/itunes@2x.png'
+      install: 'http://www.apple.com/itunes/'
+    }
+  ]
+
+  windows8: [
+    {
+      title: 'iTunes'
+      scheme: 'itpc://'
+      icon: 'osx/itunes@2x.png'
+      install: 'http://www.apple.com/itunes/'
+    },
+    {
+      title: 'Podscout'
+      scheme: 'podscout://'
+      icon: 'windows/podscout@2x.png'
+      install: 'http://apps.microsoft.com/windows/de-de/app/podscout/f4316b46-7682-4cea-948b-53d135b2df17'
+    }
+  ]
+
+  windows81: [
+    {
+      title: 'iTunes'
+      scheme: 'itpc://'
+      icon: 'osx/itunes@2x.png'
+      install: 'http://www.apple.com/itunes/'
+    },
+    {
+      title: 'Podscout'
+      scheme: 'podscout://'
+      icon: 'windows/podscout@2x.png'
+      install: 'http://apps.microsoft.com/windows/de-de/app/podscout/f4316b46-7682-4cea-948b-53d135b2df17'
+    }
+  ]
+
 module.exports = Clients
