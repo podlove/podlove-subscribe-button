@@ -54,6 +54,12 @@ class Clients
       install: 'https://play.google.com/store/apps/details?id=fm.player'
     },
     #{
+      #title: 'Podcast Addict'
+      #scheme: 'podcastaddict://'
+      #icon: 'android/podcastaddict@2x.png'
+      #install: 'https://play.google.com/store/apps/details?id=com.bambuna.podcastaddict'
+    #},
+    #{
       #title: 'PocketCasts'
       #scheme: 'pcast://'
       #icon: 'android/pocketcasts-128@2x.png'
