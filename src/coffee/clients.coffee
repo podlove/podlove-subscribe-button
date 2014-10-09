@@ -35,39 +35,39 @@ class Clients
   ]
 
   android: [
-    {
-      title: 'AntennaPod'
-      scheme: 'pcast://'
-      icon: 'android/antennapod@2x.png'
-      install: 'https://play.google.com/store/apps/details?id=de.danoeh.antennapod'
-    },
-    {
-      title: 'BeyondPod'
-      scheme: 'pcast://'
-      icon: 'android/beyondpod@2x.png'
-      install: 'https://play.google.com/store/apps/details?id=mobi.beyondpod'
-    },
+    #{
+      #title: 'AntennaPod'
+      #scheme: 'pcast://'
+      #icon: 'android/antennapod@2x.png'
+      #install: 'https://play.google.com/store/apps/details?id=de.danoeh.antennapod'
+    #},
+    #{
+      #title: 'BeyondPod'
+      #scheme: 'pcast://'
+      #icon: 'android/beyondpod@2x.png'
+      #install: 'https://play.google.com/store/apps/details?id=mobi.beyondpod'
+    #},
     {
       title: 'Player.fm'
-      scheme: 'pcast://'
+      scheme: 'https://player.fm/subscribe?id='
       icon: 'android/playerfm@2x.png'
       install: 'https://play.google.com/store/apps/details?id=fm.player'
     },
-    {
-      title: 'PocketCasts'
-      scheme: 'pcast://'
-      icon: 'android/pocketcasts-128@2x.png'
-      install: 'https://play.google.com/store/apps/details?id=au.com.shiftyjelly.pocketcasts'
-    },
-    {
-      title: 'Podkicker'
-      scheme: 'pcast://'
-      icon: 'android/podkicker@2x.png'
-      install: 'https://play.google.com/store/apps/details?id=ait.podka'
-    },
+    #{
+      #title: 'PocketCasts'
+      #scheme: 'pcast://'
+      #icon: 'android/pocketcasts-128@2x.png'
+      #install: 'https://play.google.com/store/apps/details?id=au.com.shiftyjelly.pocketcasts'
+    #},
+    #{
+      #title: 'Podkicker'
+      #scheme: 'pcast://'
+      #icon: 'android/podkicker@2x.png'
+      #install: 'https://play.google.com/store/apps/details?id=ait.podka'
+    #},
     {
       title: 'uPod'
-      scheme: 'pcast://'
+      scheme: 'upod://'
       icon: 'android/upod@2x.png'
       install: 'https://play.google.com/store/apps/details?id=mobi.upod.app'
     }
@@ -75,7 +75,7 @@ class Clients
 
   ios: [
     {
-      title: 'Apple Podcasts'
+      title: 'Podcasts'
       scheme: 'pcast://'
       icon: 'ios/podcasts@2x.png'
       install: 'https://itunes.apple.com/de/app/podcasts/id525463029'
