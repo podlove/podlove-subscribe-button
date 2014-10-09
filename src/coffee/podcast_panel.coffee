@@ -45,12 +45,14 @@ class PodcastPanel extends Panel
       <button class="podlove-subscribe-button">Choose Client</button>
 
       <div id="podlove-subscribe-button-help-panel">
-        <h2>Subscribe?</h2>
-        <p>You are about to subscribe to a podcast. This will allow your podcast client program to  automatically download new episodes or access the archive of previously released stuff.</p>
+        <div class="podlove-subscribe-button-help-panel-content">
+          <h2>Subscribe?</h2>
+          <p>You are about to subscribe to a podcast. This will allow your podcast client program to  automatically download new episodes or access the archive of previously released stuff.</p>
 
-        <p>The Podlove Subscription Tool helps you to do this. Select your favorite podcast client from a list of potential apps on your device or pick a podcast cloud service on the web that you use.</p>
+          <p>The Podlove Subscription Tool helps you to do this. Select your favorite podcast client from a list of potential apps on your device or pick a podcast cloud service on the web that you use.</p>
 
-        <p>Upon launch, the podcast client should offer you to add the podcast to your list of subscriptions. Use the download link to get the app if not yet available.</p>
+          <p>Upon launch, the podcast client should offer you to add the podcast to your list of subscriptions. Use the download link to get the app if not yet available.</p>
+        </div>
       </div>
     </div>
   ')
