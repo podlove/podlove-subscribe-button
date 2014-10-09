@@ -140,7 +140,7 @@ body.podlove-subscribe {
   position: fixed;
   top: 0;
   vertical-align: middle;
-  width: 100vw;
+  width: 100%;
   z-index: 99999;
 }
 #podlove-subscribe-popup h1, #podlove-subscribe-popup h2 {
