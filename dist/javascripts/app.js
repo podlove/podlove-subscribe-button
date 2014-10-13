@@ -230,7 +230,7 @@ Clients = (function() {
   Clients.prototype.ios = [
     {
       title: 'Podcasts',
-      scheme: 'itpc://',
+      scheme: 'pcast://',
       icon: 'ios/podcasts@2x.png',
       install: 'https://itunes.apple.com/de/app/podcasts/id525463029'
     }, {
