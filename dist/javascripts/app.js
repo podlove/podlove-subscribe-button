@@ -230,7 +230,7 @@ Clients = (function() {
   Clients.prototype.ios = [
     {
       title: 'Podcasts',
-      scheme: 'pcast://',
+      scheme: 'itpc://',
       icon: 'ios/podcasts@2x.png',
       install: 'https://itunes.apple.com/de/app/podcasts/id525463029'
     }, {
@@ -243,6 +243,11 @@ Clients = (function() {
       scheme: 'downcast://',
       icon: 'ios/downcast@2x.png',
       install: 'https://itunes.apple.com/de/app/downcast/id393858566'
+    }, {
+      title: 'iCatcher',
+      scheme: 'icatcher://',
+      icon: 'ios/icatcher@2x.png',
+      install: 'https://itunes.apple.com/de/app/icatcher!-podcast-app/id414419105'
     }, {
       title: 'Instacast',
       scheme: 'instacast://',
