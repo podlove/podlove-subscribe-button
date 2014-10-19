@@ -220,6 +220,12 @@ class Clients
   ]
 
   windows81: [
+    #{
+      #title: 'BringCast'
+      #scheme: 'bringcast:'
+      #icon: 'windows/bringcast@2x.png'
+	  #install: 'http://bringcast.com/'
+    #},
     {
       title: 'iTunes'
       scheme: 'itpc://'
