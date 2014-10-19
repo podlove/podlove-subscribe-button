@@ -53,24 +53,24 @@ class Clients
       icon: 'android/playerfm@2x.png'
       install: 'https://play.google.com/store/apps/details?id=fm.player'
     },
-    #{
-      #title: 'Podcast Addict'
-      #scheme: 'podcastaddict://'
-      #icon: 'android/podcastaddict@2x.png'
-      #install: 'https://play.google.com/store/apps/details?id=com.bambuna.podcastaddict'
-    #},
+    {
+      title: 'Podcast Addict'
+      scheme: 'podcastaddict://'
+      icon: 'android/podcastaddict@2x.png'
+      install: 'https://play.google.com/store/apps/details?id=com.bambuna.podcastaddict'
+    },
     #{
       #title: 'PocketCasts'
-      #scheme: 'pcast://'
+      #scheme: 'pktc://'
       #icon: 'android/pocketcasts-128@2x.png'
       #install: 'https://play.google.com/store/apps/details?id=au.com.shiftyjelly.pocketcasts'
     #},
-    #{
-      #title: 'Podkicker'
-      #scheme: 'pcast://'
-      #icon: 'android/podkicker@2x.png'
-      #install: 'https://play.google.com/store/apps/details?id=ait.podka'
-    #},
+    {
+      title: 'Podkicker Pro'
+      scheme: 'podkicker://subscribe/'
+      icon: 'android/podkicker@2x.png'
+      install: 'https://play.google.com/store/apps/details?id=com.podkicker'
+    },
     {
       title: 'uPod'
       scheme: 'upod://'
@@ -80,12 +80,6 @@ class Clients
   ]
 
   ios: [
-    {
-      title: 'Podcasts'
-      scheme: 'pcast://'
-      icon: 'ios/podcasts@2x.png'
-      install: 'https://itunes.apple.com/de/app/podcasts/id525463029'
-    },
     {
       title: 'Castro'
       scheme: 'castro://subscribe/'
@@ -122,11 +116,24 @@ class Clients
       icon: 'ios/pocketcasts@2x.png'
       install: 'https://itunes.apple.com/de/app/pocket-casts/id414834813'
     },
-    #{
-      #title: 'Podcat'
-      #scheme: 'podcat://'
-      #icon: 'ios/podcat@2x.png'
-    #},
+    {
+      title: 'Podcasts'
+      scheme: 'pcast://'
+      icon: 'ios/podcasts@2x.png'
+      install: 'https://itunes.apple.com/de/app/podcasts/id525463029'
+    },
+    {
+      title: 'Podcat'
+      scheme: 'podcat://'
+      icon: 'ios/podcat@2x.png'
+      install: 'https://itunes.apple.com/app/podcat/id845960230'
+    },
+    {
+      title: 'RSSRadio'
+      scheme: 'rssradio://'
+      icon: 'ios/rssradio@2x.png'
+      install: 'https://itunes.apple.com/app/rssradio-premium-podcast-downloader/id679025359'
+    }
   ]
   linux: [
     {
