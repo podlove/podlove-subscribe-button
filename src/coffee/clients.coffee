@@ -69,7 +69,7 @@ class Clients
       title: 'Podkicker Pro'
       scheme: 'podkicker://subscribe/'
       icon: 'android/podkicker@2x.png'
-      install: 'https://play.google.com/store/apps/details?id=com.podkicker'
+      install: 'https://play.google.com/store/apps/details?id=ait.podka'
     },
     {
       title: 'uPod'
