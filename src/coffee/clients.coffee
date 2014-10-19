@@ -174,7 +174,13 @@ class Clients
       title: 'Podcasts'
       scheme: 'podcast:'
       icon: 'icon-medium@2x.png'
-    }
+    },
+    #{
+      #title: 'BringCast'
+      #scheme: 'bringcast:'
+      #icon: 'windowsphone/bringcast@2x.png'
+      #install: 'http://windowsphone.com/s?appId=e5abef38-d413-e011-9264-00237de2db9e'
+    #}
   ]
 
   windows7: [
