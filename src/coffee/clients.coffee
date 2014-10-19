@@ -21,7 +21,7 @@ class Clients
     {
       title: 'gpodder.net'
       scheme: 'http://gpodder.net/subscribe?url='
-      icon: 'cloud/gpodder@2x.jpg'
+      icon: 'cloud/gpoddernet@2x.png'
       register: 'https://gpodder.net/'
       http: true
     },
@@ -149,6 +149,12 @@ class Clients
       icon: 'osx/downcast@2x.png'
       install: 'https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4'
     },
+    #{
+      #title: 'gPodder'
+      #scheme: 'gpodder://'
+      #icon: 'osx/gpodder@2x.png'
+      #install: 'http://gpodder.org/downloads'
+    #},
     {
       title: 'Instacast'
       scheme: 'instacast://'
@@ -177,7 +183,13 @@ class Clients
       scheme: 'itpc://'
       icon: 'osx/itunes@2x.png'
       install: 'http://www.apple.com/itunes/'
-    }
+    }#,
+    #{
+      #title: 'gPodder'
+      #scheme: 'gpodder://'
+      #icon: 'windows/gpodder@2x.png'
+      #install: 'http://gpodder.org/downloads'
+    #},
   ]
 
   windows8: [
@@ -187,6 +199,12 @@ class Clients
       icon: 'osx/itunes@2x.png'
       install: 'http://www.apple.com/itunes/'
     },
+    #{
+      #title: 'gPodder'
+      #scheme: 'gpodder://'
+      #icon: 'windows/gpodder@2x.png'
+      #install: 'http://gpodder.org/downloads'
+    #},
     {
       title: 'Podscout'
       scheme: 'podscout://'
@@ -202,6 +220,12 @@ class Clients
       icon: 'osx/itunes@2x.png'
       install: 'http://www.apple.com/itunes/'
     },
+    #{
+      #title: 'gPodder'
+      #scheme: 'gpodder://'
+      #icon: 'windows/gpodder@2x.png'
+      #install: 'http://gpodder.org/downloads'
+    #},
     {
       title: 'Podscout'
       scheme: 'podscout://'
@@ -209,5 +233,21 @@ class Clients
       install: 'http://apps.microsoft.com/windows/de-de/app/podscout/f4316b46-7682-4cea-948b-53d135b2df17'
     }
   ]
+
+  blackBerry: [
+    #{
+      #title: 'bPod'
+      #scheme: '???:'
+      #icon: 'blackberry/bpod@2x.png'
+    #},
+    #{
+      #title: 'gPodder'
+      #scheme: 'gpodder://'
+      #icon: 'blackberry/gpodder@2x.png'
+      #install: 'http://gpodder.org/downloads'
+    #}
+  ]
+
+
 
 module.exports = Clients
