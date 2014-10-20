@@ -31,6 +31,13 @@ class Clients
       icon: 'cloud/playerfm@2x.png'
       register: 'https://player.fm/'
       http: true
+    },
+    {
+      title: 'Pocket Casts'
+      scheme: 'http://pcasts.in/feed/'
+      icon: 'cloud/pocketcasts@2x.png'
+      register: 'https://play.pocketcasts.com/'
+      http: false
     }
   ]
 
