@@ -42,12 +42,12 @@ class Clients
   ]
 
   android: [
-    #{
-      #title: 'AntennaPod'
-      #scheme: 'antennapod-subscribe://'
-      #icon: 'android/antennapod@2x.png'
-      #install: 'https://play.google.com/store/apps/details?id=de.danoeh.antennapod'
-    #},
+    {
+      title: 'AntennaPod'
+      scheme: 'antennapod-subscribe://'
+      icon: 'android/antennapod@2x.png'
+      install: 'https://play.google.com/store/apps/details?id=de.danoeh.antennapod'
+    },
     #{
       #title: 'BeyondPod'
       #scheme: 'pcast://'
