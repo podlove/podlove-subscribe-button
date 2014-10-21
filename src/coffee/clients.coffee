@@ -180,7 +180,7 @@ class Clients
     {
       title: 'Podcasts'
       scheme: 'podcast:'
-      icon: 'icon-medium@2x.png'
+      icon: 'windowsphone/podcasts@2x.png'
     },
     #{
       #title: 'BringCast'
