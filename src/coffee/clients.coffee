@@ -50,7 +50,7 @@ class Clients
     },
     #{
       #title: 'BeyondPod'
-      #scheme: 'pcast://'
+      #scheme: 'beyondpod://'
       #icon: 'android/beyondpod@2x.png'
       #install: 'https://play.google.com/store/apps/details?id=mobi.beyondpod'
     #},
