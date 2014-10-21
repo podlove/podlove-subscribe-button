@@ -177,11 +177,11 @@ class Clients
   ]
 
   windowsPhone: [
-    #{
-      #title: 'Podcasts'
-      #scheme: 'pcast:'
-      #icon: 'icon-medium@2x.png'
-    #},
+    {
+      title: 'Podcasts'
+      scheme: 'podcast://'
+      icon: 'windowsphone/podcasts@2x.png'
+    }#,
     #{
       #title: 'BringCast'
       #scheme: 'bringcast:'
