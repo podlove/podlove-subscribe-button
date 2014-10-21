@@ -21,7 +21,7 @@ class Clients
     {
       title: 'gpodder.net'
       scheme: 'http://gpodder.net/subscribe?url='
-      icon: 'cloud/gpodder@2x.jpg'
+      icon: 'cloud/gpoddernet@2x.png'
       register: 'https://gpodder.net/'
       http: true
     },
@@ -31,19 +31,26 @@ class Clients
       icon: 'cloud/playerfm@2x.png'
       register: 'https://player.fm/'
       http: true
+    },
+    {
+      title: 'Pocket Casts'
+      scheme: 'http://pcasts.in/feed/'
+      icon: 'cloud/pocketcasts@2x.png'
+      register: 'https://play.pocketcasts.com/'
+      http: false
     }
   ]
 
   android: [
-    #{
-      #title: 'AntennaPod'
-      #scheme: 'pcast://'
-      #icon: 'android/antennapod@2x.png'
-      #install: 'https://play.google.com/store/apps/details?id=de.danoeh.antennapod'
-    #},
+    {
+      title: 'AntennaPod'
+      scheme: 'antennapod-subscribe://'
+      icon: 'android/antennapod@2x.png'
+      install: 'https://play.google.com/store/apps/details?id=de.danoeh.antennapod'
+    },
     #{
       #title: 'BeyondPod'
-      #scheme: 'pcast://'
+      #scheme: 'beyondpod://'
       #icon: 'android/beyondpod@2x.png'
       #install: 'https://play.google.com/store/apps/details?id=mobi.beyondpod'
     #},
@@ -53,24 +60,24 @@ class Clients
       icon: 'android/playerfm@2x.png'
       install: 'https://play.google.com/store/apps/details?id=fm.player'
     },
-    #{
-      #title: 'Podcast Addict'
-      #scheme: 'podcastaddict://'
-      #icon: 'android/podcastaddict@2x.png'
-      #install: 'https://play.google.com/store/apps/details?id=com.bambuna.podcastaddict'
-    #},
+    {
+      title: 'Podcast Addict'
+      scheme: 'podcastaddict://'
+      icon: 'android/podcastaddict@2x.png'
+      install: 'https://play.google.com/store/apps/details?id=com.bambuna.podcastaddict'
+    },
     #{
       #title: 'PocketCasts'
-      #scheme: 'pcast://'
+      #scheme: 'pktc://'
       #icon: 'android/pocketcasts-128@2x.png'
       #install: 'https://play.google.com/store/apps/details?id=au.com.shiftyjelly.pocketcasts'
     #},
-    #{
-      #title: 'Podkicker'
-      #scheme: 'pcast://'
-      #icon: 'android/podkicker@2x.png'
-      #install: 'https://play.google.com/store/apps/details?id=ait.podka'
-    #},
+    {
+      title: 'Podkicker Pro'
+      scheme: 'podkicker://subscribe/'
+      icon: 'android/podkicker@2x.png'
+      install: 'https://play.google.com/store/apps/details?id=ait.podka'
+    },
     {
       title: 'uPod'
       scheme: 'upod://'
@@ -80,12 +87,6 @@ class Clients
   ]
 
   ios: [
-    {
-      title: 'Podcasts'
-      scheme: 'pcast://'
-      icon: 'ios/podcasts@2x.png'
-      install: 'https://itunes.apple.com/de/app/podcasts/id525463029'
-    },
     {
       title: 'Castro'
       scheme: 'castro://subscribe/'
@@ -122,11 +123,24 @@ class Clients
       icon: 'ios/pocketcasts@2x.png'
       install: 'https://itunes.apple.com/de/app/pocket-casts/id414834813'
     },
-    #{
-      #title: 'Podcat'
-      #scheme: 'podcat://'
-      #icon: 'ios/podcat@2x.png'
-    #},
+    {
+      title: 'Podcasts'
+      scheme: 'pcast://'
+      icon: 'ios/podcasts@2x.png'
+      install: 'https://itunes.apple.com/de/app/podcasts/id525463029'
+    },
+    {
+      title: 'Podcat'
+      scheme: 'podcat://'
+      icon: 'ios/podcat@2x.png'
+      install: 'https://itunes.apple.com/app/podcat/id845960230'
+    },
+    {
+      title: 'RSSRadio'
+      scheme: 'rssradio://'
+      icon: 'ios/rssradio@2x.png'
+      install: 'https://itunes.apple.com/app/rssradio-premium-podcast-downloader/id679025359'
+    }
   ]
   linux: [
     {
@@ -142,6 +156,12 @@ class Clients
       icon: 'osx/downcast@2x.png'
       install: 'https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4'
     },
+    #{
+      #title: 'gPodder'
+      #scheme: 'gpodder://'
+      #icon: 'osx/gpodder@2x.png'
+      #install: 'http://gpodder.org/downloads'
+    #},
     {
       title: 'Instacast'
       scheme: 'instacast://'
@@ -157,10 +177,16 @@ class Clients
   ]
 
   windowsPhone: [
+    {
+      title: 'Podcasts'
+      scheme: 'podcast://'
+      icon: 'windowsphone/podcasts@2x.png'
+    }#,
     #{
-      #title: 'Podcasts'
-      #scheme: 'pcast:'
-      #icon: 'icon-medium@2x.png'
+      #title: 'BringCast'
+      #scheme: 'bringcast:'
+      #icon: 'windowsphone/bringcast@2x.png'
+	  #install: 'http://windowsphone.com/s?appId=e5abef38-d413-e011-9264-00237de2db9e'
     #}
   ]
 
@@ -170,7 +196,13 @@ class Clients
       scheme: 'itpc://'
       icon: 'osx/itunes@2x.png'
       install: 'http://www.apple.com/itunes/'
-    }
+    }#,
+    #{
+      #title: 'gPodder'
+      #scheme: 'gpodder://'
+      #icon: 'windows/gpodder@2x.png'
+      #install: 'http://gpodder.org/downloads'
+    #},
   ]
 
   windows8: [
@@ -180,6 +212,12 @@ class Clients
       icon: 'osx/itunes@2x.png'
       install: 'http://www.apple.com/itunes/'
     },
+    #{
+      #title: 'gPodder'
+      #scheme: 'gpodder://'
+      #icon: 'windows/gpodder@2x.png'
+      #install: 'http://gpodder.org/downloads'
+    #},
     {
       title: 'Podscout'
       scheme: 'podscout://'
@@ -189,12 +227,24 @@ class Clients
   ]
 
   windows81: [
+    #{
+      #title: 'BringCast'
+      #scheme: 'bringcast:'
+      #icon: 'windows/bringcast@2x.png'
+	  #install: 'http://bringcast.com/'
+    #},
     {
       title: 'iTunes'
       scheme: 'itpc://'
       icon: 'osx/itunes@2x.png'
       install: 'http://www.apple.com/itunes/'
     },
+    #{
+      #title: 'gPodder'
+      #scheme: 'gpodder://'
+      #icon: 'windows/gpodder@2x.png'
+      #install: 'http://gpodder.org/downloads'
+    #},
     {
       title: 'Podscout'
       scheme: 'podscout://'
@@ -202,5 +252,21 @@ class Clients
       install: 'http://apps.microsoft.com/windows/de-de/app/podscout/f4316b46-7682-4cea-948b-53d135b2df17'
     }
   ]
+
+  blackBerry: [
+    #{
+      #title: 'bPod'
+      #scheme: '???:'
+      #icon: 'blackberry/bpod@2x.png'
+    #},
+    #{
+      #title: 'gPodder'
+      #scheme: 'gpodder://'
+      #icon: 'blackberry/gpodder@2x.png'
+      #install: 'http://gpodder.org/downloads'
+    #}
+  ]
+
+
 
 module.exports = Clients
