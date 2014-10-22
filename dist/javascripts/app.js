@@ -205,6 +205,13 @@ Clients = (function() {
       register: 'https://gpodder.net/',
       http: true
     }, {
+      title: 'Instacast Cloud',
+      scheme: 'http://localhost:4000/test',
+      icon: 'cloud/instacast@2x.png',
+      register: 'https://player.fm/',
+      http: true,
+      post: true
+    }, {
       title: 'Player.fm',
       scheme: 'https://player.fm/subscribe?id=',
       icon: 'cloud/playerfm@2x.png',
@@ -423,7 +430,8 @@ ClientsPanel = (function(_super) {
       otherClient: this.otherClient,
       cloudClients: this.cloudClients,
       osDefault: this.osDefault,
-      scriptPath: this.parent.options.scriptPath
+      scriptPath: this.parent.options.scriptPath,
+      podcastTitle: this.podcast.title
     };
   };
 
@@ -444,7 +452,11 @@ ClientsPanel = (function(_super) {
       if (!client.http) {
         feedUrl = feedUrl.replace('http://', '');
       }
-      client.url = "" + client.scheme + feedUrl;
+      if (client.post) {
+        client.url = client.scheme;
+      } else {
+        client.url = "" + client.scheme + feedUrl;
+      }
     }
     _(this.cloudClients).shuffle();
     Utils.fixIconPath(this.osDefault, pathPrefix);
@@ -467,10 +479,12 @@ ClientsPanel = (function(_super) {
     })(this));
     this.elem.find('li a').on('click', (function(_this) {
       return function(event) {
-        var client, platform;
+        var client, platform, url, usePost;
         client = $(event.target).data('client');
         platform = $(event.target).data('platform');
-        return _this.showClient(client, platform);
+        url = $(event.target).attr('href');
+        usePost = $(event.target).data('post');
+        return _this.showClient(client, platform, url, usePost);
       };
     })(this));
     this.elem.find('.podlove-subscribe-local').on('click', (function(_this) {
@@ -491,7 +505,7 @@ ClientsPanel = (function(_super) {
     })(this));
   };
 
-  ClientsPanel.prototype.showClient = function(clientTitle, platform) {
+  ClientsPanel.prototype.showClient = function(clientTitle, platform, url, usePost) {
     var client;
     this.parent.moveClients('-100%');
     this.parent.moveFinish('0%');
@@ -506,7 +520,7 @@ ClientsPanel = (function(_super) {
     return this.parent.finishPanel.render(client);
   };
 
-  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> <div class="device-cloud-switch"> <button class="podlove-subscribe-local active">App</button> <button class="podlove-subscribe-cloud">Cloud</button> </div> <div class="client-list"> <ul class="local-clients"> {{#if osDefault.icon}} <li> <a href="{{osDefault.url}}" data-client="{{osDefault.title}}" target="_blank"> <img src="{{osDefault.icon}}"> {{osDefault.title}} </a> </li> {{/if}} {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} <li> <a data-client="rss"> <img src="{{otherClient.icon}}"> {{otherClient.title}} </a> </li> </ul> <ul class="cloud-clients"> {{#each cloudClients}} <li> <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} </ul> </div> </div>');
+  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> <div class="device-cloud-switch"> <button class="podlove-subscribe-local active">App</button> <button class="podlove-subscribe-cloud">Cloud</button> </div> <div class="client-list"> <ul class="local-clients"> {{#if osDefault.icon}} <li> <a href="{{osDefault.url}}" data-client="{{osDefault.title}}" target="_blank"> <img src="{{osDefault.icon}}"> {{osDefault.title}} </a> </li> {{/if}} {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} <li> <a data-client="rss"> <img src="{{otherClient.icon}}"> {{otherClient.title}} </a> </li> </ul> <ul class="cloud-clients"> {{#each cloudClients}} <li> {{#if post}} <form method="post" action="{{url}}" target="_blank"> <input type="hidden" name="title" value="{{../../podcastTitle}}"> <button>{{title}}</button> </form> {{else}} <a href="{{url}}" data-client="{{title}}" data-post="{{post}}" data-platform="cloud" target="_blank"> <img src="{{icon}}"> {{title}} </a> {{/if}} </li> {{/each}} </ul> </div> </div>');
 
   return ClientsPanel;
 

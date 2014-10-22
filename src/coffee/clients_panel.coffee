@@ -28,6 +28,7 @@ class ClientsPanel extends Panel
     cloudClients: @cloudClients,
     osDefault: @osDefault,
     scriptPath: @parent.options.scriptPath,
+    podcastTitle: @podcast.title,
   }
 
   prepareClients: (pathPrefix) ->
@@ -42,7 +43,10 @@ class ClientsPanel extends Panel
     for client in @cloudClients
       Utils.fixIconPath(client, pathPrefix)
       feedUrl = feedUrl.replace('http://', '') unless client.http
-      client.url = "#{client.scheme}#{feedUrl}"
+      if client.post
+        client.url = client.scheme
+      else
+        client.url = "#{client.scheme}#{feedUrl}"
 
     _(@cloudClients).shuffle()
 
@@ -65,9 +69,13 @@ class ClientsPanel extends Panel
       @parent.moveClients('100%')
 
     @elem.find('li a').on 'click', (event) =>
+      #event.preventDefault()
+
       client = $(event.target).data('client')
       platform = $(event.target).data('platform')
-      @showClient(client, platform)
+      url = $(event.target).attr('href')
+      usePost = $(event.target).data('post')
+      @showClient(client, platform, url, usePost)
 
     @elem.find('.podlove-subscribe-local').on 'click', (event) =>
       @elem.find('.local-clients').show()
@@ -81,7 +89,7 @@ class ClientsPanel extends Panel
       $(event.target).addClass('active')
       $(event.target).prev().removeClass('active')
 
-  showClient: (clientTitle, platform) ->
+  showClient: (clientTitle, platform, url, usePost) ->
     @parent.moveClients('-100%')
     @parent.moveFinish('0%')
 
@@ -136,10 +144,18 @@ class ClientsPanel extends Panel
         <ul class="cloud-clients">
           {{#each cloudClients}}
           <li>
-            <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank">
-              <img src="{{icon}}">
-              {{title}}
-            </a>
+            {{#if post}}
+              <form method="post" action="{{url}}" target="_blank">
+                <input type="hidden" name="title" value="{{../../podcastTitle}}">
+
+                <button>{{title}}</button>
+              </form>
+            {{else}}
+              <a href="{{url}}" data-client="{{title}}" data-post="{{post}}" data-platform="cloud" target="_blank">
+                <img src="{{icon}}">
+                {{title}}
+              </a>
+            {{/if}}
           </li>
           {{/each}}
         </ul>
