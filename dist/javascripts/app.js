@@ -293,7 +293,13 @@ Clients = (function() {
     }
   ];
 
-  Clients.prototype.windowsPhone = [];
+  Clients.prototype.windowsPhone = [
+    {
+      title: 'Podcasts',
+      scheme: 'podcast:',
+      icon: 'icon-medium@2x.png'
+    }
+  ];
 
   Clients.prototype.windows7 = [
     {
