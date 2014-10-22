@@ -41,20 +41,21 @@ class ClientsPanel extends Panel
 
     for client in @cloudClients
       Utils.fixIconPath(client, pathPrefix)
-      feedUrl = feedUrl.replace('http://', '') unless client.http
-      client.url = "#{client.scheme}#{feedUrl}"
+      cloudFeedUrl = feedUrl.replace('http://', '') unless client.http
+      client.url = "#{client.scheme}#{cloudFeedUrl}"
 
     _(@cloudClients).shuffle()
 
     Utils.fixIconPath(@osDefault, pathPrefix)
     @osDefault.title = 'Let device decide'
+    @osDefault.originalUrl = feedUrl
     @osDefault.url = "#{@osDefault.scheme}#{feedUrl.replace('http://', '')}"
     # necessary for displaying the right finish panel content
     @osDefault.scheme = null
 
     @otherClient = new Clients('rss')
     Utils.fixIconPath(@otherClient, pathPrefix)
-    @otherClient.url = feedUrl
+    @otherClient.originalUrl = feedUrl
 
   render: () ->
     @elem = $(@template(@context()))

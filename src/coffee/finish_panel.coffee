@@ -58,7 +58,7 @@ class FinishPanel extends Panel
         <p>
           Please copy the URL below and add it to your Podcast- or RSS-Client.
         </p>
-        <input value="{{client.url}}">
+        <input value="{{client.originalUrl}}">
       {{/if}}
     </div>
   ')

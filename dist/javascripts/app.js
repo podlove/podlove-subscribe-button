@@ -428,7 +428,7 @@ ClientsPanel = (function(_super) {
   };
 
   ClientsPanel.prototype.prepareClients = function(pathPrefix) {
-    var client, feedUrl, _i, _j, _len, _len1, _ref, _ref1;
+    var client, cloudFeedUrl, feedUrl, _i, _j, _len, _len1, _ref, _ref1;
     feedUrl = this.podcast.feeds.aac;
     _ref = this.clients;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -442,18 +442,19 @@ ClientsPanel = (function(_super) {
       client = _ref1[_j];
       Utils.fixIconPath(client, pathPrefix);
       if (!client.http) {
-        feedUrl = feedUrl.replace('http://', '');
+        cloudFeedUrl = feedUrl.replace('http://', '');
       }
-      client.url = "" + client.scheme + feedUrl;
+      client.url = "" + client.scheme + cloudFeedUrl;
     }
     _(this.cloudClients).shuffle();
     Utils.fixIconPath(this.osDefault, pathPrefix);
     this.osDefault.title = 'Let device decide';
+    this.osDefault.originalUrl = feedUrl;
     this.osDefault.url = "" + this.osDefault.scheme + (feedUrl.replace('http://', ''));
     this.osDefault.scheme = null;
     this.otherClient = new Clients('rss');
     Utils.fixIconPath(this.otherClient, pathPrefix);
-    return this.otherClient.url = feedUrl;
+    return this.otherClient.originalUrl = feedUrl;
   };
 
   ClientsPanel.prototype.render = function() {
@@ -557,7 +558,7 @@ FinishPanel = (function(_super) {
     });
   };
 
-  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> <img class="podcast-cover" src="{{client.icon}}"> {{#if client.scheme}} <h1>Handing over to<br> {{client.title}}...</h1> <p>Did something go wrong?</p> <p> <a href="{{client.url}}" target="_blank"> Try again </a> <br> or <br> {{#if client.install}} <a href="{{client.install}}" target="_blank"> Install {{client.title}} from the App Store </a> {{/if}} {{#if client.register}} <a href="{{client.register}}" target="_blank"> Register an account with {{client.title}} </a> {{/if}} </p> {{else}} <p> Please copy the URL below and add it to your Podcast- or RSS-Client. </p> <input value="{{client.url}}"> {{/if}} </div>');
+  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> <img class="podcast-cover" src="{{client.icon}}"> {{#if client.scheme}} <h1>Handing over to<br> {{client.title}}...</h1> <p>Did something go wrong?</p> <p> <a href="{{client.url}}" target="_blank"> Try again </a> <br> or <br> {{#if client.install}} <a href="{{client.install}}" target="_blank"> Install {{client.title}} from the App Store </a> {{/if}} {{#if client.register}} <a href="{{client.register}}" target="_blank"> Register an account with {{client.title}} </a> {{/if}} </p> {{else}} <p> Please copy the URL below and add it to your Podcast- or RSS-Client. </p> <input value="{{client.originalUrl}}"> {{/if}} </div>');
 
   return FinishPanel;
 
