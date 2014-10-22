@@ -49,7 +49,8 @@ class ClientsPanel extends Panel
     Utils.fixIconPath(@osDefault, pathPrefix)
     @osDefault.title = 'Let device decide'
     @osDefault.url = "#{@osDefault.scheme}#{feedUrl.replace('http://', '')}"
-
+    # necessary for displaying the right finish panel content
+    @osDefault.scheme = null
 
     @otherClient = new Clients('rss')
     Utils.fixIconPath(@otherClient, pathPrefix)
@@ -91,6 +92,7 @@ class ClientsPanel extends Panel
     else
       _(@clients).findWhere({title: clientTitle})
 
+    client ?= @osDefault
     @parent.finishPanel.render(client)
 
   template: Handlebars.compile('
