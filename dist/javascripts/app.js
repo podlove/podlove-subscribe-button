@@ -449,7 +449,7 @@ ClientsPanel = (function(_super) {
     _(this.cloudClients).shuffle();
     Utils.fixIconPath(this.osDefault, pathPrefix);
     this.osDefault.title = 'Let device decide';
-    this.osDefault.url = feedUrl;
+    this.osDefault.url = "" + this.osDefault.scheme + (feedUrl.replace('http://', ''));
     this.otherClient = new Clients('rss');
     Utils.fixIconPath(this.otherClient, pathPrefix);
     return this.otherClient.url = feedUrl;
