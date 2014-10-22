@@ -6,14 +6,22 @@ class Clients
     return @[platform]
 
   rss: {
-    title: 'Other Client (RSS)'
-    icon: 'rss.png'
+    title: 'Other (Feed URL)'
+    icon: 'generic/rss@2x.png'
   }
 
   os_defaults: {
     android: {
       scheme: 'pcast:'
-      icon: 'android@2x.png'
+      icon: 'generic/android@2x.png'
+    },
+    windows8: {
+      scheme: 'pcast:'
+      icon: 'generic/windows8@2x.png'
+    },
+    windowsphone: {
+      scheme: 'pcast:'
+      icon: 'generic/windowsphone@2x.png'
     }
   }
 
@@ -90,55 +98,55 @@ class Clients
     {
       title: 'Castro'
       scheme: 'castro://subscribe/'
-      icon: 'ios/castro@2x.png'
+      icon: 'igeneric/castro@2x.png'
       install: 'https://itunes.apple.com/de/app/castro-high-fidelity-podcasts/id723142770'
     },
     {
       title: 'Downcast'
       scheme: 'downcast://'
-      icon: 'ios/downcast@2x.png'
+      icon: 'igeneric/downcast@2x.png'
       install: 'https://itunes.apple.com/de/app/downcast/id393858566'
     },
     {
       title: 'iCatcher'
       scheme: 'icatcher://'
-      icon: 'ios/icatcher@2x.png'
+      icon: 'igeneric/icatcher@2x.png'
       install: 'https://itunes.apple.com/de/app/icatcher!-podcast-app/id414419105'
     },
     {
       title: 'Instacast'
       scheme: 'instacast://'
-      icon: 'ios/instacast@2x.png'
+      icon: 'igeneric/instacast@2x.png'
       install: 'https://itunes.apple.com/de/app/instacast-4-podcast-client/id577056377'
     },
     {
       title: 'Overcast'
       scheme: 'overcast://x-callback-url/add?url='
-      icon: 'ios/overcast@2x.png'
+      icon: 'igeneric/overcast@2x.png'
       install: 'https://itunes.apple.com/de/app/overcast-podcast-player/id888422857'
     },
     {
       title: 'PocketCasts'
       scheme: 'pktc://subscribe/'
-      icon: 'ios/pocketcasts@2x.png'
+      icon: 'igeneric/pocketcasts@2x.png'
       install: 'https://itunes.apple.com/de/app/pocket-casts/id414834813'
     },
     {
       title: 'Podcasts'
       scheme: 'pcast://'
-      icon: 'ios/podcasts@2x.png'
+      icon: 'igeneric/podcasts@2x.png'
       install: 'https://itunes.apple.com/de/app/podcasts/id525463029'
     },
     {
       title: 'Podcat'
       scheme: 'podcat://'
-      icon: 'ios/podcat@2x.png'
+      icon: 'igeneric/podcat@2x.png'
       install: 'https://itunes.apple.com/app/podcat/id845960230'
     },
     {
       title: 'RSSRadio'
       scheme: 'rssradio://'
-      icon: 'ios/rssradio@2x.png'
+      icon: 'igeneric/rssradio@2x.png'
       install: 'https://itunes.apple.com/app/rssradio-premium-podcast-downloader/id679025359'
     }
   ]
