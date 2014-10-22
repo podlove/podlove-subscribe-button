@@ -73,7 +73,7 @@ class Clients
       #install: 'https://play.google.com/store/apps/details?id=au.com.shiftyjelly.pocketcasts'
     #},
     {
-      title: 'Podkicker Pro'
+      title: 'Podkicker'
       scheme: 'podkicker://subscribe/'
       icon: 'android/podkicker@2x.png'
       install: 'https://play.google.com/store/apps/details?id=ait.podka'
