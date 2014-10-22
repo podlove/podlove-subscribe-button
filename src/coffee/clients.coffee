@@ -231,7 +231,7 @@ class Clients
       #title: 'BringCast'
       #scheme: 'bringcast:'
       #icon: 'windows/bringcast@2x.png'
-	  #install: 'http://bringcast.com/'
+      #install: 'http://bringcast.com/'
     #},
     {
       title: 'iTunes'
