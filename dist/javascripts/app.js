@@ -205,6 +205,13 @@ Clients = (function() {
       register: 'https://gpodder.net/',
       http: true
     }, {
+      title: 'Instacast Cloud',
+      scheme: 'https://instacastcloud.com/subscribe',
+      icon: 'cloud/instacast@2x.png',
+      register: 'https://instacastcloud.com/',
+      http: true,
+      post: true
+    }, {
       title: 'Player.fm',
       scheme: 'https://player.fm/subscribe?id=',
       icon: 'cloud/playerfm@2x.png',
@@ -423,7 +430,10 @@ ClientsPanel = (function(_super) {
       otherClient: this.otherClient,
       cloudClients: this.cloudClients,
       osDefault: this.osDefault,
-      scriptPath: this.parent.options.scriptPath
+      scriptPath: this.parent.options.scriptPath,
+      podcastTitle: this.podcast.title,
+      podcastSubtitle: this.podcast.subtitle,
+      podcastCover: this.podcast.cover
     };
   };
 
@@ -444,7 +454,12 @@ ClientsPanel = (function(_super) {
       if (!client.http) {
         cloudFeedUrl = feedUrl.replace('http://', '');
       }
-      client.url = "" + client.scheme + cloudFeedUrl;
+      if (client.post) {
+        client.url = client.scheme;
+        client.feedUrl = cloudFeedUrl;
+      } else {
+        client.url = "" + client.scheme + cloudFeedUrl;
+      }
     }
     _(this.cloudClients).shuffle();
     Utils.fixIconPath(this.osDefault, pathPrefix);
@@ -458,6 +473,7 @@ ClientsPanel = (function(_super) {
   };
 
   ClientsPanel.prototype.render = function() {
+    var form;
     this.elem = $(this.template(this.context()));
     this.container.append(this.elem);
     this.elem.find('.podlove-subscribe-back-button').on('click', (function(_this) {
@@ -468,10 +484,11 @@ ClientsPanel = (function(_super) {
     })(this));
     this.elem.find('li a').on('click', (function(_this) {
       return function(event) {
-        var client, platform;
+        var client, platform, url;
         client = $(event.target).data('client');
         platform = $(event.target).data('platform');
-        return _this.showClient(client, platform);
+        url = $(event.target).attr('href');
+        return _this.showClient(client, platform, url);
       };
     })(this));
     this.elem.find('.podlove-subscribe-local').on('click', (function(_this) {
@@ -482,7 +499,7 @@ ClientsPanel = (function(_super) {
         return $(event.target).next().removeClass('active');
       };
     })(this));
-    return this.elem.find('.podlove-subscribe-cloud').on('click', (function(_this) {
+    this.elem.find('.podlove-subscribe-cloud').on('click', (function(_this) {
       return function(event) {
         _this.elem.find('.local-clients').hide();
         _this.elem.find('.cloud-clients').show();
@@ -490,9 +507,24 @@ ClientsPanel = (function(_super) {
         return $(event.target).prev().removeClass('active');
       };
     })(this));
+    form = this.elem.find('li form');
+    if (form.length) {
+      form.find('a').off('click');
+      return form.find('a').on('click', (function(_this) {
+        return function(event) {
+          var client, platform, url;
+          event.preventDefault();
+          form.submit();
+          client = $(event.target).data('client');
+          platform = $(event.target).data('platform');
+          url = $(event.target).attr('href');
+          return _this.showClient(client, platform, url);
+        };
+      })(this));
+    }
   };
 
-  ClientsPanel.prototype.showClient = function(clientTitle, platform) {
+  ClientsPanel.prototype.showClient = function(clientTitle, platform, url) {
     var client;
     this.parent.moveClients('-100%');
     this.parent.moveFinish('0%');
@@ -504,10 +536,10 @@ ClientsPanel = (function(_super) {
     if (client == null) {
       client = this.osDefault;
     }
-    return this.parent.finishPanel.render(client);
+    return this.parent.finishPanel.render(client, this.podcast);
   };
 
-  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> <div class="device-cloud-switch"> <button class="podlove-subscribe-local active">App</button> <button class="podlove-subscribe-cloud">Cloud</button> </div> <div class="client-list"> <ul class="local-clients"> {{#if osDefault.icon}} <li> <a href="{{osDefault.url}}" data-client="{{osDefault.title}}" target="_blank"> <img src="{{osDefault.icon}}"> {{osDefault.title}} </a> </li> {{/if}} {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} <li> <a data-client="rss"> <img src="{{otherClient.icon}}"> {{otherClient.title}} </a> </li> </ul> <ul class="cloud-clients"> {{#each cloudClients}} <li> <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} </ul> </div> </div>');
+  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> <div class="device-cloud-switch"> <button class="podlove-subscribe-local active">App</button> <button class="podlove-subscribe-cloud">Cloud</button> </div> <div class="client-list"> <ul class="local-clients"> {{#if osDefault.icon}} <li> <a href="{{osDefault.url}}" data-client="{{osDefault.title}}" target="_blank"> <img src="{{osDefault.icon}}"> {{osDefault.title}} </a> </li> {{/if}} {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} <li> <a data-client="rss"> <img src="{{otherClient.icon}}"> {{otherClient.title}} </a> </li> </ul> <ul class="cloud-clients"> {{#each cloudClients}} <li> {{#if post}} <form method="post" action="{{url}}" target="_blank"> <input type="hidden" name="url" value="{{feedUrl}}"> <input type="hidden" name="title" value="{{../../podcastTitle}}"> <input type="hidden" name="subtitle" value="{{../../podcastSubtitle}}"> <input type="hidden" name="image" value="{{../../podcastCover}}"> <a href="{{url}}" data-client="{{title}}" data-platform="cloud"> <img src="{{icon}}"> {{title}} </a> </form> {{else}} <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank"> <img src="{{icon}}"> {{title}} </a> {{/if}} </li> {{/each}} </ul> </div> </div>');
 
   return ClientsPanel;
 
@@ -536,16 +568,17 @@ FinishPanel = (function(_super) {
     this.parent = parent;
   }
 
-  FinishPanel.prototype.context = function(client) {
+  FinishPanel.prototype.context = function(client, podcast) {
     return {
       client: client,
+      podcast: podcast,
       scriptPath: this.parent.options.scriptPath
     };
   };
 
-  FinishPanel.prototype.render = function(client) {
+  FinishPanel.prototype.render = function(client, podcast) {
     this.container.empty();
-    this.elem = $(this.template(this.context(client)));
+    this.elem = $(this.template(this.context(client, podcast)));
     this.container.append(this.elem);
     this.elem.find('.podlove-subscribe-back-button').on('click', (function(_this) {
       return function(event) {
@@ -558,7 +591,7 @@ FinishPanel = (function(_super) {
     });
   };
 
-  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> <img class="podcast-cover" src="{{client.icon}}"> {{#if client.scheme}} <h1>Handing over to<br> {{client.title}}...</h1> <p>Did something go wrong?</p> <p> <a href="{{client.url}}" target="_blank"> Try again </a> <br> or <br> {{#if client.install}} <a href="{{client.install}}" target="_blank"> Install {{client.title}} from the App Store </a> {{/if}} {{#if client.register}} <a href="{{client.register}}" target="_blank"> Register an account with {{client.title}} </a> {{/if}} </p> {{else}} <p> Please copy the URL below and add it to your Podcast- or RSS-Client. </p> <input value="{{client.originalUrl}}"> {{/if}} </div>');
+  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> <img class="podcast-cover" src="{{client.icon}}"> {{#if client.scheme}} <h1>Handing over to<br> {{client.title}}...</h1> <p>Did something go wrong?</p> <p> {{#if client.post}} <form method="post" action="{{client.url}}" target="_blank"> <input type="hidden" name="url" value="{{client.url}}"> <input type="hidden" name="title" value="{{podcast.title}}"> <input type="hidden" name="subtitle" value="{{podcast.subtitle}}"> <input type="hidden" name="image" value="{{podcast.cover}}"> <button> {{client.title}} </button> </form> {{else}} <a href="{{client.url}}" target="_blank"> Try again </a> {{/if}} <br> or <br> {{#if client.install}} <a href="{{client.install}}" target="_blank"> Install {{client.title}} from the App Store </a> {{/if}} {{#if client.register}} <a href="{{client.register}}" target="_blank"> Register an account with {{client.title}} </a> {{/if}} </p> {{else}} <p> Please copy the URL below and add it to your Podcast- or RSS-Client. </p> <input value="{{client.originalUrl}}"> {{/if}} </div>');
 
   return FinishPanel;
 

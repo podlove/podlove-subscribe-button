@@ -6,14 +6,15 @@ Panel = require('./panel.coffee')
 class FinishPanel extends Panel
   constructor: (@container, @parent) ->
 
-  context: (client) -> {
+  context: (client, podcast) -> {
     client: client,
+    podcast: podcast,
     scriptPath: @parent.options.scriptPath,
   }
 
-  render: (client) ->
+  render: (client, podcast) ->
     @container.empty()
-    @elem = $(@template(@context(client)))
+    @elem = $(@template(@context(client, podcast)))
     @container.append(@elem)
 
     @elem.find('.podlove-subscribe-back-button').on 'click', (event) =>
@@ -36,9 +37,22 @@ class FinishPanel extends Panel
         <p>Did something go wrong?</p>
 
         <p>
-          <a href="{{client.url}}" target="_blank">
-            Try again
-          </a>
+          {{#if client.post}}
+            <form method="post" action="{{client.url}}" target="_blank">
+              <input type="hidden" name="url" value="{{client.url}}">
+              <input type="hidden" name="title" value="{{podcast.title}}">
+              <input type="hidden" name="subtitle" value="{{podcast.subtitle}}">
+              <input type="hidden" name="image" value="{{podcast.cover}}">
+
+              <button>
+                {{client.title}}
+              </button>
+            </form>
+          {{else}}
+            <a href="{{client.url}}" target="_blank">
+              Try again
+            </a>
+          {{/if}}
           <br>
           or
           <br>

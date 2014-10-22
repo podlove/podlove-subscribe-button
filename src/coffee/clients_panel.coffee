@@ -28,6 +28,9 @@ class ClientsPanel extends Panel
     cloudClients: @cloudClients,
     osDefault: @osDefault,
     scriptPath: @parent.options.scriptPath,
+    podcastTitle: @podcast.title,
+    podcastSubtitle: @podcast.subtitle,
+    podcastCover: @podcast.cover,
   }
 
   prepareClients: (pathPrefix) ->
@@ -41,8 +44,12 @@ class ClientsPanel extends Panel
 
     for client in @cloudClients
       Utils.fixIconPath(client, pathPrefix)
-      cloudFeedUrl = feedUrl.replace('http://', '') unless client.http
-      client.url = "#{client.scheme}#{cloudFeedUrl}"
+      cloudFeedUrl = if client.http then feedurl else feedUrl.replace('http://', '')
+      if client.post
+        client.url = client.scheme
+        client.feedUrl = cloudFeedUrl
+      else
+        client.url = "#{client.scheme}#{cloudFeedUrl}"
 
     _(@cloudClients).shuffle()
 
@@ -66,9 +73,12 @@ class ClientsPanel extends Panel
       @parent.moveClients('100%')
 
     @elem.find('li a').on 'click', (event) =>
+      #event.preventDefault()
+
       client = $(event.target).data('client')
       platform = $(event.target).data('platform')
-      @showClient(client, platform)
+      url = $(event.target).attr('href')
+      @showClient(client, platform, url)
 
     @elem.find('.podlove-subscribe-local').on 'click', (event) =>
       @elem.find('.local-clients').show()
@@ -82,7 +92,20 @@ class ClientsPanel extends Panel
       $(event.target).addClass('active')
       $(event.target).prev().removeClass('active')
 
-  showClient: (clientTitle, platform) ->
+    form = @elem.find('li form')
+    if form.length
+      form.find('a').off 'click'
+      form.find('a').on 'click', (event) =>
+        event.preventDefault()
+
+        form.submit()
+
+        client = $(event.target).data('client')
+        platform = $(event.target).data('platform')
+        url = $(event.target).attr('href')
+        @showClient(client, platform, url)
+
+  showClient: (clientTitle, platform, url) ->
     @parent.moveClients('-100%')
     @parent.moveFinish('0%')
 
@@ -94,7 +117,7 @@ class ClientsPanel extends Panel
       _(@clients).findWhere({title: clientTitle})
 
     client ?= @osDefault
-    @parent.finishPanel.render(client)
+    @parent.finishPanel.render(client, @podcast)
 
   template: Handlebars.compile('
     <div>
@@ -137,10 +160,24 @@ class ClientsPanel extends Panel
         <ul class="cloud-clients">
           {{#each cloudClients}}
           <li>
-            <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank">
-              <img src="{{icon}}">
-              {{title}}
-            </a>
+            {{#if post}}
+              <form method="post" action="{{url}}" target="_blank">
+                <input type="hidden" name="url" value="{{feedUrl}}">
+                <input type="hidden" name="title" value="{{../../podcastTitle}}">
+                <input type="hidden" name="subtitle" value="{{../../podcastSubtitle}}">
+                <input type="hidden" name="image" value="{{../../podcastCover}}">
+
+                <a href="{{url}}" data-client="{{title}}" data-platform="cloud">
+                  <img src="{{icon}}">
+                  {{title}}
+                </a>
+              </form>
+            {{else}}
+              <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank">
+                <img src="{{icon}}">
+                {{title}}
+              </a>
+            {{/if}}
           </li>
           {{/each}}
         </ul>

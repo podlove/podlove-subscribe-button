@@ -453,9 +453,17 @@ body.podlove-subscribe {
       padding: 8px 20px 8px 60px;
       text-decoration: none;
     }
+
+    li button {
+      color: inherit;
+      display: block;
+      padding: 8px 20px 8px 60px;
+      text-decoration: none;
+    }
   }
 
   #podlove-subscribe-panel-finish {
+    font-size: 14px;
     text-align: center;
 
     .top-bar .podlove-subscribe-back-button {
@@ -468,12 +476,17 @@ body.podlove-subscribe {
       max-width: 100px;
     }
 
-    p {
-      font-size: 14px;
+    a {
+      color: inherit;
     }
 
-    p a {
-      color: inherit;
+    form button {
+      background: rgba(0, 0, 0, 0);
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      outline: none;
+      text-decoration: underline;
     }
 
     input {
