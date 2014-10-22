@@ -27,10 +27,10 @@ class Clients
     },
     {
       title: 'Instacast Cloud'
-      #scheme: 'https://instacastcloud.com/subscribe'
-      scheme: 'http://localhost:4000/test'
+      scheme: 'https://instacastcloud.com/subscribe'
+      #scheme: 'http://localhost:4000/test'
       icon: 'cloud/instacast@2x.png'
-      register: 'https://player.fm/'
+      register: 'https://instacastcloud.com/'
       http: true
       post: true
     },

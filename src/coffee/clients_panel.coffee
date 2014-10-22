@@ -29,6 +29,8 @@ class ClientsPanel extends Panel
     osDefault: @osDefault,
     scriptPath: @parent.options.scriptPath,
     podcastTitle: @podcast.title,
+    podcastSubtitle: @podcast.subtitle,
+    podcastCover: @podcast.cover,
   }
 
   prepareClients: (pathPrefix) ->
@@ -45,6 +47,7 @@ class ClientsPanel extends Panel
       feedUrl = feedUrl.replace('http://', '') unless client.http
       if client.post
         client.url = client.scheme
+        client.feedUrl = feedUrl
       else
         client.url = "#{client.scheme}#{feedUrl}"
 
@@ -74,8 +77,7 @@ class ClientsPanel extends Panel
       client = $(event.target).data('client')
       platform = $(event.target).data('platform')
       url = $(event.target).attr('href')
-      usePost = $(event.target).data('post')
-      @showClient(client, platform, url, usePost)
+      @showClient(client, platform, url)
 
     @elem.find('.podlove-subscribe-local').on 'click', (event) =>
       @elem.find('.local-clients').show()
@@ -89,7 +91,20 @@ class ClientsPanel extends Panel
       $(event.target).addClass('active')
       $(event.target).prev().removeClass('active')
 
-  showClient: (clientTitle, platform, url, usePost) ->
+    form = @elem.find('li form')
+    if form.length
+      form.find('a').off 'click'
+      form.find('a').on 'click', (event) =>
+        event.preventDefault()
+
+        form.submit()
+
+        client = $(event.target).data('client')
+        platform = $(event.target).data('platform')
+        url = $(event.target).attr('href')
+        @showClient(client, platform, url)
+
+  showClient: (clientTitle, platform, url) ->
     @parent.moveClients('-100%')
     @parent.moveFinish('0%')
 
@@ -101,7 +116,7 @@ class ClientsPanel extends Panel
       _(@clients).findWhere({title: clientTitle})
 
     client ?= @osDefault
-    @parent.finishPanel.render(client)
+    @parent.finishPanel.render(client, @podcast)
 
   template: Handlebars.compile('
     <div>
@@ -146,12 +161,18 @@ class ClientsPanel extends Panel
           <li>
             {{#if post}}
               <form method="post" action="{{url}}" target="_blank">
+                <input type="hidden" name="url" value="{{feedUrl}}">
                 <input type="hidden" name="title" value="{{../../podcastTitle}}">
+                <input type="hidden" name="subtitle" value="{{../../podcastSubtitle}}">
+                <input type="hidden" name="image" value="{{../../podcastCover}}">
 
-                <button>{{title}}</button>
+                <a href="{{url}}" data-client="{{title}}" data-platform="cloud">
+                  <img src="{{icon}}">
+                  {{title}}
+                </a>
               </form>
             {{else}}
-              <a href="{{url}}" data-client="{{title}}" data-post="{{post}}" data-platform="cloud" target="_blank">
+              <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank">
                 <img src="{{icon}}">
                 {{title}}
               </a>
