@@ -215,7 +215,7 @@ Clients = (function() {
     }, {
       title: 'Instacast Cloud',
       scheme: 'https://instacastcloud.com/subscribe',
-      icon: 'cloud/instacast@2x.png',
+      icon: 'cloud/instacastcloud@2x.png',
       register: 'https://instacastcloud.com/',
       http: true,
       post: true
@@ -459,7 +459,7 @@ ClientsPanel = (function(_super) {
     for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
       client = _ref1[_j];
       Utils.fixIconPath(client, pathPrefix);
-      cloudFeedUrl = client.http ? feedurl : feedUrl.replace('http://', '');
+      cloudFeedUrl = client.http ? feedUrl : feedUrl.replace('http://', '');
       if (client.post) {
         client.url = client.scheme;
         client.feedUrl = cloudFeedUrl;

@@ -37,7 +37,7 @@ class Clients
       title: 'Instacast Cloud'
       scheme: 'https://instacastcloud.com/subscribe'
       #scheme: 'http://localhost:4000/test'
-      icon: 'cloud/instacast@2x.png'
+      icon: 'cloud/instacastcloud@2x.png'
       register: 'https://instacastcloud.com/'
       http: true
       post: true

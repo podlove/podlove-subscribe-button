@@ -44,7 +44,7 @@ class ClientsPanel extends Panel
 
     for client in @cloudClients
       Utils.fixIconPath(client, pathPrefix)
-      cloudFeedUrl = if client.http then feedurl else feedUrl.replace('http://', '')
+      cloudFeedUrl = if client.http then feedUrl else feedUrl.replace('http://', '')
       if client.post
         client.url = client.scheme
         client.feedUrl = cloudFeedUrl
