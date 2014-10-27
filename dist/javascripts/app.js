@@ -344,6 +344,11 @@ Clients = (function() {
       title: 'Podcasts',
       scheme: 'podcast:',
       icon: 'windowsphone/podcasts@2x.png'
+    }, {
+      title: 'Podcast Picker',
+      scheme: 'podcastpicker://',
+      icon: 'windowsphone/podcastpicker@2x.png',
+      install: 'http://windowsphone.com/s?appId=79b72069-b656-47d2-bab1-fa2d4061825e'
     }
   ];
 
