@@ -107,55 +107,55 @@ class Clients
     {
       title: 'Castro'
       scheme: 'castro://subscribe/'
-      icon: 'igeneric/castro@2x.png'
+      icon: 'ios/castro@2x.png'
       install: 'https://itunes.apple.com/de/app/castro-high-fidelity-podcasts/id723142770'
     },
     {
       title: 'Downcast'
       scheme: 'downcast://'
-      icon: 'igeneric/downcast@2x.png'
+      icon: 'ios/downcast@2x.png'
       install: 'https://itunes.apple.com/de/app/downcast/id393858566'
     },
     {
       title: 'iCatcher'
       scheme: 'icatcher://'
-      icon: 'igeneric/icatcher@2x.png'
+      icon: 'ios/icatcher@2x.png'
       install: 'https://itunes.apple.com/de/app/icatcher!-podcast-app/id414419105'
     },
     {
       title: 'Instacast'
       scheme: 'instacast://'
-      icon: 'igeneric/instacast@2x.png'
+      icon: 'ios/instacast@2x.png'
       install: 'https://itunes.apple.com/de/app/instacast-4-podcast-client/id577056377'
     },
     {
       title: 'Overcast'
       scheme: 'overcast://x-callback-url/add?url='
-      icon: 'igeneric/overcast@2x.png'
+      icon: 'ios/overcast@2x.png'
       install: 'https://itunes.apple.com/de/app/overcast-podcast-player/id888422857'
     },
     {
       title: 'PocketCasts'
       scheme: 'pktc://subscribe/'
-      icon: 'igeneric/pocketcasts@2x.png'
+      icon: 'ios/pocketcasts@2x.png'
       install: 'https://itunes.apple.com/de/app/pocket-casts/id414834813'
     },
     {
       title: 'Podcasts'
       scheme: 'pcast://'
-      icon: 'igeneric/podcasts@2x.png'
+      icon: 'ios/podcasts@2x.png'
       install: 'https://itunes.apple.com/de/app/podcasts/id525463029'
     },
     {
       title: 'Podcat'
       scheme: 'podcat://'
-      icon: 'igeneric/podcat@2x.png'
+      icon: 'ios/podcat@2x.png'
       install: 'https://itunes.apple.com/app/podcat/id845960230'
     },
     {
       title: 'RSSRadio'
       scheme: 'rssradio://'
-      icon: 'igeneric/rssradio@2x.png'
+      icon: 'ios/rssradio@2x.png'
       install: 'https://itunes.apple.com/app/rssradio-premium-podcast-downloader/id679025359'
     }
   ]
