@@ -1,5 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var $, Button, IframeClick, IframeResizer, Popup, SubscribeButton, Utils,
+var $, Button, IframeClick, IframeResizer, Popup, SubscribeButton, Translations, Utils,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 $ = require('../../vendor/zepto-browserify.js').Zepto;
@@ -13,6 +13,8 @@ Utils = require('./utils.coffee');
 IframeResizer = require('./iframe_resizer.coffee');
 
 IframeClick = require('./iframe_click.coffee');
+
+Translations = require('./translations.coffee');
 
 SubscribeButton = (function() {
   SubscribeButton.init = function(selector) {
@@ -55,6 +57,7 @@ SubscribeButton = (function() {
     var options;
     options = {
       scriptPath: this.scriptElem.attr('src').match(/(^.*\/)/)[0].replace(/javascripts\/$/, '').replace(/\/$/, ''),
+      language: this.scriptElem.data('language'),
       size: this.scriptElem.data('size')
     };
     return this.options = $.extend(this.defaultOptions, options);
@@ -87,21 +90,21 @@ SubscribeButton = (function() {
   };
 
   SubscribeButton.prototype.iframe = function() {
-    var buttonUrl, id, iframe;
-    id = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-    buttonUrl = "" + this.options.scriptPath + "/button.html?id=" + id + "&language=" + this.options.language + "&size=" + this.options.size;
-    iframe = $('<iframe>').attr('src', buttonUrl).attr('id', id).addClass('podlove-subscribe-button-iframe').css({
+    var buttonUrl, iframe;
+    this.options.id = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+    buttonUrl = "" + this.options.scriptPath + "/button.html?id=" + this.options.id + "&language=" + this.options.language + "&size=" + this.options.size;
+    iframe = $('<iframe>').attr('src', buttonUrl).attr('id', this.options.id).addClass('podlove-subscribe-button-iframe').css({
       border: 'none',
       display: 'inline-block',
       overflow: 'hidden'
     });
     IframeResizer.listen('resizeButton', iframe);
-    IframeClick.listen(iframe, this.openPopup);
+    IframeClick.listen(iframe, this.openPopup, this.options);
     return iframe;
   };
 
-  SubscribeButton.prototype.openPopup = function() {
-    return new Popup(this.podcast, this.options);
+  SubscribeButton.prototype.openPopup = function(options) {
+    return new Popup(this.podcast, options);
   };
 
   return SubscribeButton;
@@ -118,7 +121,7 @@ $(function() {
 
 
 
-},{"../../vendor/zepto-browserify.js":16,"./button.coffee":2,"./iframe_click.coffee":6,"./iframe_resizer.coffee":7,"./popup.coffee":10,"./utils.coffee":13}],2:[function(require,module,exports){
+},{"../../vendor/zepto-browserify.js":16,"./button.coffee":2,"./iframe_click.coffee":6,"./iframe_resizer.coffee":7,"./popup.coffee":10,"./translations.coffee":11,"./utils.coffee":13}],2:[function(require,module,exports){
 var $, Button, Translations, Utils;
 
 $ = require('../../vendor/zepto-browserify.js').Zepto;
@@ -131,13 +134,14 @@ Button = (function() {
   function Button() {
     this.getOptions();
     this.elem = $('#podlove-subscribe-button');
+    this.translations = Translations[this.options.language];
     this.render();
     this.resizeIframe();
   }
 
   Button.prototype.render = function() {
     var buttonHtml;
-    buttonHtml = "<span>" + Translations.button[this.options.language] + "</span>";
+    buttonHtml = "<span>" + this.translations.button + "</span>";
     this.elem.addClass(this.options.size).html(buttonHtml);
     return this.elem.on('click', (function(_this) {
       return function(event) {
@@ -452,7 +456,8 @@ ClientsPanel = (function(_super) {
       scriptPath: this.parent.options.scriptPath,
       podcastTitle: this.podcast.title,
       podcastSubtitle: this.podcast.subtitle,
-      podcastCover: this.podcast.cover
+      podcastCover: this.podcast.cover,
+      translations: this.parent.translations
     };
   };
 
@@ -558,7 +563,7 @@ ClientsPanel = (function(_super) {
     return this.parent.finishPanel.render(client, this.podcast);
   };
 
-  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> <div class="device-cloud-switch"> <button class="podlove-subscribe-local active">App</button> <button class="podlove-subscribe-cloud">Cloud</button> </div> <div class="client-list"> <ul class="local-clients"> {{#if osDefault.icon}} <li> <a href="{{osDefault.url}}" data-client="{{osDefault.title}}" target="_blank"> <img src="{{osDefault.icon}}"> {{osDefault.title}} </a> </li> {{/if}} {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} <li> <a data-client="rss"> <img src="{{otherClient.icon}}"> {{otherClient.title}} </a> </li> </ul> <ul class="cloud-clients"> {{#each cloudClients}} <li> {{#if post}} <form method="post" action="{{url}}" target="_blank"> <input type="hidden" name="url" value="{{feedUrl}}"> <input type="hidden" name="title" value="{{../../podcastTitle}}"> <input type="hidden" name="subtitle" value="{{../../podcastSubtitle}}"> <input type="hidden" name="image" value="{{../../podcastCover}}"> <a href="{{url}}" data-client="{{title}}" data-platform="cloud"> <img src="{{icon}}"> {{title}} </a> </form> {{else}} <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank"> <img src="{{icon}}"> {{title}} </a> {{/if}} </li> {{/each}} </ul> </div> </div>');
+  ClientsPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">{{translations.panels.title}}</span> </div> <div class="device-cloud-switch"> <button class="podlove-subscribe-local active">{{translations.clients_panel.app}}</button> <button class="podlove-subscribe-cloud">{{translations.clients_panel.cloud}}</button> </div> <div class="client-list"> <ul class="local-clients"> {{#if osDefault.icon}} <li> <a href="{{osDefault.url}}" data-client="{{osDefault.title}}" target="_blank"> <img src="{{osDefault.icon}}"> {{osDefault.title}} </a> </li> {{/if}} {{#each clients}} <li> <a href="{{url}}" data-client="{{title}}" target="_blank"> <img src="{{icon}}"> {{title}} </a> </li> {{/each}} <li> <a data-client="rss"> <img src="{{otherClient.icon}}"> {{translations.clients_panel.other_client}} </a> </li> </ul> <ul class="cloud-clients"> {{#each cloudClients}} <li> {{#if post}} <form method="post" action="{{url}}" target="_blank"> <input type="hidden" name="url" value="{{feedUrl}}"> <input type="hidden" name="title" value="{{../../podcastTitle}}"> <input type="hidden" name="subtitle" value="{{../../podcastSubtitle}}"> <input type="hidden" name="image" value="{{../../podcastCover}}"> <a href="{{url}}" data-client="{{title}}" data-platform="cloud"> <img src="{{icon}}"> {{title}} </a> </form> {{else}} <a href="{{url}}" data-client="{{title}}" data-platform="cloud" target="_blank"> <img src="{{icon}}"> {{title}} </a> {{/if}} </li> {{/each}} </ul> </div> </div>');
 
   return ClientsPanel;
 
@@ -591,7 +596,8 @@ FinishPanel = (function(_super) {
     return {
       client: client,
       podcast: podcast,
-      scriptPath: this.parent.options.scriptPath
+      scriptPath: this.parent.options.scriptPath,
+      translations: this.parent.translations
     };
   };
 
@@ -610,7 +616,7 @@ FinishPanel = (function(_super) {
     });
   };
 
-  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> <img class="podcast-cover" src="{{client.icon}}"> {{#if client.scheme}} <h1>Handing over to<br> {{client.title}}...</h1> <p>Did something go wrong?</p> <p> {{#if client.post}} <form method="post" action="{{client.url}}" target="_blank"> <input type="hidden" name="url" value="{{client.url}}"> <input type="hidden" name="title" value="{{podcast.title}}"> <input type="hidden" name="subtitle" value="{{podcast.subtitle}}"> <input type="hidden" name="image" value="{{podcast.cover}}"> <button> {{client.title}} </button> </form> {{else}} <a href="{{client.url}}" target="_blank"> Try again </a> {{/if}} <br> or <br> {{#if client.install}} <a href="{{client.install}}" target="_blank"> Install {{client.title}} from the App Store </a> {{/if}} {{#if client.register}} <a href="{{client.register}}" target="_blank"> Register an account with {{client.title}} </a> {{/if}} </p> {{else}} <p> Please copy the URL below and add it to your Podcast- or RSS-Client. </p> <input value="{{client.originalUrl}}"> {{/if}} </div>');
+  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">{{translations.panels.title}}</span> </div> <img class="podcast-cover" src="{{client.icon}}"> {{#if client.scheme}} <h1>{{translations.finish_panel.handing_over_to}}<br> {{client.title}}...</h1> <p>{{translations.finish_panel.something_went_wrong}}</p> <p> {{#if client.post}} <form method="post" action="{{client.url}}" target="_blank"> <input type="hidden" name="url" value="{{client.url}}"> <input type="hidden" name="title" value="{{podcast.title}}"> <input type="hidden" name="subtitle" value="{{podcast.subtitle}}"> <input type="hidden" name="image" value="{{podcast.cover}}"> <button> {{client.title}} </button> </form> {{else}} <a href="{{client.url}}" target="_blank"> {{translations.finish_panel.try_again}} </a> {{/if}} <br> or <br> {{#if client.install}} <a href="{{client.install}}" target="_blank"> {{translations.finish_panel.install}} </a> {{/if}} {{#if client.register}} <a href="{{client.register}}" target="_blank"> {{translations.finish_panel.register_an_account}} {{client.title}} </a> {{/if}} </p> {{else}} <p> {{translations.finish_panel.please_copy_url}} </p> <input value="{{client.originalUrl}}"> {{/if}} </div>');
 
   return FinishPanel;
 
@@ -621,22 +627,29 @@ module.exports = FinishPanel;
 
 
 },{"../../vendor/handlebars.min.js":14,"../../vendor/zepto-browserify.js":16,"./panel.coffee":8}],6:[function(require,module,exports){
-var $, IframeClick;
+var $, IframeClick, _;
 
 $ = require('../../vendor/zepto-browserify.js').Zepto;
+
+_ = require('../../vendor/underscore-min.js');
 
 IframeClick = (function() {
   function IframeClick() {}
 
-  IframeClick.listen = function(iframe, callback) {
+  IframeClick.listen = function(iframe, callback, options) {
     var id;
-    id = $(iframe).attr('id');
+    id = options.id;
+    if (window.podloveSubscribeButtonStoredOptions == null) {
+      window.podloveSubscribeButtonStoredOptions = {};
+    }
+    window.podloveSubscribeButtonStoredOptions[id] = _.clone(options);
     return window.addEventListener('message', ((function(_this) {
       return function(event) {
         if (event.data !== ("clicked_" + id)) {
           return;
         }
-        return callback();
+        options = window.podloveSubscribeButtonStoredOptions[id];
+        return callback(options);
       };
     })(this)), false);
   };
@@ -649,7 +662,7 @@ module.exports = IframeClick;
 
 
 
-},{"../../vendor/zepto-browserify.js":16}],7:[function(require,module,exports){
+},{"../../vendor/underscore-min.js":15,"../../vendor/zepto-browserify.js":16}],7:[function(require,module,exports){
 var IframeResizer;
 
 IframeResizer = (function() {
@@ -715,13 +728,15 @@ module.exports = Panel;
 
 
 },{}],9:[function(require,module,exports){
-var $, Handlebars, Panel, PodcastPanel,
+var $, Handlebars, Panel, PodcastPanel, Translations,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 $ = require('../../vendor/zepto-browserify.js').Zepto;
 
 Handlebars = require('../../vendor/handlebars.min.js').Handlebars;
+
+Translations = require('./translations.coffee');
 
 Panel = require('./panel.coffee');
 
@@ -740,7 +755,8 @@ PodcastPanel = (function(_super) {
       cover: this.podcast.cover,
       title: this.podcast.title,
       subtitle: this.podcast.subtitle,
-      scriptPath: this.parent.options.scriptPath
+      scriptPath: this.parent.options.scriptPath,
+      translations: this.parent.translations
     };
   };
 
@@ -761,7 +777,7 @@ PodcastPanel = (function(_super) {
     })(this));
   };
 
-  PodcastPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span id="podlove-subscribe-popup-help-button"> <span class="questionmark">?</span> <span class="podlove-subscribe-back-button">&lsaquo;</span> </span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">Subscribe</span> </div> {{#if cover}} <img class="podcast-cover" src="{{cover}}"> {{/if}} <h1>{{title}}</h1> <p>{{subtitle}}</p> <button class="podlove-subscribe-button">Choose Client</button> <div id="podlove-subscribe-button-help-panel"> <div class="podlove-subscribe-button-help-panel-content"> <h2>Subscribe?</h2> <p>You are about to subscribe to a podcast. This will allow your podcast client program to  automatically download new episodes or access the archive of previously released stuff.</p> <p>The Podlove Subscription Tool helps you to do this. Select your favorite podcast client from a list of potential apps on your device or pick a podcast cloud service on the web that you use.</p> <p>Upon launch, the podcast client should offer you to add the podcast to your list of subscriptions. Use the download link to get the app if not yet available.</p> </div> </div> </div>');
+  PodcastPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span id="podlove-subscribe-popup-help-button"> <span class="questionmark">?</span> <span class="podlove-subscribe-back-button">&lsaquo;</span> </span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">{{translations.panels.title}}</span> </div> {{#if cover}} <img class="podcast-cover" src="{{cover}}"> {{/if}} <h1>{{title}}</h1> <p>{{subtitle}}</p> <button class="podlove-subscribe-button">{{translations.podcast_panel.choose_client}}</button> <div id="podlove-subscribe-button-help-panel"> <div class="podlove-subscribe-button-help-panel-content"> <h2>{{translations.help_panel.title}}</h2> <p>{{translations.help_panel.paragraph1}}</p> <p>{{translations.help_panel.paragraph2}}</p> <p>{{translations.help_panel.paragraph3}}</p> </div> </div> </div>');
 
   return PodcastPanel;
 
@@ -771,7 +787,7 @@ module.exports = PodcastPanel;
 
 
 
-},{"../../vendor/handlebars.min.js":14,"../../vendor/zepto-browserify.js":16,"./panel.coffee":8}],10:[function(require,module,exports){
+},{"../../vendor/handlebars.min.js":14,"../../vendor/zepto-browserify.js":16,"./panel.coffee":8,"./translations.coffee":11}],10:[function(require,module,exports){
 var $, ClientsPanel, FinishPanel, Handlebars, IframeResizer, PodcastPanel, Popup, Translations, Utils;
 
 $ = require('../../vendor/zepto-browserify.js').Zepto;
@@ -794,14 +810,19 @@ Popup = (function() {
   function Popup(podcast, options) {
     this.podcast = podcast;
     this.options = options;
+    this.translations = Translations[this.options.language];
     this.render();
     this.initPanels();
   }
 
-  Popup.prototype.render = function() {
-    this.elem = $(this.template({
+  Popup.prototype.context = function() {
+    return {
       scriptPath: this.options.scriptPath
-    }));
+    };
+  };
+
+  Popup.prototype.render = function() {
+    this.elem = $(this.template(this.context()));
     $('body').append(this.elem);
     return this.elem.find('#podlove-subscribe-popup-close-button').on('click', (function(_this) {
       return function() {
@@ -844,62 +865,60 @@ module.exports = Popup;
 var Translations;
 
 Translations = {
-  button: {
-    de: 'Abonnieren',
-    en: 'Subscribe'
-  },
-  done: {
-    de: 'Fertig',
-    en: 'Done'
-  },
-  subscribe: {
-    de: 'Podcast Abonnieren',
-    en: 'Subscribe to Podcast'
-  },
-  explanation: {
-    de: 'Um diesen Podcast zu abonnieren, bitte einen Client in der Mitte auswählen.',
-    en: 'Please choose a client from the middle to subscribe to this Podcast.'
-  },
-  help: {
-    de: 'Podcast abonnieren mit <strong>{{clientName}}</strong>',
-    en: 'Subscribe to Podcast with <strong>{{clientName}}</strong>'
-  },
-  launchClient: {
-    de: 'Client öffnen',
-    en: 'Launch client'
-  },
-  otherClient: {
-    de: 'Anderer Client',
-    en: 'Other client'
-  },
-  otherClientHelp: {
-    de: 'Kopiere die URL und füge sie in deinem Podcast Client hinzu.',
-    en: 'Copy URL and add it to your Podcast Client.'
-  },
-  next: {
-    de: 'Weiter &rsaquo;',
-    en: 'Next &rsaquo;'
-  },
-  back: {
-    de: 'Zurück',
-    en: 'Back'
-  },
-  clicked: {
-    noinstall: {
-      text: {
-        de: 'Falls nach dem Klick nichts passiert sein sollte, ist vermutlich kein Client installiert.',
-        en: 'If nothing happened after the click you probably have not installed a Client.'
-      }
+  de: {
+    button: 'Abonnieren',
+    panels: {
+      title: 'Abonnieren'
     },
-    install: {
-      text: {
-        de: 'Falls nach dem Klick nichts passiert sein sollte, kannst du <strong>{{clientName}}</strong> hier installieren:',
-        en: 'If nothing happened after the click you can install <strong>{{clientName}}</strong> here:'
-      },
-      button: {
-        de: '{{clientName}} Herunterladen',
-        en: 'Download {{clientName}}'
-      }
+    podcast_panel: {
+      choose_client: 'Client auswählen'
+    },
+    help_panel: {
+      title: 'Abonnieren?',
+      paragraph1: 'Du bist dabei einen Podcast zu abonnieren. Das erlaubt deinem Podcast Client neue Folgen automatisch herunterzuladen oder das Podcast Archiv mit alten Episoden zu durchsuchen.',
+      paragraph2: 'Der Podlove Subscribe Button hilft dir dabei. Wähle deinen favorisierten Podcast Client aus der Liste der verfügbaren Apps oder wähle einen Podcast Cloud Service den du benutzt.',
+      paragraph3: 'Beim Start sollte der Podcast Client den Podcast zur Liste der Abonnements hinzufügen. Benutze den Download Link um die App zu installieren falls sie es noch nicht ist.'
+    },
+    clients_panel: {
+      app: 'App',
+      cloud: 'Cloud',
+      other_client: 'Anderer Client'
+    },
+    finish_panel: {
+      handing_over_to: 'Übergebe an',
+      something_went_wrong: 'Funktioniert etwas nicht wie erwartet?',
+      try_again: 'Nochmal versuchen',
+      install: 'Aus dem App Store installieren',
+      register_an_account: 'Einen Account registrieren bei ',
+      please_copy_url: 'Bitte die URL kopieren und in deinen Podcast- oder RSS-Client einfügen.'
+    }
+  },
+  en: {
+    button: 'Subscribe',
+    panels: {
+      title: 'Subscribe'
+    },
+    podcast_panel: {
+      choose_client: 'Choose client'
+    },
+    help_panel: {
+      title: 'Subscribe?',
+      paragraph1: 'You are about to subscribe to a podcast. This will allow your podcast client program to  automatically download new episodes or access the archive of previously released stuff.',
+      paragraph2: 'The Podlove Subscription Tool helps you to do this. Select your favorite podcast client from a list of potential apps on your device or pick a podcast cloud service on the web that you use.',
+      paragraph3: 'Upon launch, the podcast client should offer you to add the podcast to your list of subscriptions. Use the download link to get the app if not yet available.'
+    },
+    clients_panel: {
+      app: 'App',
+      cloud: 'Cloud',
+      other_client: 'Other Client'
+    },
+    finish_panel: {
+      handing_over_to: 'Handing over to',
+      something_went_wrong: 'Did something go wrong?',
+      try_again: 'Try again',
+      install: "Install from App Store",
+      register_an_account: 'Register an account with ',
+      please_copy_url: 'Please copy the URL below and add it to your Podcast- or RSS-Client.'
     }
   }
 };

@@ -1,5 +1,6 @@
 $ = require('../../vendor/zepto-browserify.js').Zepto
 Handlebars = require('../../vendor/handlebars.min.js').Handlebars
+Translations = require('./translations.coffee')
 
 Panel = require('./panel.coffee')
 
@@ -13,6 +14,7 @@ class PodcastPanel extends Panel
     title: @podcast.title,
     subtitle: @podcast.subtitle,
     scriptPath: @parent.options.scriptPath,
+    translations: @parent.translations
   }
 
   render: () ->
@@ -35,23 +37,23 @@ class PodcastPanel extends Panel
           <span class="podlove-subscribe-back-button">&lsaquo;</span>
         </span>
         <img src="{{scriptPath}}/images/icon-big@2x.png">
-        <span class="panel-title">Subscribe</span>
+        <span class="panel-title">{{translations.panels.title}}</span>
       </div>
       {{#if cover}}
       <img class="podcast-cover" src="{{cover}}">
       {{/if}}
       <h1>{{title}}</h1>
       <p>{{subtitle}}</p>
-      <button class="podlove-subscribe-button">Choose Client</button>
+      <button class="podlove-subscribe-button">{{translations.podcast_panel.choose_client}}</button>
 
       <div id="podlove-subscribe-button-help-panel">
         <div class="podlove-subscribe-button-help-panel-content">
-          <h2>Subscribe?</h2>
-          <p>You are about to subscribe to a podcast. This will allow your podcast client program to  automatically download new episodes or access the archive of previously released stuff.</p>
+          <h2>{{translations.help_panel.title}}</h2>
+          <p>{{translations.help_panel.paragraph1}}</p>
 
-          <p>The Podlove Subscription Tool helps you to do this. Select your favorite podcast client from a list of potential apps on your device or pick a podcast cloud service on the web that you use.</p>
+          <p>{{translations.help_panel.paragraph2}}</p>
 
-          <p>Upon launch, the podcast client should offer you to add the podcast to your list of subscriptions. Use the download link to get the app if not yet available.</p>
+          <p>{{translations.help_panel.paragraph3}}</p>
         </div>
       </div>
     </div>

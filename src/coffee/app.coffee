@@ -5,6 +5,7 @@ Popup = require('./popup.coffee')
 Utils = require('./utils.coffee')
 IframeResizer = require('./iframe_resizer.coffee')
 IframeClick = require('./iframe_click.coffee')
+Translations = require('./translations.coffee')
 
 class SubscribeButton
   @init: (selector = '.podlove-subscribe-button') ->
@@ -38,7 +39,7 @@ class SubscribeButton
   getOptions: () ->
     options =
       scriptPath: @scriptElem.attr('src').match(/(^.*\/)/)[0].replace(/javascripts\/$/, '').replace(/\/$/, '')
-      #language: @scriptElem.data('language')
+      language: @scriptElem.data('language')
       size: @scriptElem.data('size')
 
     @options = $.extend(@defaultOptions, options)
@@ -63,23 +64,23 @@ class SubscribeButton
 
   # builds the button Iframe and attaches the click event listener
   iframe: () ->
-    id = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
-    buttonUrl = "#{@options.scriptPath}/button.html?id=#{id}&language=#{@options.language}&size=#{@options.size}"
+    @options.id = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
+    buttonUrl = "#{@options.scriptPath}/button.html?id=#{@options.id}&language=#{@options.language}&size=#{@options.size}"
 
     iframe = $('<iframe>')
       .attr('src', buttonUrl)
-      .attr('id', id)
+      .attr('id', @options.id)
       .addClass('podlove-subscribe-button-iframe')
       .css({border: 'none', display: 'inline-block', overflow: 'hidden'})
 
     IframeResizer.listen('resizeButton', iframe)
 
-    IframeClick.listen(iframe, @openPopup)
+    IframeClick.listen(iframe, @openPopup, @options)
 
     iframe
 
-  openPopup: () =>
-    new Popup(@podcast, @options)
+  openPopup: (options) =>
+    new Popup(@podcast, options)
 
 window.SubscribeButton = SubscribeButton
 window.Button = Button

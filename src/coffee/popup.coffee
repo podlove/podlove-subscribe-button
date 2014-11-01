@@ -11,11 +11,16 @@ FinishPanel = require('./finish_panel.coffee')
 
 class Popup
   constructor: (@podcast, @options) ->
+    @translations = Translations[@options.language]
     @render()
     @initPanels()
 
+  context: -> {
+    scriptPath: @options.scriptPath
+  }
+
   render: () ->
-    @elem = $(@template({scriptPath: @options.scriptPath}))
+    @elem = $(@template(@context()))
     $('body').append(@elem)
     @elem.find('#podlove-subscribe-popup-close-button').on 'click', () =>
       @elem.remove()
