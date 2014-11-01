@@ -458,7 +458,9 @@ ClientsPanel = (function(_super) {
 
   ClientsPanel.prototype.prepareClients = function(pathPrefix) {
     var client, cloudFeedUrl, feedUrl, _i, _j, _len, _len1, _ref, _ref1;
-    feedUrl = this.podcast.feeds.aac;
+    feedUrl = _(this.podcast.feeds).findWhere({
+      format: 'mp3'
+    }).url;
     _ref = this.clients;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       client = _ref[_i];

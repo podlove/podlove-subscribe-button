@@ -34,7 +34,7 @@ class ClientsPanel extends Panel
   }
 
   prepareClients: (pathPrefix) ->
-    feedUrl = @podcast.feeds.aac
+    feedUrl = _(@podcast.feeds).findWhere({format: 'mp3'}).url
 
     for client in @clients
       Utils.fixIconPath(client, pathPrefix)
