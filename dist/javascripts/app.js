@@ -57,7 +57,7 @@ SubscribeButton = (function() {
     var options;
     options = {
       scriptPath: this.scriptElem.attr('src').match(/(^.*\/)/)[0].replace(/javascripts\/$/, '').replace(/\/$/, ''),
-      language: this.scriptElem.data('language'),
+      language: this.scriptElem.data('language').split('-')[0],
       size: this.scriptElem.data('size')
     };
     return this.options = $.extend(this.defaultOptions, options);
