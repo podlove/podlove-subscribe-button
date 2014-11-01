@@ -34,7 +34,7 @@ class ClientsPanel extends Panel
   }
 
   prepareClients: (pathPrefix) ->
-    feedUrl = _(@podcast.feeds).findWhere({format: 'mp3'}).url ||
+    feedUrl = (_(@podcast.feeds).findWhere({format: 'mp3'}) || {}).url ||
       @podcast.feeds.mp3
 
     for client in @clients
