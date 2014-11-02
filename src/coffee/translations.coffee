@@ -9,7 +9,7 @@ Translations =
       title: 'Abonnieren?'
       paragraph1: 'Du bist dabei einen Podcast zu abonnieren. Das erlaubt deinem Podcast Client neue Folgen automatisch herunterzuladen oder das Podcast Archiv mit alten Episoden zu durchsuchen.'
       paragraph2: 'Der Podlove Subscribe Button hilft dir dabei. Wähle deinen favorisierten Podcast Client aus der Liste der verfügbaren Apps oder wähle einen Podcast Cloud Service den du benutzt.'
-      paragraph3: 'Beim Start sollte der Podcast Client den Podcast zur Liste der Abonnements hinzufügen. Benutze den Download Link um die App zu installieren falls sie es noch nicht ist.'
+      paragraph3: 'Beim Start sollte der Podcast Client den Podcast zur Liste der Abonnements hinzufügen. Benutze den Download Link um die App zu installieren, falls sie es noch nicht ist.'
     clients_panel:
       app: 'App'
       cloud: 'Cloud'
