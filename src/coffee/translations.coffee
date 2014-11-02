@@ -88,6 +88,27 @@ class Translations
         try_again: 'Try again'
         install: "Install %{client} from App Store"
         register_an_account: 'Register an account with '
-        please_copy_url: 'Please copy the URL below and add it to your Podcast- or RSS-Client.'
+          please_copy_url: 'Please copy the URL below and add it to your Podcast- or RSS-Client.'
 
-module.exports = Translations
+    ja:
+      button: '登録する'
+      panels:
+        title: '登録する'
+      podcast_panel:
+        choose_client: 'クライアントを選ぶ'
+      help_panel:
+        title: '登録がよろしいですか？'
+        paragraph1: '今新しいポットキャストを登録しています。それでポットキャストクライアントアプリケーションで新しいエピソードを自動でダウンロードできる、またはポットキャストアーカイブで過去のエピソードを探せます。'
+        paragraph2: 'ポットラブ登録ボタンは登録を支援します。気に入り、使っているポットキャストクライアントがポットキャストクラウドサービスを使用可能なもののリストを選んで下さい。'
+        paragraph3: 'スタートアップでポットキャストクライアントがポットキャストを登録はずです。アプリがまだインストールしなかったら、ダウンロードリンクをインストールために使って下さい。'
+      clients_panel:
+        app: 'アプリ'
+        cloud: 'クラウド'
+        other_client: '他のクライアント'
+      finish_panel:
+        handing_over_to: 'に渡す'
+        something_went_wrong: '何が失敗しましたか？'
+        try_again: 'もう一度試してください'
+        install: 'App Storeからインストールする'
+        register_an_account: 'にアカウントを登録する'
+        please_copy_url: 'URLをコピーして、ポットキャストがRSSクライアントに貼り付けて下さい。'
