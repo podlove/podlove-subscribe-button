@@ -196,7 +196,7 @@ class Clients
   windowsPhone: [
     {
       title: 'BringCast'
-      scheme: 'bringcast:'
+      scheme: 'bringcast://subscribe/'
       icon: 'windowsphone/bringcast@2x.png'
       install: 'http://windowsphone.com/s?appId=e5abef38-d413-e011-9264-00237de2db9e'
       http: true
