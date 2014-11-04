@@ -164,6 +164,12 @@ class Clients
       title: 'Clementine'
       scheme: 'itpc://'
       icon: 'linux/clementine@2x.png'
+    },
+    {
+      title: 'gPodder'
+      scheme: 'gpodder://'
+      icon: 'linux/gpodder@2x.png'
+      install: 'http://gpodder.org/downloads'
     }
   ],
   osx: [
@@ -216,32 +222,32 @@ class Clients
 
   windows7: [
     {
+      title: 'gPodder'
+      scheme: 'gpodder://'
+      icon: 'windows/gpodder@2x.png'
+      install: 'http://gpodder.org/downloads'
+    },
+    {
       title: 'iTunes'
       scheme: 'itpc://'
       icon: 'osx/itunes@2x.png'
       install: 'http://www.apple.com/itunes/'
-    }#,
-    #{
-      #title: 'gPodder'
-      #scheme: 'gpodder://'
-      #icon: 'windows/gpodder@2x.png'
-      #install: 'http://gpodder.org/downloads'
-    #},
+    }
   ]
 
   windows8: [
+    {
+      title: 'gPodder'
+      scheme: 'gpodder://'
+      icon: 'windows/gpodder@2x.png'
+      install: 'http://gpodder.org/downloads'
+    },
     {
       title: 'iTunes'
       scheme: 'itpc://'
       icon: 'osx/itunes@2x.png'
       install: 'http://www.apple.com/itunes/'
     },
-    #{
-      #title: 'gPodder'
-      #scheme: 'gpodder://'
-      #icon: 'windows/gpodder@2x.png'
-      #install: 'http://gpodder.org/downloads'
-    #},
     {
       title: 'Podscout'
       scheme: 'podscout://'
@@ -258,17 +264,17 @@ class Clients
       #install: 'http://bringcast.com/'
     #},
     {
+      title: 'gPodder'
+      scheme: 'gpodder://'
+      icon: 'windows/gpodder@2x.png'
+      install: 'http://gpodder.org/downloads'
+    },
+    {
       title: 'iTunes'
       scheme: 'itpc://'
       icon: 'osx/itunes@2x.png'
       install: 'http://www.apple.com/itunes/'
     },
-    #{
-      #title: 'gPodder'
-      #scheme: 'gpodder://'
-      #icon: 'windows/gpodder@2x.png'
-      #install: 'http://gpodder.org/downloads'
-    #},
     {
       title: 'Podscout'
       scheme: 'podscout://'
