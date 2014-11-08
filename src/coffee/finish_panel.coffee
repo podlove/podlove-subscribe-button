@@ -10,7 +10,6 @@ class FinishPanel extends Panel
     client: client,
     podcast: podcast,
     scriptPath: @parent.options.scriptPath,
-    translations: @parent.translations,
   }
 
   render: (client, podcast) ->
@@ -30,12 +29,12 @@ class FinishPanel extends Panel
       <div class="top-bar">
         <span class="podlove-subscribe-back-button">&lsaquo;</span>
         <img src="{{scriptPath}}/images/icon-big@2x.png">
-        <span class="panel-title">{{translations.panels.title}}</span>
+        <span class="panel-title">{{t "panels.title"}}</span>
       </div>
       <img class="podcast-cover" src="{{client.icon}}">
       {{#if client.scheme}}
-        <h1>{{translations.finish_panel.handing_over_to}}<br> {{client.title}}...</h1>
-        <p>{{translations.finish_panel.something_went_wrong}}</p>
+        <h1>{{t "finish_panel.handing_over_to" client=client.title}}...</h1>
+        <p>{{t "finish_panel.something_went_wrong"}}</p>
 
         <p>
           {{#if client.post}}
@@ -51,7 +50,7 @@ class FinishPanel extends Panel
             </form>
           {{else}}
             <a href="{{client.url}}" target="_blank">
-              {{translations.finish_panel.try_again}}
+              {{t "finish_panel.try_again"}}
             </a>
           {{/if}}
           <br>
@@ -59,20 +58,20 @@ class FinishPanel extends Panel
           <br>
           {{#if client.install}}
             <a href="{{client.install}}" target="_blank">
-              {{translations.finish_panel.install}}
+              {{t "finish_panel.install" client=client.title}}
             </a>
           {{/if}}
 
           {{#if client.register}}
             <a href="{{client.register}}" target="_blank">
-              {{translations.finish_panel.register_an_account}}
+              {{t "finish_panel.register_an_account"}}
               {{client.title}}
             </a>
           {{/if}}
         </p>
       {{else}}
         <p>
-          {{translations.finish_panel.please_copy_url}}
+          {{t "finish_panel.please_copy_url"}}
         </p>
         <input value="{{client.originalUrl}}">
       {{/if}}

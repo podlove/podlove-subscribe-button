@@ -7,13 +7,13 @@ class Button
     @getOptions()
     @elem = $('#podlove-subscribe-button')
 
-    @translations = Translations[@options.language]
+    @I18n = new Translations(@options.language)
     @render()
 
     @resizeIframe()
 
   render: () ->
-    buttonHtml = "<span>#{@translations.button}</span>"
+    buttonHtml = "<span>#{@I18n.t('button')}</span>"
     @elem.addClass(@options.size)
       .html(buttonHtml)
 

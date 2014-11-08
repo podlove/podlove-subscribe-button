@@ -31,7 +31,6 @@ class ClientsPanel extends Panel
     podcastTitle: @podcast.title,
     podcastSubtitle: @podcast.subtitle,
     podcastCover: @podcast.cover,
-    translations: @parent.translations,
   }
 
   prepareClients: (pathPrefix) ->
@@ -126,11 +125,11 @@ class ClientsPanel extends Panel
       <div class="top-bar">
         <span class="podlove-subscribe-back-button">&lsaquo;</span>
         <img src="{{scriptPath}}/images/icon-big@2x.png">
-        <span class="panel-title">{{translations.panels.title}}</span>
+        <span class="panel-title">{{t "panels.title"}}</span>
       </div>
       <div class="device-cloud-switch">
-        <button class="podlove-subscribe-local active">{{translations.clients_panel.app}}</button>
-        <button class="podlove-subscribe-cloud">{{translations.clients_panel.cloud}}</button>
+        <button class="podlove-subscribe-local active">{{t "clients_panel.app"}}</button>
+        <button class="podlove-subscribe-cloud">{{t "clients_panel.cloud"}}</button>
       </div>
 
       <div class="client-list">
@@ -155,7 +154,7 @@ class ClientsPanel extends Panel
           <li>
             <a data-client="rss">
               <img src="{{otherClient.icon}}">
-              {{translations.clients_panel.other_client}}
+              {{t "clients_panel.other_client"}}
             </a>
           </li>
         </ul>

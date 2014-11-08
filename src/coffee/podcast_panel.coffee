@@ -14,7 +14,6 @@ class PodcastPanel extends Panel
     title: @podcast.title,
     subtitle: @podcast.subtitle,
     scriptPath: @parent.options.scriptPath,
-    translations: @parent.translations
   }
 
   render: () ->
@@ -37,23 +36,23 @@ class PodcastPanel extends Panel
           <span class="podlove-subscribe-back-button">&lsaquo;</span>
         </span>
         <img src="{{scriptPath}}/images/icon-big@2x.png">
-        <span class="panel-title">{{translations.panels.title}}</span>
+        <span class="panel-title">{{t "panels.title"}}</span>
       </div>
       {{#if cover}}
       <img class="podcast-cover" src="{{cover}}">
       {{/if}}
       <h1>{{title}}</h1>
       <p>{{subtitle}}</p>
-      <button class="podlove-subscribe-button">{{translations.podcast_panel.choose_client}}</button>
+      <button class="podlove-subscribe-button">{{t "podcast_panel.choose_client"}}</button>
 
       <div id="podlove-subscribe-button-help-panel">
         <div class="podlove-subscribe-button-help-panel-content">
-          <h2>{{translations.help_panel.title}}</h2>
-          <p>{{translations.help_panel.paragraph1}}</p>
+          <h2>{{t "help_panel.title"}}</h2>
+          <p>{{t "help_panel.paragraph1"}}</p>
 
-          <p>{{translations.help_panel.paragraph2}}</p>
+          <p>{{t "help_panel.paragraph2"}}</p>
 
-          <p>{{translations.help_panel.paragraph3}}</p>
+          <p>{{t "help_panel.paragraph3"}}</p>
         </div>
       </div>
     </div>

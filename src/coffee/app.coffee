@@ -5,7 +5,6 @@ Popup = require('./popup.coffee')
 Utils = require('./utils.coffee')
 IframeResizer = require('./iframe_resizer.coffee')
 IframeClick = require('./iframe_click.coffee')
-Translations = require('./translations.coffee')
 
 class SubscribeButton
   @init: (selector = '.podlove-subscribe-button') ->
@@ -39,7 +38,7 @@ class SubscribeButton
   getOptions: () ->
     options =
       scriptPath: @scriptElem.attr('src').match(/(^.*\/)/)[0].replace(/javascripts\/$/, '').replace(/\/$/, '')
-      language: @scriptElem.data('language').split('-')[0]
+      language: @scriptElem.data('language')
       size: @scriptElem.data('size')
 
     @options = $.extend(@defaultOptions, options)

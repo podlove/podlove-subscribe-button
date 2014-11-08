@@ -11,7 +11,7 @@ FinishPanel = require('./finish_panel.coffee')
 
 class Popup
   constructor: (@podcast, @options) ->
-    @translations = Translations[@options.language]
+    @I18n = new Translations(@options.language)
     @render()
     @initPanels()
 
