@@ -470,6 +470,7 @@ body.podlove-subscribe {
   position: absolute;
 }
 #podlove-subscribe-popup #podlove-subscribe-panel-clients li a {
+  border: none;
   color: inherit;
   display: block;
   padding: 8px 20px 8px 60px;
