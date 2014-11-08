@@ -90,7 +90,7 @@ SubscribeButton = (function() {
   SubscribeButton.prototype.iframe = function() {
     var buttonUrl, iframe;
     this.options.id = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-    buttonUrl = "" + this.options.scriptPath + "/button.html?id=" + this.options.id + "&language=" + this.options.language + "&size=" + this.options.size;
+    buttonUrl = "" + this.options.scriptPath + "/button.html?id=" + this.options.id + "&language=" + this.options.language + "&size=" + this.options.size + "&podcastTitle=" + this.podcast.title + "&podcastCover=" + this.podcast.cover;
     iframe = $('<iframe>').attr('src', buttonUrl).attr('id', this.options.id).addClass('podlove-subscribe-button-iframe').css({
       border: 'none',
       display: 'inline-block',
@@ -131,6 +131,12 @@ Translations = require('./translations.coffee');
 Button = (function() {
   function Button() {
     this.getOptions();
+    if (this.options.size === 'big-logo') {
+      this.logoElem = $('#podlove-subscribe-button-logo');
+    }
+    if (this.options.size === 'big-title') {
+      this.titleElem = $('#podlove-subscribe-button-title');
+    }
     this.elem = $('#podlove-subscribe-button');
     this.I18n = new Translations(this.options.language);
     this.render();
@@ -138,14 +144,22 @@ Button = (function() {
   }
 
   Button.prototype.render = function() {
-    var buttonHtml;
+    var buttonHtml, image, title;
     buttonHtml = "<span>" + (this.I18n.t('button')) + "</span>";
     this.elem.addClass(this.options.size).html(buttonHtml);
-    return this.elem.on('click', (function(_this) {
+    this.elem.on('click', (function(_this) {
       return function(event) {
         return window.parent.postMessage("clicked_" + _this.options.id, '*');
       };
     })(this));
+    if (this.logoElem) {
+      image = "<img src='" + this.options.podcastCover + "'>";
+      this.logoElem.html(image);
+    }
+    if (this.titleElem) {
+      title = "<span>" + (decodeURI(this.options.podcastTitle)) + "</span>";
+      return this.titleElem.html(title);
+    }
   };
 
   Button.prototype.getOptions = function() {
@@ -153,16 +167,39 @@ Button = (function() {
   };
 
   Button.prototype.resizeIframe = function() {
-    var height, resizeData, width;
+    var height, img, resize, width;
+    resize = (function(_this) {
+      return function(height, width) {
+        var resizeData;
+        resizeData = JSON.stringify({
+          id: _this.options.id,
+          listenTo: 'resizeButton',
+          height: height,
+          width: width
+        });
+        return window.parent.postMessage(resizeData, '*');
+      };
+    })(this);
     height = this.elem.height();
     width = this.elem.width();
-    resizeData = JSON.stringify({
-      id: this.options.id,
-      listenTo: 'resizeButton',
-      height: height,
-      width: width
-    });
-    return window.parent.postMessage(resizeData, '*');
+    if (this.logoElem) {
+      img = this.logoElem.find('img');
+      return img.on('load', (function(_this) {
+        return function() {
+          _this.logoElem.height(width);
+          height += width;
+          _this.logoElem.show();
+          return resize(height, width);
+        };
+      })(this));
+    } else if (this.titleElem) {
+      this.titleElem.show();
+      this.titleElem.width(width);
+      height += this.titleElem.height();
+      return resize(height, width);
+    } else {
+      return resize(height, width);
+    }
   };
 
   return Button;
