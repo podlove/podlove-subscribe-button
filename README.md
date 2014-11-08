@@ -1,6 +1,21 @@
 # Podlove Subscribe It
 
+## General
+
+[Official project page](http://podlove.org/podlove-subscribe-button/).
+
 ## Usage
+
+### Through our CDN
+
+    <script class="podlove-subscribe-button" src="http://cdn.podlove.org/subscribe-button/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData"></script>
+
+There are currently two options you can set:
+
+    data-json-data: name of the variable where the button can find information about the podcast (see Podcast data API section)
+    data-language: language the texts on the button and popup should be in (currently supports 'de', 'en' and 'ja')
+
+### Self hosted
 
 Put
 
@@ -12,7 +27,7 @@ into the same folder on a publicly available server. Then add a script tag to th
 
 There are currently two options you can set:
 
-    data-json-data: name of the variable where the button can find information about the podcast
+    data-json-data: name of the variable where the button can find information about the podcast (see Podcast data API section)
     data-language: language the texts on the button and popup should be in (currently supports 'de', 'en' and 'ja')
 
 ### Podcast data API
