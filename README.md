@@ -12,10 +12,11 @@ If you are a client developer and want to add your client to the list, please re
 
     <script class="podlove-subscribe-button" src="http://cdn.podlove.org/subscribe-button/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData"></script>
 
-There are currently two options you can set:
+There are currently three options you can set:
 
     data-json-data: name of the variable where the button can find information about the podcast (see Podcast data API section)
     data-language: language the texts on the button and popup should be in (currently supports 'de', 'en' and 'ja')
+    data-size: size and style of the button ('small', 'medium', 'big', 'big-logo', 'big-title')
 
 ### Self hosted
 
