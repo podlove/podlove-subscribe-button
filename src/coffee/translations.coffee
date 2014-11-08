@@ -88,7 +88,7 @@ class Translations
         try_again: 'Try again'
         install: "Install %{client} from App Store"
         register_an_account: 'Register an account with '
-          please_copy_url: 'Please copy the URL below and add it to your Podcast- or RSS-Client.'
+        please_copy_url: 'Please copy the URL below and add it to your Podcast- or RSS-Client.'
 
     ja:
       button: '登録する'
@@ -112,3 +112,5 @@ class Translations
         install: 'App Storeからインストールする'
         register_an_account: 'にアカウントを登録する'
         please_copy_url: 'URLをコピーして、ポットキャストがRSSクライアントに貼り付けて下さい。'
+
+module.exports = Translations
