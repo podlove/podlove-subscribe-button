@@ -321,6 +321,11 @@ Clients = (function() {
       title: 'Clementine',
       scheme: 'itpc://',
       icon: 'linux/clementine@2x.png'
+    }, {
+      title: 'gPodder',
+      scheme: 'gpodder://',
+      icon: 'linux/gpodder@2x.png',
+      install: 'http://gpodder.org/downloads'
     }
   ];
 
@@ -346,7 +351,7 @@ Clients = (function() {
   Clients.prototype.windowsPhone = [
     {
       title: 'BringCast',
-      scheme: 'bringcast:',
+      scheme: 'bringcast://subscribe/',
       icon: 'windowsphone/bringcast@2x.png',
       install: 'http://windowsphone.com/s?appId=e5abef38-d413-e011-9264-00237de2db9e',
       http: true
@@ -364,6 +369,11 @@ Clients = (function() {
 
   Clients.prototype.windows7 = [
     {
+      title: 'gPodder',
+      scheme: 'gpodder://',
+      icon: 'windows/gpodder@2x.png',
+      install: 'http://gpodder.org/downloads'
+    }, {
       title: 'iTunes',
       scheme: 'itpc://',
       icon: 'osx/itunes@2x.png',
@@ -373,6 +383,11 @@ Clients = (function() {
 
   Clients.prototype.windows8 = [
     {
+      title: 'gPodder',
+      scheme: 'gpodder://',
+      icon: 'windows/gpodder@2x.png',
+      install: 'http://gpodder.org/downloads'
+    }, {
       title: 'iTunes',
       scheme: 'itpc://',
       icon: 'osx/itunes@2x.png',
@@ -387,6 +402,11 @@ Clients = (function() {
 
   Clients.prototype.windows81 = [
     {
+      title: 'gPodder',
+      scheme: 'gpodder://',
+      icon: 'windows/gpodder@2x.png',
+      install: 'http://gpodder.org/downloads'
+    }, {
       title: 'iTunes',
       scheme: 'itpc://',
       icon: 'osx/itunes@2x.png',
@@ -877,7 +897,7 @@ Translations = {
       title: 'Abonnieren?',
       paragraph1: 'Du bist dabei einen Podcast zu abonnieren. Das erlaubt deinem Podcast Client neue Folgen automatisch herunterzuladen oder das Podcast Archiv mit alten Episoden zu durchsuchen.',
       paragraph2: 'Der Podlove Subscribe Button hilft dir dabei. Wähle deinen favorisierten Podcast Client aus der Liste der verfügbaren Apps oder wähle einen Podcast Cloud Service den du benutzt.',
-      paragraph3: 'Beim Start sollte der Podcast Client den Podcast zur Liste der Abonnements hinzufügen. Benutze den Download Link um die App zu installieren falls sie es noch nicht ist.'
+      paragraph3: 'Beim Start sollte der Podcast Client den Podcast zur Liste der Abonnements hinzufügen. Benutze den Download Link um die App zu installieren, falls sie es noch nicht ist.'
     },
     clients_panel: {
       app: 'App',
