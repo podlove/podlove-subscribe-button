@@ -15,6 +15,11 @@ class ClientsPanel extends Panel
     @osDefault = new Clients(@platform, true)
     @cloudClients = new Clients('cloud')
     @prepareClients(@parent.options.scriptPath)
+    if @prepareClients(@parent.options.scriptPath)
+      @render()
+    else
+      text = 'No usable feed found. Please add at least an mp3 feed.'
+      console.warn(text)
 
     @render()
 
@@ -33,9 +38,22 @@ class ClientsPanel extends Panel
     podcastCover: @podcast.cover,
   }
 
+  detectBestFormat: () ->
+    capabilities = if @platform == 'linux'
+      ['mp3', 'ogg']
+    else
+      ['aac', 'mp3']
+
+    _(capabilities).find (cap) =>
+      _(@podcast.feeds).findWhere({format: cap})
+
+  chooseFeedUrl: () ->
+    format = @detectBestFormat()
+    feedUrl = (_(@podcast.feeds).findWhere({format: format}) || {}).url
+
   prepareClients: (pathPrefix) ->
-    feedUrl = (_(@podcast.feeds).findWhere({format: 'mp3'}) || {}).url ||
-      @podcast.feeds.mp3
+    feedUrl = @chooseFeedUrl()
+    return false unless feedUrl
 
     for client in @clients
       Utils.fixIconPath(client, pathPrefix)

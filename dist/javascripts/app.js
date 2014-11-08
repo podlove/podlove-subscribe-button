@@ -1,8 +1,10 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var $, Button, IframeClick, IframeResizer, Popup, SubscribeButton, Utils,
+var $, Button, IframeClick, IframeResizer, Popup, SubscribeButton, Utils, _,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 $ = require('../../vendor/zepto-browserify.js').Zepto;
+
+_ = require('../../vendor/underscore-min.js');
 
 Button = require('./button.coffee');
 
@@ -37,6 +39,7 @@ SubscribeButton = (function() {
     this.scriptElem = $(scriptElem);
     this.getOptions();
     this.getPodcastData();
+    this.checkIntegrity();
     this.addCss();
     this.renderButtonIframe();
     return this;
@@ -75,6 +78,18 @@ SubscribeButton = (function() {
 
   SubscribeButton.prototype.extractPodcastDataFromJson = function(data) {
     return this.podcast = data;
+  };
+
+  SubscribeButton.prototype.checkIntegrity = function() {
+    var formats, text;
+    formats = _(this.podcast.feeds).map(function(feed) {
+      return feed.format;
+    });
+    if (!_(formats).contains('mp3')) {
+      text = "Error. Please add at least an MP3 feed. Available formats: " + formats;
+      console.warn(text);
+      return window.alert(text);
+    }
   };
 
   SubscribeButton.prototype.renderButtonIframe = function() {
@@ -119,7 +134,7 @@ $(function() {
 
 
 
-},{"../../vendor/zepto-browserify.js":16,"./button.coffee":2,"./iframe_click.coffee":6,"./iframe_resizer.coffee":7,"./popup.coffee":10,"./utils.coffee":13}],2:[function(require,module,exports){
+},{"../../vendor/underscore-min.js":15,"../../vendor/zepto-browserify.js":16,"./button.coffee":2,"./iframe_click.coffee":6,"./iframe_resizer.coffee":7,"./popup.coffee":10,"./utils.coffee":13}],2:[function(require,module,exports){
 var $, Button, Translations, Utils;
 
 $ = require('../../vendor/zepto-browserify.js').Zepto;
@@ -492,6 +507,7 @@ ClientsPanel = (function(_super) {
   __extends(ClientsPanel, _super);
 
   function ClientsPanel(container, parent) {
+    var text;
     this.container = container;
     this.parent = parent;
     this.podcast = this.parent.podcast;
@@ -500,6 +516,12 @@ ClientsPanel = (function(_super) {
     this.osDefault = new Clients(this.platform, true);
     this.cloudClients = new Clients('cloud');
     this.prepareClients(this.parent.options.scriptPath);
+    if (this.prepareClients(this.parent.options.scriptPath)) {
+      this.render();
+    } else {
+      text = 'No usable feed found. Please add at least an mp3 feed.';
+      console.warn(text);
+    }
     this.render();
   }
 
@@ -520,11 +542,32 @@ ClientsPanel = (function(_super) {
     };
   };
 
+  ClientsPanel.prototype.detectBestFormat = function() {
+    var capabilities;
+    capabilities = this.platform === 'linux' ? ['mp3', 'ogg'] : ['aac', 'mp3'];
+    return _(capabilities).find((function(_this) {
+      return function(cap) {
+        return _(_this.podcast.feeds).findWhere({
+          format: cap
+        });
+      };
+    })(this));
+  };
+
+  ClientsPanel.prototype.chooseFeedUrl = function() {
+    var feedUrl, format;
+    format = this.detectBestFormat();
+    return feedUrl = (_(this.podcast.feeds).findWhere({
+      format: format
+    }) || {}).url;
+  };
+
   ClientsPanel.prototype.prepareClients = function(pathPrefix) {
     var client, cloudFeedUrl, feedUrl, _i, _j, _len, _len1, _ref, _ref1;
-    feedUrl = (_(this.podcast.feeds).findWhere({
-      format: 'mp3'
-    }) || {}).url || this.podcast.feeds.mp3;
+    feedUrl = this.chooseFeedUrl();
+    if (!feedUrl) {
+      return false;
+    }
     _ref = this.clients;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       client = _ref[_i];

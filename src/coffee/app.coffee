@@ -1,4 +1,5 @@
 $ = require('../../vendor/zepto-browserify.js').Zepto
+_ = require('../../vendor/underscore-min.js')
 
 Button = require('./button.coffee')
 Popup = require('./popup.coffee')
@@ -23,6 +24,7 @@ class SubscribeButton
 
     @getOptions()
     @getPodcastData()
+    @checkIntegrity()
     @addCss()
     @renderButtonIframe()
 
@@ -53,6 +55,13 @@ class SubscribeButton
 
   extractPodcastDataFromJson: (data) ->
     @podcast = data
+
+  checkIntegrity: () ->
+    formats = _(@podcast.feeds).map((feed) -> feed.format)
+    unless _(formats).contains('mp3')
+      text = "Error. Please add at least an MP3 feed. Available formats: #{formats}"
+      console.warn(text)
+      window.alert(text)
 
   renderButtonIframe: () ->
     @scriptElem.replaceWith(@iframe())
