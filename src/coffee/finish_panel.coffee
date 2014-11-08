@@ -10,6 +10,7 @@ class FinishPanel extends Panel
     client: client,
     podcast: podcast,
     scriptPath: @parent.options.scriptPath,
+    platform: @parent.platform,
   }
 
   render: (client, podcast) ->
@@ -54,10 +55,15 @@ class FinishPanel extends Panel
             </a>
           {{/if}}
           <br>
-          or
+          {{t "finish_panel.or_install"}}
           <br>
+          {{#if client.store}}
+            <a href="{{client.store}}" target="_blank">
+              <img src="{{scriptPath}}/images/stores/{{platform}}.png" class="store-button">
+            </a>
+          {{/if}}
           {{#if client.install}}
-            <a href="{{client.install}}" target="_blank">
+            <a href="{{client.store}}" target="_blank">
               {{t "finish_panel.install" client=client.title}}
             </a>
           {{/if}}

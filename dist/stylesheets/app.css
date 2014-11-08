@@ -500,6 +500,10 @@ body.podlove-subscribe {
   height: 40px;
   width: 100%;
 }
+#podlove-subscribe-popup #podlove-subscribe-panel-finish .store-button {
+  margin: 5px 0 0;
+  max-width: 50%;
+}
 #podlove-subscribe-popup #podlove-subscribe-list {
   display: block;
   left: 0;

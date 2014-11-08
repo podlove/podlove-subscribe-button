@@ -293,32 +293,32 @@ Clients = (function() {
       title: 'AntennaPod',
       scheme: 'antennapod-subscribe://',
       icon: 'android/antennapod@2x.png',
-      install: 'https://play.google.com/store/apps/details?id=de.danoeh.antennapod'
+      store: 'https://play.google.com/store/apps/details?id=de.danoeh.antennapod'
     }, {
       title: 'BeyondPod',
       scheme: 'beyondpod://',
       icon: 'android/beyondpod@2x.png',
-      install: 'https://play.google.com/store/apps/details?id=mobi.beyondpod'
+      store: 'https://play.google.com/store/apps/details?id=mobi.beyondpod'
     }, {
       title: 'Player.fm',
       scheme: 'https://player.fm/subscribe?id=',
       icon: 'android/playerfm@2x.png',
-      install: 'https://play.google.com/store/apps/details?id=fm.player'
+      store: 'https://play.google.com/store/apps/details?id=fm.player'
     }, {
       title: 'Podcast Addict',
       scheme: 'podcastaddict://',
       icon: 'android/podcastaddict@2x.png',
-      install: 'https://play.google.com/store/apps/details?id=com.bambuna.podcastaddict'
+      store: 'https://play.google.com/store/apps/details?id=com.bambuna.podcastaddict'
     }, {
       title: 'Podkicker',
       scheme: 'podkicker://subscribe/',
       icon: 'android/podkicker@2x.png',
-      install: 'https://play.google.com/store/apps/details?id=ait.podka'
+      store: 'https://play.google.com/store/apps/details?id=ait.podka'
     }, {
       title: 'uPod',
       scheme: 'upod://',
       icon: 'android/upod@2x.png',
-      install: 'https://play.google.com/store/apps/details?id=mobi.upod.app'
+      store: 'https://play.google.com/store/apps/details?id=mobi.upod.app'
     }
   ];
 
@@ -327,47 +327,47 @@ Clients = (function() {
       title: 'Castro',
       scheme: 'castro://subscribe/',
       icon: 'ios/castro@2x.png',
-      install: 'https://itunes.apple.com/de/app/castro-high-fidelity-podcasts/id723142770'
+      store: 'https://itunes.apple.com/de/app/castro-high-fidelity-podcasts/id723142770'
     }, {
       title: 'Downcast',
       scheme: 'downcast://',
       icon: 'ios/downcast@2x.png',
-      install: 'https://itunes.apple.com/de/app/downcast/id393858566'
+      store: 'https://itunes.apple.com/de/app/downcast/id393858566'
     }, {
       title: 'iCatcher',
       scheme: 'icatcher://',
       icon: 'ios/icatcher@2x.png',
-      install: 'https://itunes.apple.com/de/app/icatcher!-podcast-app/id414419105'
+      store: 'https://itunes.apple.com/de/app/icatcher!-podcast-app/id414419105'
     }, {
       title: 'Instacast',
       scheme: 'instacast://',
       icon: 'ios/instacast@2x.png',
-      install: 'https://itunes.apple.com/de/app/instacast-4-podcast-client/id577056377'
+      store: 'https://itunes.apple.com/de/app/instacast-4-podcast-client/id577056377'
     }, {
       title: 'Overcast',
       scheme: 'overcast://x-callback-url/add?url=',
       icon: 'ios/overcast@2x.png',
-      install: 'https://itunes.apple.com/de/app/overcast-podcast-player/id888422857'
+      store: 'https://itunes.apple.com/de/app/overcast-podcast-player/id888422857'
     }, {
       title: 'PocketCasts',
       scheme: 'pktc://subscribe/',
       icon: 'ios/pocketcasts@2x.png',
-      install: 'https://itunes.apple.com/de/app/pocket-casts/id414834813'
+      store: 'https://itunes.apple.com/de/app/pocket-casts/id414834813'
     }, {
       title: 'Podcasts',
       scheme: 'pcast://',
       icon: 'ios/podcasts@2x.png',
-      install: 'https://itunes.apple.com/de/app/podcasts/id525463029'
+      store: 'https://itunes.apple.com/de/app/podcasts/id525463029'
     }, {
       title: 'Podcat',
       scheme: 'podcat://',
       icon: 'ios/podcat@2x.png',
-      install: 'https://itunes.apple.com/app/podcat/id845960230'
+      store: 'https://itunes.apple.com/app/podcat/id845960230'
     }, {
       title: 'RSSRadio',
       scheme: 'rssradio://',
       icon: 'ios/rssradio@2x.png',
-      install: 'https://itunes.apple.com/app/rssradio-premium-podcast-downloader/id679025359'
+      store: 'https://itunes.apple.com/app/rssradio-premium-podcast-downloader/id679025359'
     }
   ];
 
@@ -389,12 +389,12 @@ Clients = (function() {
       title: 'Downcast',
       scheme: 'downcast://',
       icon: 'osx/downcast@2x.png',
-      install: 'https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4'
+      store: 'https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4'
     }, {
       title: 'Instacast',
       scheme: 'instacast://',
       icon: 'osx/instacast@2x.png',
-      install: 'https://itunes.apple.com/de/app/instacast/id733258666?mt=12&uo=4'
+      store: 'https://itunes.apple.com/de/app/instacast/id733258666?mt=12&uo=4'
     }, {
       title: 'iTunes',
       scheme: 'itpc://',
@@ -408,13 +408,13 @@ Clients = (function() {
       title: 'BringCast',
       scheme: 'bringcast://subscribe/',
       icon: 'windowsphone/bringcast@2x.png',
-      install: 'http://windowsphone.com/s?appId=e5abef38-d413-e011-9264-00237de2db9e',
+      store: 'http://windowsphone.com/s?appId=e5abef38-d413-e011-9264-00237de2db9e',
       http: true
     }, {
       title: 'Podcast Picker',
       scheme: 'podcastpicker://',
       icon: 'windowsphone/podcastpicker@2x.png',
-      install: 'http://windowsphone.com/s?appId=79b72069-b656-47d2-bab1-fa2d4061825e'
+      store: 'http://windowsphone.com/s?appId=79b72069-b656-47d2-bab1-fa2d4061825e'
     }, {
       title: 'Podcasts',
       scheme: 'podcast:',
@@ -451,7 +451,7 @@ Clients = (function() {
       title: 'Podscout',
       scheme: 'podscout://',
       icon: 'windows/podscout@2x.png',
-      install: 'http://apps.microsoft.com/windows/de-de/app/podscout/f4316b46-7682-4cea-948b-53d135b2df17'
+      store: 'http://apps.microsoft.com/windows/de-de/app/podscout/f4316b46-7682-4cea-948b-53d135b2df17'
     }
   ];
 
@@ -470,7 +470,7 @@ Clients = (function() {
       title: 'Podscout',
       scheme: 'podscout://',
       icon: 'windows/podscout@2x.png',
-      install: 'http://apps.microsoft.com/windows/de-de/app/podscout/f4316b46-7682-4cea-948b-53d135b2df17'
+      store: 'http://apps.microsoft.com/windows/de-de/app/podscout/f4316b46-7682-4cea-948b-53d135b2df17'
     }
   ];
 
@@ -485,7 +485,7 @@ module.exports = Clients;
 
 
 },{}],4:[function(require,module,exports){
-var $, Clients, ClientsPanel, Handlebars, Panel, UserAgent, Utils, _,
+var $, Clients, ClientsPanel, Handlebars, Panel, Utils, _,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
@@ -501,8 +501,6 @@ Clients = require('./clients.coffee');
 
 Panel = require('./panel.coffee');
 
-UserAgent = require('./user_agent.coffee');
-
 ClientsPanel = (function(_super) {
   __extends(ClientsPanel, _super);
 
@@ -511,7 +509,7 @@ ClientsPanel = (function(_super) {
     this.container = container;
     this.parent = parent;
     this.podcast = this.parent.podcast;
-    this.platform = new UserAgent().detect();
+    this.platform = this.parent.platform;
     this.clients = new Clients(this.platform);
     this.osDefault = new Clients(this.platform, true);
     this.cloudClients = new Clients('cloud');
@@ -675,7 +673,7 @@ module.exports = ClientsPanel;
 
 
 
-},{"../../vendor/handlebars.min.js":14,"../../vendor/underscore-min.js":15,"../../vendor/zepto-browserify.js":16,"./clients.coffee":3,"./panel.coffee":8,"./user_agent.coffee":12,"./utils.coffee":13}],5:[function(require,module,exports){
+},{"../../vendor/handlebars.min.js":14,"../../vendor/underscore-min.js":15,"../../vendor/zepto-browserify.js":16,"./clients.coffee":3,"./panel.coffee":8,"./utils.coffee":13}],5:[function(require,module,exports){
 var $, FinishPanel, Handlebars, Panel,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
@@ -698,7 +696,8 @@ FinishPanel = (function(_super) {
     return {
       client: client,
       podcast: podcast,
-      scriptPath: this.parent.options.scriptPath
+      scriptPath: this.parent.options.scriptPath,
+      platform: this.parent.platform
     };
   };
 
@@ -717,7 +716,7 @@ FinishPanel = (function(_super) {
     });
   };
 
-  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">{{t "panels.title"}}</span> </div> <img class="podcast-cover" src="{{client.icon}}"> {{#if client.scheme}} <h1>{{t "finish_panel.handing_over_to" client=client.title}}...</h1> <p>{{t "finish_panel.something_went_wrong"}}</p> <p> {{#if client.post}} <form method="post" action="{{client.url}}" target="_blank"> <input type="hidden" name="url" value="{{client.url}}"> <input type="hidden" name="title" value="{{podcast.title}}"> <input type="hidden" name="subtitle" value="{{podcast.subtitle}}"> <input type="hidden" name="image" value="{{podcast.cover}}"> <button> {{client.title}} </button> </form> {{else}} <a href="{{client.url}}" target="_blank"> {{t "finish_panel.try_again"}} </a> {{/if}} <br> or <br> {{#if client.install}} <a href="{{client.install}}" target="_blank"> {{t "finish_panel.install" client=client.title}} </a> {{/if}} {{#if client.register}} <a href="{{client.register}}" target="_blank"> {{t "finish_panel.register_an_account"}} {{client.title}} </a> {{/if}} </p> {{else}} <p> {{t "finish_panel.please_copy_url"}} </p> <input value="{{client.originalUrl}}"> {{/if}} </div>');
+  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">{{t "panels.title"}}</span> </div> <img class="podcast-cover" src="{{client.icon}}"> {{#if client.scheme}} <h1>{{t "finish_panel.handing_over_to" client=client.title}}...</h1> <p>{{t "finish_panel.something_went_wrong"}}</p> <p> {{#if client.post}} <form method="post" action="{{client.url}}" target="_blank"> <input type="hidden" name="url" value="{{client.url}}"> <input type="hidden" name="title" value="{{podcast.title}}"> <input type="hidden" name="subtitle" value="{{podcast.subtitle}}"> <input type="hidden" name="image" value="{{podcast.cover}}"> <button> {{client.title}} </button> </form> {{else}} <a href="{{client.url}}" target="_blank"> {{t "finish_panel.try_again"}} </a> {{/if}} <br> {{t "finish_panel.or_install"}} <br> {{#if client.store}} <a href="{{client.store}}" target="_blank"> <img src="{{scriptPath}}/images/stores/{{platform}}.png" class="store-button"> </a> {{/if}} {{#if client.install}} <a href="{{client.store}}" target="_blank"> {{t "finish_panel.install" client=client.title}} </a> {{/if}} {{#if client.register}} <a href="{{client.register}}" target="_blank"> {{t "finish_panel.register_an_account"}} {{client.title}} </a> {{/if}} </p> {{else}} <p> {{t "finish_panel.please_copy_url"}} </p> <input value="{{client.originalUrl}}"> {{/if}} </div>');
 
   return FinishPanel;
 
@@ -888,7 +887,7 @@ module.exports = PodcastPanel;
 
 
 },{"../../vendor/handlebars.min.js":14,"../../vendor/zepto-browserify.js":16,"./panel.coffee":8,"./translations.coffee":11}],10:[function(require,module,exports){
-var $, ClientsPanel, FinishPanel, Handlebars, IframeResizer, PodcastPanel, Popup, Translations, Utils;
+var $, ClientsPanel, FinishPanel, Handlebars, IframeResizer, PodcastPanel, Popup, Translations, UserAgent, Utils;
 
 $ = require('../../vendor/zepto-browserify.js').Zepto;
 
@@ -899,6 +898,8 @@ Utils = require('./utils.coffee');
 Translations = require('./translations.coffee');
 
 IframeResizer = require('./iframe_resizer.coffee');
+
+UserAgent = require('./user_agent.coffee');
 
 PodcastPanel = require('./podcast_panel.coffee');
 
@@ -911,6 +912,7 @@ Popup = (function() {
     this.podcast = podcast;
     this.options = options;
     this.I18n = new Translations(this.options.language);
+    this.platform = new UserAgent().detect();
     this.render();
     this.initPanels();
   }
@@ -961,7 +963,7 @@ module.exports = Popup;
 
 
 
-},{"../../vendor/handlebars.min.js":14,"../../vendor/zepto-browserify.js":16,"./clients_panel.coffee":4,"./finish_panel.coffee":5,"./iframe_resizer.coffee":7,"./podcast_panel.coffee":9,"./translations.coffee":11,"./utils.coffee":13}],11:[function(require,module,exports){
+},{"../../vendor/handlebars.min.js":14,"../../vendor/zepto-browserify.js":16,"./clients_panel.coffee":4,"./finish_panel.coffee":5,"./iframe_resizer.coffee":7,"./podcast_panel.coffee":9,"./translations.coffee":11,"./user_agent.coffee":12,"./utils.coffee":13}],11:[function(require,module,exports){
 var Handlebars, Translations, _,
   __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -1047,9 +1049,10 @@ Translations = (function() {
         handing_over_to: 'Übergebe an<br> %{client}',
         something_went_wrong: 'Funktioniert etwas nicht wie erwartet?',
         try_again: 'Nochmal versuchen',
-        install: '%{client} aus dem App Store installieren',
+        install: '%{client} Webseite besuchen',
         register_an_account: 'Einen Account registrieren bei ',
-        please_copy_url: 'Bitte die URL kopieren und in deinen Podcast- oder RSS-Client einfügen.'
+        please_copy_url: 'Bitte die URL kopieren und in deinen Podcast- oder RSS-Client einfügen.',
+        or_install: 'oder Client installieren'
       }
     },
     en: {
@@ -1075,9 +1078,10 @@ Translations = (function() {
         handing_over_to: 'Handing over to %{client}',
         something_went_wrong: 'Did something go wrong?',
         try_again: 'Try again',
-        install: "Install %{client} from App Store",
+        install: "Visit %{client} website",
         register_an_account: 'Register an account with ',
-        please_copy_url: 'Please copy the URL below and add it to your Podcast- or RSS-Client.'
+        please_copy_url: 'Please copy the URL below and add it to your Podcast- or RSS-Client.',
+        or_install: 'or install client'
       }
     },
     ja: {

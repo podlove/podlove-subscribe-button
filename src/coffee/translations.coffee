@@ -63,9 +63,10 @@ class Translations
         handing_over_to: 'Übergebe an<br> %{client}'
         something_went_wrong: 'Funktioniert etwas nicht wie erwartet?'
         try_again: 'Nochmal versuchen'
-        install: '%{client} aus dem App Store installieren'
+        install: '%{client} Webseite besuchen'
         register_an_account: 'Einen Account registrieren bei '
         please_copy_url: 'Bitte die URL kopieren und in deinen Podcast- oder RSS-Client einfügen.'
+        or_install: 'oder Client installieren'
 
     en:
       button: 'Subscribe'
@@ -86,9 +87,10 @@ class Translations
         handing_over_to: 'Handing over to %{client}'
         something_went_wrong: 'Did something go wrong?'
         try_again: 'Try again'
-        install: "Install %{client} from App Store"
+        install: "Visit %{client} website"
         register_an_account: 'Register an account with '
         please_copy_url: 'Please copy the URL below and add it to your Podcast- or RSS-Client.'
+        or_install: 'or install client'
 
     ja:
       button: '登録する'

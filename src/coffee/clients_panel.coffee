@@ -5,12 +5,11 @@ _ = require('../../vendor/underscore-min.js')
 Utils = require('./utils.coffee')
 Clients = require('./clients.coffee')
 Panel = require('./panel.coffee')
-UserAgent = require('./user_agent.coffee')
 
 class ClientsPanel extends Panel
   constructor: (@container, @parent) ->
     @podcast = @parent.podcast
-    @platform = new UserAgent().detect()
+    @platform = @parent.platform
     @clients = new Clients(@platform)
     @osDefault = new Clients(@platform, true)
     @cloudClients = new Clients('cloud')

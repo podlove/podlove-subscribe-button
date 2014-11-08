@@ -4,6 +4,7 @@ Handlebars = require('../../vendor/handlebars.min.js').Handlebars
 Utils = require('./utils.coffee')
 Translations = require('./translations.coffee')
 IframeResizer = require('./iframe_resizer.coffee')
+UserAgent = require('./user_agent.coffee')
 
 PodcastPanel = require('./podcast_panel.coffee')
 ClientsPanel = require('./clients_panel.coffee')
@@ -12,6 +13,7 @@ FinishPanel = require('./finish_panel.coffee')
 class Popup
   constructor: (@podcast, @options) ->
     @I18n = new Translations(@options.language)
+    @platform = new UserAgent().detect()
     @render()
     @initPanels()
 
