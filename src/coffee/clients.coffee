@@ -65,12 +65,12 @@ class Clients
       icon: 'android/antennapod@2x.png'
       install: 'https://play.google.com/store/apps/details?id=de.danoeh.antennapod'
     },
-    #{
-      #title: 'BeyondPod'
-      #scheme: 'beyondpod://'
-      #icon: 'android/beyondpod@2x.png'
-      #install: 'https://play.google.com/store/apps/details?id=mobi.beyondpod'
-    #},
+    {
+      title: 'BeyondPod'
+      scheme: 'beyondpod://'
+      icon: 'android/beyondpod@2x.png'
+      install: 'https://play.google.com/store/apps/details?id=mobi.beyondpod'
+    },
     {
       title: 'Player.fm'
       scheme: 'https://player.fm/subscribe?id='
