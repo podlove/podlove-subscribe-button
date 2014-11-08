@@ -520,7 +520,6 @@ ClientsPanel = (function(_super) {
       text = 'No usable feed found. Please add at least an mp3 feed.';
       console.warn(text);
     }
-    this.render();
   }
 
   ClientsPanel.prototype.context = function() {

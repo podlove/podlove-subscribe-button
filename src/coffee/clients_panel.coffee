@@ -20,8 +20,6 @@ class ClientsPanel extends Panel
       text = 'No usable feed found. Please add at least an mp3 feed.'
       console.warn(text)
 
-    @render()
-
   context: -> {
     cover: @podcast.cover,
     title: @podcast.title,
