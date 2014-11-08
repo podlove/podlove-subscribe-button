@@ -544,7 +544,7 @@ ClientsPanel = (function(_super) {
 
   ClientsPanel.prototype.detectBestFormat = function() {
     var capabilities;
-    capabilities = this.platform === 'linux' ? ['mp3', 'ogg'] : ['aac', 'mp3'];
+    capabilities = this.platform === 'linux' ? ['mp3', 'ogg', 'aac'] : ['aac', 'mp3'];
     return _(capabilities).find((function(_this) {
       return function(cap) {
         return _(_this.podcast.feeds).findWhere({
