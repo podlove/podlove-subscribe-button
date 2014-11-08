@@ -161,6 +161,7 @@ body.podlove-subscribe {
   background-color: rgba(127, 127, 127, 0.6);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
+  box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.3);
   color: #fff;
   display: none;
   font-family: 'Roboto';
