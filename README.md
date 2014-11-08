@@ -4,6 +4,8 @@
 
 [Official project page](http://podlove.org/podlove-subscribe-button/).
 
+If you are a client developer and want to add your client to the list, please read the page above carefully and open an issue on this repository when you have fulfilled the requirements.
+
 ## Usage
 
 ### Through our CDN
