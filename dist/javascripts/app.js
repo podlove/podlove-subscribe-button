@@ -588,8 +588,10 @@ ClientsPanel = (function(_super) {
     Utils.fixIconPath(this.osDefault, pathPrefix);
     this.osDefault.title = 'Let device decide';
     this.osDefault.originalUrl = feedUrl;
-    this.osDefault.url = "" + this.osDefault.scheme + (feedUrl.replace('http://', ''));
-    this.osDefault.scheme = null;
+    if (this.osDefault.scheme !== null) {
+      this.osDefault.url = "" + this.osDefault.scheme + (feedUrl.replace('http://', ''));
+      this.osDefault.scheme = null;
+    }
     this.otherClient = new Clients('rss');
     Utils.fixIconPath(this.otherClient, pathPrefix);
     return this.otherClient.originalUrl = feedUrl;

@@ -72,9 +72,10 @@ class ClientsPanel extends Panel
     Utils.fixIconPath(@osDefault, pathPrefix)
     @osDefault.title = 'Let device decide'
     @osDefault.originalUrl = feedUrl
-    @osDefault.url = "#{@osDefault.scheme}#{feedUrl.replace('http://', '')}"
-    # necessary for displaying the right finish panel content
-    @osDefault.scheme = null
+    unless @osDefault.scheme == null
+      @osDefault.url = "#{@osDefault.scheme}#{feedUrl.replace('http://', '')}"
+      # necessary for displaying the right finish panel content
+      @osDefault.scheme = null
 
     @otherClient = new Clients('rss')
     Utils.fixIconPath(@otherClient, pathPrefix)
