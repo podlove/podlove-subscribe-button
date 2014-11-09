@@ -108,11 +108,11 @@ class Translations
         cloud: 'クラウド'
         other_client: '他のクライアント'
       finish_panel:
-        handing_over_to: 'に渡す'
+        handing_over_to: '%{client}に渡す'
         something_went_wrong: '何が失敗しましたか？'
         try_again: 'もう一度試してください'
         install: 'App Storeからインストールする'
-        register_an_account: 'にアカウントを登録する'
+        register_an_account: '%{client}にアカウントを登録する'
         please_copy_url: 'URLをコピーして、ポットキャストがRSSクライアントに貼り付けて下さい。'
 
 module.exports = Translations
