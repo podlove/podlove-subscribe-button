@@ -2,7 +2,9 @@
 
 ## General
 
-[Official project page](http://podlove.org/podlove-subscribe-button/).
+[Official project page](http://podlove.org/podlove-subscribe-button/)
+
+[Help translating](https://podlove.oneskyapp.com/collaboration/project?id=14564)
 
 If you are a client developer and want to add your client to the list, please read the page above carefully and open an issue on this repository when you have fulfilled the requirements.
 
@@ -89,6 +91,8 @@ Use gulp to build the project or start the watcher:
     gulp watch
 
 ## Contribution
+
+If you want to help us translate the button to other languages, please [sign up here](https://podlove.oneskyapp.com/collaboration/project?id=14564) and let us know if you need any help!
 
 If you find a bug please use [Github Issues](https://github.com/podlove/podlove-subscribe-button/issues) to report it. If you want to add a feature or fix a bug please fork the repository, make your changes in a feature branch and open a pull-request.
 
