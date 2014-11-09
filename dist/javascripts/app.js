@@ -717,7 +717,7 @@ FinishPanel = (function(_super) {
     });
   };
 
-  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">{{t "panels.title"}}</span> </div> <img class="podcast-cover" src="{{client.icon}}"> {{#if client.scheme}} <h1>{{t "finish_panel.handing_over_to" client=client.title}}...</h1> <p>{{t "finish_panel.something_went_wrong"}}</p> <p> {{#if client.post}} <form method="post" action="{{client.url}}" target="_blank"> <input type="hidden" name="url" value="{{client.url}}"> <input type="hidden" name="title" value="{{podcast.title}}"> <input type="hidden" name="subtitle" value="{{podcast.subtitle}}"> <input type="hidden" name="image" value="{{podcast.cover}}"> <button> {{client.title}} </button> </form> {{else}} <a href="{{client.url}}" target="_blank"> {{t "finish_panel.try_again"}} </a> {{/if}} <br> {{t "finish_panel.or_install"}} <br> {{#if client.store}} <a href="{{client.store}}" target="_blank"> <img src="{{scriptPath}}/images/stores/{{platform}}.png" class="store-button"> </a> {{/if}} {{#if client.install}} <a href="{{client.store}}" target="_blank"> {{t "finish_panel.install" client=client.title}} </a> {{/if}} {{#if client.register}} <a href="{{client.register}}" target="_blank"> {{t "finish_panel.register_an_account"}} {{client.title}} </a> {{/if}} </p> {{else}} <p> {{t "finish_panel.please_copy_url"}} </p> <input value="{{client.originalUrl}}"> {{/if}} </div>');
+  FinishPanel.prototype.template = Handlebars.compile('<div> <div class="top-bar"> <span class="podlove-subscribe-back-button">&lsaquo;</span> <img src="{{scriptPath}}/images/icon-big@2x.png"> <span class="panel-title">{{t "panels.title"}}</span> </div> <img class="podcast-cover" src="{{client.icon}}"> {{#if client.scheme}} <h1>{{t "finish_panel.handing_over_to" client=client.title}}...</h1> <p>{{t "finish_panel.something_went_wrong"}}</p> <p> {{#if client.post}} <form method="post" action="{{client.url}}" target="_blank"> <input type="hidden" name="url" value="{{client.url}}"> <input type="hidden" name="title" value="{{podcast.title}}"> <input type="hidden" name="subtitle" value="{{podcast.subtitle}}"> <input type="hidden" name="image" value="{{podcast.cover}}"> <button> {{t "finish_panel.try_again"}} </button> </form> {{else}} <a href="{{client.url}}" target="_blank"> {{t "finish_panel.try_again"}} </a> {{/if}} <br> {{t "finish_panel.or_install"}} <br> {{#if client.store}} <a href="{{client.store}}" target="_blank"> <img src="{{scriptPath}}/images/stores/{{platform}}.png" class="store-button"> </a> {{/if}} {{#if client.install}} <a href="{{client.store}}" target="_blank"> {{t "finish_panel.install" client=client.title}} </a> {{/if}} {{#if client.register}} <a href="{{client.register}}" target="_blank"> {{t "finish_panel.register_an_account"}} {{client.title}} </a> {{/if}} </p> {{else}} <p> {{t "finish_panel.please_copy_url"}} </p> <input value="{{client.originalUrl}}"> {{/if}} </div>');
 
   return FinishPanel;
 
@@ -1105,11 +1105,11 @@ Translations = (function() {
         other_client: '他のクライアント'
       },
       finish_panel: {
-        handing_over_to: 'に渡す',
+        handing_over_to: '%{client}に渡す',
         something_went_wrong: '何が失敗しましたか？',
         try_again: 'もう一度試してください',
         install: 'App Storeからインストールする',
-        register_an_account: 'にアカウントを登録する',
+        register_an_account: '%{client}にアカウントを登録する',
         please_copy_url: 'URLをコピーして、ポットキャストがRSSクライアントに貼り付けて下さい。'
       }
     }

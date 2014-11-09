@@ -46,7 +46,7 @@ class FinishPanel extends Panel
               <input type="hidden" name="image" value="{{podcast.cover}}">
 
               <button>
-                {{client.title}}
+                {{t "finish_panel.try_again"}}
               </button>
             </form>
           {{else}}
