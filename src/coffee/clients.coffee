@@ -208,6 +208,13 @@ class Clients
       http: true
     },
     {
+      title: 'Podcast Lounge'
+      scheme: 'podcastlounge://subscribe/'
+      icon: 'windowsphone/podcastlounge@2x.png'
+      install: 'http://windowsphone.com/s?appId=83bc0329-8e02-410e-b6d2-da3c0c1d971d'
+      http: true
+    },
+    {
       title: 'Podcast Picker'
       scheme: 'podcastpicker://'
       icon: 'windowsphone/podcastpicker@2x.png'
