@@ -23,8 +23,12 @@ class Popup
 
   render: () ->
     @elem = $(@template(@context()))
-    $('body').append(@elem)
+    body = $('body')
+    body.append(@elem)
+    oldOverflow = body.css('overflow')
+    body.css('overflow', 'hidden')
     @elem.find('#podlove-subscribe-popup-close-button').on 'click', () =>
+      $('body').css('overflow', oldOverflow)
       @elem.remove()
 
   template: Handlebars.compile('

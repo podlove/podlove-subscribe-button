@@ -926,10 +926,15 @@ Popup = (function() {
   };
 
   Popup.prototype.render = function() {
+    var body, oldOverflow;
     this.elem = $(this.template(this.context()));
-    $('body').append(this.elem);
+    body = $('body');
+    body.append(this.elem);
+    oldOverflow = body.css('overflow');
+    body.css('overflow', 'hidden');
     return this.elem.find('#podlove-subscribe-popup-close-button').on('click', (function(_this) {
       return function() {
+        $('body').css('overflow', oldOverflow);
         return _this.elem.remove();
       };
     })(this));
