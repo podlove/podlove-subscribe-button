@@ -1034,18 +1034,18 @@ Translations = (function() {
         title: "Abonnieren"
       },
       podcast_panel: {
-        choose_client: "Client auswählen"
+        choose_client: "App auswählen"
       },
       help_panel: {
         title: "Abonnieren?",
-        paragraph1: "Du bist dabei einen Podcast zu abonnieren. Das erlaubt deinem Podcast Client neue Folgen automatisch herunterzuladen oder das Podcast Archiv mit alten Episoden zu durchsuchen.",
-        paragraph2: "Der Podlove Subscribe Button hilft dir dabei. Wähle deinen favorisierten Podcast Client aus der Liste der verfügbaren Apps oder wähle einen Podcast Cloud Service den du benutzt.",
-        paragraph3: "Beim Start sollte der Podcast Client den Podcast zur Liste der Abonnements hinzufügen. Benutze den Download Link um die App zu installieren, falls sie es noch nicht ist."
+        paragraph1: "Ein Abonnement erlaubt einer Podcast App, neue Folgen automatisch herunter zu laden oder das Podcast Archiv mit alten Episoden zu durchsuchen.",
+        paragraph2: "Der Podlove Subscribe Button hilft dir dabei. Wähle deine favorisierte Podcast App aus der Liste der verfügbaren Apps oder wähle einen Podcast Cloud Service den du benutzt.",
+        paragraph3: "Beim Start sollte der Podcast App den Podcast zur Liste der Abonnements hinzufügen. Benutze den Download Link um die App zu installieren, falls sie es noch nicht ist."
       },
       clients_panel: {
         app: "App",
         cloud: "Cloud",
-        other_client: "Anderer Client"
+        other_client: "Andere App"
       },
       finish_panel: {
         handing_over_to: "Übergebe an<br> %{client}",
@@ -1053,8 +1053,8 @@ Translations = (function() {
         try_again: "Nochmal versuchen",
         install: "%{client} Webseite besuchen",
         register_an_account: "Einen Account registrieren bei ",
-        please_copy_url: "Bitte die URL kopieren und in deinen Podcast- oder RSS-Client einfügen.",
-        or_install: "oder Client installieren"
+        please_copy_url: "Bitte die URL kopieren und in deine Podcast- oder RSS-App einfügen.",
+        or_install: "oder App installieren"
       }
     },
     en: {
