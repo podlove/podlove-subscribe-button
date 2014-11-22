@@ -289,6 +289,9 @@ body.podlove-subscribe {
   margin-top: 6px;
   width: 130px;
 }
+#podlove-subscribe-popup #podlove-subscribe-popup-modal button {
+  text-transform: none;
+}
 #podlove-subscribe-popup #podlove-subscribe-popup-modal #podlove-subscribe-popup-modal-inner {
   height: 100%;
   overflow: hidden;
@@ -502,7 +505,7 @@ body.podlove-subscribe {
   color: inherit;
 }
 #podlove-subscribe-popup #podlove-subscribe-panel-finish form button {
-  background: transparent;
+  background: rgba(0, 0, 0, 0);
   border: none;
   cursor: pointer;
   font-size: 14px;
@@ -576,5 +579,3 @@ body.podlove-subscribe {
   padding: 10px 5px;
   width: 98%;
 }
-
-/*# sourceMappingURL=app.css.map */
