@@ -14,6 +14,10 @@
         width: 60%;
       }
 
+      button {
+        text-transform: uppercase;
+      }
+
       body.dark {
         background: #444;
         color: #fff;
@@ -129,11 +133,18 @@
     <h2>Big</h2>
     <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="en" data-size="big" data-json-data="podcastData"></script>
 
-    <h2>Big with title</h2>
-    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="en" data-size="big-title" data-json-data="podcastData"></script>
-
     <h2>Big with logo</h2>
     <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="en" data-size="big-logo" data-json-data="podcastData"></script>
+
+    <h2>Auto</h2>
+    <div style="margin: 0 auto; width: 300px;">
+      <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="en" data-size="big auto" data-json-data="podcastData"></script>
+    </div>
+
+    <h2>Auto with logo</h2>
+    <div style="margin: 0 auto; width: 300px;">
+      <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="en" data-size="auto big-logo" data-json-data="podcastData"></script>
+    </div>
 
     <!--<a href="#" onclick="darkMode()" class="darktoggle">Toggle Dark Background</a>-->
     <!--<a href="#" onclick="lightMode()" class="lighttoggle">Toggle Light Background</a>-->

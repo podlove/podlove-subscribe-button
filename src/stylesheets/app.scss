@@ -54,6 +54,8 @@ body.podlove-subscribe {
 }
 
 #podlove-subscribe-button {
+  text-align: center;
+
   &:before {
     background: url('../images/icon-small@2x.png') no-repeat;
     background-size: cover;
@@ -159,6 +161,12 @@ body.podlove-subscribe {
   border-top-right-radius: 0;
 }
 
+#podlove-subscribe-button.auto,
+#podlove-subscribe-button.auto,
+#podlove-subscribe-button.auto {
+  width: 100%;
+}
+
 #podlove-subscribe-button-title {
   background-color: rgba(127, 127, 127, 0.6);
   border-top-left-radius: 2px;
@@ -171,7 +179,6 @@ body.podlove-subscribe {
   overflow-wrap: break-word;
   padding: 4px;
   text-align: center;
-
 }
 
 #podlove-subscribe-popup {

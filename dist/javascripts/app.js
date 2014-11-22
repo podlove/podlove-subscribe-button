@@ -146,11 +146,8 @@ Translations = require('./translations.coffee');
 Button = (function() {
   function Button() {
     this.getOptions();
-    if (this.options.size === 'big-logo') {
+    if (/big-logo/.test(this.options.size)) {
       this.logoElem = $('#podlove-subscribe-button-logo');
-    }
-    if (this.options.size === 'big-title') {
-      this.titleElem = $('#podlove-subscribe-button-title');
     }
     this.elem = $('#podlove-subscribe-button');
     this.I18n = new Translations(this.options.language);
@@ -161,7 +158,7 @@ Button = (function() {
   Button.prototype.render = function() {
     var buttonHtml, image, title;
     buttonHtml = "<span>" + (this.I18n.t('button')) + "</span>";
-    this.elem.addClass(this.options.size).html(buttonHtml);
+    this.elem.addClass(this.options.size.replace('%20', ' ')).html(buttonHtml);
     this.elem.on('click', (function(_this) {
       return function(event) {
         return window.parent.postMessage("clicked_" + _this.options.id, '*');

@@ -5,10 +5,8 @@ Translations = require('./translations.coffee')
 class Button
   constructor: () ->
     @getOptions()
-    if @options.size == 'big-logo'
+    if /big-logo/.test(@options.size)
       @logoElem = $('#podlove-subscribe-button-logo')
-    if @options.size == 'big-title'
-      @titleElem = $('#podlove-subscribe-button-title')
     @elem = $('#podlove-subscribe-button')
 
     @I18n = new Translations(@options.language)
@@ -18,7 +16,7 @@ class Button
 
   render: () ->
     buttonHtml = "<span>#{@I18n.t('button')}</span>"
-    @elem.addClass(@options.size)
+    @elem.addClass(@options.size.replace('%20', ' '))
       .html(buttonHtml)
 
     @elem.on 'click', (event) =>
