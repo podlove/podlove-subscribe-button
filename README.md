@@ -18,7 +18,7 @@ There are currently three options you can set:
 
     data-json-data: name of the variable where the button can find information about the podcast (see Podcast data API section)
     data-language: language the texts on the button and popup should be in (currently supports 'de', 'en' and 'ja')
-    data-size: size and style of the button ('small', 'medium', 'big', 'big-logo', 'big-title')
+    data-size: size and style of the button ('small', 'medium', 'big', 'big-logo'). All of the sizes can be combinated with 'auto' to adapt the button width to the available space like this: 'big-logo auto'
 
 ### Self hosted
 
