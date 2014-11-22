@@ -82,6 +82,18 @@
         padding: 10px 0;
         text-shadow: 0 1px 0 rgba(0, 0, 1, .08);
       }
+
+      .auto-size {
+        margin: 0 auto;
+        width: 300px;
+      }
+
+      @media (max-width: 500px) {
+        body,
+        .auto-size {
+          width: 100%;
+        }
+      }
     </style>
     <script src="http://zeptojs.com/zepto.min.js"></script>
   </head>
@@ -137,12 +149,12 @@
     <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="en" data-size="big-logo" data-json-data="podcastData"></script>
 
     <h2>Auto</h2>
-    <div style="margin: 0 auto; width: 300px;">
+    <div class="auto-size">
       <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="en" data-size="big auto" data-json-data="podcastData"></script>
     </div>
 
     <h2>Auto with logo</h2>
-    <div style="margin: 0 auto; width: 300px;">
+    <div class="auto-size">
       <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="en" data-size="auto big-logo" data-json-data="podcastData"></script>
     </div>
 
