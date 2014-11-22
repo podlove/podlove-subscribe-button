@@ -23,13 +23,23 @@ class Popup
 
   render: () ->
     @elem = $(@template(@context()))
-    body = $('body')
-    body.append(@elem)
-    oldOverflow = body.css('overflow')
-    body.css('overflow', 'hidden')
+    @body = $('body')
+    @html = $('html')
+    @body.append(@elem)
+    @disableBackgroundScrolling()
     @elem.find('#podlove-subscribe-popup-close-button').on 'click', () =>
-      $('body').css('overflow', oldOverflow)
+      @enableBackgroundScrolling()
       @elem.remove()
+
+  disableBackgroundScrolling: () ->
+    @oldHtmlOverflow = @html.css('overflow')
+    @oldBodyOverflow = @body.css('overflow')
+    @html.css('overflow', 'hidden')
+    @body.css('overflow', 'hidden')
+
+  enableBackgroundScrolling: (body) ->
+    @html.css('overflow', @oldHtmlOverflow)
+    @body.css('overflow', @oldBodyOverflow)
 
   template: Handlebars.compile('
     <div id="podlove-subscribe-popup" class="podlove-subscribe">

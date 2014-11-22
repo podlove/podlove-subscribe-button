@@ -926,18 +926,29 @@ Popup = (function() {
   };
 
   Popup.prototype.render = function() {
-    var body, oldOverflow;
     this.elem = $(this.template(this.context()));
-    body = $('body');
-    body.append(this.elem);
-    oldOverflow = body.css('overflow');
-    body.css('overflow', 'hidden');
+    this.body = $('body');
+    this.html = $('html');
+    this.body.append(this.elem);
+    this.disableBackgroundScrolling();
     return this.elem.find('#podlove-subscribe-popup-close-button').on('click', (function(_this) {
       return function() {
-        $('body').css('overflow', oldOverflow);
+        _this.enableBackgroundScrolling();
         return _this.elem.remove();
       };
     })(this));
+  };
+
+  Popup.prototype.disableBackgroundScrolling = function() {
+    this.oldHtmlOverflow = this.html.css('overflow');
+    this.oldBodyOverflow = this.body.css('overflow');
+    this.html.css('overflow', 'hidden');
+    return this.body.css('overflow', 'hidden');
+  };
+
+  Popup.prototype.enableBackgroundScrolling = function(body) {
+    this.html.css('overflow', this.oldHtmlOverflow);
+    return this.body.css('overflow', this.oldBodyOverflow);
   };
 
   Popup.prototype.template = Handlebars.compile('<div id="podlove-subscribe-popup" class="podlove-subscribe"> <div id="podlove-subscribe-popup-modal"> <div id="podlove-subscribe-popup-modal-inner" class="show-left"> <span id="podlove-subscribe-popup-close-button" class="podlove-subscribe-install-button">&times;</span> <div id="podlove-subscribe-panel-podcast"></div> <div id="podlove-subscribe-panel-format"></div> <div id="podlove-subscribe-panel-type"></div> <div id="podlove-subscribe-panel-clients"></div> <div id="podlove-subscribe-panel-finish"></div> </div> <a href="http://www.podlove.org" title="Podlove" target="_blank" class="podlove-logo"><img src="{{scriptPath}}/images/podlove@2x.png"></a> </div> </div>');
