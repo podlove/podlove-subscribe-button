@@ -419,14 +419,17 @@ body.podlove-subscribe {
 }
 #podlove-subscribe-popup #podlove-subscribe-panel-clients .device-cloud-switch button {
   background: #fff;
-  border: 1px solid #1a1a1a;
-  border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  border: 1px solid #1a1a1a;
   color: #1a1a1a;
   cursor: pointer;
   font-size: 12px;
+  font-weight: normal;
+  height: 27px;
   margin: 0;
   outline: none;
+  padding: 5px;
   position: relative;
   right: -2px;
   top: -1px;
@@ -498,7 +501,7 @@ body.podlove-subscribe {
   color: inherit;
 }
 #podlove-subscribe-popup #podlove-subscribe-panel-finish form button {
-  background: transparent;
+  background: rgba(0, 0, 0, 0);
   border: none;
   cursor: pointer;
   font-size: 14px;
@@ -572,5 +575,3 @@ body.podlove-subscribe {
   padding: 10px 5px;
   width: 98%;
 }
-
-/*# sourceMappingURL=app.css.map */

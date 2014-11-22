@@ -430,14 +430,17 @@ body.podlove-subscribe {
 
       button {
         background: #fff;
-        border: 1px solid rgb(26, 26, 26);
-        border-top-left-radius: 3px;
         border-bottom-left-radius: 3px;
+        border-top-left-radius: 3px;
+        border: 1px solid rgb(26, 26, 26);
         color: rgb(26, 26, 26);
         cursor: pointer;
         font-size: 12px;
+        font-weight: normal;
+        height: 27px;
         margin: 0;
         outline: none;
+        padding: 5px;
         position: relative;
         right: -2px;
         top: -1px;
