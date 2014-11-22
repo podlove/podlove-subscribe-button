@@ -432,6 +432,7 @@ body.podlove-subscribe {
   padding: 5px;
   position: relative;
   right: -2px;
+  text-transform: none;
   top: -1px;
   width: 65px;
 }
@@ -501,7 +502,7 @@ body.podlove-subscribe {
   color: inherit;
 }
 #podlove-subscribe-popup #podlove-subscribe-panel-finish form button {
-  background: rgba(0, 0, 0, 0);
+  background: transparent;
   border: none;
   cursor: pointer;
   font-size: 14px;
@@ -575,3 +576,5 @@ body.podlove-subscribe {
   padding: 10px 5px;
   width: 98%;
 }
+
+/*# sourceMappingURL=app.css.map */
