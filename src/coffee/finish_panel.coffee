@@ -45,12 +45,12 @@ class FinishPanel extends Panel
               <input type="hidden" name="subtitle" value="{{podcast.subtitle}}">
               <input type="hidden" name="image" value="{{podcast.cover}}">
 
-              <button>
+              <button class="podlove-subscribe-button">
                 {{t "finish_panel.try_again"}}
               </button>
             </form>
           {{else}}
-            <a href="{{client.url}}" target="_blank">
+            <a href="{{client.url}}" class="podlove-subscribe-button" target="_blank">
               {{t "finish_panel.try_again"}}
             </a>
           {{/if}}

@@ -109,8 +109,7 @@ body.podlove-subscribe {
 }
 
 #podlove-subscribe-button.big,
-#podlove-subscribe-button.big-logo,
-#podlove-subscribe-button.big-title {
+#podlove-subscribe-button.big-logo {
   border-width: 2px;
   -moz-box-shadow: 0 2px 0 rgba(0,0,1,.2), inset 0 -3px 0 rgba(0,0,1,.2);
   -webkit-box-shadow: 0 2px 0 rgba(0,0,1,.2), inset 0 -3px 0 rgba(0,0,1,.2);
@@ -154,11 +153,6 @@ body.podlove-subscribe {
   img {
     width: 100%;
   }
-}
-
-#podlove-subscribe-button.big-title {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
 }
 
 #podlove-subscribe-button.auto,
@@ -408,21 +402,33 @@ body.podlove-subscribe {
       height: 150px;
       width: 150px;
     }
+  }
 
-    button {
+  #podlove-subscribe-panel-podcast,
+  #podlove-subscribe-panel-finish {
+    .podlove-subscribe-button {
       -moz-box-shadow: 0 1px 0 rgba(0,0,1,.2), inset 0 -6px 0 rgba(0,0,1,.2);
       -webkit-box-shadow: 0 1px 0 rgba(0,0,1,.2), inset 0 -6px 0 rgba(0,0,1,.2);
       box-shadow: 0 1px 0 rgba(0,0,1,.2), inset 0 -6px 0 rgba(0,0,1,.2);
       border: 1px solid #456757;
       border-radius: 0;
       bottom: 0;
+      color: #fff;
       font-size: 18px;
       height: 50px;
       left: 0;
       margin: 0 0 5% 5%;
       outline: none;
       position: absolute;
+      text-decoration: none;
       width: 90%;
+    }
+  }
+
+  #podlove-subscribe-panel-finish {
+    .podlove-subscribe-button {
+      padding: 8px 0;
+      position: relative;
     }
   }
 
@@ -537,15 +543,6 @@ body.podlove-subscribe {
 
     a {
       color: inherit;
-    }
-
-    form button {
-      background: rgba(0, 0, 0, 0);
-      border: none;
-      cursor: pointer;
-      font-size: 14px;
-      outline: none;
-      text-decoration: underline;
     }
 
     input {
