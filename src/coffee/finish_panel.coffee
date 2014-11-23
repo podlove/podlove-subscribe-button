@@ -54,14 +54,15 @@ class FinishPanel extends Panel
               {{t "finish_panel.try_again"}}
             </a>
           {{/if}}
-          <br>
-          {{t "finish_panel.or_install"}}
-          <br>
+
           {{#if client.store}}
+            {{t "finish_panel.or_install"}}
+            <br>
             <a href="{{client.store}}" target="_blank">
               <img src="{{scriptPath}}/images/stores/{{platform}}.png" class="store-button">
             </a>
           {{/if}}
+
           {{#if client.install}}
             <a href="{{client.store}}" target="_blank">
               {{t "finish_panel.install" client=client.title}}
