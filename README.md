@@ -1,4 +1,4 @@
-# Podlove Subscribe It
+# Podlove Subscribe Button
 
 ## General
 
