@@ -21,7 +21,7 @@ var paths = {
 
 gulp.task('stylesheets', function() {
   return gulp.src(paths.stylesheets)
-    .pipe(sass({style: 'expanded'}))
+    .pipe(sass({style: 'compressed'}))
     .pipe(gulp.dest('./dist/stylesheets'))
     .pipe(gzip())
     .pipe(gulp.dest('./dist/stylesheets'))
@@ -34,6 +34,7 @@ gulp.task('javascripts', function() {
       transform: ['coffeeify'],
       extensions: ['.coffee']
     }))
+    .pipe(uglify())
     .pipe(rename('app.js'))
     .pipe(gulp.dest('./dist/javascripts'))
     .pipe(gzip())
