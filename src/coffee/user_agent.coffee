@@ -10,7 +10,7 @@ UAs =
   windows7: /Windows NT 6.1/
   windows8: /Windows NT 6.2/
   windows81: /Windows NT 6.3/
-  windowsPhone: /trident/i
+  windowsphone: /trident/i
   android: /android/i
   ios: /(ipad|iphone|ipod)/i
   linux: /linux/i

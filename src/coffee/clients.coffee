@@ -199,7 +199,7 @@ class Clients
     }
   ]
 
-  windowsPhone: [
+  windowsphone: [
     {
       title: 'BringCast'
       scheme: 'bringcast://subscribe/'
