@@ -57,9 +57,8 @@ class SubscribeButton
     @podcast = data
 
   checkIntegrity: () ->
-    formats = _(@podcast.feeds).map((feed) -> feed.format)
-    unless _(formats).contains('mp3')
-      text = "Error. Please add at least an MP3 feed. Available formats: #{formats}"
+    if @podcast.feeds.length == 0
+      text = "Subscribe Button Error. Please add at least one feed."
       console.warn(text)
       window.alert(text)
 

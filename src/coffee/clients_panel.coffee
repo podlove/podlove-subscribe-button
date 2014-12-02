@@ -17,7 +17,7 @@ class ClientsPanel extends Panel
     if @prepareClients(@parent.options.scriptPath)
       @render()
     else
-      text = 'No usable feed found. Please add at least an mp3 feed.'
+      text = 'No usable feed found. Please add at least one feed.'
       console.warn(text)
 
   context: -> {
@@ -37,9 +37,9 @@ class ClientsPanel extends Panel
 
   detectBestFormat: () ->
     capabilities = if @platform == 'linux'
-      ['mp3', 'ogg', 'aac']
+      ['mp3', 'ogg', 'aac', 'opus']
     else
-      ['aac', 'mp3']
+      ['aac', 'mp3', 'ogg', 'opus']
 
     _(capabilities).find (cap) =>
       _(@podcast.feeds).findWhere({format: cap})

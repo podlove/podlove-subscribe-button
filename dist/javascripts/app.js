@@ -81,12 +81,9 @@ SubscribeButton = (function() {
   };
 
   SubscribeButton.prototype.checkIntegrity = function() {
-    var formats, text;
-    formats = _(this.podcast.feeds).map(function(feed) {
-      return feed.format;
-    });
-    if (!_(formats).contains('mp3')) {
-      text = "Error. Please add at least an MP3 feed. Available formats: " + formats;
+    var text;
+    if (this.podcast.feeds.length === 0) {
+      text = "Subscribe Button Error. Please add at least one feed.";
       console.warn(text);
       return window.alert(text);
     }
@@ -515,7 +512,7 @@ ClientsPanel = (function(_super) {
     if (this.prepareClients(this.parent.options.scriptPath)) {
       this.render();
     } else {
-      text = 'No usable feed found. Please add at least an mp3 feed.';
+      text = 'No usable feed found. Please add at least one feed.';
       console.warn(text);
     }
   }
@@ -539,7 +536,7 @@ ClientsPanel = (function(_super) {
 
   ClientsPanel.prototype.detectBestFormat = function() {
     var capabilities;
-    capabilities = this.platform === 'linux' ? ['mp3', 'ogg', 'aac'] : ['aac', 'mp3'];
+    capabilities = this.platform === 'linux' ? ['mp3', 'ogg', 'aac', 'opus'] : ['aac', 'mp3', 'ogg', 'opus'];
     return _(capabilities).find((function(_this) {
       return function(cap) {
         return _(_this.podcast.feeds).findWhere({
