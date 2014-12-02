@@ -76,6 +76,15 @@ To work the button needs information about the podcast, which needs to be provid
 
 If everything went right you should see a button that will open a popup with subscribe buttons when clicked.
 
+### Add non-javascript fallback
+
+If you want to provide a fallback when no javascript is present, we recommend to do it like this:
+
+    <script class="podlove-subscribe-button" src="http://example.com/subscribe-button/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData"></script>
+    <noscript><a href="http://newz-of-the-world.com/feed/mp4">Subscribe to feed</a></noscript>
+
+You can also provide more than one feed link if you have more.
+
 ## Development
 
 Install requirements
