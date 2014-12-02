@@ -233,6 +233,24 @@ Clients = (function() {
     return this[platform];
   }
 
+  Clients.prototype.printClientList = function() {
+    var item, platform, url, _i, _j, _len, _len1, _ref, _ref1, _results;
+    _ref = ['Android', 'Cloud', 'iOS', 'Linux', 'OSX', 'WindowsPhone', 'Windows7', 'Windows8', 'Windows81'];
+    _results = [];
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      platform = _ref[_i];
+      console.log("### " + platform);
+      _ref1 = this[platform.toLowerCase()];
+      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+        item = _ref1[_j];
+        url = item.register || item.store || item.install;
+        console.log("  * [" + item.title + "](" + url + ")");
+      }
+      _results.push(console.log(""));
+    }
+    return _results;
+  };
+
   Clients.prototype.rss = {
     title: 'Other (Feed URL)',
     icon: 'generic/rss@2x.png'

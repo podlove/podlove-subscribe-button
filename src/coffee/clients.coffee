@@ -5,6 +5,14 @@ class Clients
 
     return @[platform]
 
+  printClientList: () ->
+    for platform in ['Android', 'Cloud', 'iOS', 'Linux', 'OSX', 'WindowsPhone', 'Windows7', 'Windows8', 'Windows81']
+      console.log("### #{platform}")
+      for item in @[platform.toLowerCase()]
+        url = item.register || item.store || item.install
+        console.log("  * [#{item.title}](#{url})")
+      console.log("")
+
   rss: {
     title: 'Other (Feed URL)'
     icon: 'generic/rss@2x.png'
