@@ -14,6 +14,7 @@ deploy:
   region: eu-west-1
   local-dir: dist
   upload-dir: subscribe-button
+  cache_control: max-age=0
   on:
     repo: podlove/podlove-subscribe-button
     branch: master
