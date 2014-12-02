@@ -15,6 +15,7 @@ deploy:
   local-dir: dist
   upload-dir: subscribe-button
   cache_control: max-age=0
+  detect_encoding: true
   on:
     repo: podlove/podlove-subscribe-button
     branch: master

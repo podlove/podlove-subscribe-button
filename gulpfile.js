@@ -8,6 +8,7 @@ var gulp = require('gulp'),
     browserify = require('gulp-browserify'),
     rename = require('gulp-rename'),
     connect = require('gulp-connect');
+    gzip = require('gulp-gzip');
 
 var dest = './dist';
 var paths = {
@@ -22,6 +23,8 @@ gulp.task('stylesheets', function() {
   return gulp.src(paths.stylesheets)
     .pipe(sass({style: 'expanded'}))
     .pipe(gulp.dest('./dist/stylesheets'))
+    .pipe(gzip())
+    .pipe(gulp.dest('./dist/stylesheets'))
     .pipe(connect.reload())
 })
 
@@ -32,6 +35,8 @@ gulp.task('javascripts', function() {
       extensions: ['.coffee']
     }))
     .pipe(rename('app.js'))
+    .pipe(gulp.dest('./dist/javascripts'))
+    .pipe(gzip())
     .pipe(gulp.dest('./dist/javascripts'))
     .pipe(connect.reload())
 })
