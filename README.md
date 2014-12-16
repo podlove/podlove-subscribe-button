@@ -10,9 +10,11 @@ If you are a client developer and want to add your client to the list, please re
 
 ## Usage
 
-### Through our CDN
+### Using the Podlove CDN
 
-    <script class="podlove-subscribe-button" src="http://cdn.podlove.org/subscribe-button/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData"></script>
+We are hosting an always up-to-date version of the Podlove Subsribe Button code on our CDN web site. This is the preferred way to include the button on your web site.
+
+    <script class="podlove-subscribe-button" src="https://cdn.podlove.org/subscribe-button/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData"></script>
 
 There are currently three options you can set:
 
