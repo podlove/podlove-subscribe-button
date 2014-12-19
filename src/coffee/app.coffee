@@ -6,6 +6,7 @@ Popup = require('./popup.coffee')
 Utils = require('./utils.coffee')
 IframeResizer = require('./iframe_resizer.coffee')
 IframeClick = require('./iframe_click.coffee')
+Colors = require('./colors.coffee')
 
 class SubscribeButton
   @init: (selector = '.podlove-subscribe-button') ->
@@ -42,6 +43,7 @@ class SubscribeButton
       scriptPath: @scriptElem.attr('src').match(/(^.*\/)/)[0].replace(/javascripts\/$/, '').replace(/\/$/, '')
       language: @scriptElem.data('language')
       size: @scriptElem.data('size')
+      colors: new Colors(@scriptElem.data('colors'))
 
     @options = $.extend(@defaultOptions, options)
 
@@ -68,11 +70,12 @@ class SubscribeButton
   addCss: () ->
     link = $("<link rel='stylesheet' href='#{@options.scriptPath}/stylesheets/app.css'></script>")
     @scriptElem.after(link)
+    link.after(@options.colors.toStyles())
 
   # builds the button Iframe and attaches the click event listener
   iframe: () ->
     @options.id = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
-    buttonUrl = "#{@options.scriptPath}/button.html?id=#{@options.id}&language=#{@options.language}&size=#{@options.size}&podcastTitle=#{@podcast.title}&podcastCover=#{@podcast.cover}"
+    buttonUrl = "#{@options.scriptPath}/button.html?id=#{@options.id}&language=#{@options.language}&size=#{@options.size}&podcastTitle=#{@podcast.title}&podcastCover=#{@podcast.cover}#{@options.colors.toParams()}"
 
     iframe = $('<iframe>')
       .attr('src', buttonUrl)

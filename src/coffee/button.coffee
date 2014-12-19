@@ -1,6 +1,7 @@
 $ = require('../../vendor/zepto-browserify.js').Zepto
 Utils = require('./utils.coffee')
 Translations = require('./translations.coffee')
+Colors = require('./colors.coffee')
 
 class Button
   constructor: () ->
@@ -26,9 +27,14 @@ class Button
       image = "<img src='#{@options.podcastCover}'>"
       @logoElem.html(image)
 
-    if @titleElem
-      title = "<span>#{decodeURI(@options.podcastTitle)}</span>"
-      @titleElem.html(title)
+      @logoElem.on 'click', (event) =>
+        window.parent.postMessage("clicked_#{@options.id}", '*')
+
+    @setColors()
+
+  setColors: () ->
+    colors = Colors.fromParams(@options)
+    @elem.after(colors.toStyles())
 
   getOptions: () ->
     @options = Utils.locationToOptions(window.location.search)
