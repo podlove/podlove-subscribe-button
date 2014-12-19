@@ -101,16 +101,19 @@ class Colors
     return unless string
     colors = string.split(';')
 
-    @buttonBackgroundColor = colors[0]
-    @buttonHoverBackgroundColor = colors[1]
-    @buttonActiveBackgroundColor = colors[2]
-    @buttonTextColor = colors[3]
-    @buttonHoverTextColor = colors[4]
-    @buttonActiveTextColor = colors[5]
-    @buttonBorderColor = colors[6]
+    @_setColor('buttonBackgroundColor', colors[0])
+    @_setColor('buttonHoverBackgroundColor', colors[1])
+    @_setColor('buttonActiveBackgroundColor', colors[2])
+    @_setColor('buttonTextColor', colors[3])
+    @_setColor('buttonHoverTextColor', colors[4])
+    @_setColor('buttonActiveTextColor', colors[5])
+    @_setColor('buttonBorderColor', colors[6])
 
     @listHighlightBackgroundColor = colors[7]
     @listHighlightTextColor = colors[8]
+
+  _setColor: (id, color) ->
+    @[id] = color if color != ''
 
   @encode: (color) ->
     encodeURIComponent(color)
