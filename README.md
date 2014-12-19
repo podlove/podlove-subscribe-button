@@ -14,7 +14,7 @@ If you are a client developer and want to add your client to the list, please re
 
 We are hosting an always up-to-date version of the Podlove Subsribe Button code on our CDN. This is the preferred way to include the button on your web site.
 
-    <script class="podlove-subscribe-button" src="https://cdn.podlove.org/subscribe-button/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData" data-colors="red;green;blue"></script>
+    <script class="podlove-subscribe-button" src="https://cdn.podlove.org/subscribe-button/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData" data-colors="red;green;blue" data-buttonid="123abc" data-hide="true"></script>
 
 There are currently three options you can set:
 
@@ -22,6 +22,8 @@ There are currently three options you can set:
     data-language: language the texts on the button and popup should be in (currently supports 'de', 'en' and 'ja')
     data-size: size and style of the button ('small', 'medium', 'big', 'big-logo'). All of the sizes can be combined with 'auto' to adapt the button width to the available space like this: 'big-logo auto'
     data-colors: define the colors of the button (Please see section **Override Button Colors** for more information)
+    data-buttonid: you can use this to open the popup from another element on the same page (see section **Use your own button element**
+    data-hide: if set to `true` the button will not be shown (useful if you want to use your own element
 
 ### Self hosted
 
@@ -112,6 +114,20 @@ Basic button styling (only idle button background and text color)
 A bit more complex... (Only idle button background/text and list highlight color):
     
     <script ... data-colors="#75ad91;;;#ffffff;;;;#328398;#ffffff"></script>
+
+### Use your own button element
+
+For ultimate freedom you can use a completely different element on the page for opening the popup. To achieve this you have to set a unique ID for each button you have on the page like this:
+
+    <script ... data-buttonid="123abc"></script>
+    
+Then define the element that should open the popup when clicked just like this:
+
+    <a href="#" class="podlove-subscribe-button-123abc">Subscribe</a>
+    
+If you want to hide the original button you can combine ```data-buttonid``` with ```data-hide``` which, you already guessed it, will hide the button:
+
+    <script ... data-buttonid="123abc" data-hide="true"></script>
 
 ### Add non-javascript fallback
 

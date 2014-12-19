@@ -21,6 +21,10 @@ body.podlove-subscribe {
   width: 0;
 }
 
+script.podlove-subscribe-button {
+  display: none !important;
+}
+
 #podlove-subscribe-button,
 .podlove-subscribe-button {
   background-clip: padding-box;

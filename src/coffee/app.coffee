@@ -34,18 +34,20 @@ class SubscribeButton
   update: () ->
     @getPodcastData()
 
-  defaultOptions:
-    language: 'en'
-    size: 'medium'
-
   getOptions: () ->
+    defaultOptions =
+      language: 'en'
+      size: 'medium'
+
     options =
       scriptPath: @scriptElem.attr('src').match(/(^.*\/)/)[0].replace(/javascripts\/$/, '').replace(/\/$/, '')
       language: @scriptElem.data('language')
       size: @scriptElem.data('size')
       colors: new Colors(@scriptElem.data('colors'))
+      buttonId: @scriptElem.data('buttonid')
+      hide: @scriptElem.data('hide')
 
-    @options = $.extend(@defaultOptions, options)
+    @options = $.extend(defaultOptions, options)
 
   getPodcastData: () ->
     if jsonUrl = @scriptElem.data('json-url')
@@ -65,7 +67,9 @@ class SubscribeButton
       window.alert(text)
 
   renderButtonIframe: () ->
-    @scriptElem.replaceWith(@iframe())
+    iframe = @iframe()
+    return if @options.hide
+    @scriptElem.replaceWith(iframe)
 
   addCss: () ->
     link = $("<link rel='stylesheet' href='#{@options.scriptPath}/stylesheets/app.css'></script>")
@@ -86,6 +90,9 @@ class SubscribeButton
     IframeResizer.listen('resizeButton', iframe)
 
     IframeClick.listen(iframe, @openPopup, @options)
+
+    if @options.buttonId
+      $(".podlove-subscribe-button-#{@options.buttonId}").on 'click', => @openPopup(@options)
 
     iframe
 
