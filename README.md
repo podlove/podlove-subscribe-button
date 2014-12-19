@@ -12,15 +12,16 @@ If you are a client developer and want to add your client to the list, please re
 
 ### Using the Podlove CDN
 
-We are hosting an always up-to-date version of the Podlove Subsribe Button code on our CDN web site. This is the preferred way to include the button on your web site.
+We are hosting an always up-to-date version of the Podlove Subsribe Button code on our CDN. This is the preferred way to include the button on your web site.
 
-    <script class="podlove-subscribe-button" src="https://cdn.podlove.org/subscribe-button/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData"></script>
+    <script class="podlove-subscribe-button" src="https://cdn.podlove.org/subscribe-button/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData" data-colors="red;green;blue"></script>
 
 There are currently three options you can set:
 
     data-json-data: name of the variable where the button can find information about the podcast (see Podcast data API section)
     data-language: language the texts on the button and popup should be in (currently supports 'de', 'en' and 'ja')
     data-size: size and style of the button ('small', 'medium', 'big', 'big-logo'). All of the sizes can be combined with 'auto' to adapt the button width to the available space like this: 'big-logo auto'
+    data-colors: define the colors of the button (Please see section **Override Button Colors** for more information)
 
 ### Self hosted
 
@@ -77,6 +78,40 @@ To work the button needs information about the podcast, which needs to be provid
     </script>
 
 If everything went right you should see a button that will open a popup with subscribe buttons when clicked.
+
+### Override Button Colors
+
+The colors of the button and popup are (almost) completely configurable by setting the `data-colors` parameter on the script tag. If the parameter is not given the default will be used. The colors have to be provided in this order separated by semikolon:
+
+1. buttonBackgroundColor
+2. buttonHoverBackgroundColor
+3. buttonActiveBackgroundColor
+4. buttonTextColor
+5. buttonHoverTextColor
+6. buttonActiveTextColor
+7. buttonBorderColor
+8. listHighlightBackgroundColor
+9. listHighlightTextColor
+
+Allowed are all notations for colors that CSS can understand (keyword, rgb-hex, rgb, rgba, hsl, hsla). See [here for more](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).
+
+If you only want to replace certain colors you can simply leave the position empty and the default will be used.
+
+**Please Note:** It is not possible to style multiple buttons/popups on the same page differently. Unfortunately this is technically not possible at this moment.
+
+#### Examples
+
+Full configuration:
+
+    <script ... data-colors="#75ad91;#75c39d;#61937b;#ffffff;#ffffff;#ffffff;#456757;#328398;#ffffff"></script>
+
+Basic button styling (only idle button background and text color)
+    
+    <script ... data-colors="#75ad91;;;#ffffff"></script>
+        
+A bit more complex... (Only idle button background/text and list highlight color):
+    
+    <script ... data-colors="#75ad91;;;#ffffff;;;;#328398;#ffffff"></script>
 
 ### Add non-javascript fallback
 
