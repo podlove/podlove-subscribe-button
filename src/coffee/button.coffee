@@ -8,6 +8,8 @@ class Button
     @getOptions()
     if /big-logo/.test(@options.size)
       @logoElem = $('#podlove-subscribe-button-logo')
+    if /auto/.test(@options.size)
+      @autoSize = true
     @elem = $('#podlove-subscribe-button')
 
     @I18n = new Translations(@options.language)
@@ -50,7 +52,7 @@ class Button
       window.parent.postMessage(resizeData, '*')
 
     height = @elem.height()
-    width = @elem.width()
+    width = if @autoSize then '100%' else @elem.width()
 
     if @logoElem
       img = @logoElem.find('img')
