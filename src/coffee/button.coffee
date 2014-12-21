@@ -53,10 +53,10 @@ class Button
 
     height = @elem.height()
 
-    if @autoSize
-      @elem.width('100%')
-
-    width = @elem.width()
+    width = if @autoSize && !@logoElem
+      '100%'
+    else
+      @elem.width()
 
     if @logoElem
       img = @logoElem.find('img')
