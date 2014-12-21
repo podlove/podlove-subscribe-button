@@ -52,7 +52,11 @@ class Button
       window.parent.postMessage(resizeData, '*')
 
     height = @elem.height()
-    width = if @autoSize then '100%' else @elem.width()
+
+    if @autoSize
+      @elem.width('100%')
+
+    width = @elem.width()
 
     if @logoElem
       img = @logoElem.find('img')
@@ -61,11 +65,6 @@ class Button
         height += width
         @logoElem.show()
         resize(height, width)
-    else if @titleElem
-      @titleElem.show()
-      @titleElem.width(width)
-      height += @titleElem.height()
-      resize(height, width)
     else
       resize(height, width)
 
