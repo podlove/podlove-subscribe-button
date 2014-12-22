@@ -25,7 +25,7 @@ There are currently three options you can set:
     data-buttonid: you can use this to open the popup from another element on the same page (see section **Use your own button element**
     data-hide: if set to `true` the button will not be shown (useful if you want to use your own element
 
-Alternatively, use the shortcode `[podlove-subscribe-button]` and the parameter `size="small/medium/big/big-logo"`.
+Alternatively, use the shortcode `[podlove-subscribe-button]` in a post or page of your choice. The optional parameter `size=""` can be set to `small`, `medium`, `big`and `big-logo`.
 
 ### Self hosted
 
