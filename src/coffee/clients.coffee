@@ -216,7 +216,7 @@ class Clients
     },
     {
       title: 'gramocast'
-      scheme: 'gramocast://'
+      scheme: 'gramocast://subscribe/'
       icon: 'windowsphone/gramocast@2x.png'
       store: 'http://windowsphone.com/s?appId=ebb52054-5071-4aa4-9537-00399d06a99e'
     },
