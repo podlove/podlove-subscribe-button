@@ -216,6 +216,13 @@ class Clients
       http: true
     },
     {
+      title: 'gramocast'
+      scheme: 'gramocast://'
+      icon: 'windowsphone/gramocast@2x.png'
+      install: 'http://windowsphone.com/s?appId=ebb52054-5071-4aa4-9537-00399d06a99e'
+      http: true
+    },
+    {
       title: 'Podcast Lounge'
       scheme: 'podcastlounge://subscribe/'
       icon: 'windowsphone/podcastlounge@2x.png'
