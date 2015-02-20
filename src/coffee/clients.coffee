@@ -213,21 +213,18 @@ class Clients
       scheme: 'bringcast://subscribe/'
       icon: 'windowsphone/bringcast@2x.png'
       store: 'http://windowsphone.com/s?appId=e5abef38-d413-e011-9264-00237de2db9e'
-      http: true
     },
     {
       title: 'gramocast'
       scheme: 'gramocast://'
       icon: 'windowsphone/gramocast@2x.png'
-      install: 'http://windowsphone.com/s?appId=ebb52054-5071-4aa4-9537-00399d06a99e'
-      http: true
+      store: 'http://windowsphone.com/s?appId=ebb52054-5071-4aa4-9537-00399d06a99e'
     },
     {
       title: 'Podcast Lounge'
       scheme: 'podcastlounge://subscribe/'
       icon: 'windowsphone/podcastlounge@2x.png'
-      install: 'http://windowsphone.com/s?appId=83bc0329-8e02-410e-b6d2-da3c0c1d971d'
-      http: true
+      store: 'http://windowsphone.com/s?appId=83bc0329-8e02-410e-b6d2-da3c0c1d971d'
     },
     {
       title: 'Podcast Picker'
