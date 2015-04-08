@@ -26,7 +26,7 @@ class Button
       window.parent.postMessage("clicked_#{@options.id}", '*')
 
     if @logoElem
-      image = "<img src='#{@options.podcastCover}'>"
+      image = "<img src='#{@options.podcastCover}' alt='#{@options.podcastTitle}'>"
       @logoElem.html(image)
 
       @logoElem.on 'click', (event) =>

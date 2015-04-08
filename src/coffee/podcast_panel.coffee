@@ -39,7 +39,7 @@ class PodcastPanel extends Panel
         <span class="panel-title">{{t "panels.title"}}</span>
       </div>
       {{#if cover}}
-      <img class="podcast-cover" src="{{cover}}">
+      <img class="podcast-cover" src="{{cover}}" alt="{{title}}">
       {{/if}}
       <h1>{{title}}</h1>
       <p>{{subtitle}}</p>
