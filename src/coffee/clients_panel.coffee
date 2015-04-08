@@ -50,17 +50,18 @@ class ClientsPanel extends Panel
 
   prepareClients: (pathPrefix) ->
     feedUrl = @chooseFeedUrl()
+    feedUrlWithOutHttp = feedUrl.replace(/^(http|https):\/\//, '')
     return false unless feedUrl
 
     for client in @clients
       Utils.fixIconPath(client, pathPrefix)
-      client.url = "#{client.scheme}#{feedUrl.replace('http://', '')}"
+      client.url = "#{client.scheme}#{feedUrlWithOutHttp}"
 
     _(@clients).shuffle()
 
     for client in @cloudClients
       Utils.fixIconPath(client, pathPrefix)
-      cloudFeedUrl = if client.http then feedUrl else feedUrl.replace('http://', '')
+      cloudFeedUrl = if client.http then feedUrl else feedUrlWithOutHttp
       if client.post
         client.url = client.scheme
         client.feedUrl = cloudFeedUrl
@@ -73,7 +74,7 @@ class ClientsPanel extends Panel
     @osDefault.title = 'Let device decide'
     @osDefault.originalUrl = feedUrl
     unless @osDefault.scheme == null
-      @osDefault.url = "#{@osDefault.scheme}#{feedUrl.replace('http://', '')}"
+      @osDefault.url = "#{@osDefault.scheme}#{feedUrlWithOutHttp}"
       # necessary for displaying the right finish panel content
       @osDefault.scheme = null
 
