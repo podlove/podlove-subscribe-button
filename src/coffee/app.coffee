@@ -7,6 +7,7 @@ Utils = require('./utils.coffee')
 IframeResizer = require('./iframe_resizer.coffee')
 IframeClick = require('./iframe_click.coffee')
 Colors = require('./colors.coffee')
+Translations = require('./translations.coffee')
 
 class SubscribeButton
   @init: (selector = '.podlove-subscribe-button') ->
@@ -24,6 +25,7 @@ class SubscribeButton
     @scriptElem = $(scriptElem)
 
     @getOptions()
+    @checkForValidLanguage()
     @getPodcastData()
     @checkIntegrity()
     @addCss()
@@ -36,7 +38,6 @@ class SubscribeButton
 
   getOptions: () ->
     defaultOptions =
-      language: 'en'
       size: 'medium'
 
     options =
@@ -48,6 +49,11 @@ class SubscribeButton
       hide: @scriptElem.data('hide')
 
     @options = $.extend(defaultOptions, options)
+
+  checkForValidLanguage: () ->
+    translations = new Translations(@options.language)
+    unless translations.supportsLanguage()
+      @options.language = Translations.defaultLanguage
 
   getPodcastData: () ->
     if jsonUrl = @scriptElem.data('json-url')

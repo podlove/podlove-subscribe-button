@@ -43,6 +43,15 @@ class Translations
         a
     string
 
+  @defaultLanguage: 'en'
+
+  supportsLanguage: () ->
+    keys = Object.keys(@_translations)
+    if keys.indexOf(@locale) != -1
+      true
+    else
+      false
+
   _translations:
     de:
       button: "Abonnieren"
