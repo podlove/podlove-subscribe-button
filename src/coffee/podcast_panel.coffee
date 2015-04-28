@@ -11,8 +11,8 @@ class PodcastPanel extends Panel
 
   context: -> {
     cover: @podcast.cover,
-    title: @podcast.title,
-    subtitle: @podcast.subtitle,
+    title: new Handlebars.SafeString(@podcast.title),
+    subtitle: new Handlebars.SafeString(@podcast.subtitle),
     scriptPath: @parent.options.scriptPath,
   }
 
