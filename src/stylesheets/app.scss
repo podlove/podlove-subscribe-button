@@ -391,7 +391,7 @@ script.podlove-subscribe-button {
     }
 
     .top-bar img {
-      height: 26px;
+      height: 26px !important;
       margin: 0;
       opacity: 0.6;
     }
@@ -492,6 +492,7 @@ script.podlove-subscribe-button {
 
     .client-list {
       height: 341px;
+      line-height: 30px;
       overflow-y: auto;
     }
 
@@ -518,7 +519,7 @@ script.podlove-subscribe-button {
     }
 
     li img {
-      height: 30px;
+      height: 30px !important;
       left: 20px;
       position: absolute;
     }
