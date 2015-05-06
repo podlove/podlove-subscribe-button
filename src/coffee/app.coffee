@@ -88,7 +88,7 @@ class SubscribeButton
     buttonUrl = "#{@options.scriptPath}/button.html?id=#{@options.id}&language=#{@options.language}&size=#{@options.size}&podcastTitle=#{@podcast.title}&podcastCover=#{@podcast.cover}#{@options.colors.toParams()}"
 
     iframe = $('<iframe>')
-      .attr('src', buttonUrl)
+      .attr('src', encodeURI(buttonUrl))
       .attr('id', @options.id)
       .addClass('podlove-subscribe-button-iframe')
       .css({border: 'none', display: 'inline-block', overflow: 'hidden'})
