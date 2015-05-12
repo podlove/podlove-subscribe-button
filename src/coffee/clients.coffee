@@ -99,7 +99,7 @@ class Clients
     #},
     {
       title: 'Podcatcher Deluxe'
-      scheme: 'pdc://'
+      scheme: 'pcd://'
       icon: 'android/podcatcher-deluxe@2x.png'
       store: 'https://play.google.com/store/apps/details?id=com.podcatcher.deluxe'
     },
