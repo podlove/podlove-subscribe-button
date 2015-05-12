@@ -98,6 +98,12 @@ class Clients
       #install: 'https://play.google.com/store/apps/details?id=au.com.shiftyjelly.pocketcasts'
     #},
     {
+      title: 'Podcatcher Deluxe'
+      scheme: 'pdc://'
+      icon: 'android/podcatcher-deluxe@2x.png'
+      store: 'https://play.google.com/store/apps/details?id=com.podcatcher.deluxe'
+    },
+    {
       title: 'Podkicker'
       scheme: 'podkicker://subscribe/'
       icon: 'android/podkicker@2x.png'
