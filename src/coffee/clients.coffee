@@ -101,7 +101,7 @@ class Clients
       title: 'Podcatcher Deluxe'
       scheme: 'pcd://'
       icon: 'android/podcatcher-deluxe@2x.png'
-      store: 'https://play.google.com/store/apps/details?id=com.podcatcher.deluxe'
+      store: 'https://play.google.com/store/search?q=pub:Kevin%20Hausmann'
     },
     {
       title: 'Podkicker'
