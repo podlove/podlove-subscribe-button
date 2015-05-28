@@ -551,9 +551,13 @@ script.podlove-subscribe-button {
     }
 
     img {
-      margin-top: 30px;
-      margin-bottom: 30px;
+      margin-top: 0;
+      margin-bottom: 15px;
       max-width: 100px;
+    }
+
+    h1 {
+      line-height: 1.4em;
     }
 
     a {
