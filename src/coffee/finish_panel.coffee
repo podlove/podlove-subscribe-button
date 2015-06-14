@@ -64,7 +64,7 @@ class FinishPanel extends Panel
           {{/if}}
 
           {{#if client.install}}
-            <a href="{{client.store}}" target="_blank">
+            <a href="{{client.install}}" target="_blank">
               {{t "finish_panel.install" client=client.title}}
             </a>
           {{/if}}
