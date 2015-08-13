@@ -29,7 +29,7 @@ class FinishPanel extends Panel
     <div>
       <div class="top-bar">
         <span class="podlove-subscribe-back-button">&lsaquo;</span>
-        <img src="{{scriptPath}}/images/icon-big@2x.png">
+        <img src="{{scriptPath}}/images/icon-big.png">
         <span class="panel-title">{{t "panels.title"}}</span>
       </div>
       <img class="podcast-cover" src="{{client.icon}}">
