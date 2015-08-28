@@ -166,6 +166,12 @@ class Clients
       icon: 'ios/podcat.png'
       store: 'https://itunes.apple.com/app/podcat/id845960230'
     },
+    #{
+      #title: 'PodGrasp'
+      #scheme: 'podgrasp://subscribe/'
+      #icon: 'ios/podgrasp.png'
+      #store: 'https://itunes.apple.com/de/app/podgrasp-podcast-player/id531648276'
+    #},
     {
       title: 'RSSRadio'
       scheme: 'rssradio://'
@@ -210,7 +216,13 @@ class Clients
       scheme: 'itpc://'
       icon: 'osx/itunes.png'
       install: 'http://www.apple.com/itunes/'
-    }
+    },
+    {
+      title: 'PodGrasp'
+      scheme: 'podgrasp://subscribe/'
+      icon: 'osx/podgrasp.png'
+      store: 'https://itunes.apple.com/de/app/podgrasp-podcast-player/id530928805'
+    },
   ]
 
   windowsphone: [
