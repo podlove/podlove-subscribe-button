@@ -166,12 +166,12 @@ class Clients
       icon: 'ios/podcat.png'
       store: 'https://itunes.apple.com/app/podcat/id845960230'
     },
-    #{
-      #title: 'PodGrasp'
-      #scheme: 'podgrasp://subscribe/'
-      #icon: 'ios/podgrasp.png'
-      #store: 'https://itunes.apple.com/de/app/podgrasp-podcast-player/id531648276'
-    #},
+    {
+      title: 'PodGrasp'
+      scheme: 'podgrasp://subscribe/'
+      icon: 'ios/podgrasp.png'
+      store: 'https://itunes.apple.com/de/app/podgrasp-podcast-player/id531648276'
+    },
     {
       title: 'RSSRadio'
       scheme: 'rssradio://'
