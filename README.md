@@ -144,6 +144,7 @@ You can also provide more than one feed link if you have more.
   * [AntennaPod](https://play.google.com/store/apps/details?id=de.danoeh.antennapod)
   * [Player.fm](https://play.google.com/store/apps/details?id=fm.player)
   * [Podcast Addict](https://play.google.com/store/apps/details?id=com.bambuna.podcastaddict)
+  * [Podcatcher Deluxe](https://play.google.com/store/search?q=pub:Kevin%20Hausmann)
   * [Podkicker](https://play.google.com/store/apps/details?id=ait.podka)
   * [uPod](https://play.google.com/store/apps/details?id=mobi.upod.app)
 
@@ -162,6 +163,7 @@ You can also provide more than one feed link if you have more.
   * [PocketCasts](https://itunes.apple.com/de/app/pocket-casts/id414834813)
   * [Podcasts](https://itunes.apple.com/de/app/podcasts/id525463029)
   * [Podcat](https://itunes.apple.com/app/podcat/id845960230)
+  * [PodGrasp](https://itunes.apple.com/de/app/podgrasp-podcast-player/id531648276)
   * [RSSRadio](https://itunes.apple.com/app/rssradio-premium-podcast-downloader/id679025359)
 
 ### Linux
@@ -172,9 +174,11 @@ You can also provide more than one feed link if you have more.
   * [Downcast](https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4)
   * [Instacast](https://itunes.apple.com/de/app/instacast/id733258666?mt=12&uo=4)
   * [iTunes](http://www.apple.com/itunes/)
+  * [PodGrasp](https://itunes.apple.com/de/app/podgrasp-podcast-player/id530928805)
 
 ### WindowsPhone
   * [BringCast](http://windowsphone.com/s?appId=e5abef38-d413-e011-9264-00237de2db9e)
+  * [gramocast](http://windowsphone.com/s?appId=ebb52054-5071-4aa4-9537-00399d06a99e)
   * [Podcast Lounge](http://windowsphone.com/s?appId=83bc0329-8e02-410e-b6d2-da3c0c1d971d)
   * [Podcast Picker](http://windowsphone.com/s?appId=79b72069-b656-47d2-bab1-fa2d4061825e)
   * [Podcasts](undefined)
