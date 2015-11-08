@@ -74,6 +74,10 @@ To work the button needs information about the podcast, which needs to be provid
             "format": "opus",
             "url": "http://newz-of-the-world.com/feed/opus",
             "variant": "high"
+          },
+          {
+            "type": "itunes-url",
+            "url": "https://itunes.apple.com/de/podcast/newz-of-the-world/id492588543"
           }
         ]
       }

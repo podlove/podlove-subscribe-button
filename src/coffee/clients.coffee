@@ -216,6 +216,7 @@ class Clients
       scheme: 'itpc://'
       icon: 'osx/itunes.png'
       install: 'http://www.apple.com/itunes/'
+      customFeedType: 'itunes-url'
     },
     {
       title: 'PodGrasp'
@@ -269,6 +270,7 @@ class Clients
       scheme: 'itpc://'
       icon: 'osx/itunes.png'
       install: 'http://www.apple.com/itunes/'
+      customFeedType: 'itunes-url'
     }
   ]
 
@@ -284,6 +286,7 @@ class Clients
       scheme: 'itpc://'
       icon: 'osx/itunes.png'
       install: 'http://www.apple.com/itunes/'
+      customFeedType: 'itunes-url'
     },
     {
       title: 'Podscout'
@@ -311,6 +314,7 @@ class Clients
       scheme: 'itpc://'
       icon: 'osx/itunes.png'
       install: 'http://www.apple.com/itunes/'
+      customFeedType: 'itunes-url'
     },
     {
       title: 'Podscout'

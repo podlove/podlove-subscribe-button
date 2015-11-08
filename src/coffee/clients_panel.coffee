@@ -48,6 +48,9 @@ class ClientsPanel extends Panel
     format = @detectBestFormat()
     feedUrl = (_(@podcast.feeds).findWhere({format: format}) || {}).url
 
+  findCustomFeed: (type) =>
+    (_(@podcast.feeds).findWhere({type: type}) || {}).url
+
   prepareClients: (pathPrefix) ->
     feedUrl = @chooseFeedUrl()
     feedUrlWithOutHttp = feedUrl.replace(/^(http|https):\/\//, '')
@@ -55,7 +58,11 @@ class ClientsPanel extends Panel
 
     for client in @clients
       Utils.fixIconPath(client, pathPrefix)
-      client.url = "#{client.scheme}#{feedUrlWithOutHttp}"
+
+      if type = client.customFeedType
+        client.url = @findCustomFeed(type)
+
+      client.url ?= "#{client.scheme}#{feedUrlWithOutHttp}"
 
     _(@clients).shuffle()
 
@@ -91,8 +98,6 @@ class ClientsPanel extends Panel
       @parent.moveClients('100%')
 
     @elem.find('li a').on 'click', (event) =>
-      #event.preventDefault()
-
       client = $(event.target).data('client')
       platform = $(event.target).data('platform')
       url = $(event.target).attr('href')
