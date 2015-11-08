@@ -74,7 +74,7 @@ class SubscribeButton
 
   renderButtonIframe: () ->
     iframe = @iframe()
-    return if @options.hide
+    $(iframe).hide() if @options.hide
     @scriptElem.replaceWith(iframe)
 
   addCss: () ->
