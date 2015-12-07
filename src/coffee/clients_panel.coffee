@@ -13,7 +13,6 @@ class ClientsPanel extends Panel
     @clients = new Clients(@platform)
     @osDefault = new Clients(@platform, true)
     @cloudClients = new Clients('cloud')
-    @prepareClients(@parent.options.scriptPath)
     if @prepareClients(@parent.options.scriptPath)
       @render()
     else
@@ -62,7 +61,7 @@ class ClientsPanel extends Panel
       if type = client.customFeedType
         client.url = @findCustomFeed(type)
 
-      client.url ?= "#{client.scheme}#{feedUrlWithOutHttp}"
+      client.url = "#{client.scheme}#{feedUrlWithOutHttp}"
 
     _(@clients).shuffle()
 
