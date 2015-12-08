@@ -60,8 +60,8 @@ class ClientsPanel extends Panel
 
       if type = client.customFeedType
         client.url = @findCustomFeed(type)
-
-      client.url = "#{client.scheme}#{feedUrlWithOutHttp}"
+      else
+        client.url = "#{client.scheme}#{feedUrlWithOutHttp}"
 
     _(@clients).shuffle()
 
