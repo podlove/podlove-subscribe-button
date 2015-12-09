@@ -216,7 +216,7 @@ class Clients
       scheme: 'itpc://'
       icon: 'osx/itunes.png'
       install: 'http://www.apple.com/itunes/'
-      customFeedType: 'itunes-url'
+      customFeedType: 'itunes'
     },
     {
       title: 'PodGrasp'

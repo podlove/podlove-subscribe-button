@@ -43,31 +43,36 @@ class ClientsPanel extends Panel
     _(capabilities).find (cap) =>
       _(@podcast.feeds).findWhere({format: cap})
 
-  chooseFeedUrl: () ->
+  chooseFeed: () ->
     format = @detectBestFormat()
-    feedUrl = (_(@podcast.feeds).findWhere({format: format}) || {}).url
+    feed = _(@podcast.feeds).findWhere({format: format})
 
   findCustomFeed: (type) =>
     (_(@podcast.feeds).findWhere({type: type}) || {}).url
 
   prepareClients: (pathPrefix) ->
-    feedUrl = @chooseFeedUrl()
-    feedUrlWithOutHttp = feedUrl.replace(/^(http|https):\/\//, '')
-    return false unless feedUrl
+    feed = @chooseFeed() || {}
+    feedUrlWithOutHttp = feed.url.replace(/^(http|https):\/\//, '')
+    return false unless feed.url
 
     for client in @clients
       Utils.fixIconPath(client, pathPrefix)
 
-      if type = client.customFeedType
-        client.url = @findCustomFeed(type)
+      standardUrl = "#{client.scheme}#{feedUrlWithOutHttp}"
+      client.url = if type = client.customFeedType
+        if customUrl = feed["directory-url-#{type}"]
+          customUrl
+        else
+          standardUrl
       else
-        client.url = "#{client.scheme}#{feedUrlWithOutHttp}"
+        standardUrl
+        
 
     _(@clients).shuffle()
 
     for client in @cloudClients
       Utils.fixIconPath(client, pathPrefix)
-      cloudFeedUrl = if client.http then feedUrl else feedUrlWithOutHttp
+      cloudFeedUrl = if client.http then feed.url else feedUrlWithOutHttp
       if client.post
         client.url = client.scheme
         client.feedUrl = cloudFeedUrl
@@ -78,7 +83,7 @@ class ClientsPanel extends Panel
 
     Utils.fixIconPath(@osDefault, pathPrefix)
     @osDefault.title = 'Let device decide'
-    @osDefault.originalUrl = feedUrl
+    @osDefault.originalUrl = feed.url
     unless @osDefault.scheme == null
       @osDefault.url = "#{@osDefault.scheme}#{feedUrlWithOutHttp}"
       # necessary for displaying the right finish panel content
@@ -86,7 +91,7 @@ class ClientsPanel extends Panel
 
     @otherClient = new Clients('rss')
     Utils.fixIconPath(@otherClient, pathPrefix)
-    @otherClient.originalUrl = feedUrl
+    @otherClient.originalUrl = feed.url
 
   render: () ->
     @elem = $(@template(@context()))
