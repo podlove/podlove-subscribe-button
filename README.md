@@ -154,6 +154,7 @@ You can also provide more than one feed link if you have more.
   * [Instacast Cloud](https://instacastcloud.com/)
   * [Player.fm](https://player.fm/)
   * [Pocket Casts](https://play.pocketcasts.com/)
+  * [pod.care](https://pod.care/)
 
 ### iOS
   * [Castro](https://itunes.apple.com/de/app/castro-high-fidelity-podcasts/id723142770)
