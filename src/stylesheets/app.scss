@@ -97,6 +97,23 @@ script.podlove-subscribe-button {
   background-color: #61937b;
 }
 
+#podlove-subscribe-button.square,
+.podlove-subscribe-button.square {
+  padding: 8px 11px;
+
+  &:before {
+    background: url('../images/icon-big.png') no-repeat;
+    background-size: cover;
+    height: 26px;
+    margin: 3px 0 0;
+    width: 26px;
+  }
+
+  span {
+    display: none;
+  }
+}
+
 #podlove-subscribe-button.medium,
 .podlove-subscribe-button.medium {
   -moz-box-shadow: inset 0 -2px 0 rgba(0,0,1,.2), inset 0 0 10px rgba(70,103,87,.32);
