@@ -324,6 +324,28 @@ class Clients
     }
   ]
 
+  windows10: [
+    {
+      title: 'gPodder'
+      scheme: 'gpodder://'
+      icon: 'windows/gpodder.png'
+      install: 'http://gpodder.org/downloads'
+    },
+    {
+      title: 'iTunes'
+      scheme: 'itpc://'
+      icon: 'osx/itunes.png'
+      install: 'http://www.apple.com/itunes/'
+      customFeedType: 'itunes-url'
+    },
+    {
+      title: 'Podscout'
+      scheme: 'podscout://'
+      icon: 'windows/podscout.png'
+      store: 'http://apps.microsoft.com/windows/de-de/app/podscout/f4316b46-7682-4cea-948b-53d135b2df17'
+    }
+  ]
+
   blackBerry: [
     #{
       #title: 'bPod'
