@@ -203,14 +203,13 @@ You can also provide more than one feed link if you have more.
 Install requirements
 
     gem install sass
-    npm install -g gulp
-    npm install gulp-util gulp-coffee gulp-ruby-sass gulp-watch gulp-uglify gulp-concat gulp-browserify gulp-rename gulp-connect uglify-js
+    npm install
 
-Use gulp to build the project or start the watcher:
+Use gulp to build the project or start the server:
 
     gulp
 
-    gulp watch
+    gulp serve
 
 ## Contribution
 
