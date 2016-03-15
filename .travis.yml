@@ -5,12 +5,6 @@ before_install:
   -in subscribe-button-deploy.enc -out subscribe-button-deploy -d
 - gem install sass
 script: gulp
-branches:
-  only:
-  - master
 deploy:
   provider: script
   script: bin/deploy
-  on:
-    repo: podlove/podlove-subscribe-button
-    branch: develop
