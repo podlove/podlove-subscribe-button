@@ -8,6 +8,9 @@ before_install:
   -in subscribe-button-deploy.enc -out subscribe-button-deploy -d
 - gem install sass
 script: gulp
+after_success:
+- chmod 600 subscribe-button-deploy
+- mv subscribe-button-deploy ~/.ssh/id_rsa
 deploy:
   provider: script
   script: bin/deploy
