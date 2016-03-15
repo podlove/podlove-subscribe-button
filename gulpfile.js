@@ -15,7 +15,7 @@ var paths = {
   stylesheets: ['./src/stylesheets/*.scss'],
   main_javascript: ['./src/coffee/app.coffee'],
   javascripts: ['./src/coffee/*.coffee'],
-  html: ['./src/html/button.html', './src/html/popup.html'],
+  html: ['./src/html/button.html', './src/html/test.html'],
   images: ['./src/images/**']
 };
 
