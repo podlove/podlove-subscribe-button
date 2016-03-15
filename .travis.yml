@@ -1,5 +1,8 @@
 language: node_js
 sudo: false
+cache:
+  directories:
+    - node_modules
 before_install:
 - openssl aes-256-cbc -K $encrypted_26f1378493dc_key -iv $encrypted_26f1378493dc_iv
   -in subscribe-button-deploy.enc -out subscribe-button-deploy -d
@@ -8,3 +11,5 @@ script: gulp
 deploy:
   provider: script
   script: bin/deploy
+  on:
+    all_branches: true
