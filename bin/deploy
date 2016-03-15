@@ -8,4 +8,7 @@ fi
 
 echo "Deploying to $STAGE"
 
-ssh -i subscribe-button-deploy podlove@cdn.podlove.org -p 10022 "cd subscribe-button/${STAGE}; git reset --hard HEAD; git fetch; git checkout ${TRAVIS_BRANCH};"
+chmod 600 subscribe-button-deploy
+mv subscribe-button-deploy ~/.ssh/id_rsa
+echo -e "Host cdn.podlove.org\n\tUser podlove\n\tPort 1022\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+ssh cdn.podlove.org "cd subscribe-button/${STAGE}; git reset --hard HEAD; git fetch; git checkout ${TRAVIS_BRANCH};"
