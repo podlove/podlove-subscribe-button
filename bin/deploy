@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ "$TRAVIS_BRANCH" == "master" ]; then
+  STAGE=production
+else
+  STAGE=staging
+fi
+
+echo "Deploying to $STAGE"
+
+ssh -i subscribe-button-deploy podlove@cdn.podlove.org -p 10022 "cd subscribe-button/${STAGE}; git reset --hard HEAD; git fetch; git checkout ${TRAVIS_BRANCH};"

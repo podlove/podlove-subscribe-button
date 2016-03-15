@@ -1,21 +1,16 @@
 language: node_js
-before_install: "gem install sass"
-script: "gulp"
+sudo: false
+before_install:
+- openssl aes-256-cbc -K $encrypted_26f1378493dc_key -iv $encrypted_26f1378493dc_iv
+  -in subscribe-button-deploy.enc -out subscribe-button-deploy -d
+- gem install sass
+script: gulp
 branches:
   only:
-    - master
+  - master
 deploy:
-  provider: s3
-  access_key_id: AKIAJCSHS3G5VYM6ZDWA
-  secret_access_key:
-    secure: fL1hmFUG7dhX7vy1J0TjSOQ97sfBQe+RsfadE5y0syl9x5+9d5HOMPV3GsTwaLuRJWAkz5ro+BwmJF6ID4ddDtd9MYWNCPNr37U6eNLdE57QY9+sMhJ0DGyU6GBt8+bLB4y4X5dmLwjvsGdLq+banSqmhsCdIxxPtBW3Cqon5ek=
-  bucket: cdn.podlove.org
-  endpoint: cdn.podlove.org.s3-website-eu-west-1.amazonaws.com
-  region: eu-west-1
-  local-dir: dist
-  upload-dir: subscribe-button
-  cache_control: max-age=0
-  detect_encoding: true
+  provider: script
+  script: bin/deploy
   on:
     repo: podlove/podlove-subscribe-button
-    branch: master
+    branch: develop
