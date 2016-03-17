@@ -37,6 +37,52 @@ script.podlove-subscribe-button {
     top: -4px;
     width: 50px;
   }
+
+  &.medium {
+    font-size: 12px;
+
+    padding: 2px 4px 4px 0;
+    width: 95px;
+    height: 28px;
+
+    &::before {
+      background-image: url('../images/icon-medium.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: 1px 0 0 0;
+      width: 15px;
+      height: 17px;
+    }
+
+    span {
+      margin-left: 4px;
+      top: -4px;
+      width: 60px;
+    }
+  }
+
+  &.big,
+  &.big-logo {
+    font-size: 16px;
+
+    padding: 4px;
+    width: 151px;
+    height: 46px;
+
+    &::before {
+      background-image: url('../images/icon-big.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin-top: 2px;
+      width: 24px;
+      height: 27px;
+    }
+
+    span {
+      top: -6px;
+      width: 107px;
+    }
+  }
 }
 
 #podlove-subscribe-button {
@@ -52,70 +98,27 @@ script.podlove-subscribe-button {
     width: 12px;
     height: 14px;
   }
-}
 
-#podlove-subscribe-button.small {
-  font-size: 10px;
+  &.small {
+    font-size: 10px;
 
-  width: 75px;
-  height: 18px;
+    width: 75px;
+    height: 18px;
 
-  &::before {
-    position: relative;
-    left: -3px;
-    top: -1px;
+    &::before {
+      position: relative;
+      left: -3px;
+      top: -1px;
+    }
+
+    span {
+      margin-left: 3px;
+      left: -4px;
+    }
   }
 
-  span {
-    margin-left: 3px;
-    left: -4px;
-  }
-}
-
-#podlove-subscribe-button.medium,
-.podlove-subscribe-button.medium {
-  font-size: 12px;
-
-  padding: 2px 4px 4px 0;
-  width: 95px;
-  height: 28px;
-
-  &::before {
-    background-image: url('../images/icon-medium.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 1px 0 0 0;
-    width: 15px;
-    height: 17px;
-  }
-
-  span {
-    margin-left: 4px;
-    top: -4px;
-    width: 60px;
-  }
-}
-
-#podlove-subscribe-button.big,
-#podlove-subscribe-button.big-logo {
-  font-size: 16px;
-
-  padding: 4px;
-  width: 151px;
-  height: 46px;
-
-  &::before {
-    background-image: url('../images/icon-big.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin-top: 2px;
-    width: 24px;
-    height: 27px;
-  }
-
-  span {
-    top: -6px;
-    width: 107px;
+  &.auto {
+    width: 100%;
   }
 }
 
@@ -134,12 +137,6 @@ script.podlove-subscribe-button {
   img {
     width: 100%;
   }
-}
-
-#podlove-subscribe-button.auto,
-#podlove-subscribe-button.auto,
-#podlove-subscribe-button.auto {
-  width: 100%;
 }
 
 #podlove-subscribe-button-title {
