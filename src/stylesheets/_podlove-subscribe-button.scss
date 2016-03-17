@@ -10,13 +10,23 @@ script.podlove-subscribe-button {
 #podlove-subscribe-button,
 .podlove-subscribe-button {
   color: #fff;
-  font-weight: bold;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 
   border: none;
   cursor: pointer;
   display: inline-block;
   padding: 0;
   position: relative;
+
+  &:active {
+    background-color: #61937b;
+  }
+
+  &:hover {
+    background-color: #75c39d;
+  }
 
   span {
     text-align: center;
@@ -62,17 +72,6 @@ script.podlove-subscribe-button {
   }
 }
 
-
-#podlove-subscribe-button:hover,
-.podlove-subscribe-button:hover {
-  background-color: #75c39d;
-}
-
-#podlove-subscribe-button:active,
-.podlove-subscribe-button:active {
-  background-color: #61937b;
-}
-
 #podlove-subscribe-button.medium,
 .podlove-subscribe-button.medium {
   font-size: 12px;
@@ -99,7 +98,7 @@ script.podlove-subscribe-button {
 
 #podlove-subscribe-button.big,
 #podlove-subscribe-button.big-logo {
-  font-size: 19px;
+  font-size: 16px;
 
   padding: 4px;
   width: 151px;
