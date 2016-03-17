@@ -1,0 +1,170 @@
+#podlove-subscribe-button-iframe {
+  height: 0;
+  width: 0;
+}
+
+script.podlove-subscribe-button {
+  display: none !important;
+}
+
+#podlove-subscribe-button,
+.podlove-subscribe-button {
+  background-clip: padding-box;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border: 1px solid #456757;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0;
+  position: relative;
+  text-shadow: 0 1px 0 rgba(0, 0, 1, .08);
+
+  span {
+    display: inline-block;
+    left: 0;
+    position: relative;
+    text-align: center;
+    top: -4px;
+    width: 50px;
+  }
+}
+
+#podlove-subscribe-button {
+  text-align: center;
+
+  &:before {
+    background: url('../images/icon-small.png') no-repeat;
+    background-size: cover;
+    content: '';
+    display: inline-block;
+    height: 14px;
+    margin: 2px 0 0 2px;
+    width: 12px;
+  }
+}
+
+#podlove-subscribe-button.small {
+  font-size: 10px;
+  height: 18px;
+  width: 75px;
+
+  &:before {
+    left: -3px;
+    position: relative;
+    top: -1px;
+  }
+
+  span {
+    left: -4px;
+    margin-left: 3px;
+  }
+}
+
+
+#podlove-subscribe-button:hover,
+.podlove-subscribe-button:hover {
+  background-color: #75c39d;
+}
+
+#podlove-subscribe-button:active,
+.podlove-subscribe-button:active {
+  background-color: #61937b;
+}
+
+#podlove-subscribe-button.medium,
+.podlove-subscribe-button.medium {
+  -moz-box-shadow: inset 0 -2px 0 rgba(0,0,1,.2), inset 0 0 10px rgba(70,103,87,.32);
+  -webkit-box-shadow: inset 0 -2px 0 rgba(0,0,1,.2), inset 0 0 10px rgba(70,103,87,.32);
+  box-shadow: inset 0 -2px 0 rgba(0,0,1,.2), inset 0 0 10px rgba(70,103,87,.32);
+  font-size: 12px;
+  height: 28px;
+  padding: 2px 4px 4px 0;
+  width: 95px;
+
+  &:before {
+    background: url('../images/icon-medium.png') no-repeat;
+    background-size: cover;
+    height: 17px;
+    margin: 1px 0 0 0;
+    width: 15px;
+  }
+
+  span {
+    top: -4px;
+    margin-left: 4px;
+    width: 60px;
+  }
+}
+
+#podlove-subscribe-button.big,
+#podlove-subscribe-button.big-logo {
+  border-width: 2px;
+  -moz-box-shadow: 0 2px 0 rgba(0,0,1,.2), inset 0 -3px 0 rgba(0,0,1,.2);
+  -webkit-box-shadow: 0 2px 0 rgba(0,0,1,.2), inset 0 -3px 0 rgba(0,0,1,.2);
+  box-shadow: 0 2px 0 rgba(0,0,1,.2), inset 0 -3px 0 rgba(0,0,1,.2);
+  font-size: 19px;
+  height: 46px;
+  padding: 4px;
+  width: 151px;
+
+  &:before {
+    background: url('../images/icon-big.png') no-repeat;
+    background-size: cover;
+    height: 27px;
+    margin-top: 2px;
+    width: 24px;
+  }
+
+  span {
+    top: -6px;
+    width: 107px;
+  }
+}
+
+#podlove-subscribe-button.big-logo {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+#podlove-subscribe-button-logo {
+  cursor: pointer;
+  display: none;
+
+  &:before {
+    box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.3);
+    display:block;
+    content:'';
+    position:absolute;
+    width:100%;
+    height:100%;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+#podlove-subscribe-button.auto,
+#podlove-subscribe-button.auto,
+#podlove-subscribe-button.auto {
+  width: 100%;
+}
+
+#podlove-subscribe-button-title {
+  background-color: rgba(127, 127, 127, 0.6);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.3);
+  color: #fff;
+  display: none;
+  font-family: 'Roboto' !important;
+  font-size: 14px !important;
+  overflow-wrap: break-word;
+  padding: 4px;
+  text-align: center;
+}
