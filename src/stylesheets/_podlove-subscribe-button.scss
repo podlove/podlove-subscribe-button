@@ -37,6 +37,39 @@ script.podlove-subscribe-button {
     top: -4px;
     width: 50px;
   }
+}
+
+#podlove-subscribe-button {
+  text-align: center;
+
+  &::before {
+    background-image: url('../images/icon-small.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    content: '';
+    display: inline-block;
+    margin: 2px 0 0 2px;
+    width: 12px;
+    height: 14px;
+  }
+
+  &.small {
+    font-size: 10px;
+
+    width: 75px;
+    height: 18px;
+
+    &::before {
+      position: relative;
+      left: -3px;
+      top: -1px;
+    }
+
+    span {
+      margin-left: 3px;
+      left: -4px;
+    }
+  }
 
   &.medium {
     font-size: 12px;
@@ -81,39 +114,6 @@ script.podlove-subscribe-button {
     span {
       top: -6px;
       width: 107px;
-    }
-  }
-}
-
-#podlove-subscribe-button {
-  text-align: center;
-
-  &::before {
-    background-image: url('../images/icon-small.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    content: '';
-    display: inline-block;
-    margin: 2px 0 0 2px;
-    width: 12px;
-    height: 14px;
-  }
-
-  &.small {
-    font-size: 10px;
-
-    width: 75px;
-    height: 18px;
-
-    &::before {
-      position: relative;
-      left: -3px;
-      top: -1px;
-    }
-
-    span {
-      margin-left: 3px;
-      left: -4px;
     }
   }
 
