@@ -1,5 +1,5 @@
 #podlove-subscribe-popup {
-  background: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
   height: 100%;
   left: 0;
@@ -109,12 +109,12 @@
   }
 
   #podlove-subscribe-popup-modal {
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    box-shadow: 0 0 5px 0 #222;
+    background-color: #fff;
+    border-radius: 1px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     height: 460px;
     margin: -230px auto 0;
-    padding: 10px 10px 25px;
+    padding: 0;
     overflow: hidden;
     position: relative;
     top: 50%;
