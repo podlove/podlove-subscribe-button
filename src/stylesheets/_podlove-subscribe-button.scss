@@ -63,10 +63,10 @@ script.podlove-subscribe-button {
       top: 50%;
       left: -0.2875em; // use em to scale all button sizes alltogether
 
-      -moz-transform: translateY(-49%);
-      -o-transform: translateY(-49%);
-      -webkit-transform: translateY(-49%);
-      transform: translateY(-49%);
+      -moz-transform: translateY(-49%); // not using -50% for centering because icon has an optical center that's not at 50%
+      -o-transform: translateY(-49%); // not using -50% for centering because icon has an optical center that's not at 50%
+      -webkit-transform: translateY(-49%); // not using -50% for centering because icon has an optical center that's not at 50%
+      transform: translateY(-49%); // not using -50% for centering because icon has an optical center that's not at 50%
     }
   }
 
