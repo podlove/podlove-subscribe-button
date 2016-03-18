@@ -45,7 +45,12 @@ class Popup
     <div id="podlove-subscribe-popup" class="podlove-subscribe">
       <div id="podlove-subscribe-popup-modal">
         <div id="podlove-subscribe-popup-modal-inner" class="show-left">
-          <span id="podlove-subscribe-popup-close-button" class="podlove-subscribe-install-button">&times;</span>
+          <div class="top-bar">
+            <span id="podlove-subscribe-popup-help-button"></span>
+            <span class="podlove-subscribe-back-button"></span>
+            <span class="panel-title">{{t "panels.title"}}</span>
+            <span id="podlove-subscribe-popup-close-button" class="podlove-subscribe-install-button"></span>
+          </div>
 
           <div id="podlove-subscribe-panel-podcast"></div>
 

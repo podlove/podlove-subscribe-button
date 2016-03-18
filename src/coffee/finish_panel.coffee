@@ -27,11 +27,6 @@ class FinishPanel extends Panel
 
   template: Handlebars.compile('
     <div>
-      <div class="top-bar">
-        <span class="podlove-subscribe-back-button">&lsaquo;</span>
-        <img src="{{scriptPath}}/images/icon-big.png">
-        <span class="panel-title">{{t "panels.title"}}</span>
-      </div>
       <img class="podcast-cover" src="{{client.icon}}">
       {{#if client.scheme}}
         <h1>{{t "finish_panel.handing_over_to" client=client.title}}...</h1>
