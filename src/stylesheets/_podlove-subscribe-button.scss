@@ -33,64 +33,60 @@ script.podlove-subscribe-button {
 
     display: inline-block;
     position: relative;
-    left: 0;
-    top: -4px;
-    width: 50px;
   }
 }
 
 #podlove-subscribe-button {
   text-align: center;
 
-  &::before {
-    background-image: url('../images/icon-small.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    content: '';
-    display: inline-block;
-    margin: 2px 0 0 2px;
-    width: 12px;
-    height: 14px;
+  span {
+
+    &::before {
+      background-repeat: no-repeat;
+      background-size: cover;
+      content: '';
+      display: inline-block;
+      margin: 0;
+      position: absolute;
+    }
   }
 
   &.small {
     font-size: 10px;
 
-    width: 75px;
-    height: 18px;
-
-    &::before {
-      position: relative;
-      left: -3px;
-      top: -1px;
-    }
+    padding: 0 10px;
+    width: auto;
+    height: 27px;
 
     span {
-      margin-left: 3px;
-      left: -4px;
+      padding-left: 21px;
+
+      &::before {
+        background-image: url('../images/icon-small.png');
+        left: -1px;
+        top: -3px;
+        width: 18px;
+        height: 18px;
+      }
     }
   }
 
   &.medium {
     font-size: 12px;
 
-    padding: 2px 4px 4px 0;
-    width: 95px;
-    height: 28px;
-
-    &::before {
-      background-image: url('../images/icon-medium.png');
-      background-repeat: no-repeat;
-      background-size: cover;
-      margin: 1px 0 0 0;
-      width: 15px;
-      height: 17px;
-    }
+    padding: 0 24px;
+    height: 41px;
 
     span {
-      margin-left: 4px;
-      top: -4px;
-      width: 60px;
+      padding-left: 23px;
+
+      &::before {
+        background-image: url('../images/icon-medium.png');
+        left: -7px;
+        top: -6px;
+        width: 25px;
+        height: 25px;
+      }
     }
   }
 
@@ -98,22 +94,19 @@ script.podlove-subscribe-button {
   &.big-logo {
     font-size: 16px;
 
-    padding: 4px;
-    width: 151px;
-    height: 46px;
-
-    &::before {
-      background-image: url('../images/icon-big.png');
-      background-repeat: no-repeat;
-      background-size: cover;
-      margin-top: 2px;
-      width: 24px;
-      height: 27px;
-    }
+    padding: 0 32px;
+    height: 54px;
 
     span {
-      top: -6px;
-      width: 107px;
+      padding-left: 25px;
+
+      &::before {
+        background-image: url('../images/icon-big.png');
+        left: -11px;
+        top: -6px;
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 
