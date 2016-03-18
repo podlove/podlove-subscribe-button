@@ -20,6 +20,11 @@ script.podlove-subscribe-button {
   padding: 0;
   position: relative;
 
+  -moz-transition: all 0.1s cubic-bezier(.62,.28,.23,.99);
+  -o-transition: all 0.1s cubic-bezier(.62,.28,.23,.99);
+  -webkit-transition: all 0.1s cubic-bezier(.62,.28,.23,.99);
+  transition: all 0.1s cubic-bezier(.62,.28,.23,.99);
+
   &:active {
     background-color: #61937b;
   }
@@ -40,6 +45,7 @@ script.podlove-subscribe-button {
   text-align: center;
 
   span {
+    vertical-align: 1px;
 
     &::before {
       background-repeat: no-repeat;
@@ -54,8 +60,7 @@ script.podlove-subscribe-button {
   &.small {
     font-size: 10px;
 
-    padding: 0 10px;
-    width: auto;
+    width: 108px;
     height: 27px;
 
     span {
@@ -64,7 +69,7 @@ script.podlove-subscribe-button {
       &::before {
         background-image: url('../images/icon-small.png');
         left: -1px;
-        top: -3px;
+        top: -1px;
         width: 18px;
         height: 18px;
       }
@@ -74,7 +79,7 @@ script.podlove-subscribe-button {
   &.medium {
     font-size: 12px;
 
-    padding: 0 24px;
+    width: 140px;
     height: 41px;
 
     span {
@@ -82,8 +87,8 @@ script.podlove-subscribe-button {
 
       &::before {
         background-image: url('../images/icon-medium.png');
-        left: -7px;
-        top: -6px;
+        left: -5px;
+        top: -4px;
         width: 25px;
         height: 25px;
       }
@@ -94,7 +99,7 @@ script.podlove-subscribe-button {
   &.big-logo {
     font-size: 16px;
 
-    padding: 0 32px;
+    width: 180px;
     height: 54px;
 
     span {
@@ -102,8 +107,8 @@ script.podlove-subscribe-button {
 
       &::before {
         background-image: url('../images/icon-big.png');
-        left: -11px;
-        top: -6px;
+        left: -9px;
+        top: -4px;
         width: 30px;
         height: 30px;
       }

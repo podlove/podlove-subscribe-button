@@ -16,7 +16,8 @@ var paths = {
   main_javascript: ['./src/coffee/app.coffee'],
   javascripts: ['./src/coffee/*.coffee'],
   html: ['./src/html/button.html', './src/html/popup.html'],
-  images: ['./src/images/**']
+  images: ['./src/images/**'],
+  fonts: ['./src/fonts/**']
 };
 
 gulp.task('stylesheets', function() {
@@ -54,7 +55,13 @@ gulp.task('images', function() {
     .pipe(connect.reload())
 })
 
-gulp.task('default', ['stylesheets', 'javascripts', 'html', 'images'])
+gulp.task('fonts', function() {
+  gulp.src(paths.fonts)
+    .pipe(gulp.dest('./dist/fonts'))
+    .pipe(connect.reload())
+})
+
+gulp.task('default', ['stylesheets', 'javascripts', 'html', 'images', 'fonts'])
 
 gulp.task('watch', function() {
   // Watch .scss files
@@ -65,6 +72,8 @@ gulp.task('watch', function() {
   gulp.watch(paths.html, ['html'])
   // Watch images files
   gulp.watch(paths.images, ['images'])
+  // Watch font files
+  gulp.watch(paths.fonts, ['fonts'])
 })
 
 gulp.task('connect', function() {
