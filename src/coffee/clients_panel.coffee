@@ -97,9 +97,6 @@ class ClientsPanel extends Panel
     @elem = $(@template(@context()))
     @container.append(@elem)
 
-    @elem.find('.podlove-subscribe-back-button').on 'click', (event) =>
-      @parent.movePanels(0)
-
     @elem.find('li a').on 'click', (event) =>
       client = $(event.target).data('client')
       platform = $(event.target).data('platform')

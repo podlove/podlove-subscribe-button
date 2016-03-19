@@ -36,6 +36,12 @@ class Popup
     @elem.find('#podlove-help-close-button').on 'click', (event) =>
       @elem.find('#podlove-subscribe-button-help-panel').toggleClass('visible')
       $(event.currentTarget).toggleClass('active')
+    @elem.find('.podlove-subscribe-back-button').on 'click', (event) =>
+      @container = @elem.find('#podlove-subscribe-popup-modal-inner')
+      if @container.hasClass('swiped-left-2')
+        @movePanels(1)
+      else if @container.hasClass('swiped-left-1')
+        @movePanels(0)
 
   disableBackgroundScrolling: () ->
     @oldHtmlOverflow = @html.css('overflow')
@@ -89,7 +95,7 @@ class Popup
     @finishPanel = new FinishPanel(@elem.find("#{prefix}-finish"), @)
 
   movePanels: (step) ->
-    @container = @elem.find('#podlove-subscribe-panel-container')
+    @container = @elem.find('#podlove-subscribe-popup-modal-inner')
     if @container.hasClass('swiped-left-0')
       @container.removeClass('swiped-left-0')
     if @container.hasClass('swiped-left-1')

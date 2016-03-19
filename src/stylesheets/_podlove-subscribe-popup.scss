@@ -21,7 +21,8 @@
   }
 
   #podlove-subscribe-popup-close-button,
-  #podlove-subscribe-popup-help-button {
+  #podlove-subscribe-popup-help-button,
+  .podlove-subscribe-back-button {
     color: #75ad91;
     cursor: pointer;
     height: 44px;
@@ -44,15 +45,40 @@
     }
   }
 
+  .podlove-subscribe-back-button,
   #podlove-subscribe-popup-help-button {
     left: 0;
     -moz-transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
     -o-transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
     -webkit-transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
     transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
+  }
+
+  .podlove-subscribe-back-button {
+    transform: scale(0);
+
+    &::before {
+      content: '\e5c4';
+    }
+  }
+
+  #podlove-subscribe-popup-help-button {
+    transform: scale(1);
 
     &::before {
       content: '\e8fd';
+    }
+  }
+
+  .swiped-left-1,
+  .swiped-left-2 {
+
+    #podlove-subscribe-popup-help-button {
+      transform: scale(0);
+    }
+
+    .podlove-subscribe-back-button {
+      transform: scale(1);
     }
   }
 
@@ -187,18 +213,6 @@
       top: 0;
       width: 100%;
       z-index: 1;
-
-      .podlove-subscribe-back-button {
-        cursor: pointer;
-        font-size: 30px !important;
-        font-family: Roboto !important;
-        font-weight: 300;
-        left: 0px;
-        position: absolute;
-        text-align: center;
-        top: -2px;
-        width: 40px;
-      }
     }
 
     #podlove-subscribe-popup-modal-inner {
@@ -222,16 +236,25 @@
         height: 100%;
         transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
         width: 300%;
+      }
 
-        &.swiped-left-0 {
+      &.swiped-left-0 {
+
+        #podlove-subscribe-panel-container {
           transform: translateX(0);
         }
+      }
 
-        &.swiped-left-1 {
+      &.swiped-left-1 {
+
+        #podlove-subscribe-panel-container {
           transform: translateX(-300px);
         }
+      }
 
-        &.swiped-left-2 {
+      &.swiped-left-2 {
+
+        #podlove-subscribe-panel-container {
           transform: translateX(-600px);
         }
       }
@@ -332,6 +355,7 @@
         background-color: transparent;
         border: none;
         color: #989898;
+        cursor: pointer;
         display: inline-block;
         font-size: 16px !important;
         font-weight: 300;
@@ -406,7 +430,7 @@
     }
 
     li:hover {
-      background: #328398;
+      background: #75ad91;
       color: #fff;
       cursor: pointer;
     }

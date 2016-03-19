@@ -18,9 +18,6 @@ class FinishPanel extends Panel
     @elem = $(@template(@context(client, podcast)))
     @container.append(@elem)
 
-    @elem.find('.podlove-subscribe-back-button').on 'click', (event) =>
-      @parent.movePanels(1)
-
     @elem.find('input').on 'click', () ->
       this.select()
 

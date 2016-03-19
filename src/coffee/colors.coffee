@@ -89,7 +89,7 @@ class Colors
     },
     {
       name: 'listHighlightBackgroundColor'
-      default: '#328398'
+      default: '#75ad91'
     },
     {
       name: 'listHighlightTextColor'
