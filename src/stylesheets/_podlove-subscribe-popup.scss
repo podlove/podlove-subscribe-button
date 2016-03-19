@@ -357,8 +357,11 @@
     }
 
     li {
-      font-size: 22px !important;
-      list-style: none;
+      border-bottom: 1px solid #E5E5E5;
+      cursor: pointer;
+      font-size: 16px !important;
+      font-weight: 200;
+      padding: 0;
       position: relative;
       text-align: left;
     }
@@ -370,17 +373,17 @@
     }
 
     li img {
-      height: 30px !important;
-      left: 20px;
+      height: 28px !important;
+      left: 18px;
       position: absolute;
-      width: 30px !important;
+      width: 28px !important;
     }
 
     li a {
       border: none;
       color: inherit;
       display: block;
-      padding: 8px 20px 8px 60px;
+      padding: 10px 20px 10px 58px;
       text-decoration: none;
     }
 
