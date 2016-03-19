@@ -271,8 +271,10 @@
   }
 
   #podlove-subscribe-panel-finish {
+
     .podlove-subscribe-button {
-      padding: 8px 0;
+      margin-bottom: 10px;
+      padding: 14px 0;
       position: relative;
     }
   }
@@ -400,13 +402,19 @@
     text-align: center;
 
     img {
-      margin-top: 0;
-      margin-bottom: 15px;
-      max-width: 100px;
+      margin: 0 auto 20px auto;
+      width: 100px;
     }
 
     h1 {
       line-height: 1.4em;
+    }
+
+    p {
+      font-size: 14px !important;
+      font-weight: 200;
+      line-height: 20px;
+      margin-bottom: 10px;
     }
 
     a {
@@ -420,7 +428,7 @@
     }
 
     .store-button {
-      margin: 5px 0 0;
+      margin: 10px 0 0 0;
       max-width: 50%;
     }
   }
