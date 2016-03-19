@@ -501,13 +501,16 @@
     }
   }
 
-  .podlove-subscribe-link-input {
-    input {
-      border: 1px solid #444;
-      border-radius: 3px;
-      margin-left: -3px;
-      padding: 10px 5px;
-      width: 98%;
+  input {
+    color: #666;
+    font-family: 'Roboto' !important;
+    font-size: 16px !important;
+    font-weight: 500;
+    margin-top: 10px;
+    padding: 0 10px;
+
+    &:focus {
+      outline: none;
     }
   }
 }

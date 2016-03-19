@@ -71,7 +71,7 @@ class FinishPanel extends Panel
         <p>
           {{t "finish_panel.please_copy_url"}}
         </p>
-        <input value="{{client.originalUrl}}">
+        <input value="{{client.originalUrl}}" readonly="readonly">
       {{/if}}
     </div>
   ')
