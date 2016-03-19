@@ -30,6 +30,12 @@ class Popup
     @elem.find('#podlove-subscribe-popup-close-button').on 'click', () =>
       @enableBackgroundScrolling()
       @elem.remove()
+    @elem.find('#podlove-subscribe-popup-help-button').on 'click', (event) =>
+      @elem.find('#podlove-subscribe-button-help-panel').toggleClass('visible')
+      $(event.currentTarget).toggleClass('active')
+    @elem.find('#podlove-help-close-button').on 'click', (event) =>
+      @elem.find('#podlove-subscribe-button-help-panel').toggleClass('visible')
+      $(event.currentTarget).toggleClass('active')
 
   disableBackgroundScrolling: () ->
     @oldHtmlOverflow = @html.css('overflow')
@@ -64,6 +70,18 @@ class Popup
         </div>
 
         <a href="http://www.podlove.org" title="Podlove" target="_blank" class="podlove-logo"><img src="{{scriptPath}}/images/podlove@2x.png"></a>
+
+        <div id="podlove-subscribe-button-help-panel">
+          <span id="podlove-help-close-button" class="podlove-help-close-button"></span>
+          <div class="podlove-subscribe-button-help-panel-content">
+            <h2>{{t "help_panel.title"}}</h2>
+            <p>{{t "help_panel.paragraph1"}}</p>
+
+            <p>{{t "help_panel.paragraph2"}}</p>
+
+            <p>{{t "help_panel.paragraph3"}}</p>
+          </div>
+        </div>
       </div>
     </div>
   ')

@@ -20,10 +20,6 @@ class PodcastPanel extends Panel
     @elem = $(@template(@context()))
     @container.append(@elem)
 
-    @elem.find('#podlove-subscribe-popup-help-button').on 'click', (event) =>
-      @elem.find('#podlove-subscribe-button-help-panel').toggleClass('visible')
-      $(event.currentTarget).toggleClass('active')
-
     @elem.find('button').on 'click', (event) =>
       @parent.moveClients('0%')
       @parent.movePodcast('-100%')
@@ -38,16 +34,6 @@ class PodcastPanel extends Panel
         <p>{{subtitle}}</p>
       </div>
       <button class="podlove-subscribe-button">{{t "podcast_panel.choose_client"}}</button>
-    </div>
-    <div id="podlove-subscribe-button-help-panel">
-      <div class="podlove-subscribe-button-help-panel-content">
-        <h2>{{t "help_panel.title"}}</h2>
-        <p>{{t "help_panel.paragraph1"}}</p>
-
-        <p>{{t "help_panel.paragraph2"}}</p>
-
-        <p>{{t "help_panel.paragraph3"}}</p>
-      </div>
     </div>
   ')
 
