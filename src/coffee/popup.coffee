@@ -58,15 +58,11 @@ class Popup
             <span id="podlove-subscribe-popup-close-button" class="podlove-subscribe-install-button"></span>
           </div>
 
-          <div id="podlove-subscribe-panel-podcast"></div>
-
-          <div id="podlove-subscribe-panel-format"></div>
-
-          <div id="podlove-subscribe-panel-type"></div>
-
-          <div id="podlove-subscribe-panel-clients"></div>
-
-          <div id="podlove-subscribe-panel-finish"></div>
+          <div id="podlove-subscribe-panel-container">
+            <div id="podlove-subscribe-panel-podcast"></div>
+            <div id="podlove-subscribe-panel-clients"></div>
+            <div id="podlove-subscribe-panel-finish"></div>
+          </div>
         </div>
 
         <a href="http://www.podlove.org" title="Podlove" target="_blank" class="podlove-logo"><img src="{{scriptPath}}/images/podlove@2x.png"></a>
@@ -92,13 +88,14 @@ class Popup
     @clientsPanel = new ClientsPanel(@elem.find("#{prefix}-clients"), @)
     @finishPanel = new FinishPanel(@elem.find("#{prefix}-finish"), @)
 
-  moveClients: (amount) ->
-    @clientsPanel.moveLeft(amount)
-
-  movePodcast: (amount) ->
-    @podcastPanel.moveLeft(amount)
-
-  moveFinish: (amount) ->
-    @finishPanel.moveLeft(amount)
+  movePanels: (step) ->
+    @container = @elem.find('#podlove-subscribe-panel-container')
+    if @container.hasClass('swiped-left-0')
+      @container.removeClass('swiped-left-0')
+    if @container.hasClass('swiped-left-1')
+      @container.removeClass('swiped-left-1')
+    if @container.hasClass('swiped-left-2')
+      @container.removeClass('swiped-left-2')
+    @container.addClass('swiped-left-' + step );
 
 module.exports = Popup

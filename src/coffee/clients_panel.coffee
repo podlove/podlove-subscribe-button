@@ -98,8 +98,7 @@ class ClientsPanel extends Panel
     @container.append(@elem)
 
     @elem.find('.podlove-subscribe-back-button').on 'click', (event) =>
-      @parent.movePodcast('0%')
-      @parent.moveClients('100%')
+      @parent.movePanels(0)
 
     @elem.find('li a').on 'click', (event) =>
       client = $(event.target).data('client')
@@ -133,8 +132,7 @@ class ClientsPanel extends Panel
         @showClient(client, platform, url)
 
   showClient: (clientTitle, platform, url) ->
-    @parent.moveClients('-100%')
-    @parent.moveFinish('0%')
+    @parent.movePanels(2)
 
     client = if clientTitle == 'rss'
       @otherClient

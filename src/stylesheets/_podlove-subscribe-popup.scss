@@ -4,7 +4,6 @@
   height: 100%;
   left: 0;
   margin: 0 auto;
-  overflow-y: scroll;
   padding: 0;
   position: fixed;
   top: 0;
@@ -139,17 +138,6 @@
     }
   }
 
-  .podlove-subscribe-back-button {
-    cursor: pointer;
-    display: none;
-    font-size: 24px !important;
-    line-height: 26px;
-    padding: 6px 10px 9px 9px;
-    position: absolute;
-    text-decoration: none;
-    top: 10px;
-  }
-
   #podlove-subscribe-popup-modal {
     background-color: #fff;
     border-radius: 1px;
@@ -229,22 +217,37 @@
         margin: 15px 0 5px;
         text-align: left;
       }
+
+      #podlove-subscribe-panel-container {
+        height: 100%;
+        transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
+        width: 300%;
+
+        &.swiped-left-0 {
+          transform: translateX(0);
+        }
+
+        &.swiped-left-1 {
+          transform: translateX(-300px);
+        }
+
+        &.swiped-left-2 {
+          transform: translateX(-600px);
+        }
+      }
     }
   }
 
   #podlove-subscribe-panel-podcast,
-  #podlove-subscribe-panel-format,
-  #podlove-subscribe-panel-type,
   #podlove-subscribe-panel-clients,
   #podlove-subscribe-panel-finish {
     background-color: #fff;
     color: #666;
     height: 100%;
-    left: 100%;
     padding: 64px 20px 40px 20px;
     position: absolute;
     top: 0;
-    width: 100%;
+    width: 300px;
   }
 
   #podlove-subscribe-panel-podcast {
@@ -312,16 +315,8 @@
     }
   }
 
-  #podlove-subscribe-panel-finish {
-
-    .podlove-subscribe-button {
-      margin-bottom: 10px;
-      padding: 14px 0;
-      position: relative;
-    }
-  }
-
   #podlove-subscribe-panel-clients {
+    left: 300px;
     padding-left: 0;
     padding-right: 0;
     padding-top: 48px;
@@ -441,6 +436,7 @@
 
   #podlove-subscribe-panel-finish {
     font-size: 14px !important;
+    left: 600px;
     text-align: center;
 
     img {
@@ -469,69 +465,15 @@
       width: 100%;
     }
 
+    .podlove-subscribe-button {
+      margin-bottom: 10px;
+      padding: 14px 0;
+      position: relative;
+    }
+
     .store-button {
       margin: 10px 0 0 0;
       max-width: 50%;
-    }
-  }
-
-  #podlove-subscribe-list {
-    display: block;
-    left: 0;
-    margin: 0;
-    padding: 0;
-
-    li {
-      list-style: none;
-      margin: 0 auto;
-      padding: 5px 15px;
-      position: relative;
-      z-index: 10;
-
-      &:hover {
-        background-color: rgb(243, 87, 1);
-
-        &:after {
-          left: 100%;
-          top: 50%;
-          border: solid transparent;
-          content: " ";
-          height: 0;
-          width: 0;
-          position: absolute;
-          pointer-events: none;
-        }
-
-        &:after {
-          border-color: rgba(136, 183, 213, 0);
-          border-left-color: rgb(243, 87, 1);
-          border-width: 24px;
-          margin-top: -24px;
-        }
-      }
-
-      & + li {
-        margin-top: 5px;
-      }
-
-      a {
-        color: #fff;
-        display: block;
-        line-height: 24px;
-        text-decoration: none;
-      }
-
-      img {
-        height: 32px;
-        margin-right: 10px;
-        position: relative;
-        top: 4px;
-      }
-
-      span {
-        position: relative;
-        top: -5px;
-      }
     }
   }
 

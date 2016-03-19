@@ -19,8 +19,7 @@ class FinishPanel extends Panel
     @container.append(@elem)
 
     @elem.find('.podlove-subscribe-back-button').on 'click', (event) =>
-      @parent.moveClients('0%')
-      @parent.moveFinish('100%')
+      @parent.movePanels(1)
 
     @elem.find('input').on 'click', () ->
       this.select()
