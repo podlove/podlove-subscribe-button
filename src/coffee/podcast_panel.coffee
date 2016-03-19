@@ -33,19 +33,20 @@ class PodcastPanel extends Panel
       {{#if cover}}
       <img class="podcast-cover" src="{{cover}}" alt="Logo of {{title}}">
       {{/if}}
-      <h1>{{title}}</h1>
-      <p>{{subtitle}}</p>
+      <div class="podlove-subscribe-popup-podcast-text">
+        <h1>{{title}}</h1>
+        <p>{{subtitle}}</p>
+      </div>
       <button class="podlove-subscribe-button">{{t "podcast_panel.choose_client"}}</button>
+    </div>
+    <div id="podlove-subscribe-button-help-panel">
+      <div class="podlove-subscribe-button-help-panel-content">
+        <h2>{{t "help_panel.title"}}</h2>
+        <p>{{t "help_panel.paragraph1"}}</p>
 
-      <div id="podlove-subscribe-button-help-panel">
-        <div class="podlove-subscribe-button-help-panel-content">
-          <h2>{{t "help_panel.title"}}</h2>
-          <p>{{t "help_panel.paragraph1"}}</p>
+        <p>{{t "help_panel.paragraph2"}}</p>
 
-          <p>{{t "help_panel.paragraph2"}}</p>
-
-          <p>{{t "help_panel.paragraph3"}}</p>
-        </div>
+        <p>{{t "help_panel.paragraph3"}}</p>
       </div>
     </div>
   ')
