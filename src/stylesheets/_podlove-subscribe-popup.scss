@@ -1,6 +1,5 @@
 #podlove-subscribe-popup {
   background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
   height: 100%;
   left: 0;
   margin: 0 auto;
@@ -29,7 +28,6 @@
   #podlove-subscribe-popup-close-button,
   #podlove-subscribe-popup-help-button,
   .podlove-subscribe-back-button {
-    color: #75ad91;
     cursor: pointer;
     height: 44px;
     padding: 12px 0;
@@ -97,8 +95,6 @@
   }
 
   #podlove-subscribe-button-help-panel {
-    background-color: #75ad91;
-    color: #fff;
     font-family: Roboto !important;
     font-weight: 300;
     font-size: 95% !important;
@@ -134,7 +130,6 @@
     }
 
     .podlove-help-close-button {
-      color: #fff;
       cursor: pointer;
       left: 0;
       padding: 12px 0;
@@ -171,7 +166,6 @@
   }
 
   #podlove-subscribe-popup-modal {
-    background-color: #fff;
     border-radius: 1px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     height: 460px;
@@ -187,7 +181,7 @@
       border-bottom-left-radius: 1px;
       border-bottom-right-radius: 1px;
       bottom: 0;
-      color: #666;
+      color: #666666;
       font-size: 10px;
       height: 35px;
       left: 0;
@@ -206,7 +200,7 @@
     }
 
     .top-bar {
-      color: #aaa;
+      color: #AAAAAA;
       font-size: 14px !important;
       font-weight: 300 !important;
       height: 46px;
@@ -270,8 +264,8 @@
   #podlove-subscribe-panel-podcast,
   #podlove-subscribe-panel-clients,
   #podlove-subscribe-panel-finish {
-    background-color: #fff;
-    color: #666;
+    background-color: #FFFFFF;
+    color: #666666;
     height: 100%;
     padding: 64px 20px 40px 20px;
     position: absolute;
@@ -313,7 +307,6 @@
       -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
       -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-      color: #fff;
       font-family: 'Roboto' !important;
       font-size: 14px !important;
       font-weight: 500;
@@ -373,7 +366,6 @@
         width: 50%;
 
         .podlove-subscribe-tab-active {
-          background-color: #75ad91;
           bottom: -1.5px;
           display: block;
           height: 3px;
@@ -396,7 +388,6 @@
         }
 
         &.active {
-          color: #75ad91;
           position: relative;
 
           .podlove-subscribe-tab-active {
@@ -436,8 +427,6 @@
     }
 
     li:hover {
-      background: #75ad91;
-      color: #fff;
       cursor: pointer;
     }
 
@@ -485,10 +474,6 @@
       margin-bottom: 10px;
     }
 
-    a {
-      color: inherit;
-    }
-
     input {
       font-size: 16px !important;
       height: 40px;
@@ -508,7 +493,7 @@
   }
 
   input {
-    color: #666;
+    color: #666666;
     font-family: 'Roboto' !important;
     font-size: 16px !important;
     font-weight: 500;

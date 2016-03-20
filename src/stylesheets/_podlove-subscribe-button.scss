@@ -10,7 +10,6 @@ script.podlove-subscribe-button {
 #podlove-subscribe-button,
 .podlove-subscribe-button {
   border: none;
-  color: #fff;
   cursor: pointer;
   display: inline-block;
   font-weight: 500;
@@ -22,14 +21,6 @@ script.podlove-subscribe-button {
   -o-transition: all 0.1s cubic-bezier(.62,.28,.23,.99);
   -webkit-transition: all 0.1s cubic-bezier(.62,.28,.23,.99);
   transition: all 0.1s cubic-bezier(.62,.28,.23,.99);
-
-  &:active {
-    background-color: #61937b;
-  }
-
-  &:hover {
-    background-color: #75c39d;
-  }
 
   &:focus {
     outline: none;
@@ -108,15 +99,4 @@ script.podlove-subscribe-button {
   img {
     width: 100%;
   }
-}
-
-#podlove-subscribe-button-title {
-  background-color: rgba(127, 127, 127, 0.6);
-  color: #fff;
-  display: none;
-  font-family: 'Roboto' !important;
-  font-size: 14px !important;
-  overflow-wrap: break-word;
-  padding: 4px;
-  text-align: center;
 }

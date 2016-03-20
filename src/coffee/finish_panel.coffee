@@ -61,7 +61,7 @@ class FinishPanel extends Panel
           {{/if}}
 
           {{#if client.register}}
-            <a href="{{client.register}}" target="_blank">
+            <a class="podlove-subscribe-popup-finish-register" href="{{client.register}}" target="_blank">
               {{t "finish_panel.register_an_account"}}
               {{client.title}}
             </a>
