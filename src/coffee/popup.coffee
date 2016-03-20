@@ -25,20 +25,38 @@ class Popup
     @elem = $(@template(@context()))
     @body = $('body')
     @html = $('html')
+
     @body.append(@elem)
     @disableBackgroundScrolling()
+
+    # remove animation class for fadein animation
     window.setTimeout =>
       @elem.removeClass('podlove-subscribe-popup-animate')
     , 500
+
+    # close popup on click at close button
     @elem.find('#podlove-subscribe-popup-close-button').on 'click', () =>
-      @enableBackgroundScrolling()
       @closePopup()
+
+    # close popup on click in background
+    @elem.on 'click', () =>
+      @closePopup()
+
+    # do not close popup on click in modal
+    @elem.find('#podlove-subscribe-popup-modal').on 'click', (event) =>
+      event.stopPropagation()
+
+    # open help panel
     @elem.find('#podlove-subscribe-popup-help-button').on 'click', (event) =>
       @elem.find('#podlove-subscribe-button-help-panel').toggleClass('visible')
       $(event.currentTarget).toggleClass('active')
+
+    # close help panel
     @elem.find('#podlove-help-close-button').on 'click', (event) =>
       @elem.find('#podlove-subscribe-button-help-panel').toggleClass('visible')
       $(event.currentTarget).toggleClass('active')
+
+    # swipe to clients panel when button was clicked
     @elem.find('.podlove-subscribe-back-button').on 'click', (event) =>
       @container = @elem.find('#podlove-subscribe-popup-modal-inner')
       if @container.hasClass('swiped-left-2')
@@ -57,6 +75,7 @@ class Popup
     @body.css('overflow', @oldBodyOverflow)
 
   closePopup: () ->
+    @enableBackgroundScrolling()
     @elem.addClass('podlove-subscribe-popup-animate')
     window.setTimeout =>
       @elem.removeClass('podlove-subscribe-popup-animate')
