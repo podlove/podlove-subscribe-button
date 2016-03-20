@@ -31,6 +31,10 @@ script.podlove-subscribe-button {
     background-color: #75c39d;
   }
 
+  &:focus {
+    outline: none;
+  }
+
   span {
     display: inline-block;
     position: relative;
