@@ -4,12 +4,18 @@
   height: 100%;
   left: 0;
   margin: 0 auto;
+  opacity: 1;
   padding: 0;
   position: fixed;
   top: 0;
   vertical-align: middle;
+  transition: opacity 0.25s cubic-bezier(.62,.28,.23,.99);
   width: 100%;
   z-index: 99999;
+
+  &.podlove-subscribe-popup-animate {
+    opacity: 0;
+  }
 
   h1, h2 {
     font-family: 'Roboto' !important;

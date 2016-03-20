@@ -27,9 +27,12 @@ class Popup
     @html = $('html')
     @body.append(@elem)
     @disableBackgroundScrolling()
+    window.setTimeout =>
+      @elem.removeClass('podlove-subscribe-popup-animate')
+    , 500
     @elem.find('#podlove-subscribe-popup-close-button').on 'click', () =>
       @enableBackgroundScrolling()
-      @elem.remove()
+      @closePopup()
     @elem.find('#podlove-subscribe-popup-help-button').on 'click', (event) =>
       @elem.find('#podlove-subscribe-button-help-panel').toggleClass('visible')
       $(event.currentTarget).toggleClass('active')
@@ -53,8 +56,15 @@ class Popup
     @html.css('overflow', @oldHtmlOverflow)
     @body.css('overflow', @oldBodyOverflow)
 
+  closePopup: () ->
+    @elem.addClass('podlove-subscribe-popup-animate')
+    window.setTimeout =>
+      @elem.removeClass('podlove-subscribe-popup-animate')
+      @elem.remove()
+    , 500
+
   template: Handlebars.compile('
-    <div id="podlove-subscribe-popup" class="podlove-subscribe">
+    <div id="podlove-subscribe-popup" class="podlove-subscribe podlove-subscribe-popup-animate">
       <div id="podlove-subscribe-popup-modal">
         <div id="podlove-subscribe-popup-modal-inner" class="show-left">
           <div class="top-bar">
