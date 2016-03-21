@@ -22,6 +22,9 @@ class Button
     @elem.addClass(@options.size.replace('%20', ' '))
       .html(buttonHtml)
 
+    # Add title attritbute to button element
+    @elem.prop('title', @I18n.t('button'))
+
     @elem.on 'click', (event) =>
       window.parent.postMessage("clicked_#{@options.id}", '*')
 
