@@ -17,9 +17,6 @@ script.podlove-subscribe-button {
   padding: 0;
   position: relative;
   text-transform: uppercase;
-  -moz-transition: all 0.1s $podlove-easing;
-  -o-transition: all 0.1s $podlove-easing;
-  -webkit-transition: all 0.1s $podlove-easing;
   transition: all 0.1s $podlove-easing;
 
   &:focus {
@@ -53,9 +50,6 @@ script.podlove-subscribe-button {
       line-height: normal;
   	  position: absolute;
       top: 50%;
-      -moz-transform: translateY(-49%); // not using -50% for centering because icon has an optical center that's not at 50%
-      -o-transform: translateY(-49%); // not using -50% for centering because icon has an optical center that's not at 50%
-      -webkit-transform: translateY(-49%); // not using -50% for centering because icon has an optical center that's not at 50%
       transform: translateY(-49%); // not using -50% for centering because icon has an optical center that's not at 50%
     }
   }
