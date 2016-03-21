@@ -17,10 +17,10 @@ script.podlove-subscribe-button {
   padding: 0;
   position: relative;
   text-transform: uppercase;
-  -moz-transition: all 0.1s cubic-bezier(.62,.28,.23,.99);
-  -o-transition: all 0.1s cubic-bezier(.62,.28,.23,.99);
-  -webkit-transition: all 0.1s cubic-bezier(.62,.28,.23,.99);
-  transition: all 0.1s cubic-bezier(.62,.28,.23,.99);
+  -moz-transition: all 0.1s $podlove-easing;
+  -o-transition: all 0.1s $podlove-easing;
+  -webkit-transition: all 0.1s $podlove-easing;
+  transition: all 0.1s $podlove-easing;
 
   &:focus {
     outline: none;
@@ -42,7 +42,7 @@ script.podlove-subscribe-button {
     vertical-align: 1px;
 
     &::before {
-      content:'\0041';
+      content:'\e900';
       font-family: 'Podlove';
       font-size: 1.875em; // use em to scale all button sizes alltogether
       -webkit-font-smoothing: antialiased;
