@@ -84,8 +84,13 @@ script.podlove-subscribe-button {
   }
 
   &.outline {
+    background-color: transparent;
     border-width: 0.175em;
     border-style: solid;
+  }
+
+  &.frameless {
+    background-color: transparent !important;
   }
 }
 

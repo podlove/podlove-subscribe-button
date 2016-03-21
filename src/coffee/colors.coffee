@@ -44,14 +44,23 @@ class Colors
       }
 
       #podlove-subscribe-button.outline {
-        background-color: transparent;
         border-color: #{@backgroundColor};
         color: #{@backgroundColor};
       }
 
+      #podlove-subscribe-button.outline:active,
       #podlove-subscribe-button.outline:hover {
         background-color: #{@backgroundColor};
         color: #{@fontColor};
+      }
+
+      #podlove-subscribe-button.frameless {
+        color: #{@backgroundColor};
+      }
+
+      #podlove-subscribe-button.frameless:active,
+      #podlove-subscribe-button.frameless:hover {
+        color: #{@backgroundHoverColor};
       }
 
       #podlove-subscribe-popup #podlove-subscribe-popup-close-button,
