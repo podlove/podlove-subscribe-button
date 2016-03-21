@@ -55,7 +55,7 @@ class FinishPanel extends Panel
           {{/if}}
 
           {{#if client.install}}
-            <a href="{{client.install}}" target="_blank">
+            <a class="podlove-subscribe-popup-finish-register" href="{{client.install}}" target="_blank">
               {{t "finish_panel.install" client=client.title}}
             </a>
           {{/if}}
