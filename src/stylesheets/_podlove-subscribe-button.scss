@@ -82,6 +82,11 @@ script.podlove-subscribe-button {
   &.auto {
     width: 100%;
   }
+
+  &.outline {
+    border-width: 0.175em;
+    border-style: solid;
+  }
 }
 
 #podlove-subscribe-button-logo {
