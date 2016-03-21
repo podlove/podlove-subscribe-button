@@ -1,5 +1,5 @@
 #podlove-subscribe-popup {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: $color-black-alpha;
   height: 100%;
   left: 0;
   margin: 0 auto;
@@ -8,7 +8,7 @@
   position: fixed;
   top: 0;
   vertical-align: middle;
-  transition: opacity 0.25s cubic-bezier(.62,.28,.23,.99);
+  transition: opacity 0.25s $podlove-easing;
   width: 100%;
   z-index: 99999;
 
@@ -52,10 +52,10 @@
   .podlove-subscribe-back-button,
   #podlove-subscribe-popup-help-button {
     left: 0;
-    -moz-transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
-    -o-transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
-    -webkit-transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
-    transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
+    -moz-transition: transform 0.25s $podlove-easing;
+    -o-transition: transform 0.25s $podlove-easing;
+    -webkit-transition: transform 0.25s $podlove-easing;
+    transition: transform 0.25s $podlove-easing;
   }
 
   .podlove-subscribe-back-button {
@@ -104,7 +104,7 @@
     padding: 0 0 0 40px;
     position: absolute;
     top: -100%;
-    transition: all 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
+    transition: all 0.25s $podlove-easing;
     width: 100%;
     z-index: 2; // render above top-bar
 
@@ -136,7 +136,7 @@
       position: absolute;
       top: 0;
       transform: scale(0);
-      transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99) 0.45s;
+      transition: transform 0.25s $podlove-easing 0.45s;
       width: 44px;
       height: 44px;
       z-index: 3;
@@ -174,14 +174,14 @@
     overflow: hidden;
     position: relative;
     top: 50%;
-    width: 300px;
+    width: $popup-width;
 
     .podlove-logo {
-      background-color: #F2F2F2;
+      background-color: $color-gray-2;
       border-bottom-left-radius: 1px;
       border-bottom-right-radius: 1px;
       bottom: 0;
-      color: #666666;
+      color: $color-gray-1;
       font-size: 10px;
       height: 35px;
       left: 0;
@@ -200,7 +200,7 @@
     }
 
     .top-bar {
-      color: #AAAAAA;
+      color: $color-gray-3;
       font-size: 14px !important;
       font-weight: 300 !important;
       height: 46px;
@@ -234,8 +234,8 @@
 
       #podlove-subscribe-panel-container {
         height: 100%;
-        transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
-        width: 300%;
+        transition: transform 0.25s $podlove-easing;
+        width: $popup-width * 3;
       }
 
       &.swiped-left-0 {
@@ -248,14 +248,14 @@
       &.swiped-left-1 {
 
         #podlove-subscribe-panel-container {
-          transform: translateX(-300px);
+          transform: translateX(-$popup-width);
         }
       }
 
       &.swiped-left-2 {
 
         #podlove-subscribe-panel-container {
-          transform: translateX(-600px);
+          transform: translateX(-$popup-width * 2);
         }
       }
     }
@@ -264,13 +264,13 @@
   #podlove-subscribe-panel-podcast,
   #podlove-subscribe-panel-clients,
   #podlove-subscribe-panel-finish {
-    background-color: #FFFFFF;
-    color: #666666;
+    background-color: $color-white;
+    color: $color-gray-1;
     height: 100%;
     padding: 64px 20px 40px 20px;
     position: absolute;
     top: 0;
-    width: 300px;
+    width: $popup-width;
   }
 
   #podlove-subscribe-panel-podcast {
@@ -279,7 +279,7 @@
     text-align: center;
 
     img.podcast-cover {
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      box-shadow: $shadow-level-1;
       height: 160px;
       width: 160px;
     }
@@ -303,10 +303,10 @@
 
     .podlove-subscribe-button {
       border-radius: 1px;
-      -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-      -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-      -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      -moz-box-shadow: $shadow-level-1;
+      -o-box-shadow: $shadow-level-1;
+      -webkit-box-shadow: $shadow-level-1;
+      box-shadow: $shadow-level-1;
       font-family: 'Roboto' !important;
       font-size: 14px !important;
       font-weight: 500;
@@ -317,10 +317,10 @@
       text-align: center;
       text-decoration: none;
       text-transform: uppercase;
-      -moz-transition: all 0.1s cubic-bezier(0.62, 0.28, 0.23, 0.99);
-      -o-transition: all 0.1s cubic-bezier(0.62, 0.28, 0.23, 0.99);
-      -webkit-transition: all 0.1s cubic-bezier(0.62, 0.28, 0.23, 0.99);
-      transition: all 0.1s cubic-bezier(0.62, 0.28, 0.23, 0.99);
+      -moz-transition: all 0.1s $podlove-easing;
+      -o-transition: all 0.1s $podlove-easing;
+      -webkit-transition: all 0.1s $podlove-easing;
+      transition: all 0.1s $podlove-easing;
       width: 100%;
 
       &:active,
@@ -338,22 +338,22 @@
   }
 
   #podlove-subscribe-panel-clients {
-    left: 300px;
+    left: $popup-width;
     padding-left: 0;
     padding-right: 0;
     padding-top: 48px;
 
     .device-cloud-switch {
-      background-color: #F2F2F2;
-      border-bottom: 1px solid #CBCBCB;
-      border-top: 1px solid #E1E1E1;
+      background-color: $color-gray-2;
+      border-bottom: 1px solid $color-gray-4;
+      border-top: 1px solid $color-gray-5;
       padding: 0 20px;
       height: 48px;
 
       button {
         background-color: transparent;
         border: none;
-        color: #989898;
+        color: $color-gray-3;
         cursor: pointer;
         display: inline-block;
         font-size: 16px !important;
@@ -380,10 +380,10 @@
           -o-transform-origin: 50% 50%;
           -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
-          -moz-transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
-          -o-transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
-          -webkit-transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
-          transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
+          -moz-transition: transform 0.25s $podlove-easing;
+          -o-transition: transform 0.25s $podlove-easing;
+          -webkit-transition: transform 0.25s $podlove-easing;
+          transition: transform 0.25s $podlove-easing;
           width: 90px;
         }
 
@@ -417,7 +417,7 @@
     }
 
     li {
-      border-bottom: 1px solid #E5E5E5;
+      border-bottom: 1px solid $color-gray-5;
       cursor: pointer;
       font-size: 16px !important;
       font-weight: 200;
@@ -455,7 +455,7 @@
 
   #podlove-subscribe-panel-finish {
     font-size: 14px !important;
-    left: 600px;
+    left: $popup-width * 2;
     text-align: center;
 
     img {
@@ -493,7 +493,7 @@
   }
 
   input {
-    color: #666666;
+    color: $color-gray-1;
     font-family: 'Roboto' !important;
     font-size: 16px !important;
     font-weight: 500;
