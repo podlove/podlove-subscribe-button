@@ -52,6 +52,13 @@ class SubscribeButton
       style: @scriptElem.data('style')
       format: @scriptElem.data('format')
 
+    # fallback for old size option "big-logo"
+    # size option "big-logo" not needed any more,
+    # logo is added via "format: cover"
+    if options.size.indexOf('-logo') >= 0
+      options.size = options.size.replace('-logo', '')
+      options.format = 'cover'
+
     @options = $.extend(defaultOptions, options)
 
   checkForValidLanguage: () ->
