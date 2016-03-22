@@ -6,22 +6,26 @@ Colors = require('./colors.coffee')
 class Button
   constructor: () ->
     @getOptions()
+
+    @I18n = new Translations(@options.language)
+    @elem = $('#podlove-subscribe-button')
+
     if /big-logo/.test(@options.size)
       @logoElem = $('#podlove-subscribe-button-logo')
     if /auto/.test(@options.size)
       @autoSize = true
-    @elem = $('#podlove-subscribe-button')
+    if @options.format != 'rectangle'
+      @buttonHtml = "<span>#{@I18n.t('button')}</span>"
+    else if @options.format == 'rectangle'
+      @elem.addClass('rectangle')
 
-    @I18n = new Translations(@options.language)
     @addStyle()
     @render()
 
     @resizeIframe()
 
   render: () ->
-    buttonHtml = "<span>#{@I18n.t('button')}</span>"
     @elem.addClass(@options.size.replace('%20', ' '))
-      .html(buttonHtml)
 
     # Add title attritbute to button element
     @elem.prop('title', @I18n.t('button'))
@@ -29,10 +33,12 @@ class Button
     @elem.on 'click', (event) =>
       window.parent.postMessage("clicked_#{@options.id}", '*')
 
+    if @buttonHtml
+      @elem.html(@buttonHtml)
+
     if @logoElem
       image = "<img src='#{@options.podcastCover}' alt='Logo of #{@options.podcastTitle}'>"
       @logoElem.html(image)
-
       @logoElem.on 'click', (event) =>
         window.parent.postMessage("clicked_#{@options.id}", '*')
 
@@ -44,7 +50,6 @@ class Button
 
   getOptions: () ->
     @options = Utils.locationToOptions(window.location.search)
-    console.log(@options)
 
   addStyle: () ->
     if @options.style == 'frameless'

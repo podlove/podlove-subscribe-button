@@ -56,20 +56,20 @@ script.podlove-subscribe-button {
 
   &.small {
     font-size: 10px;
-    height: 27px;
+    height: $button-height-small;
     width: 108px;
   }
 
   &.medium {
     font-size: 12px;
-    height: 41px;
+    height: $button-height-medium;
     width: 140px;
   }
 
   &.big,
   &.big-logo {
     font-size: 16px;
-    height: 54px;
+    height: $button-height-big;
     width: 180px;
   }
 
@@ -85,6 +85,36 @@ script.podlove-subscribe-button {
 
   &.frameless {
     background-color: transparent !important;
+  }
+
+  &.rectangle {
+
+    &::before {
+      content:'\e900';
+      font-family: 'Podlove';
+      font-size: 1.875em; // use em to scale all button sizes alltogether
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-style: normal;
+      font-weight: normal;
+      left: 50%;
+      line-height: normal;
+  	  position: absolute;
+      top: 50%;
+      transform: translate(-50%, -49%); // not using -50% for centering on y axis because icon has an optical center that's not at 50%
+    }
+
+    &.small {
+      width: $button-height-small;
+    }
+
+    &.medium {
+      width: $button-height-medium;
+    }
+
+    &.big {
+      width: $button-height-big;
+    }
   }
 }
 
