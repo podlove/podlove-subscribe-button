@@ -6,12 +6,17 @@
     <style>
       body {
         font-family: 'Roboto';
+        font-weight: 300;
         color: #444;
         height: 100%;
         margin: 0 auto;
         padding-top: 25px;
         text-align: center;
         width: 60%;
+      }
+
+      h1,h2,h3 {
+        margin: 1.5em auto 0.5em auto;
       }
 
       button {
@@ -137,26 +142,79 @@
 
     <h1>Podlove Subscribe Button</h1>
 
-    <h2>Small</h2>
-    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData"></script>
+    <p>All three formats (rectangle, square and cover) are available in three different styles: filled (default), outline, frameless. In addition there are three available sizes: small, medium (default) and big. All sizes may be combined with the value auto to adapt the button width to the available space. (Note: Does not work with square format!)</p>
 
-    <h2>Medium</h2>
-    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="medium" data-json-data="podcastData"></script>
+    <h2>Rectangle Format (default)</h2>
 
-    <h2>Big</h2>
-    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big" data-json-data="podcastData"></script>
+    <h3>Small</h3>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData" ></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData"  data-style="outline"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData"  data-style="frameless"></script>
 
-    <h2>Big with logo</h2>
-    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big-logo" data-json-data="podcastData"></script>
+    <h3>Medium</h3>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="medium" data-json-data="podcastData" ></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="medium" data-json-data="podcastData"  data-style="outline"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="medium" data-json-data="podcastData"  data-style="frameless"></script>
 
-    <h2>Auto</h2>
+    <h3>Big</h3>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big" data-json-data="podcastData" ></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big" data-json-data="podcastData"  data-style="outline"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big" data-json-data="podcastData"  data-style="frameless"></script>
+
+    <h3>Auto</h3>
     <div class="auto-size">
-      <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big auto" data-json-data="podcastData"></script>
+      <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big auto" data-json-data="podcastData" ></script>
+    </div>
+    <div class="auto-size">
+      <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big auto" data-json-data="podcastData"  data-style="outline"></script>
+    </div>
+    <div class="auto-size">
+      <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big auto" data-json-data="podcastData"  data-style="frameless"></script>
     </div>
 
-    <h2>Auto with logo</h2>
+    <h2>Square Format</h2>
+
+    <h3>Small</h3>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData"  data-format="square"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData"  data-format="square" data-style="outline"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData"  data-format="square" data-style="frameless"></script>
+
+    <h3>Medium</h3>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="medium" data-json-data="podcastData"  data-format="square"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="medium" data-json-data="podcastData"  data-format="square" data-style="outline"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="medium" data-json-data="podcastData"  data-format="square" data-style="frameless"></script>
+
+    <h3>Big</h3>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big" data-json-data="podcastData"  data-format="square"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big" data-json-data="podcastData"  data-format="square" data-style="outline"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big" data-json-data="podcastData"  data-format="square" data-style="frameless"></script>
+
+    <h2>Cover Format</h2>
+
+    <h3>Small</h3>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData"  data-format="cover"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData"  data-format="cover" data-style="outline"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData"  data-format="cover" data-style="frameless"></script>
+
+    <h3>Medium</h3>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="medium" data-json-data="podcastData"  data-format="cover"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="medium" data-json-data="podcastData"  data-format="cover" data-style="outline"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="medium" data-json-data="podcastData"  data-format="cover" data-style="frameless"></script>
+
+    <h3>Big</h3>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big" data-json-data="podcastData"  data-format="cover"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big" data-json-data="podcastData"  data-format="cover" data-style="outline"></script>
+    <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big" data-json-data="podcastData"  data-format="cover" data-style="frameless"></script>
+
+    <h3>Auto</h3>
     <div class="auto-size">
-      <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="auto big-logo" data-json-data="podcastData"></script>
+      <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big auto" data-json-data="podcastData"  data-format="cover"></script>
+    </div>
+    <div class="auto-size">
+      <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big auto" data-json-data="podcastData"  data-format="cover" data-style="outline"></script>
+    </div>
+    <div class="auto-size">
+      <script class="podlove-subscribe-button" src="dist/javascripts/app.js" data-language="de" data-size="big auto" data-json-data="podcastData"  data-format="cover" data-style="frameless"></script>
     </div>
 
 </html>
