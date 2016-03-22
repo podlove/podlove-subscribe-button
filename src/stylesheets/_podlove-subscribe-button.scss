@@ -87,7 +87,7 @@ script.podlove-subscribe-button {
     background-color: transparent !important;
   }
 
-  &.rectangle {
+  &.square {
 
     &::before {
       content:'\e900';
@@ -112,8 +112,13 @@ script.podlove-subscribe-button {
       width: $button-height-medium;
     }
 
-    &.big {
+    &.big,
+    &.big-logo {
       width: $button-height-big;
+    }
+
+    &.auto {
+      width: 100%; // will be no square, but working at least
     }
   }
 }

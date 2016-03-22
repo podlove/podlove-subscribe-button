@@ -102,7 +102,7 @@ script.podlove-subscribe-button {
     border-style: solid; }
   #podlove-subscribe-button.frameless {
     background-color: transparent !important; }
-  #podlove-subscribe-button.rectangle::before {
+  #podlove-subscribe-button.square::before {
     content: '\e900';
     font-family: 'Podlove';
     font-size: 1.875em;
@@ -117,12 +117,14 @@ script.podlove-subscribe-button {
     -webkit-transform: translate(-50%, -49%);
         -ms-transform: translate(-50%, -49%);
             transform: translate(-50%, -49%); }
-  #podlove-subscribe-button.rectangle.small {
+  #podlove-subscribe-button.square.small {
     width: 27px; }
-  #podlove-subscribe-button.rectangle.medium {
+  #podlove-subscribe-button.square.medium {
     width: 41px; }
-  #podlove-subscribe-button.rectangle.big {
+  #podlove-subscribe-button.square.big, #podlove-subscribe-button.square.big-logo {
     width: 54px; }
+  #podlove-subscribe-button.square.auto {
+    width: 100%; }
 
 #podlove-subscribe-button-logo {
   cursor: pointer;

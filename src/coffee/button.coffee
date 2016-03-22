@@ -14,10 +14,10 @@ class Button
       @logoElem = $('#podlove-subscribe-button-logo')
     if /auto/.test(@options.size)
       @autoSize = true
-    if @options.format != 'rectangle'
+    if @options.format != 'square'
       @buttonHtml = "<span>#{@I18n.t('button')}</span>"
-    else if @options.format == 'rectangle'
-      @elem.addClass('rectangle')
+    else if @options.format == 'square'
+      @elem.addClass('square')
 
     @addStyle()
     @render()
