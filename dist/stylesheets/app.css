@@ -90,7 +90,7 @@ script.podlove-subscribe-button {
     font-size: 12px;
     height: 41px;
     width: 140px; }
-  #podlove-subscribe-button.big, #podlove-subscribe-button.big-logo {
+  #podlove-subscribe-button.big {
     font-size: 16px;
     height: 54px;
     width: 180px; }
@@ -121,7 +121,7 @@ script.podlove-subscribe-button {
     width: 27px; }
   #podlove-subscribe-button.square.medium {
     width: 41px; }
-  #podlove-subscribe-button.square.big, #podlove-subscribe-button.square.big-logo {
+  #podlove-subscribe-button.square.big {
     width: 54px; }
   #podlove-subscribe-button.square.auto {
     width: 100%; }
