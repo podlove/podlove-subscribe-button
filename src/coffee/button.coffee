@@ -13,6 +13,7 @@ class Button
     @elem = $('#podlove-subscribe-button')
 
     @I18n = new Translations(@options.language)
+    @addStyle()
     @render()
 
     @resizeIframe()
@@ -43,6 +44,13 @@ class Button
 
   getOptions: () ->
     @options = Utils.locationToOptions(window.location.search)
+    console.log(@options)
+
+  addStyle: () ->
+    if @options.style == 'frameless'
+      @elem.addClass('frameless')
+    else if @options.style == 'outline'
+      @elem.addClass('outline')
 
   resizeIframe: () ->
     resize = (height, width) =>

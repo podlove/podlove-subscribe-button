@@ -39,6 +39,7 @@ class SubscribeButton
   getOptions: () ->
     defaultOptions =
       size: 'medium'
+      style: 'filled'
 
     options =
       scriptPath: @scriptElem.attr('src').match(/(^.*\/)/)[0].replace(/javascripts\/$/, '').replace(/\/$/, '')
@@ -47,6 +48,7 @@ class SubscribeButton
       colors: new Colors(@scriptElem.data('colors'))
       buttonId: @scriptElem.data('buttonid')
       hide: @scriptElem.data('hide')
+      style: @scriptElem.data('style')
 
     @options = $.extend(defaultOptions, options)
 
@@ -86,7 +88,7 @@ class SubscribeButton
   iframe: () ->
     @options.id = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
     podcastTitle = escape(@podcast.title)
-    buttonUrl = "#{@options.scriptPath}/button.html?id=#{@options.id}&language=#{@options.language}&size=#{@options.size}&podcastTitle=#{podcastTitle}&podcastCover=#{@podcast.cover}#{@options.colors.toParams()}"
+    buttonUrl = "#{@options.scriptPath}/button.html?id=#{@options.id}&language=#{@options.language}&size=#{@options.size}&style=#{@options.style}&podcastTitle=#{podcastTitle}&podcastCover=#{@podcast.cover}#{@options.colors.toParams()}"
 
     iframe = $('<iframe>')
       .attr('src', encodeURI(buttonUrl))
