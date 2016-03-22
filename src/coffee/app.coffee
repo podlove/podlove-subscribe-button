@@ -40,6 +40,7 @@ class SubscribeButton
     defaultOptions =
       size: 'medium'
       style: 'filled'
+      format: 'rectangle'
 
     options =
       scriptPath: @scriptElem.attr('src').match(/(^.*\/)/)[0].replace(/javascripts\/$/, '').replace(/\/$/, '')

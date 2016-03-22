@@ -10,14 +10,16 @@ class Button
     @I18n = new Translations(@options.language)
     @elem = $('#podlove-subscribe-button')
 
-    if /big-logo/.test(@options.size)
-      @logoElem = $('#podlove-subscribe-button-logo')
     if /auto/.test(@options.size)
       @autoSize = true
+
     if @options.format != 'square'
       @buttonHtml = "<span>#{@I18n.t('button')}</span>"
     else if @options.format == 'square'
       @elem.addClass('square')
+
+    if @options.format == 'cover'
+      @logoElem = $('#podlove-subscribe-button-logo')
 
     @addStyle()
     @render()
