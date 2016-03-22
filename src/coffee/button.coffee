@@ -32,7 +32,11 @@ class Button
     @addStyle()
     @render()
 
-    @resizeIframe()
+    # Wait for button to be rendered,
+    # before resizing the iframe
+    window.setTimeout =>
+      @resizeIframe()
+    , 10
 
   render: () ->
     # Add size classes
