@@ -21,17 +21,17 @@ class Colors
 
   toStyles: () ->
     # Get color values based on the @buttonBackgroundColor
-    @backgroundColor = new TinyColor(@buttonBackgroundColor)
-    @backgroundHoverColor = Colors.getHoverColor(@backgroundColor.clone())
-    @fontColor = Colors.getContrastColor(@backgroundColor.clone())
+    @buttonColor = new TinyColor(@buttonColor)
+    @backgroundHoverColor = Colors.getHoverColor(@buttonColor.clone())
+    @fontColor = Colors.getContrastColor(@buttonColor.clone())
     @fontHoverColor = Colors.getHoverColor(@fontColor.clone())
-    @isolatedColor = Colors.getIsolatedColor(@backgroundColor.clone())
+    @isolatedColor = Colors.getIsolatedColor(@buttonColor.clone())
     @isolatedHoverColor = Colors.getHoverColor(@isolatedColor.clone())
 
     css = "
       #podlove-subscribe-button,
       .podlove-subscribe-button {
-        background-color: #{@backgroundColor};
+        background-color: #{@buttonColor};
         color: #{@fontColor};
       }
 
@@ -44,18 +44,18 @@ class Colors
       }
 
       #podlove-subscribe-button.outline {
-        border-color: #{@backgroundColor};
-        color: #{@backgroundColor};
+        border-color: #{@buttonColor};
+        color: #{@buttonColor};
       }
 
       #podlove-subscribe-button.outline:active,
       #podlove-subscribe-button.outline:hover {
-        background-color: #{@backgroundColor};
+        background-color: #{@buttonColor};
         color: #{@fontColor};
       }
 
       #podlove-subscribe-button.frameless {
-        color: #{@backgroundColor};
+        color: #{@buttonColor};
       }
 
       #podlove-subscribe-button.frameless:active,
@@ -79,7 +79,7 @@ class Colors
       }
 
       #podlove-subscribe-popup #podlove-subscribe-panel-clients .device-cloud-switch button .podlove-subscribe-tab-active {
-        background-color: #{@backgroundColor};
+        background-color: #{@buttonColor};
       }
 
       #podlove-subscribe-popup #podlove-subscribe-panel-clients .device-cloud-switch button:active,
@@ -90,7 +90,7 @@ class Colors
 
       #podlove-subscribe-popup #podlove-subscribe-panel-clients li:active,
       #podlove-subscribe-popup #podlove-subscribe-panel-clients li:hover {
-        background-color: #{@backgroundColor};
+        background-color: #{@buttonColor};
         color: #{@fontColor};
       }
 
@@ -104,7 +104,7 @@ class Colors
       }
 
       #podlove-subscribe-popup #podlove-subscribe-button-help-panel {
-        background-color: #{@backgroundColor};
+        background-color: #{@buttonColor};
         color: #{@fontColor};
       }
     "
@@ -116,59 +116,19 @@ class Colors
     _(Colors.colorDefaults).each (color) =>
       @[color.name] = color.default
 
+  # default color variable
+  # to use when no color is provided by user
   @colorDefaults: [
     {
-      name: 'buttonBackgroundColor'
+      name: 'buttonColor'
       default: '#75ad91'
-    },
-    {
-      name: 'buttonHoverBackgroundColor'
-      default: '#75c39d'
-    },
-    {
-      name: 'buttonActiveBackgroundColor'
-      default: '#61937b'
-    },
-    {
-      name: 'buttonTextColor'
-      default: '#ffffff'
-    },
-    {
-      name: 'buttonHoverTextColor'
-      default: '#ffffff'
-    },
-    {
-      name: 'buttonActiveTextColor'
-      default: '#ffffff'
-    },
-    {
-      name: 'buttonBorderColor'
-      default: '#456757'
-    },
-    {
-      name: 'listHighlightBackgroundColor'
-      default: '#75ad91'
-    },
-    {
-      name: 'listHighlightTextColor'
-      default: '#ffffff'
-    },
+    }
   ]
 
   _extractColors: (string) ->
     return unless string
     colors = string.split(';')
-
-    @_setColor('buttonBackgroundColor', colors[0])
-    @_setColor('buttonHoverBackgroundColor', colors[1])
-    @_setColor('buttonActiveBackgroundColor', colors[2])
-    @_setColor('buttonTextColor', colors[3])
-    @_setColor('buttonHoverTextColor', colors[4])
-    @_setColor('buttonActiveTextColor', colors[5])
-    @_setColor('buttonBorderColor', colors[6])
-
-    @listHighlightBackgroundColor = colors[7]
-    @listHighlightTextColor = colors[8]
+    @_setColor('buttonColor', colors[0])
 
   _setColor: (id, color) ->
     @[id] = color if color != ''

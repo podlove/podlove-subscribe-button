@@ -10,14 +10,22 @@ class Button
     @I18n = new Translations(@options.language)
     @elem = $('#podlove-subscribe-button')
 
+    # Check if button should have auto width
+    # would be provided as "data-size",
+    # e.g. "big auto"
     if /auto/.test(@options.size)
       @autoSize = true
 
+    # Check if data-format is not squared
+    # and provide buttonHtml span tag for label.
+    # If format is square, add class for styling.
     if @options.format != 'square'
       @buttonHtml = "<span>#{@I18n.t('button')}</span>"
     else if @options.format == 'square'
       @elem.addClass('square')
 
+    # Check if data-format is cover
+    # and provide a logo element variable for the image
     if @options.format == 'cover'
       @logoElem = $('#podlove-subscribe-button-logo')
 
@@ -27,17 +35,21 @@ class Button
     @resizeIframe()
 
   render: () ->
+    # Add size classes
     @elem.addClass(@options.size.replace('%20', ' '))
 
     # Add title attritbute to button element
     @elem.prop('title', @I18n.t('button'))
 
+    # Add listener
     @elem.on 'click', (event) =>
       window.parent.postMessage("clicked_#{@options.id}", '*')
 
+    # Check for button label
     if @buttonHtml
       @elem.html(@buttonHtml)
 
+    # Check for cover image
     if @logoElem
       image = "<img src='#{@options.podcastCover}' alt='Logo of #{@options.podcastTitle}'>"
       @logoElem.html(image)
