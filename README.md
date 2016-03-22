@@ -19,11 +19,13 @@ We are hosting an always up-to-date version of the Podlove Subscribe Button code
 There are currently three options you can set:
 
     data-json-data: name of the variable where the button can find information about the podcast (see Podcast data API section)
-    data-language: language the texts on the button and popup should be in (currently supports 'de', 'en' and 'ja')
-    data-size: size and style of the button ('small', 'medium', 'big', 'big-logo'). All of the sizes can be combined with 'auto' to adapt the button width to the available space like this: 'big auto' (**Note**: big-logo has a max size of 300px)
-    data-colors: define the colors of the button (Please see section **Override Button Colors** for more information)
+    data-language: language the texts on the button and popup should be in (currently supports 'de', 'en', 'eo', 'fi', 'fr', 'nl', 'zh' and 'ja')
+    data-size: size and style of the button ('small', 'medium', 'big'). All of the sizes can be combined with 'auto' to adapt the button width to the available space like this: 'big auto'
+    data-color: define the color of the button (Please see section **Override Button Color** for more information)
     data-buttonid: you can use this to open the popup from another element on the same page (see section **Use your own button element**
     data-hide: if set to `true` the button will not be shown (useful if you want to use your own element
+    data-format: choose a button format, default is a rectangle, options are 'square' and 'cover' (**Note**: 'cover' has a max size of 300px)
+    data-style: choose a button style, default is filled, options are 'outline' and 'frameless'
 
 ### Self hosted
 
@@ -38,7 +40,7 @@ into the same folder on a publicly available server. Then add a script tag to th
 There are currently two options you can set:
 
     data-json-data: name of the variable where the button can find information about the podcast (see Podcast data API section)
-    data-language: language the texts on the button and popup should be in (currently supports 'de', 'en' and 'ja')
+    data-language: language the texts on the button and popup should be in (currently supports 'de', 'en', 'eo', 'fi', 'fr', 'nl', 'zh' and 'ja')
 
 ### Podcast data API
 
@@ -82,39 +84,11 @@ To work the button needs information about the podcast, which needs to be provid
 
 If everything went right you should see a button that will open a popup with subscribe buttons when clicked.
 
-### Override Button Colors
+### Override Button Color
 
-The colors of the button and popup are (almost) completely configurable by setting the `data-colors` parameter on the script tag. If the parameter is not given the default will be used. The colors have to be provided in this order separated by semikolon:
+The color of the button is configurable by setting the `data-color` parameter on the script tag. If the parameter is not given the default will be used. Allowed are all notations for colors that CSS can understand (keyword, rgb-hex, rgb, rgba, hsl, hsla). See [here for more](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).
 
-1. buttonBackgroundColor
-2. buttonHoverBackgroundColor
-3. buttonActiveBackgroundColor
-4. buttonTextColor
-5. buttonHoverTextColor
-6. buttonActiveTextColor
-7. buttonBorderColor
-8. listHighlightBackgroundColor
-9. listHighlightTextColor
-
-Allowed are all notations for colors that CSS can understand (keyword, rgb-hex, rgb, rgba, hsl, hsla). See [here for more](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).
-
-If you only want to replace certain colors you can simply leave the position empty and the default will be used.
-
-**Please Note:** It is not possible to style multiple buttons/popups on the same page differently. Unfortunately this is technically not possible at this moment.
-
-#### Examples
-
-Full configuration:
-
-    <script ... data-colors="#75ad91;#75c39d;#61937b;#ffffff;#ffffff;#ffffff;#456757;#328398;#ffffff"></script>
-
-Basic button styling (only idle button background and text color)
-
-    <script ... data-colors="#75ad91;;;#ffffff"></script>
-
-A bit more complex... (Only idle button background/text and list highlight color):
-
-    <script ... data-colors="#75ad91;;;#ffffff;;;;#328398;#ffffff"></script>
+**Please Note:** It is not possible to style multiple buttons/popups on the same page differently. Unfortunately this is technically not possible at this moment. Please write us or create an issue, if you are interested in this feature.
 
 ### Use your own button element
 
