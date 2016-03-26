@@ -125,12 +125,9 @@ class Popup
 
   movePanels: (step) ->
     @container = @elem.find('#podlove-subscribe-popup-modal-inner')
-    if @container.hasClass('swiped-left-0')
-      @container.removeClass('swiped-left-0')
-    if @container.hasClass('swiped-left-1')
-      @container.removeClass('swiped-left-1')
-    if @container.hasClass('swiped-left-2')
-      @container.removeClass('swiped-left-2')
+    @container.removeClass('swiped-left-0')
+    @container.removeClass('swiped-left-1')
+    @container.removeClass('swiped-left-2')
     @container.addClass('swiped-left-' + step );
 
 module.exports = Popup
