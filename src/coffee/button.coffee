@@ -16,19 +16,7 @@ class Button
     if /auto/.test(@options.size)
       @autoSize = true
 
-    # Check if data-format is not squared
-    # and provide buttonHtml span tag for label.
-    # If format is square, add class for styling.
-    if @options.format != 'square'
-      @buttonHtml = "<span>#{@I18n.t('button')}</span>"
-    else if @options.format == 'square'
-      @elem.addClass('square')
-
-    # Check if data-format is cover
-    # and provide a logo element variable for the image
-    if @options.format == 'cover'
-      @logoElem = $('#podlove-subscribe-button-logo')
-
+    @addFormat()
     @addStyle()
     @render()
 
@@ -68,6 +56,20 @@ class Button
 
   getOptions: () ->
     @options = Utils.locationToOptions(window.location.search)
+
+  addFormat: () ->
+    # Check if data-format is not squared
+    # and provide buttonHtml span tag for label.
+    # If format is square, add class for styling.
+    if @options.format != 'square'
+      @buttonHtml = "<span>#{@I18n.t('button')}</span>"
+    else if @options.format == 'square'
+      @elem.addClass('square')
+
+    # Check if data-format is cover
+    # and provide a logo element variable for the image
+    if @options.format == 'cover'
+      @logoElem = $('#podlove-subscribe-button-logo')
 
   addStyle: () ->
     if @options.style == 'frameless'
