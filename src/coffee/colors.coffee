@@ -27,6 +27,7 @@ class Colors
     @fontHoverColor = Colors.getHoverColor(@fontColor.clone())
     @isolatedColor = Colors.getIsolatedColor(@buttonColor.clone())
     @isolatedHoverColor = Colors.getHoverColor(@isolatedColor.clone())
+    @alphaColor = @buttonColor.clone().setAlpha(0.5)
 
     css = "
       #podlove-subscribe-button,
@@ -106,6 +107,22 @@ class Colors
       #podlove-subscribe-popup #podlove-subscribe-button-help-panel {
         background-color: #{@buttonColor};
         color: #{@fontColor};
+      }
+
+      #podlove-subscribe-popup h1::selection,
+      #podlove-subscribe-popup p::selection,
+      #podlove-subscribe-popup input::selection,
+      #podlove-subscribe-popup span::selection,
+      #podlove-subscribe-popup img::selection {
+        background-color: #{@alphaColor};
+      }
+
+      #podlove-subscribe-popup h1::-moz-selection,
+      #podlove-subscribe-popup p::-moz-selection,
+      #podlove-subscribe-popup input::-moz-selection,
+      #podlove-subscribe-popup span::-moz-selection,
+      #podlove-subscribe-popup img::-moz-selection {
+        background-color: #{@alphaColor};
       }
     "
     style = $('<style></style>')
