@@ -144,7 +144,8 @@ class ClientsPanel extends Panel
   template: Handlebars.compile('
     <div>
       <div class="device-cloud-switch">
-        <button class="podlove-subscribe-local active">{{t "clients_panel.app"}}<span class="podlove-subscribe-tab-active"></span></button><button class="podlove-subscribe-cloud">{{t "clients_panel.cloud"}}<span class="podlove-subscribe-tab-active"></span></button>
+        <button class="podlove-subscribe-local active">{{t "clients_panel.app"}}<span class="podlove-subscribe-tab-active"></span></button><!--
+        --><button class="podlove-subscribe-cloud">{{t "clients_panel.cloud"}}<span class="podlove-subscribe-tab-active"></span></button>
       </div>
 
       <div class="client-list">
