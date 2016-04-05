@@ -233,17 +233,19 @@ script.podlove-subscribe-button {
       height: 100%;
       overflow: hidden;
       overflow-y: scroll;
-      padding: 48px 40px 0 0; }
+      padding: 44px 20px 0 0; }
       #podlove-subscribe-popup #podlove-subscribe-button-help-panel .podlove-subscribe-button-help-panel-content > * {
         font-size: 16px !important;
-        line-height: 22px;
+        line-height: 20px;
         text-align: left; }
       #podlove-subscribe-popup #podlove-subscribe-button-help-panel .podlove-subscribe-button-help-panel-content > h2 {
         font-size: 20px !important;
         font-weight: 300;
         line-height: 24px;
         margin-top: 0 !important;
-        margin-bottom: 20px; }
+        margin-bottom: 10px; }
+      #podlove-subscribe-popup #podlove-subscribe-button-help-panel .podlove-subscribe-button-help-panel-content p {
+        margin: 0 0 10px 0; }
       #podlove-subscribe-popup #podlove-subscribe-button-help-panel .podlove-subscribe-button-help-panel-content p:last-child {
         margin-bottom: 44px; }
     #podlove-subscribe-popup #podlove-subscribe-button-help-panel .podlove-help-close-button {
