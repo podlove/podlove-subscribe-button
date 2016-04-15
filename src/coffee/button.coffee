@@ -96,11 +96,17 @@ class Button
 
     if @logoElem
       img = @logoElem.find('img')
-      img.on 'load', =>
+
+      showImage = =>
         @logoElem.height(width)
         height += width
         @logoElem.show()
         resize(height, width)
+
+      unless img[0].complete
+        img.on 'load', showImage
+      else
+        showImage()
     else
       resize(height, width)
 
