@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'Podlove';
+  src: url('../fonts/podlove/Podlove.eot');
+  src: url('../fonts/podlove/Podlove.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/podlove/Podlove.woff') format('woff'),
+       url('../fonts/podlove/Podlove.ttf') format('truetype'),
+       url('../fonts/podlove/Podlove.svg#robotomedium') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/roboto_light/Roboto-Light-webfont.eot');
+  src: url('../fonts/roboto_light/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/roboto_light/Roboto-Light-webfont.woff') format('woff'),
+       url('../fonts/roboto_light/Roboto-Light-webfont.ttf') format('truetype'),
+       url('../fonts/roboto_light/Roboto-Light-webfont.svg#robotolight') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/roboto_medium/Roboto-Medium-webfont.eot');
+  src: url('../fonts/roboto_medium/Roboto-Medium-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/roboto_medium/Roboto-Medium-webfont.woff') format('woff'),
+       url('../fonts/roboto_medium/Roboto-Medium-webfont.ttf') format('truetype'),
+       url('../fonts/roboto_medium/Roboto-Medium-webfont.svg#robotomedium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}

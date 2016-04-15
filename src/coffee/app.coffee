@@ -39,14 +39,32 @@ class SubscribeButton
   getOptions: () ->
     defaultOptions =
       size: 'medium'
+      style: 'filled'
+      format: 'rectangle'
 
     options =
       scriptPath: @scriptElem.attr('src').match(/(^.*\/)/)[0].replace(/javascripts\/$/, '').replace(/\/$/, '')
       language: @scriptElem.data('language')
       size: @scriptElem.data('size')
-      colors: new Colors(@scriptElem.data('colors'))
       buttonId: @scriptElem.data('buttonid')
       hide: @scriptElem.data('hide')
+      style: @scriptElem.data('style')
+      format: @scriptElem.data('format')
+
+    # fallback for old color settings
+    # if new color setting "data-color" is available, use it,
+    # if not, use the old "data-colors"
+    if @scriptElem.data('color')
+      options.color = new Colors(@scriptElem.data('color'))
+    else
+      options.color = new Colors(@scriptElem.data('colors'))
+
+    # fallback for old size option "big-logo"
+    # size option "big-logo" not needed any more,
+    # logo is added via "format: cover"
+    if options.size.indexOf('-logo') >= 0
+      options.size = options.size.replace('-logo', '')
+      options.format = 'cover'
 
     @options = $.extend(defaultOptions, options)
 
@@ -80,13 +98,13 @@ class SubscribeButton
   addCss: () ->
     link = $("<link rel='stylesheet' href='#{@options.scriptPath}/stylesheets/app.css'></script>")
     @scriptElem.after(link)
-    link.after(@options.colors.toStyles())
+    link.after(@options.color.toStyles())
 
   # builds the button Iframe and attaches the click event listener
   iframe: () ->
     @options.id = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
     podcastTitle = escape(@podcast.title)
-    buttonUrl = "#{@options.scriptPath}/button.html?id=#{@options.id}&language=#{@options.language}&size=#{@options.size}&podcastTitle=#{podcastTitle}&podcastCover=#{@podcast.cover}#{@options.colors.toParams()}"
+    buttonUrl = "#{@options.scriptPath}/button.html?id=#{@options.id}&language=#{@options.language}&size=#{@options.size}&style=#{@options.style}&format=#{@options.format}&podcastTitle=#{podcastTitle}&podcastCover=#{@podcast.cover}#{@options.color.toParams()}"
 
     iframe = $('<iframe>')
       .attr('src', encodeURI(buttonUrl))

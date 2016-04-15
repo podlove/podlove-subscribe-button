@@ -1,0 +1,16 @@
+html.podlove-subscribe {
+  height: 100%;
+}
+
+body.podlove-subscribe {
+  font-family: 'Roboto' !important;
+  margin: 0;
+  overflow: hidden;
+}
+
+.podlove-subscribe *,
+.podlove-subscribe *:before,
+.podlove-subscribe *:after {
+  box-sizing: border-box;
+  font-family: 'Roboto';
+}

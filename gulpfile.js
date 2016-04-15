@@ -1,13 +1,17 @@
+'use strict';
+
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
-    sass = require('gulp-ruby-sass'),
+    sass = require('gulp-sass'),
     coffee = require('gulp-coffee'),
     watch = require('gulp-watch'),
     uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     browserify = require('gulp-browserify'),
     rename = require('gulp-rename'),
-    connect = require('gulp-connect');
+    connect = require('gulp-connect'),
+    sourcemaps = require('gulp-sourcemaps'),
+    autoprefixer = require('gulp-autoprefixer'),
     gzip = require('gulp-gzip');
 
 var dest = './dist';
@@ -16,12 +20,16 @@ var paths = {
   main_javascript: ['./src/coffee/app.coffee'],
   javascripts: ['./src/coffee/*.coffee'],
   html: ['./src/html/button.html', './src/html/popup.html'],
-  images: ['./src/images/**']
+  images: ['./src/images/**'],
+  fonts: ['./src/fonts/**']
 };
 
 gulp.task('stylesheets', function() {
   return gulp.src(paths.stylesheets)
+  .pipe(sourcemaps.init())
     .pipe(sass({style: 'compressed'}))
+    .pipe(autoprefixer({ browsers: ['last 5 versions'] }))
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./dist/stylesheets'))
     .pipe(gzip())
     .pipe(gulp.dest('./dist/stylesheets'))
@@ -54,7 +62,13 @@ gulp.task('images', function() {
     .pipe(connect.reload())
 })
 
-gulp.task('default', ['stylesheets', 'javascripts', 'html', 'images'])
+gulp.task('fonts', function() {
+  gulp.src(paths.fonts)
+    .pipe(gulp.dest('./dist/fonts'))
+    .pipe(connect.reload())
+})
+
+gulp.task('default', ['stylesheets', 'javascripts', 'html', 'images', 'fonts'])
 
 gulp.task('watch', function() {
   // Watch .scss files
@@ -65,6 +79,8 @@ gulp.task('watch', function() {
   gulp.watch(paths.html, ['html'])
   // Watch images files
   gulp.watch(paths.images, ['images'])
+  // Watch font files
+  gulp.watch(paths.fonts, ['fonts'])
 })
 
 gulp.task('connect', function() {

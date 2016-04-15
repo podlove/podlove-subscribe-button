@@ -18,20 +18,11 @@ class FinishPanel extends Panel
     @elem = $(@template(@context(client, podcast)))
     @container.append(@elem)
 
-    @elem.find('.podlove-subscribe-back-button').on 'click', (event) =>
-      @parent.moveClients('0%')
-      @parent.moveFinish('100%')
-
     @elem.find('input').on 'click', () ->
       this.select()
 
   template: Handlebars.compile('
     <div>
-      <div class="top-bar">
-        <span class="podlove-subscribe-back-button">&lsaquo;</span>
-        <img src="{{scriptPath}}/images/icon-big.png">
-        <span class="panel-title">{{t "panels.title"}}</span>
-      </div>
       <img class="podcast-cover" src="{{client.icon}}">
       {{#if client.scheme}}
         <h1>{{t "finish_panel.handing_over_to" client=client.title}}...</h1>
@@ -64,13 +55,13 @@ class FinishPanel extends Panel
           {{/if}}
 
           {{#if client.install}}
-            <a href="{{client.install}}" target="_blank">
+            <a class="podlove-subscribe-popup-finish-register" href="{{client.install}}" target="_blank">
               {{t "finish_panel.install" client=client.title}}
             </a>
           {{/if}}
 
           {{#if client.register}}
-            <a href="{{client.register}}" target="_blank">
+            <a class="podlove-subscribe-popup-finish-register" href="{{client.register}}" target="_blank">
               {{t "finish_panel.register_an_account"}}
               {{client.title}}
             </a>
@@ -80,7 +71,7 @@ class FinishPanel extends Panel
         <p>
           {{t "finish_panel.please_copy_url"}}
         </p>
-        <input value="{{client.originalUrl}}">
+        <input value="{{client.originalUrl}}" readonly="readonly">
       {{/if}}
     </div>
   ')

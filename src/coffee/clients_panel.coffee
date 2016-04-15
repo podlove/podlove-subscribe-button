@@ -66,7 +66,7 @@ class ClientsPanel extends Panel
           standardUrl
       else
         standardUrl
-        
+
 
     _(@clients).shuffle()
 
@@ -96,10 +96,6 @@ class ClientsPanel extends Panel
   render: () ->
     @elem = $(@template(@context()))
     @container.append(@elem)
-
-    @elem.find('.podlove-subscribe-back-button').on 'click', (event) =>
-      @parent.movePodcast('0%')
-      @parent.moveClients('100%')
 
     @elem.find('li a').on 'click', (event) =>
       client = $(event.target).data('client')
@@ -133,8 +129,7 @@ class ClientsPanel extends Panel
         @showClient(client, platform, url)
 
   showClient: (clientTitle, platform, url) ->
-    @parent.moveClients('-100%')
-    @parent.moveFinish('0%')
+    @parent.movePanels(2)
 
     client = if clientTitle == 'rss'
       @otherClient
@@ -148,14 +143,9 @@ class ClientsPanel extends Panel
 
   template: Handlebars.compile('
     <div>
-      <div class="top-bar">
-        <span class="podlove-subscribe-back-button">&lsaquo;</span>
-        <img src="{{scriptPath}}/images/icon-big@2x.png">
-        <span class="panel-title">{{t "panels.title"}}</span>
-      </div>
       <div class="device-cloud-switch">
-        <button class="podlove-subscribe-local active">{{t "clients_panel.app"}}</button>
-        <button class="podlove-subscribe-cloud">{{t "clients_panel.cloud"}}</button>
+        <button class="podlove-subscribe-local active">{{t "clients_panel.app"}}<span class="podlove-subscribe-tab-active"></span></button><!--
+        --><button class="podlove-subscribe-cloud">{{t "clients_panel.cloud"}}<span class="podlove-subscribe-tab-active"></span></button>
       </div>
 
       <div class="client-list">

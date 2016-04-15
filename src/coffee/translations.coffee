@@ -58,7 +58,7 @@ class Translations
       panels:
         title: "Abonnieren"
       podcast_panel:
-        choose_client: "App auswählen"
+        choose_client: "Weiter"
       help_panel:
         title: "Abonnieren?"
         paragraph1: "Ein Abonnement erlaubt einer Podcast-App neue Folgen automatisch herunterzuladen oder das Podcast-Archiv mit alten Episoden zu durchsuchen."
@@ -82,7 +82,7 @@ class Translations
       panels:
         title: "Subscribe"
       podcast_panel:
-        choose_client: "Choose App"
+        choose_client: "Continue"
       help_panel:
         title: "Subscribe?"
         paragraph1: "You are about to subscribe to a podcast. This will allow your podcast app to automatically download new episodes or access the archive of previously released episodes."

@@ -1,0 +1,140 @@
+#podlove-subscribe-button-iframe {
+  height: 0;
+  width: 0;
+}
+
+script.podlove-subscribe-button {
+  display: none !important;
+}
+
+#podlove-subscribe-button,
+.podlove-subscribe-button {
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 0;
+  position: relative;
+  text-transform: uppercase;
+  transition: all 0.1s $podlove-easing;
+
+  &:focus {
+    outline: none;
+  }
+
+  span {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+  }
+}
+
+#podlove-subscribe-button {
+  position: absolute; // fixes an issue in ff where the button is not on top: 0 and therefore cut at the bottom
+  text-align: center;
+
+  span {
+    padding-left: 1.75em; // use em to scale all button sizes alltogether
+    position: relative;
+    vertical-align: 1px;
+
+    &::before {
+      content:'\e900';
+      font-family: 'Podlove';
+      font-size: 1.875em; // use em to scale all button sizes alltogether
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-style: normal;
+      font-weight: normal;
+      left: -0.2875em; // use em to scale all button sizes alltogether
+      line-height: normal;
+  	  position: absolute;
+      top: 50%;
+      transform: translateY(-49%); // not using -50% for centering because icon has an optical center that's not at 50%
+    }
+  }
+
+  &.small {
+    font-size: 10px;
+    height: $button-height-small;
+    width: 108px;
+  }
+
+  &.medium {
+    font-size: 12px;
+    height: $button-height-medium;
+    width: 140px;
+  }
+
+  &.big {
+    font-size: 16px;
+    height: $button-height-big;
+    width: 180px;
+  }
+
+  &.auto {
+    width: 100%;
+  }
+
+  &.outline {
+    background-color: transparent;
+    border-width: 0.175em;
+    border-style: solid;
+  }
+
+  &.frameless {
+    background-color: transparent !important;
+  }
+
+  &.square {
+
+    &::before {
+      content:'\e900';
+      font-family: 'Podlove';
+      font-size: 1.875em; // use em to scale all button sizes alltogether
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-style: normal;
+      font-weight: normal;
+      left: 50%;
+      line-height: normal;
+  	  position: absolute;
+      top: 50%;
+      transform: translate(-50%, -49%); // not using -50% for centering on y axis because icon has an optical center that's not at 50%
+    }
+
+    &.small {
+      width: $button-height-small;
+    }
+
+    &.medium {
+      width: $button-height-medium;
+    }
+
+    &.big {
+      width: $button-height-big;
+    }
+
+    &.auto {
+      width: 100%; // will be no square, but working at least
+    }
+  }
+}
+
+#podlove-subscribe-button-logo {
+  cursor: pointer;
+  display: none;
+
+  &::before {
+    display: block;
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+  }
+}
