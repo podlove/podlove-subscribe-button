@@ -331,7 +331,7 @@ script.podlove-subscribe-button {
         font-size: 20px;
         font-weight: 300;
         line-height: 24px;
-        margin: 0 0 10px 0; }
+        margin: 0 0 5px 0; }
       #podlove-subscribe-popup #podlove-subscribe-popup-modal #podlove-subscribe-popup-modal-inner h2 {
         margin: 15px 0 5px;
         text-align: left; }
@@ -380,7 +380,8 @@ script.podlove-subscribe-button {
       font-size: 14px;
       font-weight: 300;
       line-height: 1.4em;
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      margin-top: 5px; }
   #podlove-subscribe-popup #podlove-subscribe-panel-podcast .podlove-subscribe-button,
   #podlove-subscribe-popup #podlove-subscribe-panel-finish .podlove-subscribe-button {
     border-radius: 1px;
