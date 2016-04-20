@@ -285,6 +285,10 @@
 
     .podcast-cover-placeholder {
       background-color: $color-gray-2;
+      background-image: url('../images/icon.svg');
+      background-position: 50% 48%;
+      background-repeat: no-repeat;
+      background-size: 66%;
       margin: 0 auto;
     }
 

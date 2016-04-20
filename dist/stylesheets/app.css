@@ -370,6 +370,10 @@ script.podlove-subscribe-button {
     text-align: center; }
     #podlove-subscribe-popup #podlove-subscribe-panel-podcast .podcast-cover-placeholder {
       background-color: #F2F2F2;
+      background-image: url("../images/icon.svg");
+      background-position: 50% 48%;
+      background-repeat: no-repeat;
+      background-size: 66%;
       margin: 0 auto; }
     #podlove-subscribe-popup #podlove-subscribe-panel-podcast img.podcast-cover,
     #podlove-subscribe-popup #podlove-subscribe-panel-podcast .podcast-cover-placeholder {
