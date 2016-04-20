@@ -27,6 +27,8 @@ class PodcastPanel extends Panel
     <div>
       {{#if cover}}
       <img class="podcast-cover" src="{{cover}}" alt="Logo of {{title}}">
+      {{else}}
+      <div class="podcast-cover-placeholder"></div>
       {{/if}}
       <div class="podlove-subscribe-popup-podcast-text">
         <h1>{{title}}</h1>
