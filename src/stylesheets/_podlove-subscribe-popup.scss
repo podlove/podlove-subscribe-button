@@ -283,7 +283,17 @@
     left: 0;
     text-align: center;
 
-    img.podcast-cover {
+    .podcast-cover-placeholder {
+      background-color: $color-gray-2;
+      background-image: url('../images/icon.svg');
+      background-position: 50% 48%;
+      background-repeat: no-repeat;
+      background-size: 66%;
+      margin: 0 auto;
+    }
+
+    img.podcast-cover,
+    .podcast-cover-placeholder {
       box-shadow: $shadow-level-1;
       height: 160px;
       width: 160px;
