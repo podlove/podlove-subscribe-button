@@ -7,12 +7,16 @@ Panel = require('./panel.coffee')
 class PodcastPanel extends Panel
   constructor: (@container, @parent) ->
     @podcast = @parent.podcast
+
+    if @podcast.subtitle && @podcast.subtitle != ''
+      @podcast.subtitle = new Handlebars.SafeString(@podcast.subtitle)
+
     @render()
 
   context: -> {
     cover: @podcast.cover,
     title: new Handlebars.SafeString(@podcast.title),
-    subtitle: new Handlebars.SafeString(@podcast.subtitle),
+    subtitle: @podcast.subtitle,
     scriptPath: @parent.options.scriptPath,
   }
 
@@ -24,7 +28,7 @@ class PodcastPanel extends Panel
       @parent.movePanels(1)
 
   template: Handlebars.compile('
-    <div>
+    <div{{#if subtitle}} class="podcast-has-subtitles"{{/if}}>
       {{#if cover}}
       <img class="podcast-cover" src="{{cover}}" alt="Logo of {{title}}">
       {{else}}
@@ -32,7 +36,9 @@ class PodcastPanel extends Panel
       {{/if}}
       <div class="podlove-subscribe-popup-podcast-text">
         <h1>{{title}}</h1>
+        {{#if subtitle}}
         <p>{{subtitle}}</p>
+        {{/if}}
       </div>
       <button class="podlove-subscribe-button">{{t "podcast_panel.choose_client"}}</button>
     </div>
