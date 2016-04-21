@@ -283,7 +283,17 @@
     left: 0;
     text-align: center;
 
-    img.podcast-cover {
+    .podcast-cover-placeholder {
+      background-color: $color-gray-2;
+      background-image: url('../images/icon.svg');
+      background-position: 50% 48%;
+      background-repeat: no-repeat;
+      background-size: 66%;
+      margin: 0 auto;
+    }
+
+    img.podcast-cover,
+    .podcast-cover-placeholder {
       box-shadow: $shadow-level-1;
       height: 190px;
       width: 190px;
@@ -305,7 +315,8 @@
     // State: There are subtitles, so cover will be smaller and text-container will be bigger
     .podcast-has-subtitles {
 
-      img.podcast-cover {
+      img.podcast-cover,
+      .podcast-cover-placeholder {
         height: 160px;
         width: 160px;
       }
