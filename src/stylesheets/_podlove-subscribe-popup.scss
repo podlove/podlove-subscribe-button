@@ -509,4 +509,21 @@
       outline: none;
     }
   }
+
+  .copy-url-link {
+    display: inline-block;
+    overflow: hidden;
+    width: 100%;
+    word-wrap: break-word;
+  }
+
+  .copy-url-button {
+    margin-top: 10px;
+  }
+
+  .copy-url-field {
+    height: 1px;
+    overflow: hidden;
+    width: 1px;
+  }
 }

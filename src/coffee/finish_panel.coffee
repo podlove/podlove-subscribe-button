@@ -21,6 +21,30 @@ class FinishPanel extends Panel
     @elem.find('input').on 'click', () ->
       this.select()
 
+    copyUrlButton = @elem.find('.copy-url-button')
+    copyUrlButton.hide()
+    copyUrlField = @elem.find('.copy-url-field')
+    copyNotification = @elem.find('.copy-notification')
+    copyNotification.hide()
+    @attachCopyFunctionality(copyUrlButton, copyUrlField, copyNotification)
+
+  attachCopyFunctionality: (button, field, notification) ->
+    return if !document.queryCommandSupported('copy') ||
+      !document.queryCommandSupported('selectAll')
+
+    field.on 'focus', () =>
+      document.execCommand('selectAll', false, null)
+
+    button.show()
+    button.on 'click', () =>
+      field.attr('contenteditable', true)
+      field.focus()
+      document.execCommand('copy', false, null)
+      field.blur()
+      field.attr('contenteditable', false)
+      notification.show()
+
+
   template: Handlebars.compile('
     <div>
       <img class="podcast-cover" src="{{client.icon}}">
@@ -71,7 +95,12 @@ class FinishPanel extends Panel
         <p>
           {{t "finish_panel.please_copy_url"}}
         </p>
-        <input value="{{client.originalUrl}}" readonly="readonly">
+
+        <a href="{{client.originalUrl}}" target="_blank" class="copy-url-link">{{client.originalUrl}}</a>
+
+        <button class="copy-url-button podlove-subscribe-button">{{t "finish_panel.copy_button_text"}}</button>
+        <div class="copy-url-field">{{client.originalUrl}}</div>
+        <div class="copy-notification">{{t "finish_panel.copy_success"}}<div>
       {{/if}}
     </div>
   ')

@@ -27,7 +27,7 @@ class Translations
     unless value?
       value_array = []
 
-      angular.forEach last_key.split('_'), (split_key) ->
+      _.forEach last_key.split('_'), (split_key) ->
         value_array.push(split_key.charAt(0).toUpperCase() + split_key.slice(1))
 
       value = value_array.join(' ')
@@ -75,6 +75,8 @@ class Translations
         install: "%{client} installieren"
         register_an_account: "Einen Account registrieren bei "
         please_copy_url: "Bitte die URL kopieren und in deine Podcast- oder RSS-App einfügen."
+        copy_button_text: "URL kopieren"
+        copy_success: "URL in die Zwischenablage kopiert."
         or_install: "oder App installieren"
 
     en:
@@ -99,6 +101,8 @@ class Translations
         install: "Install %{client}"
         register_an_account: "Register an account with "
         please_copy_url: "Please copy the URL below and add it to your podcast or RSS app."
+        copy_button_text: "Copy URL"
+        copy_success: "URL copied to clipboard"
         or_install: "or install app"
 
     eo:
@@ -123,6 +127,8 @@ class Translations
         install: "Viziti la retejon de %{client}"
         register_an_account: "Registriĝi ĉe "
         please_copy_url: "Bonvolu kopii la suban URLn kaj aldoni ĝin al via podkasta aplikaĵo aŭ RSS-legilo."
+        copy_button_text: "Copy URL"
+        copy_success: "URL copied to clipboard"
         or_install: "aŭ instali la aplikaĵon"
 
     fi:
@@ -147,6 +153,8 @@ class Translations
         install: "Mene %{client}:n sivustolle"
         register_an_account: "Rekisteröidy"
         please_copy_url: "Ole hyvä ja kopioi alla olevan linkin ja syötä se sinuun podcast tai RSS ohjelmaan."
+        copy_button_text: "Copy URL"
+        copy_success: "URL copied to clipboard"
         or_install: "tai installoi ohjelma"
 
     fr:
@@ -171,6 +179,8 @@ class Translations
         install: "Visite %{client} du site internet"
         register_an_account: "Enregistrer un compte avec"
         please_copy_url: "Veuillez copier l’URL ci-dessous et ajoutez le à votre podcast ou application RSS."
+        copy_button_text: "Copy URL"
+        copy_success: "URL copied to clipboard"
         or_install: "ou installer l‘application"
 
     nl:
@@ -195,6 +205,8 @@ class Translations
         install: "Bezoek %{client} website"
         register_an_account: "Registreren op "
         please_copy_url: "Kopieer de URL hieronder en voeg deze toe aan uw podcast of RSS-app."
+        copy_button_text: "Copy URL"
+        copy_success: "URL copied to clipboard"
         or_install: "Of installeer de app"
 
     ja:
@@ -219,6 +231,8 @@ class Translations
         install: "Visit %{client} website"
         register_an_account: "%{client}にアカウントを登録する"
         please_copy_url: "URLをコピーして、ポットキャストがRSSクライアントに貼り付けて下さい。"
+        copy_button_text: "Copy URL"
+        copy_success: "URL copied to clipboard"
         or_install: "or install app"
 
     zh:
@@ -243,6 +257,8 @@ class Translations
         install: "访问%{client}网站"
         register_an_account: "注册账号 "
         please_copy_url: "请复制下面的链接，添加到你的播客或RSS应用中。"
+        copy_button_text: "Copy URL"
+        copy_success: "URL copied to clipboard"
         or_install: "或安装应用"
 
 module.exports = Translations

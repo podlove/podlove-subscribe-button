@@ -537,5 +537,16 @@ script.podlove-subscribe-button {
     padding: 0 10px; }
     #podlove-subscribe-popup input:focus {
       outline: none; }
+  #podlove-subscribe-popup .copy-url-link {
+    display: inline-block;
+    overflow: hidden;
+    width: 100%;
+    word-wrap: break-word; }
+  #podlove-subscribe-popup .copy-url-button {
+    margin-top: 10px; }
+  #podlove-subscribe-popup .copy-url-field {
+    height: 1px;
+    overflow: hidden;
+    width: 1px; }
 
 /*# sourceMappingURL=app.css.map */
