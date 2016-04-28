@@ -42,15 +42,6 @@ class Clients
       http: true
     },
     {
-      title: 'Instacast Cloud'
-      scheme: 'https://instacastcloud.com/subscribe'
-      #scheme: 'http://localhost:4000/test'
-      icon: 'cloud/instacastcloud.png'
-      register: 'https://instacastcloud.com/'
-      http: true
-      post: true
-    },
-    {
       title: 'Player.fm'
       scheme: 'https://player.fm/subscribe?id='
       icon: 'cloud/playerfm.png'

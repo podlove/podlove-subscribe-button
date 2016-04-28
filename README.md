@@ -125,7 +125,6 @@ You can also provide more than one feed link if you have more.
 
 ### Cloud
   * [gpodder.net](https://gpodder.net/)
-  * [Instacast Cloud](https://instacastcloud.com/)
   * [Player.fm](https://player.fm/)
   * [Pocket Casts](https://play.pocketcasts.com/)
 
