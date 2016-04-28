@@ -141,6 +141,7 @@ script.podlove-subscribe-button {
 
 #podlove-subscribe-popup {
   background-color: rgba(0, 0, 0, 0.5);
+  font-family: Roboto !important;
   height: 100%;
   left: 0;
   margin: 0 auto;
@@ -160,6 +161,8 @@ script.podlove-subscribe-button {
     font-size: 20px !important; }
   #podlove-subscribe-popup h2 {
     font-size: 16px !important; }
+  #podlove-subscribe-popup img {
+    margin: 0 auto; }
   #podlove-subscribe-popup #podlove-subscribe-popup-close-button,
   #podlove-subscribe-popup #podlove-subscribe-popup-help-button,
   #podlove-subscribe-popup .podlove-subscribe-back-button {
@@ -190,6 +193,7 @@ script.podlove-subscribe-button {
     transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
     transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99); }
   #podlove-subscribe-popup .podlove-subscribe-back-button {
+    padding-left: 12px;
     -webkit-transform: scale(0);
         -ms-transform: scale(0);
             transform: scale(0); }
@@ -388,7 +392,7 @@ script.podlove-subscribe-button {
       font-size: 14px;
       font-weight: 300;
       line-height: 1.4em;
-      margin-bottom: 10px; }
+      margin: 0; }
     #podlove-subscribe-popup #podlove-subscribe-panel-podcast .podcast-has-subtitles img.podcast-cover,
     #podlove-subscribe-popup #podlove-subscribe-panel-podcast .podcast-has-subtitles .podcast-cover-placeholder {
       height: 160px;
@@ -481,7 +485,8 @@ script.podlove-subscribe-button {
       border-bottom: 1px solid #E1E1E1;
       cursor: pointer;
       font-size: 16px !important;
-      font-weight: 200;
+      font-weight: 200 !important;
+      list-style: none !important;
       padding: 0;
       position: relative;
       text-align: left; }
@@ -496,6 +501,7 @@ script.podlove-subscribe-button {
       border: none;
       color: inherit;
       display: block;
+      font-weight: 200 !important;
       padding: 10px 20px 10px 58px;
       text-decoration: none; }
     #podlove-subscribe-popup #podlove-subscribe-panel-clients li button {

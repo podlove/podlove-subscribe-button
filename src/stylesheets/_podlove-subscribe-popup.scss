@@ -1,5 +1,6 @@
 #podlove-subscribe-popup {
   background-color: $color-black-alpha;
+  font-family: Roboto !important;
   height: 100%;
   left: 0;
   margin: 0 auto;
@@ -23,6 +24,10 @@
 
   h2 {
     font-size: 16px !important;
+  }
+
+  img {
+    margin: 0 auto;
   }
 
   #podlove-subscribe-popup-close-button,
@@ -56,6 +61,7 @@
   }
 
   .podlove-subscribe-back-button {
+    padding-left: 12px;
     transform: scale(0);
 
     &::before {
@@ -309,7 +315,7 @@
       font-size: 14px;
       font-weight: 300;
       line-height: 1.4em;
-      margin-bottom: 10px;
+      margin: 0;
     }
 
     // State: There are subtitles, so cover will be smaller and text-container will be bigger
@@ -425,7 +431,8 @@
       border-bottom: 1px solid $color-gray-5;
       cursor: pointer;
       font-size: 16px !important;
-      font-weight: 200;
+      font-weight: 200 !important;
+      list-style: none !important;
       padding: 0;
       position: relative;
       text-align: left;
@@ -446,6 +453,7 @@
       border: none;
       color: inherit;
       display: block;
+      font-weight: 200 !important;
       padding: 10px 20px 10px 58px;
       text-decoration: none;
     }
