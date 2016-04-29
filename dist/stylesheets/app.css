@@ -257,6 +257,7 @@ script.podlove-subscribe-button {
       left: 0;
       padding: 12px 0;
       position: absolute;
+      text-align: center;
       top: 0;
       -webkit-transform: scale(0);
           -ms-transform: scale(0);
