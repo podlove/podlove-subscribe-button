@@ -54,6 +54,13 @@ class Clients
       icon: 'cloud/pocketcasts.png'
       register: 'https://play.pocketcasts.com/'
       http: false
+    },
+    {
+      title: 'pod.care'
+      scheme: 'https://pod.care/subscribe?feed='
+      icon: 'cloud/podcare.png'
+      register: 'https://pod.care/#!/login'
+      http: false
     }
   ]
 
