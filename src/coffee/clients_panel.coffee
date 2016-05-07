@@ -44,7 +44,10 @@ class ClientsPanel extends Panel
       _(@podcast.feeds).findWhere({format: cap})
 
   chooseFeed: () ->
-    format = @detectBestFormat()
+    format = if @parent.settings.feed
+      @parent.settings.feed
+    else
+      @detectBestFormat()
     feed = _(@podcast.feeds).findWhere({format: format})
 
   findCustomFeed: (type) =>
@@ -66,7 +69,6 @@ class ClientsPanel extends Panel
           standardUrl
       else
         standardUrl
-
 
     _(@clients).shuffle()
 
@@ -94,6 +96,7 @@ class ClientsPanel extends Panel
     @otherClient.originalUrl = feed.url
 
   render: () ->
+    @container.empty()
     @elem = $(@template(@context()))
     @container.append(@elem)
 

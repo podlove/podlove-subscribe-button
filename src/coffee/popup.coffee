@@ -9,6 +9,7 @@ UserAgent = require('./user_agent.coffee')
 PodcastPanel = require('./podcast_panel.coffee')
 ClientsPanel = require('./clients_panel.coffee')
 FinishPanel = require('./finish_panel.coffee')
+SettingsPanel = require('./settings_panel.coffee')
 
 class Popup
   constructor: (@podcast, @options) ->
@@ -20,6 +21,8 @@ class Popup
   context: -> {
     scriptPath: @options.scriptPath
   }
+
+  settings: {}
 
   render: () ->
     @elem = $(@template(@context()))
@@ -49,6 +52,11 @@ class Popup
     # open help panel
     @elem.find('#podlove-subscribe-popup-help-button').on 'click', (event) =>
       @elem.find('#podlove-subscribe-button-help-panel').toggleClass('visible')
+      $(event.currentTarget).toggleClass('active')
+
+    # open settings panel
+    @elem.find('#podlove-subscribe-popup-settings-button').on 'click', (event) =>
+      @elem.find('#podlove-subscribe-panel-settings').toggleClass('visible')
       $(event.currentTarget).toggleClass('active')
 
     # close help panel
@@ -102,6 +110,8 @@ class Popup
 
         <a href="http://www.podlove.org" title="Podlove" target="_blank" class="podlove-logo"><img src="{{scriptPath}}/images/podlove.svg"></a>
 
+        <div id="podlove-subscribe-popup-settings-button">settings</div>
+        <div id="podlove-subscribe-panel-settings"></div>
         <div id="podlove-subscribe-button-help-panel">
           <span id="podlove-help-close-button" class="podlove-help-close-button"></span>
           <div class="podlove-subscribe-button-help-panel-content">
@@ -122,12 +132,13 @@ class Popup
     @podcastPanel = new PodcastPanel(@elem.find("#{prefix}-podcast"), @)
     @clientsPanel = new ClientsPanel(@elem.find("#{prefix}-clients"), @)
     @finishPanel = new FinishPanel(@elem.find("#{prefix}-finish"), @)
+    @settingsPanel = new SettingsPanel(@elem.find("#{prefix}-settings"), @)
 
   movePanels: (step) ->
     @container = @elem.find('#podlove-subscribe-popup-modal-inner')
     @container.removeClass('swiped-left-0')
     @container.removeClass('swiped-left-1')
     @container.removeClass('swiped-left-2')
-    @container.addClass('swiped-left-' + step );
+    @container.addClass('swiped-left-' + step)
 
 module.exports = Popup

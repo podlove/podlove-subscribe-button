@@ -225,7 +225,7 @@ script.podlove-subscribe-button {
     font-size: 95% !important;
     height: 100%;
     left: 0;
-    overflow-y: auto;
+    overflow: hidden;
     padding: 0 0 0 40px;
     position: absolute;
     top: -100%;
@@ -287,6 +287,41 @@ script.podlove-subscribe-button {
         -webkit-transform: scale(1);
             -ms-transform: scale(1);
                 transform: scale(1); }
+  #podlove-subscribe-popup #podlove-subscribe-panel-settings {
+    font-family: Roboto !important;
+    font-weight: 300;
+    font-size: 95% !important;
+    height: 100%;
+    left: 0;
+    overflow-y: auto;
+    padding: 0 0 0 40px;
+    position: absolute;
+    top: -100%;
+    -webkit-transition: all 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
+    transition: all 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
+    width: 100%;
+    z-index: 2; }
+    #podlove-subscribe-popup #podlove-subscribe-panel-settings .podlove-subscribe-panel-settings-content {
+      height: 100%;
+      overflow: hidden;
+      overflow-y: scroll;
+      padding: 44px 20px 0 0; }
+      #podlove-subscribe-popup #podlove-subscribe-panel-settings .podlove-subscribe-panel-settings-content > * {
+        font-size: 16px !important;
+        line-height: 20px;
+        text-align: left; }
+      #podlove-subscribe-popup #podlove-subscribe-panel-settings .podlove-subscribe-panel-settings-content > h2 {
+        font-size: 20px !important;
+        font-weight: 300;
+        line-height: 24px;
+        margin-top: 0 !important;
+        margin-bottom: 10px; }
+      #podlove-subscribe-popup #podlove-subscribe-panel-settings .podlove-subscribe-panel-settings-content p {
+        margin: 0 0 10px 0; }
+      #podlove-subscribe-popup #podlove-subscribe-panel-settings .podlove-subscribe-panel-settings-content p:last-child {
+        margin-bottom: 44px; }
+    #podlove-subscribe-popup #podlove-subscribe-panel-settings.visible {
+      top: 0; }
   #podlove-subscribe-popup #podlove-subscribe-popup-modal {
     border-radius: 1px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -369,6 +404,11 @@ script.podlove-subscribe-button {
     position: absolute;
     top: 0;
     width: 300px; }
+  #podlove-subscribe-popup #podlove-subscribe-popup-settings-button {
+    bottom: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 5px; }
   #podlove-subscribe-popup #podlove-subscribe-panel-podcast {
     font-size: 14px !important;
     left: 0;

@@ -104,7 +104,8 @@ class Colors
         color: #{@isolatedHoverColor};
       }
 
-      #podlove-subscribe-popup #podlove-subscribe-button-help-panel {
+      #podlove-subscribe-popup #podlove-subscribe-button-help-panel,
+      #podlove-subscribe-popup #podlove-subscribe-panel-settings {
         background-color: #{@buttonColor};
         color: #{@fontColor};
       }

@@ -90,6 +90,8 @@ class Translations
         paragraph1: "You are about to subscribe to a podcast. This will allow your podcast app to automatically download new episodes or access the archive of previously released episodes."
         paragraph2: "The Podlove Subscribe Button helps you to do this. Select your favorite podcast app from a list of potential apps on your device or pick a podcast cloud service on the web that you use."
         paragraph3: "Upon launch, the podcast client should offer you to add the podcast to your list of subscriptions. Use the download link to get the app if not yet available."
+      settings_panel:
+        title: "Settings"
       clients_panel:
         app: "App"
         cloud: "Cloud"
