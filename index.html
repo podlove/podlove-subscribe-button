@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    <style>
+      body {
+        font-family: 'Roboto';
+        font-weight: 300;
+        color: #444;
+        height: 100%;
+        margin: 0 auto;
+        padding-top: 25px;
+        text-align: center;
+        width: 60%;
+      }
+
+      h1,h2,h3 {
+        margin: 1.5em auto 0.5em auto;
+      }
+
+      button {
+        text-transform: uppercase;
+      }
+
+      body.dark {
+        background: #444;
+        color: #fff;
+      }
+
+      body .darktoggle {
+        color: #444;
+      }
+
+      body .lighttoggle {
+        color: #fff;
+        display: none;
+      }
+
+      body.dark .darktoggle {
+        display: none;
+      }
+
+      body.dark .lighttoggle {
+        display: block;
+      }
+
+      hr {
+        border: none;
+        border-top: 1px solid #ccc;
+        margin: 40px -100px 30px;
+      }
+
+      .podlove-subscribe-button-iframe {
+        margin: 0 auto 25px;
+      }
+
+      .feed-form input {
+        font-size: 18px;
+        height: 30px;
+        width: 100%;
+      }
+
+      .feed-form button {
+        background-color: #75ad91;
+        border: 1px solid #456757;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 18px;
+        height: 40px;
+        text-shadow: 0 1px 0 rgba(0, 0, 1, .08);
+        width: 110px;
+      }
+
+      .feed-form button:disabled {
+        background-color: rgb(200, 200, 200);
+        border-color: rgb(240, 240, 240);
+        color: rgb(240, 240, 240);
+      }
+
+      .feed-form .success {
+        background-color: #75ad91;
+        border: 1px solid #456757;
+        border-radius: 2px;
+        color: #fff;
+        display: none;
+        padding: 10px 0;
+        text-shadow: 0 1px 0 rgba(0, 0, 1, .08);
+      }
+
+      .auto-size {
+        margin: 0 auto;
+        width: 300px;
+      }
+
+      @media (max-width: 500px) {
+        body,
+        .auto-size {
+          width: 100%;
+        }
+      }
+    </style>
+    <script src="http://zeptojs.com/zepto.min.js"></script>
+  </head>
+  <body>
+    <script>
+      window.podcastData = {
+        "title": "Newz of the World",
+        "subtitle": "Tim and Mark talk about the Newz™",
+        "description": "Newz of the World is a weekly show about world news. Mark Fonseca Rendeiro and Tim Pritlove come together to present interesting reports and discuss their aspects and possible consequences. Newz of the world wants to be an alternative window to the common media flow and cherry picks interesting developments for you.",
+        "cover": "http://meta.metaebene.me/media/newz/newz-logo-600x600.jpg",
+        "feeds": [
+          {
+            "type": "audio",
+            "format": "mp3",
+            "url": "http://newz-of-the-world.com/feed/mp3",
+            "variant": "high"
+          },
+          {
+            "type": "audio",
+            "format": "aac",
+            "url": "http://newz-of-the-world.com/feed/m4a",
+            "variant": "high",
+            "directory-url-itunes": "https://itunes.apple.com/de/podcast/newz-of-the-world/id492588543"
+          },
+          {
+            "type": "audio",
+            "format": "ogg",
+            "url": "http://newz-of-the-world.com/feed/ogg",
+            "variant": "high"
+          },
+          {
+            "type": "audio",
+            "format": "opus",
+            "url": "http://newz-of-the-world.com/feed/opus",
+            "variant": "high"
+          }
+        ]
+      }
+
+    </script>
+
+    <h1>Podlove Subscribe Button</h1>
+
+    <p>All three formats (rectangle, square and cover) are available in three different styles: filled (default), outline, frameless. In addition there are three available sizes: small, medium (default) and big. All sizes may be combined with the value auto to adapt the button width to the available space. (Note: Does not work with square format!)</p>
+
+    <h2>Rectangle Format (default)</h2>
+
+    <h3>Big</h3>
+    <script class="podlove-subscribe-button" src="https://cdn.podlove.org/subscribe-button/javascripts/app.js" data-language="de" data-size="big" data-json-data="podcastData" ></script>
+    <script class="podlove-subscribe-button" src="https://cdn.podlove.org/subscribe-button/javascripts/app.js" data-language="de" data-size="big" data-json-data="podcastData"  data-style="outline"></script>
+    <script class="podlove-subscribe-button" src="https://cdn.podlove.org/subscribe-button/javascripts/app.js" data-language="de" data-size="big" data-json-data="podcastData"  data-style="frameless"></script>
+
+  </body>
+</html>
+
