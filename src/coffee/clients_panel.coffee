@@ -35,8 +35,8 @@ class ClientsPanel extends Panel
   }
 
   detectBestFormat: () ->
-    capabilities = if @platform == 'linux'
-      ['mp3', 'ogg', 'aac', 'opus']
+    capabilities = if @platform == 'android'
+      ['mp3', 'aac', 'ogg', 'opus']
     else
       ['aac', 'mp3', 'ogg', 'opus']
 
