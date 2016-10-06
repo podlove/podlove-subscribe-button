@@ -27,6 +27,8 @@ Currently, you can set these options:
     data-format: choose a button format, default is a rectangle, options are 'square' and 'cover' (**Note**: 'cover' has a max size of 300px)
     data-style: choose a button style, default is filled, options are 'outline' and 'frameless'
 
+Alternatively, use the shortcode `[podlove-subscribe-button]` in a post or page of your choice. The optional parameter `size=""` can be set to `small`, `medium`, `big`and `big-logo`.
+
 ### Self hosted
 
 Put
