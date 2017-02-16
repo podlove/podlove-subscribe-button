@@ -100,7 +100,7 @@ class Popup
           </div>
         </div>
 
-        <a href="http://www.podlove.org" title="Podlove" target="_blank" class="podlove-logo"><img src="{{scriptPath}}/images/podlove.svg"></a>
+        <a href="https://podlove.org" title="Podlove" target="_blank" class="podlove-logo"><img src="{{scriptPath}}/images/podlove.svg"></a>
 
         <div id="podlove-subscribe-button-help-panel">
           <span id="podlove-help-close-button" class="podlove-help-close-button"></span>
