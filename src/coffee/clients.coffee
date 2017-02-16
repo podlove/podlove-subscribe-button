@@ -131,7 +131,6 @@ class Clients
       title: 'Instacast'
       scheme: 'instacast://'
       icon: 'ios/instacast.png'
-      store: 'https://itunes.apple.com/de/app/instacast-4-podcast-client/id577056377'
     },
     {
       title: 'Overcast'
@@ -200,7 +199,6 @@ class Clients
       title: 'Instacast'
       scheme: 'instacast://'
       icon: 'osx/instacast.png'
-      store: 'https://itunes.apple.com/de/app/instacast/id733258666?mt=12&uo=4'
     },
     {
       title: 'iTunes'
