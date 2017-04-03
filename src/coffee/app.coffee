@@ -102,7 +102,7 @@ class SubscribeButton
 
   # builds the button Iframe and attaches the click event listener
   iframe: () ->
-    @options.id = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
+    @options.id = @options.buttonId || Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
     podcastTitle = escape(@podcast.title)
     buttonUrl = "#{@options.scriptPath}/button.html?id=#{@options.id}&language=#{@options.language}&size=#{@options.size}&style=#{@options.style}&format=#{@options.format}&podcastTitle=#{podcastTitle}&podcastCover=#{@podcast.cover}#{@options.color.toParams()}"
 
