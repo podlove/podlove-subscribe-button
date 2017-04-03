@@ -82,6 +82,12 @@ class Clients
       icon: 'android/podcastaddict.png'
       store: 'https://play.google.com/store/apps/details?id=com.bambuna.podcastaddict'
     },
+    {
+      title: 'Podcast Republic'
+      scheme: 'podcastrepublic://subscribe/'
+      icon: 'android/podcastrepublic.png'
+      store: 'https://play.google.com/store/apps/details?id=com.itunestoppodcastplayer.app'
+    },
     #{
       #title: 'PocketCasts'
       #scheme: 'pktc://'
