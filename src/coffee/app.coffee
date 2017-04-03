@@ -92,8 +92,10 @@ class SubscribeButton
 
   renderButtonIframe: () ->
     iframe = @iframe()
-    $(iframe).hide() if @options.hide
-    @scriptElem.replaceWith(iframe)
+    if @options.hide
+      @scriptElem.remove()
+    else
+      @scriptElem.replaceWith(iframe)
 
   addCss: () ->
     link = $("<link rel='stylesheet' href='#{@options.scriptPath}/stylesheets/app.css'></script>")
