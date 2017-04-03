@@ -82,7 +82,7 @@ class ClientsPanel extends Panel
     _(@cloudClients).shuffle()
 
     Utils.fixIconPath(@osDefault, pathPrefix)
-    @osDefault.title = 'Let device decide'
+    @osDefault.title = @parent.I18n.t('clients_panel.let_device_decide')
     @osDefault.originalUrl = feed.url
     unless @osDefault.scheme == null
       @osDefault.url = "#{@osDefault.scheme}#{feedUrlWithOutHttp}"

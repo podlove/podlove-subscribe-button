@@ -68,6 +68,7 @@ class Translations
         app: "App"
         cloud: "Cloud"
         other_client: "Andere App"
+        let_device_decide: "Automatisch erkennen"
       finish_panel:
         handing_over_to: "Übergebe an<br> %{client}"
         something_went_wrong: "Funktioniert etwas nicht wie erwartet?"
@@ -94,6 +95,7 @@ class Translations
         app: "App"
         cloud: "Cloud"
         other_client: "Other App"
+        let_device_decide: "Let device decide"
       finish_panel:
         handing_over_to: "Handing over to %{client}"
         something_went_wrong: "Did something go wrong?"
