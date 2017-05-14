@@ -16,7 +16,7 @@ We are hosting an always up-to-date version of the Podlove Subscribe Button code
 
     <script class="podlove-subscribe-button" src="https://cdn.podlove.org/subscribe-button/javascripts/app.js" data-language="de" data-size="small" data-json-data="podcastData" data-colors="red;green;blue" data-buttonid="123abc" data-hide="true"></script>
 
-There are currently three options you can set:
+Currently, you can set these options:
 
     data-json-data: name of the variable where the button can find information about the podcast (see Podcast data API section)
     data-language: language the texts on the button and popup should be in (currently supports 'de', 'en', 'eo', 'fi', 'fr', 'nl', 'zh' and 'ja')
