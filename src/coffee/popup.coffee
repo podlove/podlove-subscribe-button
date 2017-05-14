@@ -25,7 +25,6 @@ class Popup
     @elem = $(@template(@context()))
     @body = $('body')
     @html = $('html')
-    @document = $(document)
     @window = $(window)
 
     @body.append(@elem)
