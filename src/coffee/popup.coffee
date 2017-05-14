@@ -47,7 +47,6 @@ class Popup
     $ =>
       @window.focus()
       @window.on 'keydown', (event) =>
-        console.log(event)
         if event.keyCode == 27
           @closePopup()
 
