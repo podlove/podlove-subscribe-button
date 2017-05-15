@@ -25,6 +25,7 @@ class Popup
     @elem = $(@template(@context()))
     @body = $('body')
     @html = $('html')
+    @window = $(window)
 
     @body.append(@elem)
     @disableBackgroundScrolling()
@@ -41,6 +42,13 @@ class Popup
     # close popup on click in background
     @elem.on 'click', () =>
       @closePopup()
+
+    # close popup on esc press
+    $ =>
+      @window.focus()
+      @window.on 'keydown', (event) =>
+        if event.keyCode == 27
+          @closePopup()
 
     # do not close popup on click in modal
     @elem.find('#podlove-subscribe-popup-modal').on 'click', (event) =>
@@ -79,6 +87,8 @@ class Popup
     @elem.addClass('podlove-subscribe-popup-animate')
     window.setTimeout =>
       @elem.removeClass('podlove-subscribe-popup-animate')
+      # remove listener to close popup on esc press
+      @window.off 'keydown'
       @elem.remove()
     , 500
 
