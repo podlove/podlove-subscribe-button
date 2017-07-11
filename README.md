@@ -175,14 +175,13 @@ You can also provide more than one feed link if you have more.
 
 Install requirements
 
-    gem install sass
-    npm install
+    yarn install
 
 Use gulp to build the project or start the server:
 
-    gulp
+    yarn run build
 
-    gulp serve
+    yarn run dev
 
 ## Contribution
 

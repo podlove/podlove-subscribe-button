@@ -2,6 +2,10 @@
   "name": "podlove-subscribe-button",
   "repository": "https://github.com/podlove/podlove-subscribe-button",
   "version": "1.1.0",
+  "scripts": {
+    "build": "gulp",
+    "dev": "gulp serve"
+  },
   "dependencies": {},
   "devDependencies": {
     "coffeeify": "^0.7.0",
