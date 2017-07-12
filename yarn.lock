@@ -1326,7 +1326,7 @@ gulp-browserify@^0.5.0:
     readable-stream "~1.1.10"
     through2 "~0.4.0"
 
-gulp-coffee@^2.3.4:
+gulp-coffee@^2.1.2:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/gulp-coffee/-/gulp-coffee-2.3.4.tgz#e9975faf3f26746fb2e72da9e3f32c9db5746daa"
   dependencies:
@@ -1336,7 +1336,7 @@ gulp-coffee@^2.3.4:
     through2 "^2.0.1"
     vinyl-sourcemaps-apply "^0.2.1"
 
-gulp-concat@^2.6.1:
+gulp-concat@^2.3.4:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/gulp-concat/-/gulp-concat-2.6.1.tgz#633d16c95d88504628ad02665663cee5a4793353"
   dependencies:
@@ -1451,7 +1451,7 @@ gulp-watch@^0.6.9:
     vinyl "^0.3.0"
     vinyl-fs "~0.3.0"
 
-gulp@^3.9.1:
+gulp@^3.6.0:
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/gulp/-/gulp-3.9.1.tgz#571ce45928dd40af6514fc4011866016c13845b4"
   dependencies:

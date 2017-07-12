@@ -50,7 +50,6 @@ script.podlove-subscribe-button {
   padding: 0;
   position: relative;
   text-transform: uppercase;
-  -webkit-transition: all 0.1s cubic-bezier(0.62, 0.28, 0.23, 0.99);
   transition: all 0.1s cubic-bezier(0.62, 0.28, 0.23, 0.99); }
   #podlove-subscribe-button:focus,
   .podlove-subscribe-button:focus {
@@ -150,7 +149,6 @@ script.podlove-subscribe-button {
   position: fixed;
   top: 0;
   vertical-align: middle;
-  -webkit-transition: opacity 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
   transition: opacity 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
   width: 100%;
   z-index: 99999; }
@@ -188,7 +186,6 @@ script.podlove-subscribe-button {
   #podlove-subscribe-popup .podlove-subscribe-back-button,
   #podlove-subscribe-popup #podlove-subscribe-popup-help-button {
     left: 0;
-    -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
     transition: -webkit-transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
     transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
     transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99); }
@@ -229,7 +226,6 @@ script.podlove-subscribe-button {
     padding: 0 0 0 40px;
     position: absolute;
     top: -100%;
-    -webkit-transition: all 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
     transition: all 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
     width: 100%;
     z-index: 2; }
@@ -262,7 +258,6 @@ script.podlove-subscribe-button {
       -webkit-transform: scale(0);
           -ms-transform: scale(0);
               transform: scale(0);
-      -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99) 0.45s;
       transition: -webkit-transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99) 0.45s;
       transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99) 0.45s;
       transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99) 0.45s, -webkit-transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99) 0.45s;
@@ -342,7 +337,6 @@ script.podlove-subscribe-button {
         text-align: left; }
       #podlove-subscribe-popup #podlove-subscribe-popup-modal #podlove-subscribe-popup-modal-inner #podlove-subscribe-panel-container {
         height: 100%;
-        -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
         transition: -webkit-transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
         transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
         transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
@@ -414,7 +408,6 @@ script.podlove-subscribe-button {
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
-    -webkit-transition: all 0.1s cubic-bezier(0.62, 0.28, 0.23, 0.99);
     transition: all 0.1s cubic-bezier(0.62, 0.28, 0.23, 0.99);
     width: 100%; }
     #podlove-subscribe-popup #podlove-subscribe-panel-podcast .podlove-subscribe-button:active, #podlove-subscribe-popup #podlove-subscribe-panel-podcast .podlove-subscribe-button:hover,
@@ -462,7 +455,6 @@ script.podlove-subscribe-button {
           -webkit-transform-origin: 50% 50%;
               -ms-transform-origin: 50% 50%;
                   transform-origin: 50% 50%;
-          -webkit-transition: -webkit-transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
           transition: -webkit-transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
           transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);
           transition: transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99), -webkit-transform 0.25s cubic-bezier(0.62, 0.28, 0.23, 0.99);

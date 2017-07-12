@@ -212,19 +212,19 @@ class Translations
         or_install: "Of installeer de app"
 
     no:
-      button: Abonner
+      button: "Abonner"
       panels:
-        title: Abonner
+        title: "Abonner"
       podcast_panel:
         choose_client: "Velg program"
       help_panel:
-        title: Abonner?
+        title: "Abonner?"
         paragraph1: "Du er i ferd med å abonnere på en podcast. Dette gir din podcast mulighet til å automatisk laste ned nye episoder, og gir tilgang til arkiv med tidligere publiserte episoder."
         paragraph2: "Abonnerknappen hjelper deg å gjøre dette. Velg din favoritt podcast app fra en liste over potensielle apps på enheten eller velge en podcast skytjeneste på nettet som du bruker."
         paragraph3: "Upon launch, the podcast client should offer you to add the podcast to your list of subscriptions. Use the download link to get the app if not yet available."
       clients_panel:
-        app: Program
-        cloud: Sky
+        app: "Program"
+        cloud: "Sky"
         other_client: "Andre program"
       finish_panel:
         handing_over_to: "Handing over to %{client}"
@@ -262,19 +262,19 @@ class Translations
         or_install: "or install app"
 
     ru:
-      button: Подписаться
+      button: "Подписаться"
       panels:
-        title: Подписаться
+        title: "Подписаться"
       podcast_panel:
         choose_client: "выберите приложение."
       help_panel:
-        title: Подписаться?
+        title: "Подписаться?"
         paragraph1: "Вы собираетесь подписаться на подкаст. Это позволит вашему подкаст приложению автоматически загружать новые эпизоды или получить доступ к архиву ранее выпущенных эпизодов."
         paragraph2: "Кнопка Подписаться поможет вам сделать это. Выберите своё любимое подкаст приложение из списка потенциальных приложений для вашего устройства или выберите облачный сервис в интернете, который вы используете."
         paragraph3: "При запуске, подкаст приложение должно предложить вам добавить подкаст в свой список подписок. Используйте ссылку, чтобы получить приложение, если его ещё не имеется."
       clients_panel:
-        app: Приложение
-        cloud: Облоко
+        app: "Приложение"
+        cloud: "Облоко"
         other_client: "другое приложение"
       finish_panel:
         handing_over_to: "перейти к %{client}"
