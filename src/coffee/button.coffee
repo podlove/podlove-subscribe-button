@@ -1,4 +1,4 @@
-$ = require('../../vendor/zepto-browserify.js').Zepto
+$ = require('../../vendor/zepto.js')
 Utils = require('./utils.coffee')
 Translations = require('./translations.coffee')
 Colors = require('./colors.coffee')
