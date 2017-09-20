@@ -1,4 +1,4 @@
-$ = require('../../vendor/zepto-browserify.js').Zepto
+$ = require('../../vendor/zepto.js')
 _ = require('../../vendor/underscore-min.js')
 TinyColor = require('../../vendor/tinycolor-min.js')
 

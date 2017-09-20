@@ -1,4 +1,4 @@
-$ = require('../../vendor/zepto-browserify.js').Zepto
+$ = require('../../vendor/zepto.js')
 Handlebars = require('../../vendor/handlebars.min.js').Handlebars
 
 Panel = require('./panel.coffee')
