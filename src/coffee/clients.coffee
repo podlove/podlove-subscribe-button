@@ -152,7 +152,7 @@ class Clients
     },
     {
       title: 'Podcasts'
-      scheme: 'pcast://'
+      scheme: 'podcast://'
       icon: 'ios/podcasts.png'
       store: 'https://itunes.apple.com/de/app/podcasts/id525463029'
     },
