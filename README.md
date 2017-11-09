@@ -129,7 +129,7 @@ You can also provide more than one feed link if you have more.
   * [Pocket Casts](https://play.pocketcasts.com/)
 
 ### iOS
-  * [Castro](https://itunes.apple.com/de/app/castro-high-fidelity-podcasts/id723142770)
+  * [Castro](https://itunes.apple.com/app/castro-2/id1080840241)
   * [Downcast](https://itunes.apple.com/de/app/downcast/id393858566)
   * [iCatcher](https://itunes.apple.com/de/app/icatcher!-podcast-app/id414419105)
   * [Instacast](https://itunes.apple.com/de/app/instacast-4-podcast-client/id577056377)
