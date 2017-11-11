@@ -119,7 +119,7 @@ class Clients
       title: 'Castro'
       scheme: 'castro://subscribe/'
       icon: 'ios/castro.png'
-      store: 'https://itunes.apple.com/de/app/castro-high-fidelity-podcasts/id723142770'
+      store: 'https://itunes.apple.com/app/castro-2/id1080840241'
     },
     {
       title: 'Downcast'
