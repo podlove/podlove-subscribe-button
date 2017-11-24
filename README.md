@@ -1,4 +1,6 @@
 # Podlove Subscribe Button
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpodlove%2Fpodlove-subscribe-button.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpodlove%2Fpodlove-subscribe-button?ref=badge_shield)
+
 
 ## General
 
@@ -192,3 +194,6 @@ If you find a bug please use [Github Issues](https://github.com/podlove/podlove-
 ## License
 
 [MIT](https://github.com/podlove/podlove-subscribe-button/blob/master/LICENSE)
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpodlove%2Fpodlove-subscribe-button.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpodlove%2Fpodlove-subscribe-button?ref=badge_large)
