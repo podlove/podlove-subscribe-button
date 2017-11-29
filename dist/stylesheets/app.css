@@ -61,6 +61,7 @@ script.podlove-subscribe-button {
     text-align: center; }
 
 #podlove-subscribe-button {
+  border-radius: 0;
   position: absolute;
   text-align: center; }
   #podlove-subscribe-button span {

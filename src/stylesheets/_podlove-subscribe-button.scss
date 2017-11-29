@@ -31,6 +31,7 @@ script.podlove-subscribe-button {
 }
 
 #podlove-subscribe-button {
+  border-radius: 0;
   position: absolute; // fixes an issue in ff where the button is not on top: 0 and therefore cut at the bottom
   text-align: center;
 
