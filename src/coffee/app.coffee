@@ -1,5 +1,5 @@
-$ = require('../../vendor/zepto.js')
-_ = require('../../vendor/underscore-min.js')
+$ = require('jquery')
+_ = require('underscore')
 
 Button = require('./button.coffee')
 Popup = require('./popup.coffee')

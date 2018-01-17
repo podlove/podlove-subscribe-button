@@ -1,6 +1,6 @@
-$ = require('../../vendor/zepto.js')
-Handlebars = require('../../vendor/handlebars.min.js').Handlebars
-_ = require('../../vendor/underscore-min.js')
+$ = require('jquery')
+Handlebars = require('handlebars')
+_ = require('underscore')
 
 Utils = require('./utils.coffee')
 Clients = require('./clients.coffee')

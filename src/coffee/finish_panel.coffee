@@ -1,5 +1,5 @@
-$ = require('../../vendor/zepto.js')
-Handlebars = require('../../vendor/handlebars.min.js').Handlebars
+$ = require('jquery')
+Handlebars = require('handlebars')
 
 Panel = require('./panel.coffee')
 

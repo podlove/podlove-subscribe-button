@@ -40,13 +40,7 @@ gulp.task('javascripts', function() {
   gulp.src(paths.main_javascript, {read: false})
     .pipe(browserify({
       transform: ['coffeeify'],
-      extensions: ['.coffee'],
-      shim: {
-        zepto: {
-          path: './vendor/zepto.js',
-          exports: '$'
-        }
-      }
+      extensions: ['.coffee']
     }))
     .pipe(uglify())
     .pipe(rename('app.js'))

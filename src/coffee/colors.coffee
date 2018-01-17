@@ -1,6 +1,6 @@
-$ = require('../../vendor/zepto.js')
-_ = require('../../vendor/underscore-min.js')
-TinyColor = require('../../vendor/tinycolor-min.js')
+$ = require('jquery')
+_ = require('underscore')
+TinyColor = require('tinycolor2')
 
 class Colors
   constructor: (colorString) ->

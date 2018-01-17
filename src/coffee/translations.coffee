@@ -1,5 +1,5 @@
-_ = require('../../vendor/underscore-min.js')
-Handlebars = require('../../vendor/handlebars.min.js').Handlebars
+_ = require('underscore')
+Handlebars = require('handlebars')
 
 class Translations
   constructor: (language) ->

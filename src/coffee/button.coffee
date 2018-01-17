@@ -1,4 +1,4 @@
-$ = require('../../vendor/zepto.js')
+$ = require('jquery')
 Utils = require('./utils.coffee')
 Translations = require('./translations.coffee')
 Colors = require('./colors.coffee')
