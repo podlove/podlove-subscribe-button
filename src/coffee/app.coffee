@@ -98,6 +98,9 @@ class SubscribeButton
     else
       @scriptElem.replaceWith(@iframe())
 
+    if @options.buttonId
+      $(".podlove-subscribe-button-#{@options.buttonId}").on 'click', => @openPopup(@options)
+
   addEventListener: () ->
     document.body.addEventListener 'openSubscribeButtonPopup', (event) =>
       return unless event.detail.id == @options.id
@@ -123,9 +126,6 @@ class SubscribeButton
     IframeResizer.listen('resizeButton', iframe)
 
     IframeClick.listen(iframe, @openPopup, @options)
-
-    if @options.buttonId
-      $(".podlove-subscribe-button-#{@options.buttonId}").on 'click', => @openPopup(@options)
 
     iframe
 
