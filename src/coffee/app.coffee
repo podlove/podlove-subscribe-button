@@ -50,6 +50,7 @@ class SubscribeButton
       hide: @scriptElem.data('hide')
       style: @scriptElem.data('style')
       format: @scriptElem.data('format')
+      id: @scriptElem.data('buttonid') || Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
 
     # fallback for old color settings
     # if new color setting "data-color" is available, use it,
@@ -85,18 +86,17 @@ class SubscribeButton
     @podcast = data
 
   checkIntegrity: () ->
-    if @podcast.feeds.length == 0
+    if @podcast && @podcast.feeds.length == 0
       text = "Subscribe Button Error. Please add at least one feed."
       console.warn(text)
       window.alert(text)
 
   renderButtonIframe: () ->
-    iframe = @iframe()
     if @options.hide
       @addEventListener()
       @scriptElem.remove()
     else
-      @scriptElem.replaceWith(iframe)
+      @scriptElem.replaceWith(@iframe())
 
   addEventListener: () ->
     document.body.addEventListener 'openSubscribeButtonPopup', (event) =>
@@ -111,7 +111,6 @@ class SubscribeButton
 
   # builds the button Iframe and attaches the click event listener
   iframe: () ->
-    @options.id = @options.buttonId || Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
     podcastTitle = escape(@podcast.title)
     buttonUrl = "#{@options.scriptPath}/button.html?id=#{@options.id}&language=#{@options.language}&size=#{@options.size}&style=#{@options.style}&format=#{@options.format}&podcastTitle=#{podcastTitle}&podcastCover=#{@podcast.cover}#{@options.color.toParams()}"
 
