@@ -62,7 +62,7 @@ class SubscribeButton
     # fallback for old size option "big-logo"
     # size option "big-logo" not needed any more,
     # logo is added via "format: cover"
-    if options.size.indexOf('-logo') >= 0
+    if options.size && options.size.indexOf('-logo') >= 0
       options.size = options.size.replace('-logo', '')
       options.format = 'cover'
 
@@ -93,9 +93,16 @@ class SubscribeButton
   renderButtonIframe: () ->
     iframe = @iframe()
     if @options.hide
+      @addEventListener()
       @scriptElem.remove()
     else
       @scriptElem.replaceWith(iframe)
+
+  addEventListener: () ->
+    document.body.addEventListener 'openSubscribeButtonPopup', (event) =>
+      return unless event.detail.id == @options.id
+      @podcast = event.detail
+      @openPopup(@options)
 
   addCss: () ->
     link = $("<link rel='stylesheet' href='#{@options.scriptPath}/stylesheets/app.css'></script>")
