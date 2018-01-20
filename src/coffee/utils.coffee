@@ -5,7 +5,7 @@ class Utils
     split = string.split('&')
 
     for string in split
-      array = string.split('=')
+      array = string.split(/=(.*)/)
       options[array[0]] = decodeURIComponent(array[1])
 
     options
