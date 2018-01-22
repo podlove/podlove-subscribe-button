@@ -87,12 +87,12 @@ class Button
       })
       window.parent.postMessage(resizeData, '*')
 
-    height = @elem.height()
+    height = @elem.outerHeight()
 
     width = if @autoSize && !@logoElem
       '100%'
     else
-      @elem.width()
+      @elem.outerWidth()
 
     if @logoElem
       img = @logoElem.find('img')
@@ -111,3 +111,4 @@ class Button
       resize(height, width)
 
 module.exports = Button
+
