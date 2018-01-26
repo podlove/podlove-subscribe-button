@@ -4,7 +4,9 @@
   "version": "1.1.0",
   "scripts": {
     "build": "gulp",
-    "dev": "gulp serve"
+    "dev": "gulp serve",
+    "clean": "rm -rf dist/",
+    "deploy:cdn": "rsync -rvt --chmod=D2755,F644 dist/ podlove@rsync.keycdn.com:applications/subscribe-button/"
   },
   "dependencies": {},
   "devDependencies": {
