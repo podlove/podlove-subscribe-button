@@ -191,6 +191,9 @@ If you want to help us translate the button to other languages, please [sign up 
 
 If you find a bug please use [Github Issues](https://github.com/podlove/podlove-subscribe-button/issues) to report it. If you want to add a feature or fix a bug please fork the repository, make your changes in a feature branch and open a pull-request.
 
+## Support
+<a href="https://keycdn.com"><img src="https://logos.keycdn.com/keycdn-logo-black.svg" alt="KeyCDN" width="200px"></a>
+
 ## License
 
 [MIT](https://github.com/podlove/podlove-subscribe-button/blob/master/LICENSE)
