@@ -20,12 +20,15 @@ compile:
   override:
     - yarn build
 
+test:
+  override:
+    - echo "Skipping Tests"
+
 deployment:
-   release:
-    branch: master
+  release:
     tag: /v.*/
     commands:
-      - yarn dist:clean
+      - yarn clean
       - yarn build
       - yarn deploy:cdn
 
