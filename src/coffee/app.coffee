@@ -105,7 +105,8 @@ class SubscribeButton
     document.body.addEventListener 'openSubscribeButtonPopup', (event) =>
       return unless event.detail.id == @options.id
       @podcast = event.detail
-      @openPopup(@options)
+      popupOptions = $.extend(@options, event.detail.options)
+      @openPopup(popupOptions)
 
   addCss: () ->
     link = $("<link rel='stylesheet' href='#{@options.scriptPath}/stylesheets/app.css'></script>")
