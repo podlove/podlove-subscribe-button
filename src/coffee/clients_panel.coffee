@@ -1,4 +1,3 @@
-$ = require('jquery')
 Handlebars = require('handlebars')
 _ = require('underscore')
 
@@ -94,38 +93,41 @@ class ClientsPanel extends Panel
     @otherClient.originalUrl = feed.url
 
   render: () ->
-    @elem = $(@template(@context()))
-    @container.append(@elem)
+    html = @template(@context())
+    @container.insertAdjacentHTML('beforeend', html)
+    @elem = @container.querySelector('.podlove-subscribe-button-clients-panel')
 
-    @elem.find('li a').on 'click', (event) =>
-      client = $(event.target).data('client')
-      platform = $(event.target).data('platform')
-      url = $(event.target).attr('href')
-      @showClient(client, platform, url)
+    items = @elem.querySelectorAll('li a')
+    Array.prototype.forEach.call items, (item) =>
+      item.addEventListener 'click', (event) =>
+        client = event.target.dataset.client
+        platform = event.target.dataset.platform
+        url = event.target.getAttribute('href')
+        @showClient(client, platform, url)
 
-    @elem.find('.podlove-subscribe-local').on 'click', (event) =>
-      @elem.find('.local-clients').show()
-      @elem.find('.cloud-clients').hide()
-      $(event.target).addClass('active')
-      $(event.target).next().removeClass('active')
+    @elem.querySelector('.podlove-subscribe-local').addEventListener 'click', (event) =>
+      @elem.querySelector('.local-clients').style.display = 'block'
+      @elem.querySelector('.cloud-clients').style.display = 'none'
+      event.target.classList.add('active')
+      event.target.nextElementSibling.classList.remove('active')
 
-    @elem.find('.podlove-subscribe-cloud').on 'click', (event) =>
-      @elem.find('.local-clients').hide()
-      @elem.find('.cloud-clients').show()
-      $(event.target).addClass('active')
-      $(event.target).prev().removeClass('active')
+    @elem.querySelector('.podlove-subscribe-cloud').addEventListener 'click', (event) =>
+      @elem.querySelector('.local-clients').style.display = 'none'
+      @elem.querySelector('.cloud-clients').style.display = 'block'
+      event.target.classList.add('active')
+      event.target.previousElementSibling.classList.remove('active')
 
-    form = @elem.find('li form')
-    if form.length
-      form.find('a').off 'click'
-      form.find('a').on 'click', (event) =>
+    form = @elem.querySelector('li form')
+    if form
+      form.querySelector('a').removeEventListener 'click'
+      form.querySelector('a').addEventListener 'click', (event) =>
         event.preventDefault()
 
         form.submit()
 
-        client = $(event.target).data('client')
-        platform = $(event.target).data('platform')
-        url = $(event.target).attr('href')
+        client = event.target.dataset.client
+        platform = event.target.dataset.platform
+        url = event.target.getAttribute('href')
         @showClient(client, platform, url)
 
   showClient: (clientTitle, platform, url) ->
@@ -142,7 +144,7 @@ class ClientsPanel extends Panel
     @parent.finishPanel.render(client, @podcast)
 
   template: Handlebars.compile('
-    <div>
+    <div class="podlove-subscribe-button-clients-panel">
       <div class="device-cloud-switch">
         <button class="podlove-subscribe-local active">{{t "clients_panel.app"}}<span class="podlove-subscribe-tab-active"></span></button><!--
         --><button class="podlove-subscribe-cloud">{{t "clients_panel.cloud"}}<span class="podlove-subscribe-tab-active"></span></button>

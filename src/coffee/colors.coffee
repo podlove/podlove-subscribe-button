@@ -1,4 +1,3 @@
-$ = require('jquery')
 _ = require('underscore')
 TinyColor = require('tinycolor2')
 
@@ -125,8 +124,8 @@ class Colors
         background-color: #{@alphaColor};
       }
     "
-    style = $('<style></style>')
-    style.append(css)
+    style = document.createElement('style')
+    style.textContent = css
     style
 
   _setDefaults: () ->

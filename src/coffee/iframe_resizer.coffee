@@ -6,7 +6,7 @@ class IframeResizer
       catch
         return
 
-      return unless resizeData.id == iframe.attr('id')
+      return unless resizeData.id == iframe.getAttribute('id')
       return unless resizeData.listenTo == listenTo
 
       height = resizeData.height + (offset.height || 0)
@@ -15,8 +15,8 @@ class IframeResizer
       else
         resizeData.width + (offset.width || 0)
 
-      iframe.height(height)
-      iframe.width(width)
+      iframe.height = height
+      iframe.width = width
 
       callback(iframe) if callback?
     ), false)

@@ -1,4 +1,3 @@
-$ = require('jquery')
 _ = require('underscore')
 
 Button = require('./button.coffee')
@@ -11,8 +10,10 @@ Translations = require('./translations.coffee')
 
 class SubscribeButton
   @init: (selector = '.podlove-subscribe-button') ->
+    if typeof selector != 'string'
+      selector = '.podlove-subscribe-button'
     subscribeButtons = []
-    elems = $(selector)
+    elems = document.querySelectorAll(selector)
 
     return if elems.length == 0
 
@@ -21,9 +22,7 @@ class SubscribeButton
 
     window.subscribeButtons = subscribeButtons
 
-  constructor: (scriptElem) ->
-    @scriptElem = $(scriptElem)
-
+  constructor: (@scriptElem) ->
     @getOptions()
     @checkForValidLanguage()
     @getPodcastData()
@@ -43,22 +42,22 @@ class SubscribeButton
       format: 'rectangle'
 
     options =
-      scriptPath: @scriptElem.attr('src').match(/(^.*\/)/)[0].replace(/javascripts\/$/, '').replace(/\/$/, '')
-      language: @scriptElem.data('language')
-      size: @scriptElem.data('size')
-      buttonId: @scriptElem.data('buttonid')
-      hide: @scriptElem.data('hide')
-      style: @scriptElem.data('style')
-      format: @scriptElem.data('format')
-      id: @scriptElem.data('buttonid') || Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
+      scriptPath: @scriptElem.getAttribute('src').match(/(^.*\/)/)[0].replace(/javascripts\/$/, '').replace(/\/$/, '')
+      language: @scriptElem.dataset.language
+      size: @scriptElem.dataset.size
+      buttonId: @scriptElem.dataset.buttonid
+      hide: @scriptElem.dataset.hide
+      style: @scriptElem.dataset.style
+      format: @scriptElem.dataset.format
+      id: @scriptElem.dataset.buttonid || Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
 
     # fallback for old color settings
     # if new color setting "data-color" is available, use it,
     # if not, use the old "data-colors"
-    if @scriptElem.data('color')
-      options.color = new Colors(@scriptElem.data('color'))
+    if @scriptElem.dataset.color
+      options.color = new Colors(@scriptElem.dataset.color)
     else
-      options.color = new Colors(@scriptElem.data('colors'))
+      options.color = new Colors(@scriptElem.dataset.colors)
 
     # fallback for old size option "big-logo"
     # size option "big-logo" not needed any more,
@@ -67,7 +66,7 @@ class SubscribeButton
       options.size = options.size.replace('-logo', '')
       options.format = 'cover'
 
-    @options = $.extend(defaultOptions, options)
+    @options = _.extend(defaultOptions, options)
 
   checkForValidLanguage: () ->
     translations = new Translations(@options.language)
@@ -75,9 +74,9 @@ class SubscribeButton
       @options.language = Translations.defaultLanguage
 
   getPodcastData: () ->
-    if jsonUrl = @scriptElem.data('json-url')
+    if jsonUrl = @scriptElem.dataset.jsonUrl
       @fetchPodcastDataFromUrl(jsonUrl)
-    if dataSource = @scriptElem.data('json-data')
+    if dataSource = @scriptElem.dataset.jsonData
       @extractPodcastDataFromJson(window[dataSource])
 
   fetchPodcastDataFromUrl: () ->
@@ -99,30 +98,32 @@ class SubscribeButton
       @scriptElem.replaceWith(@iframe())
 
     if @options.buttonId
-      $(".podlove-subscribe-button-#{@options.buttonId}").on 'click', => @openPopup(@options)
+      document.querySelector(".podlove-subscribe-button-#{@options.buttonId}").on 'click', => @openPopup(@options)
 
   addEventListener: () ->
     document.body.addEventListener 'openSubscribeButtonPopup', (event) =>
       return unless event.detail.id == @options.id
       @podcast = event.detail
-      popupOptions = $.extend(@options, event.detail.options)
+      popupOptions = _.extend(@options, event.detail.options)
       @openPopup(popupOptions)
 
   addCss: () ->
-    link = $("<link rel='stylesheet' href='#{@options.scriptPath}/stylesheets/app.css'></script>")
-    @scriptElem.after(link)
-    link.after(@options.color.toStyles())
+    link = "<link rel=\"stylesheet\" href=\"#{@options.scriptPath}/stylesheets/app.css\">"
+    link += @options.color.toStyles().outerHTML
+    @scriptElem.insertAdjacentHTML('afterend', link)
 
   # builds the button Iframe and attaches the click event listener
   iframe: () ->
     podcastTitle = escape(@podcast.title)
     buttonUrl = "#{@options.scriptPath}/button.html?id=#{@options.id}&language=#{@options.language}&size=#{@options.size}&style=#{@options.style}&format=#{@options.format}&podcastTitle=#{podcastTitle}&podcastCover=#{@podcast.cover}#{@options.color.toParams()}"
 
-    iframe = $('<iframe>')
-      .attr('src', encodeURI(buttonUrl))
-      .attr('id', @options.id)
-      .addClass('podlove-subscribe-button-iframe')
-      .css({border: 'none', display: 'inline-block', overflow: 'hidden'})
+    iframe = document.createElement('iframe')
+    iframe.setAttribute('src', encodeURI(buttonUrl))
+    iframe.setAttribute('id', @options.id)
+    iframe.classList.add('podlove-subscribe-button-iframe')
+    iframe.style.border = 'none'
+    iframe.style.display = 'inline-block'
+    iframe.style.overflow = 'hidden'
 
     IframeResizer.listen('resizeButton', iframe)
 
@@ -137,4 +138,8 @@ window.SubscribeButton = SubscribeButton
 window.Button = Button
 
 # init the button
-$ -> SubscribeButton.init()
+ready = document.attachEvent ? document.readyState == "complete" : document.readyState != "loading"
+if ready
+  SubscribeButton.init()
+else
+  document.addEventListener('DOMContentLoaded', SubscribeButton.init)

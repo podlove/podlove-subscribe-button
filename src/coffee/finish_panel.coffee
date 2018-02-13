@@ -1,4 +1,3 @@
-$ = require('jquery')
 Handlebars = require('handlebars')
 
 Panel = require('./panel.coffee')
@@ -14,39 +13,45 @@ class FinishPanel extends Panel
   }
 
   render: (client, podcast) ->
-    @container.empty()
-    @elem = $(@template(@context(client, podcast)))
-    @container.append(@elem)
+    @container.innerHTML = ''
+    html = @template(@context(client, podcast))
+    @container.insertAdjacentHTML('beforeend', html)
+    @elem = @container.querySelector('.podlove-subscribe-button-finish-panel')
 
-    @elem.find('input').on 'click', () ->
-      this.select()
+    input = @elem.querySelector('input') 
+    if input
+      input.addEventListener 'click', () ->
+        this.select()
 
-    copyUrlButton = @elem.find('.copy-url-button')
-    copyUrlButton.hide()
-    copyUrlField = @elem.find('.copy-url-field')
-    copyNotification = @elem.find('.copy-notification')
-    copyNotification.hide()
-    @attachCopyFunctionality(copyUrlButton, copyUrlField, copyNotification)
+    copyUrlButton = @elem.querySelector('.copy-url-button')
+    if copyUrlButton
+      copyUrlButton.style.display = 'none'
+    copyUrlField = @elem.querySelector('.copy-url-field')
+    copyNotification = @elem.querySelector('.copy-notification')
+    if copyNotification
+      copyNotification.style.display = 'none'
+    if copyUrlField
+      @attachCopyFunctionality(copyUrlButton, copyUrlField, copyNotification)
 
   attachCopyFunctionality: (button, field, notification) ->
     return if !document.queryCommandSupported('copy') ||
       !document.queryCommandSupported('selectAll')
 
-    field.on 'focus', () =>
+    field.addEventListener 'focus', () =>
       document.execCommand('selectAll', false, null)
 
-    button.show()
-    button.on 'click', () =>
-      field.attr('contenteditable', true)
+    button.style.display = 'block'
+    button.addEventListener 'click', () =>
+      field.setAttribute('contenteditable', true)
       field.focus()
       document.execCommand('copy', false, null)
       field.blur()
-      field.attr('contenteditable', false)
-      notification.show()
+      field.setAttribute('contenteditable', false)
+      notification.style.display = 'block'
 
 
   template: Handlebars.compile('
-    <div>
+    <div class="podlove-subscribe-button-finish-panel">
       <img class="podcast-cover" src="{{client.icon}}">
       {{#if client.scheme}}
         <h1>{{t "finish_panel.handing_over_to" client=client.title}}...</h1>

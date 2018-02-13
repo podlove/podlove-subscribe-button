@@ -1,4 +1,3 @@
-$ = require('jquery')
 Handlebars = require('handlebars')
 Translations = require('./translations.coffee')
 
@@ -21,14 +20,15 @@ class PodcastPanel extends Panel
   }
 
   render: () ->
-    @elem = $(@template(@context()))
-    @container.append(@elem)
+    html = @template(@context())
+    @container.insertAdjacentHTML('beforeend', html)
+    @elem = @container.querySelector('.podlove-subscribe-button-podcast-panel')
 
-    @elem.find('button').on 'click', (event) =>
+    @elem.querySelector('button').addEventListener 'click', (event) =>
       @parent.movePanels(1)
 
   template: Handlebars.compile('
-    <div{{#if subtitle}} class="podcast-has-subtitles"{{/if}}>
+    <div class="podlove-subscribe-button-podcast-panel{{#if subtitle}} podcast-has-subtitles"{{/if}}>
       {{#if cover}}
       <img class="podcast-cover" src="{{cover}}" alt="Logo of {{title}}">
       {{else}}

@@ -1,4 +1,3 @@
-$ = require('jquery')
 Handlebars = require('handlebars')
 
 Utils = require('./utils.coffee')
@@ -21,75 +20,77 @@ class Popup
     scriptPath: @options.scriptPath
   }
 
-  render: () ->
-    @elem = $(@template(@context()))
-    @body = $('body')
-    @html = $('html')
-    @window = $(window)
+  closePopupOnEsc: (event) =>
+    if event.keyCode == 27
+      @closePopup()
 
-    @body.append(@elem)
+  render: () ->
+    html = @template(@context())
+    @body = document.body
+    @html = document.querySelector('html')
+    @window = window
+
+    @body.insertAdjacentHTML('beforeend', html)
+    @elem = @body.querySelector('#podlove-subscribe-popup')
     @disableBackgroundScrolling()
 
     # remove animation class for fadein animation
     window.setTimeout =>
-      @elem.removeClass('podlove-subscribe-popup-animate')
+      @elem.classList.remove('podlove-subscribe-popup-animate')
     , 500
 
     # close popup on click at close button
-    @elem.find('#podlove-subscribe-popup-close-button').on 'click', () =>
+    @elem.querySelector('#podlove-subscribe-popup-close-button').addEventListener 'click', () =>
       @closePopup()
 
     # close popup on click in background
-    @elem.on 'click', () =>
+    @elem.addEventListener 'click', () =>
       @closePopup()
 
     # close popup on esc press
-    $ =>
-      @window.focus()
-      @window.on 'keydown', (event) =>
-        if event.keyCode == 27
-          @closePopup()
+    @window.focus()
+    @window.addEventListener 'keydown', @closePopupOnEsc
 
     # do not close popup on click in modal
-    @elem.find('#podlove-subscribe-popup-modal').on 'click', (event) =>
+    @elem.querySelector('#podlove-subscribe-popup-modal').addEventListener 'click', (event) =>
       event.stopPropagation()
 
     # open help panel
-    @elem.find('#podlove-subscribe-popup-help-button').on 'click', (event) =>
-      @elem.find('#podlove-subscribe-button-help-panel').toggleClass('visible')
-      $(event.currentTarget).toggleClass('active')
+    @elem.querySelector('#podlove-subscribe-popup-help-button').addEventListener 'click', (event) =>
+      @elem.querySelector('#podlove-subscribe-button-help-panel').classList.toggle('visible')
+      event.currentTarget.classList.toggle('active')
 
     # close help panel
-    @elem.find('#podlove-help-close-button').on 'click', (event) =>
-      @elem.find('#podlove-subscribe-button-help-panel').toggleClass('visible')
-      $(event.currentTarget).toggleClass('active')
+    @elem.querySelector('#podlove-help-close-button').addEventListener 'click', (event) =>
+      @elem.querySelector('#podlove-subscribe-button-help-panel').classList.toggle('visible')
+      event.currentTarget.classList.toggle('active')
 
     # swipe to clients panel when button was clicked
-    @elem.find('.podlove-subscribe-back-button').on 'click', (event) =>
-      @container = @elem.find('#podlove-subscribe-popup-modal-inner')
-      if @container.hasClass('swiped-left-2')
+    @elem.querySelector('.podlove-subscribe-back-button').addEventListener 'click', (event) =>
+      @container = @elem.querySelector('#podlove-subscribe-popup-modal-inner')
+      if @container.classList.contains('swiped-left-2')
         @movePanels(1)
-      else if @container.hasClass('swiped-left-1')
+      else if @container.classList.contains('swiped-left-1')
         @movePanels(0)
 
   disableBackgroundScrolling: () ->
-    @oldHtmlOverflow = @html.css('overflow')
-    @oldBodyOverflow = @body.css('overflow')
-    @html.css('overflow', 'hidden')
-    @body.css('overflow', 'hidden')
+    @oldHtmlOverflow = @html.style.overflow
+    @oldBodyOverflow = @body.style.overflow
+    @html.style.overflow = 'hidden'
+    @body.style.overflow = 'hidden'
 
   enableBackgroundScrolling: (body) ->
-    @html.css('overflow', @oldHtmlOverflow)
-    @body.css('overflow', @oldBodyOverflow)
+    @html.style.overflow = @oldHtmlOverflow
+    @body.style.overflow = @oldBodyOverflow
 
   closePopup: () ->
     @enableBackgroundScrolling()
-    @elem.addClass('podlove-subscribe-popup-animate')
+    @elem.classList.add('podlove-subscribe-popup-animate')
     window.setTimeout =>
-      @elem.removeClass('podlove-subscribe-popup-animate')
+      @elem.classList.remove('podlove-subscribe-popup-animate')
       # remove listener to close popup on esc press
-      @window.off 'keydown'
-      @elem.remove()
+      @window.removeEventListener 'keydown', @closePopupOnEsc
+      @elem.parentNode.removeChild(@elem)
     , 500
 
   template: Handlebars.compile('
@@ -129,15 +130,15 @@ class Popup
 
   initPanels: () ->
     prefix = '#podlove-subscribe-panel'
-    @podcastPanel = new PodcastPanel(@elem.find("#{prefix}-podcast"), @)
-    @clientsPanel = new ClientsPanel(@elem.find("#{prefix}-clients"), @)
-    @finishPanel = new FinishPanel(@elem.find("#{prefix}-finish"), @)
+    @podcastPanel = new PodcastPanel(@elem.querySelector("#{prefix}-podcast"), @)
+    @clientsPanel = new ClientsPanel(@elem.querySelector("#{prefix}-clients"), @)
+    @finishPanel = new FinishPanel(@elem.querySelector("#{prefix}-finish"), @)
 
   movePanels: (step) ->
-    @container = @elem.find('#podlove-subscribe-popup-modal-inner')
-    @container.removeClass('swiped-left-0')
-    @container.removeClass('swiped-left-1')
-    @container.removeClass('swiped-left-2')
-    @container.addClass('swiped-left-' + step );
+    @container = @elem.querySelector('#podlove-subscribe-popup-modal-inner')
+    @container.classList.remove('swiped-left-0')
+    @container.classList.remove('swiped-left-1')
+    @container.classList.remove('swiped-left-2')
+    @container.classList.add('swiped-left-' + step );
 
 module.exports = Popup

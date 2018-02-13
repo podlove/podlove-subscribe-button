@@ -1,4 +1,3 @@
-$ = require('jquery')
 _ = require('underscore')
 
 class IframeClick
