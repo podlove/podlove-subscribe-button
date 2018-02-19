@@ -27,7 +27,9 @@ class Button
 
   render: () ->
     # Add size classes
-    @elem.classList.add(@options.size.replace('%20', ' '))
+    sizeOptions = @options.size.replace('%20', ' ').split(' ')
+    sizeOptions.forEach (sizeOption) =>
+      @elem.classList.add(sizeOption)
 
     # Add title attritbute to button element
     @elem.setAttribute('title', @I18n.t('button'))
@@ -42,8 +44,10 @@ class Button
 
     # Check for cover image
     if @logoElem
-      image = "<img src='#{@options.podcastCover}' alt='Logo of #{@options.podcastTitle}'>"
-      @logoElem.innerHtml = image
+      image = document.createElement('img')
+      image.src = @options.podcastCover
+      image.alt = "Logo of #{@options.podcastTitle}"
+      @logoElem.appendChild(image)
       @logoElem.addEventListener 'click', (event) =>
         window.parent.postMessage("clicked_#{@options.id}", '*')
 
@@ -95,15 +99,15 @@ class Button
       @elem.offsetWidth
 
     if @logoElem
-      img = @logoElem.find('img')
+      img = @logoElem.querySelector('img')
 
       showImage = =>
-        @logoElem.height(width)
+        @logoElem.style.height = "#{width}px"
         height += width
-        @logoElem.show()
+        @logoElem.style.display = 'block'
         resize(height, width)
 
-      unless img[0].complete
+      unless img.complete
         img.addEventListener 'load', showImage
       else
         showImage()
