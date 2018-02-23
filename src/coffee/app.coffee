@@ -26,11 +26,13 @@ class SubscribeButton
     @getOptions()
     @checkForValidLanguage()
     @getPodcastData()
+
+    return @
+
+  init: () ->
     @checkIntegrity()
     @addCss()
     @renderButtonIframe()
-
-    return @
 
   update: () ->
     @getPodcastData()
@@ -79,10 +81,25 @@ class SubscribeButton
     if dataSource = @scriptElem.dataset.jsonData
       @extractPodcastDataFromJson(window[dataSource])
 
-  fetchPodcastDataFromUrl: () ->
+  fetchPodcastDataFromUrl: (url) ->
+    request = new XMLHttpRequest()
+    request.open('GET', url, true)
+
+    request.onload = () =>
+      if request.status >= 200 && request.status < 400
+        resp = JSON.parse(request.responseText)
+        @extractPodcastDataFromJson(resp)
+      else
+        console.debug('Error fetching configuration', request)
+
+    request.onerror = () =>
+      console.debug('Error fetching configuration', request)
+
+    request.send()
 
   extractPodcastDataFromJson: (data) ->
     @podcast = data
+    @init()
 
   checkIntegrity: () ->
     if @podcast && @podcast.feeds.length == 0
