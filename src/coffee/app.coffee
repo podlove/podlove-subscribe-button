@@ -78,7 +78,7 @@ class SubscribeButton
   getPodcastData: () ->
     if jsonUrl = @scriptElem.dataset.jsonUrl
       @fetchPodcastDataFromUrl(jsonUrl)
-    if dataSource = @scriptElem.dataset.jsonData
+    else if dataSource = @scriptElem.dataset.jsonData
       @extractPodcastDataFromJson(window[dataSource])
     else
       @init()
