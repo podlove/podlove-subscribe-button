@@ -24,12 +24,12 @@ class SubscribeButton
 
   constructor: (@scriptElem) ->
     @getOptions()
-    @checkForValidLanguage()
     @getPodcastData()
 
     return @
 
   init: () ->
+    @checkForValidLanguage()
     @checkIntegrity()
     @addCss()
     @renderButtonIframe()
@@ -80,6 +80,8 @@ class SubscribeButton
       @fetchPodcastDataFromUrl(jsonUrl)
     if dataSource = @scriptElem.dataset.jsonData
       @extractPodcastDataFromJson(window[dataSource])
+    else
+      @init()
 
   fetchPodcastDataFromUrl: (url) ->
     request = new XMLHttpRequest()
@@ -99,6 +101,10 @@ class SubscribeButton
 
   extractPodcastDataFromJson: (data) ->
     @podcast = data
+    if data
+      @options = _.extend(@options, data.configuration)
+      @options.color = new Colors(@options.color)
+
     @init()
 
   checkIntegrity: () ->
@@ -109,13 +115,15 @@ class SubscribeButton
 
   renderButtonIframe: () ->
     if @options.hide
-      @addEventListener()
       @scriptElem.remove()
     else
       @scriptElem.replaceWith(@iframe())
 
+    @addEventListener()
     if @options.buttonId
-      document.querySelector(".podlove-subscribe-button-#{@options.buttonId}").on 'click', => @openPopup(@options)
+      customElement = document.querySelector(".podlove-subscribe-button-#{@options.buttonId}")
+      return unless customElement.length
+      customElement.on 'click', => @openPopup(@options)
 
   addEventListener: () ->
     document.body.addEventListener 'openSubscribeButtonPopup', (event) =>
@@ -155,7 +163,11 @@ window.SubscribeButton = SubscribeButton
 window.Button = Button
 
 # init the button
-ready = document.attachEvent ? document.readyState == "complete" : document.readyState != "loading"
+ready = false
+ready = if document.attachEvent
+  document.readyState == 'complete'
+else
+  document.readyState != 'loading'
 if ready
   SubscribeButton.init()
 else
