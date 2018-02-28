@@ -28,7 +28,7 @@ class PodcastPanel extends Panel
       @parent.movePanels(1)
 
   template: Handlebars.compile('
-    <div class="podlove-subscribe-button-podcast-panel{{#if subtitle}} podcast-has-subtitles"{{/if}}>
+    <div class="podlove-subscribe-button-podcast-panel{{#if subtitle}} podcast-has-subtitles{{/if}}">
       {{#if cover}}
       <img class="podcast-cover" src="{{cover}}" alt="Logo of {{title}}">
       {{else}}
