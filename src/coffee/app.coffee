@@ -103,7 +103,8 @@ class SubscribeButton
     @podcast = data
     if data
       @options = _.extend(@options, data.configuration)
-      @options.color = new Colors(@options.color)
+      if data.configuration?.color
+        @options.color = new Colors(@options.color)
 
     @init()
 
