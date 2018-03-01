@@ -115,10 +115,10 @@ class SubscribeButton
       window.alert(text)
 
   renderButtonIframe: () ->
-    if @options.hide
-      @scriptElem.remove()
-    else
-      @scriptElem.replaceWith(@iframe())
+    unless @options.hide
+      @scriptElem.parentNode.insertBefore(@iframe(), @scriptElem)
+
+    @scriptElem.parentNode.removeChild(@scriptElem)
 
     @addEventListener()
     if @options.buttonId

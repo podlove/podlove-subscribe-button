@@ -55,7 +55,7 @@ class Button
 
   setColors: () ->
     colors = Colors.fromParams(@options)
-    @elem.after(colors.toStyles())
+    @elem.insertAdjacentHTML('afterend', colors.toStyles())
 
   getOptions: () ->
     @options = Utils.locationToOptions(window.location.search)
