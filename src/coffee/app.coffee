@@ -123,8 +123,8 @@ class SubscribeButton
     @addEventListener()
     if @options.buttonId
       customElement = document.querySelector(".podlove-subscribe-button-#{@options.buttonId}")
-      return unless customElement.length
-      customElement.on 'click', => @openPopup(@options)
+      return unless customElement
+      customElement.addEventListener('click', => @openPopup(@options))
 
   addEventListener: () ->
     document.body.addEventListener 'openSubscribeButtonPopup', (event) =>
