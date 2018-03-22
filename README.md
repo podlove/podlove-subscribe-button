@@ -115,6 +115,14 @@ If you want to provide a fallback when no javascript is present, we recommend to
 
 You can also provide more than one feed link if you have more.
 
+### Automatic opening on page load
+
+If you request the page where the button is embedded with the hash param `#openSubscribeButtonPopup` the popup will automatically open. There should only be one embed code present on the site though!
+
+Example:
+
+    https://example.com/subscribe#openSubscribeButtonPopup
+
 ## Supported Apps / Services
 
 ### Android

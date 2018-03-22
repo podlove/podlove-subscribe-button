@@ -121,10 +121,18 @@ class SubscribeButton
     @scriptElem.parentNode.removeChild(@scriptElem)
 
     @addEventListener()
+    @checkForAutomaticOpening()
     if @options.buttonId
       customElement = document.querySelector(".podlove-subscribe-button-#{@options.buttonId}")
       return unless customElement
       customElement.addEventListener('click', => @openPopup(@options))
+
+  checkForAutomaticOpening: () ->
+    return unless window.location.hash == '#openSubscribeButtonPopup'
+    self = @
+    window.setTimeout (->
+      self.openPopup(self.options)
+    ), 250
 
   addEventListener: () ->
     document.body.addEventListener 'openSubscribeButtonPopup', (event) =>
