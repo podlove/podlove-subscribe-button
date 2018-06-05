@@ -143,6 +143,7 @@ class SubscribeButton
       return unless event.detail.id == @options.id
       @podcast = event.detail
       popupOptions = _.extend(@options, event.detail.options)
+      @checkForValidLanguage()
       @openPopup(popupOptions)
 
   addCss: () ->
