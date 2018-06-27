@@ -53,7 +53,7 @@ class Clients
       scheme: 'http://pcasts.in/feed/'
       icon: 'cloud/pocketcasts.png'
       register: 'https://play.pocketcasts.com/'
-      http: false
+      encodePath: true
     }
   ]
 
@@ -77,6 +77,13 @@ class Clients
       store: 'https://play.google.com/store/apps/details?id=fm.player'
     },
     {
+      title: 'PocketCasts'
+      scheme: 'pktc://subscribe/'
+      icon: 'android/pocketcasts.png'
+      install: 'https://play.google.com/store/apps/details?id=au.com.shiftyjelly.pocketcasts'
+      encodePath: true
+    },
+    {
       title: 'Podcast Addict'
       scheme: 'podcastaddict://'
       icon: 'android/podcastaddict.png'
@@ -88,12 +95,6 @@ class Clients
       icon: 'android/podcastrepublic.png'
       store: 'https://play.google.com/store/apps/details?id=com.itunestoppodcastplayer.app'
     },
-    #{
-      #title: 'PocketCasts'
-      #scheme: 'pktc://'
-      #icon: 'android/pocketcasts-128.png'
-      #install: 'https://play.google.com/store/apps/details?id=au.com.shiftyjelly.pocketcasts'
-    #},
     {
       title: 'Podcatcher Deluxe'
       scheme: 'pcd://'
