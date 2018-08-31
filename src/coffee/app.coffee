@@ -140,6 +140,7 @@ class SubscribeButton
 
   addEventListener: () ->
     document.body.addEventListener 'openSubscribeButtonPopup', (event) =>
+      return if document.querySelectorAll('#podlove-subscribe-popup').length
       return unless event.detail.id == @options.id
       @podcast = event.detail
       popupOptions = _.extend(@options, event.detail.options)
