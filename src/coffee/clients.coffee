@@ -180,6 +180,7 @@ class Clients
       title: 'Clementine'
       scheme: 'itpc://'
       icon: 'linux/clementine.png'
+      install: 'https://www.clementine-player.org/downloads'
     },
     {
       title: 'gPodder'

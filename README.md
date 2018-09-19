@@ -151,7 +151,7 @@ Example:
   * [RSSRadio](https://itunes.apple.com/app/rssradio-premium-podcast-downloader/id679025359)
 
 ### Linux
-  * [Clementine](https://www.clementine-player.org/)
+  * [Clementine](https://www.clementine-player.org/downloads)
   * [gPodder](http://gpodder.org/downloads)
 
 ### OSX
