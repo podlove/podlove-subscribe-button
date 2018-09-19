@@ -175,16 +175,16 @@ class Clients
       store: 'https://itunes.apple.com/app/rssradio-premium-podcast-downloader/id679025359'
     }
   ]
-  linux: [
+  unix: [
     {
       title: 'Clementine'
       scheme: 'itpc://'
-      icon: 'linux/clementine.png'
+      icon: 'unix/clementine.png'
     },
     {
       title: 'gPodder'
       scheme: 'gpodder://'
-      icon: 'linux/gpodder.png'
+      icon: 'unix/gpodder.png'
       install: 'http://gpodder.org/downloads'
     }
   ],

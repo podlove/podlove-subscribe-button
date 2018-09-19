@@ -14,7 +14,7 @@ UAs =
   windowsphone: /trident/i
   android: /android/i
   ios: /(ipad|iphone|ipod)/i
-  linux: /linux/i
+  unix: /(linux|openbsd|freebsd|netbsd)/i
   osx: /macintosh/i
 
 module.exports = UserAgent
