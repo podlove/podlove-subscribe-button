@@ -30,6 +30,10 @@ class Clients
     windowsphone: {
       scheme: 'pcast:'
       icon: 'generic/windowsphone.png'
+    },
+    linux: {
+      scheme: 'pcast:'
+      icon: 'generic/rss.png'
     }
   }
 
