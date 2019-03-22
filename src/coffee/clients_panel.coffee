@@ -57,7 +57,8 @@ class ClientsPanel extends Panel
     for client in @clients
       Utils.fixIconPath(client, pathPrefix)
 
-      standardUrl = "#{client.scheme}#{feedUrlWithOutHttp}"
+      feedUrl = if client.http then feed.url else feedUrlWithOutHttp
+      standardUrl = "#{client.scheme}#{feedUrl}"
       client.url = if type = client.customFeedType
         if customUrl = feed["directory-url-#{type}"]
           customUrl

@@ -143,6 +143,7 @@ class Clients
       scheme: 'overcast://x-callback-url/add?url='
       icon: 'ios/overcast.png'
       store: 'https://itunes.apple.com/de/app/overcast-podcast-player/id888422857'
+      http: true
     },
     {
       title: 'PocketCasts'
