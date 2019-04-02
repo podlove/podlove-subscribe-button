@@ -74,8 +74,8 @@ jobs:
       - attach_workspace:
           at: ~/podlove-subscribe-button
       - add_ssh_keys:
-        fingerprints:
-          - "f2:a4:32:03:dc:62:7c:dd:0d:99:ce:1c:35:88:2b:1b"
+          fingerprints:
+            - "f2:a4:32:03:dc:62:7c:dd:0d:99:ce:1c:35:88:2b:1b"
       - run: yarn deploy:cdn
 
 workflows:
