@@ -21,7 +21,7 @@ jobs:
     - attach_workspace:
         at: ~/podlove-subscribe-button
     - checkout
-    - run: export PATH="$PATH:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin" 
+    - run: export PATH="$PATH:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
     - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
     - run: nvm install 8.9.4 && nvm alias default 8.9.4
     - restore_cache:
@@ -66,8 +66,8 @@ jobs:
     - store_artifacts:
         path: /tmp/circleci-test-results
     - persist_to_workspace:
-      root: .
-      paths: .
+        root: .
+        paths: .
   deploy:
     <<: *defaults-js
     steps:
