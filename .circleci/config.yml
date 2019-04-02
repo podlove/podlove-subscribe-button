@@ -2,7 +2,7 @@ version: 2
 
 defaults: &defaults
   parallelism: 1
-  working_directory: ~/podlove/podlove-subscribe-button
+  working_directory: ~/podlove-subscribe-button
 
 defaults-js: &defaults-js
   <<: *defaults
@@ -18,12 +18,12 @@ jobs:
   build:
     <<: *defaults-js
     steps:
+    - attach_workspace:
+        at: ~/podlove-subscribe-button
     - checkout
     - run: export PATH="$PATH:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin" 
     - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
-    - run:
-        working_directory: ~/podlove/podlove-subscribe-button
-        command: nvm install 8.9.4 && nvm alias default 8.9.4
+    - run: nvm install 8.9.4 && nvm alias default 8.9.4
     - restore_cache:
         keys:
         # This branch if available
@@ -68,6 +68,8 @@ jobs:
   deploy:
     <<: *defaults-js
     steps:
+      - attach_workspace:
+          at: ~/podlove-subscribe-button
       - run: yarn deploy:cdn
 
 workflows:
