@@ -115,7 +115,6 @@ class Clients
       title: 'uPod'
       scheme: 'upod://'
       icon: 'android/upod.png'
-      store: 'https://play.google.com/store/apps/details?id=mobi.upod.app'
     }
   ]
 
