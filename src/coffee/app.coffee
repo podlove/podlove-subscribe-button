@@ -169,6 +169,11 @@ class SubscribeButton
 
     IframeClick.listen(iframe, @openPopup, @options)
 
+    if @options.buttonId
+      $(".podlove-subscribe-button-#{@options.buttonId}").on 'click', =>
+        @openPopup(@options)
+        return false
+
     iframe
 
   openPopup: (options) =>
