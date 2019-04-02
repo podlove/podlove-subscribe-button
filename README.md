@@ -154,7 +154,7 @@ Example:
   * [Clementine](https://www.clementine-player.org/downloads)
   * [gPodder](http://gpodder.org/downloads)
 
-### OSX
+### macOS
   * [Downcast](https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4)
   * [Instacast](https://itunes.apple.com/de/app/instacast/id733258666?mt=12&uo=4)
   * [iTunes](http://www.apple.com/itunes/)
