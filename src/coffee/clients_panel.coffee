@@ -5,6 +5,21 @@ Utils = require('./utils.coffee')
 Clients = require('./clients.coffee')
 Panel = require('./panel.coffee')
 
+prepareURL =(url, scheme, http, encodeHttp, encodePath) ->
+  parser = document.createElement('a');
+  parser.href = url;
+  preparedURL = ""
+  preparedURL += scheme
+  if http
+    preparedURL +=
+      if encodeHttp then encodeURIComponent(parser.protocol + "//")
+      else parser.protocol + "//"
+  preparedURL +=
+    if encodePath then encodeURIComponent(parser.host + parser.pathname + parser.search)
+    else parser.host + parser.pathname + parser.search
+  console.log(preparedURL)
+  return preparedURL
+
 class ClientsPanel extends Panel
   constructor: (@container, @parent) ->
     @podcast = @parent.podcast
@@ -66,10 +81,9 @@ class ClientsPanel extends Panel
         if customUrl = feed["directory-url-#{type}"]
           customUrl
         else
-          standardUrl
+          prepareURL feed.url,client.scheme,client.http,client.encodeHttp,client.encodePath
       else
-        standardUrl
-
+        prepareURL feed.url,client.scheme,client.http,client.encodeHttp,client.encodePath
 
     _(@clients).shuffle()
 
@@ -85,7 +99,7 @@ class ClientsPanel extends Panel
         client.url = client.scheme
         client.feedUrl = cloudFeedUrl
       else
-        client.url = "#{client.scheme}#{cloudFeedUrl}"
+        client.url = prepareURL feed.url,client.scheme,client.http,client.encodeHttp,client.encodePath
 
     _(@cloudClients).shuffle()
 
@@ -93,7 +107,7 @@ class ClientsPanel extends Panel
     @osDefault.title = @parent.I18n.t('clients_panel.let_device_decide')
     @osDefault.originalUrl = feed.url
     unless @osDefault.scheme == null
-      @osDefault.url = "#{@osDefault.scheme}#{feedUrlWithOutHttp}"
+      @osDefault.url = prepareURL feed.url,@osDefault.scheme
       # necessary for displaying the right finish panel content
       @osDefault.scheme = null
 
