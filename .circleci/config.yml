@@ -68,10 +68,7 @@ jobs:
   deploy:
     <<: *defaults-js
     steps:
-      - run:
-        name: Deploy to KeyCDN
-        command: |
-          yarn deploy:cdn
+      - run: yarn deploy:cdn
 
 workflows:
   version: 2
