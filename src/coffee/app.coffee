@@ -170,13 +170,16 @@ class SubscribeButton
     IframeClick.listen(iframe, @openPopup, @options)
 
     if @options.buttonId
-      $(".podlove-subscribe-button-#{@options.buttonId}").on 'click', =>
+      $(".podlove-subscribe-button-#{@options.buttonId}").on 'click', (event) =>
+        event.preventDefault()
+        event.stopPropagation()
         @openPopup(@options)
         return false
 
     iframe
 
   openPopup: (options) =>
+    return if document.querySelectorAll('#podlove-subscribe-popup').length
     new Popup(@podcast, options)
 
 window.SubscribeButton = SubscribeButton
