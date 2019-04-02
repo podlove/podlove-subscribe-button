@@ -54,9 +54,8 @@ jobs:
     # Compile
     #   This would typically go in either a build or a build-and-test job when using workflows
     # This is based on your 1.0 configuration file or project settings
-    - run:
-      - yarn clean
-      - yarn build
+    - run: yarn clean
+    - run: yarn build
     # Save test results
     - store_test_results:
         path: /tmp/circleci-test-results
