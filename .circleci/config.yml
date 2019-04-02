@@ -1,0 +1,88 @@
+version: 2
+
+defaults: &defaults
+  parallelism: 1
+  working_directory: ~/podlove/podlove-subscribe-button
+
+defaults-js: &defaults-js
+  <<: *defaults
+  shell: /bin/bash --login
+  environment:
+    CIRCLE_ARTIFACTS: /tmp/circleci-artifacts
+    CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
+  docker:
+  - image: circleci/build-image:ubuntu-14.04-XXL-upstart-1189-5614f37
+    command: /sbin/init
+
+jobs:
+  build:
+    <<: *defaults-js
+    steps:
+    - checkout
+    - run: export PATH="$PATH:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin" 
+    - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
+    - run:
+        working_directory: ~/podlove/podlove-subscribe-button
+        command: nvm install 8.9.4 && nvm alias default 8.9.4
+    - restore_cache:
+        keys:
+        # This branch if available
+        - v1-dep-{{ .Branch }}-
+        # Default branch if not
+        - v1-dep-master-
+        # Any branch if there are none on the default branch - this should be unnecessary if you have your default branch configured correctly
+        - v1-dep-
+    # This is based on your 1.0 configuration file or project settings
+    - run: yarn
+    - run: npm rebuild node-sass
+    # Save dependency cache
+    - save_cache:
+        key: v1-dep-{{ .Branch }}-{{ epoch }}
+        paths:
+        # This is a broad list of cache paths to include many possible development environments
+        # You can probably delete some of these entries
+        - vendor/bundle
+        - ~/virtualenvs
+        - ~/.m2
+        - ~/.ivy2
+        - ~/.bundle
+        - ~/.go_workspace
+        - ~/.gradle
+        - ~/.cache/bower
+        # These cache paths were specified in the 1.0 config
+        - ~/.cache/yarn
+        - ./node_modules
+    # Compile
+    #   This would typically go in either a build or a build-and-test job when using workflows
+    # This is based on your 1.0 configuration file or project settings
+    - run: yarn clean
+    - run: yarn build
+    # Save test results
+    - store_test_results:
+        path: /tmp/circleci-test-results
+    # Save artifacts
+    - store_artifacts:
+        path: /tmp/circleci-artifacts
+    - store_artifacts:
+        path: /tmp/circleci-test-results
+  deploy:
+    <<: *defaults-js
+    steps:
+      - run:
+        name: Deploy to KeyCDN
+        command: |
+          yarn deploy:cdn
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+            tags:
+              only: /v.*/
