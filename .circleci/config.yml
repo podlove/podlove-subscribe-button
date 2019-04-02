@@ -18,6 +18,7 @@ jobs:
   build:
     <<: *defaults-js
     steps:
+    - checkout
     - run: export PATH="$PATH:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin" 
     - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
     - run:
