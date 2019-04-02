@@ -51,13 +51,17 @@ class ClientsPanel extends Panel
 
   prepareClients: (pathPrefix) ->
     feed = @chooseFeed() || {}
-    feedUrlWithOutHttp = feed.url.replace(/^(http|https):\/\//, '')
     return false unless feed.url
+    feedUrlWithOutHttp = feed.url.replace(/^(http|https):\/\//, '')
 
     for client in @clients
       Utils.fixIconPath(client, pathPrefix)
 
-      standardUrl = "#{client.scheme}#{feedUrlWithOutHttp}"
+      standardUrl = if -1 == client.scheme.indexOf('?')
+        "#{client.scheme}#{feedUrlWithOutHttp}"
+      else
+        "#{client.scheme}#{encodeURIComponent(feedUrlWithOutHttp)}"
+
       client.url = if type = client.customFeedType
         if customUrl = feed["directory-url-#{type}"]
           customUrl
@@ -72,6 +76,11 @@ class ClientsPanel extends Panel
     for client in @cloudClients
       Utils.fixIconPath(client, pathPrefix)
       cloudFeedUrl = if client.http then feed.url else feedUrlWithOutHttp
+      cloudFeedUrl = if -1 == client.scheme.indexOf('?')
+        cloudFeedUrl
+      else
+        encodeURIComponent(cloudFeedUrl)
+
       if client.post
         client.url = client.scheme
         client.feedUrl = cloudFeedUrl
