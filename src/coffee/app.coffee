@@ -85,10 +85,6 @@ class SubscribeButton
 
   fetchPodcastDataFromUrl: (url) ->
     request = new XMLHttpRequest()
-    sslPage = document.location.protocol == 'https:'
-    urlIsHttp = url.substr(0, 5) == 'http:'
-    if sslPage && urlIsHttp
-      url = "https://cdn.podigee.com/ssl-proxy/#{url}"
     request.open('GET', url, true)
 
     request.onload = () =>
