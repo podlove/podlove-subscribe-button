@@ -168,7 +168,7 @@ class Translations
       help_panel:
         title: "Souscrire?"
         paragraph1: "Vous êtes sur le point de souscrire à un podcast. Ceci permettra à votre application podcast de télécharger automatiquement de nouveaux épisodes ou d’accéder aux archives d’épisodes préalablement diffusés."
-        paragraph2: "Le bouton souscrire au Podlove vous aide à faire cela. Sélectionnez votre application podcast favorite à partir d’une liste d’applications potentielles sur votre appareil ou choisissez un service de « podcast cloud » sur internet que vous utilisez"
+        paragraph2: "Le bouton souscrire au Podlove vous aide à faire cela. Sélectionnez votre application podcast favorite à partir d’une liste d’applications potentielles sur votre appareil ou choisissez le service podcast dans le cloud que vous utilisez."
         paragraph3: "Durant le lancement, le client podcast devrait vous offrir la possibilité d’ajouter le podcast à votre liste de souscriptions. Utilisez le lien de téléchargement pour obtenir l’application si celle-ci n’est pas encore présente."
       clients_panel:
         app: "App"
@@ -176,14 +176,14 @@ class Translations
         other_client: "Autre App"
       finish_panel:
         handing_over_to: "Transfert vers %{client}"
-        something_went_wrong: "Y a-t-il eut des problèmes ?"
+        something_went_wrong: "Y a-t-il eut des problèmes?"
         try_again: "Essayer à nouveau"
-        install: "Visite %{client} du site internet"
+        install: "Visiter le site de %{client}"
         register_an_account: "Enregistrer un compte avec"
-        please_copy_url: "Veuillez copier l’URL ci-dessous et ajoutez le à votre podcast ou application RSS."
-        copy_button_text: "Copy URL"
-        copy_success: "URL copied to clipboard"
-        or_install: "ou installer l‘application"
+        please_copy_url: "Veuillez copier l’URL ci-dessous et ajoutez le à votre application de podcasts ou application RSS."
+        copy_button_text: "Copier l'URL"
+        copy_success: "URL copié"
+        or_install: "ou installer l'application"
 
     nl:
       button: "Abonneren"
