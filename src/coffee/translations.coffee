@@ -122,15 +122,16 @@ class Translations
         app: "Aplikaĵo"
         cloud: "Nubo"
         other_client: "Alia aplikaĵo"
+        let_the_device_decide: "Aŭtomata propono"
       finish_panel:
         handing_over_to: "Transdonanta al %{client}"
         something_went_wrong: "Ĉu io misfunkciis?"
         try_again: "Reprovi"
-        install: "Viziti la retejon de %{client}"
+        install: "Instali %{client}'n"
         register_an_account: "Registriĝi ĉe "
         please_copy_url: "Bonvolu kopii la suban URLn kaj aldoni ĝin al via podkasta aplikaĵo aŭ RSS-legilo."
-        copy_button_text: "Copy URL"
-        copy_success: "URL copied to clipboard"
+        copy_button_text: "Kopii URLn"
+        copy_success: "URL kopiite"
         or_install: "aŭ instali la aplikaĵon"
 
     fi:
