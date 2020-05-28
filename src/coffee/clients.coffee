@@ -57,7 +57,7 @@ class Clients
       scheme: 'http://pcasts.in/feed/'
       icon: 'cloud/pocketcasts.png'
       register: 'https://play.pocketcasts.com/'
-      encodePath: true
+      encodePath: false
     }
   ]
 
