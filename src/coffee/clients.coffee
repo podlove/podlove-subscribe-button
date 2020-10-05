@@ -227,6 +227,31 @@ class Clients
     },
   ]
 
+  osx_catalina: [
+    {
+      title: 'Downcast'
+      scheme: 'downcast://'
+      icon: 'osx/downcast.png'
+      store: 'https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4'
+    },
+    {
+      title: 'Instacast'
+      scheme: 'instacast://'
+      icon: 'osx/instacast.png'
+    },
+    {
+      title: 'Podcasts'
+      scheme: 'podcast://'
+      icon: 'osx/podcasts.png'
+    },
+    {
+      title: 'PodGrasp'
+      scheme: 'podgrasp://subscribe/'
+      icon: 'osx/podgrasp.png'
+      store: 'https://itunes.apple.com/de/app/podgrasp-podcast-player/id530928805'
+    },
+  ]
+
   windowsphone: [
     {
       title: 'BringCast'
