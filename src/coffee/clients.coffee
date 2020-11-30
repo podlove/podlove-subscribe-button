@@ -58,6 +58,12 @@ class Clients
       icon: 'cloud/pocketcasts.png'
       register: 'https://play.pocketcasts.com/'
       encodePath: true
+    },
+    {
+      title: 'podStation'
+      scheme: 'https://podstation.github.io/subscribe-ext/?feedUrl='
+      icon: 'cloud/podstation.svg'
+      encodePath: true
     }
   ]
 
