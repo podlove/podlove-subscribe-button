@@ -11,8 +11,7 @@ defaults-js: &defaults-js
     CIRCLE_ARTIFACTS: /tmp/circleci-artifacts
     CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
   docker:
-  - image: circleci/build-image:ubuntu-14.04-XXL-upstart-1189-5614f37
-    command: /sbin/init
+  - image: circleci/node:8
 
 jobs:
   build:
@@ -23,7 +22,7 @@ jobs:
     - checkout
     - run: export PATH="$PATH:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
     - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
-    - run: nvm install 8.9.4 && nvm alias default 8.9.4
+    - run: nvm install 8.12.0 && nvm alias default 8.12.0
     - restore_cache:
         keys:
         # This branch if available
