@@ -66,7 +66,7 @@ To work the button needs information about the podcast, which needs to be provid
             "format": "aac",
             "url": "http://newz-of-the-world.com/feed/mp4",
             "variant": "high",
-            "directory-url-itunes": "https://itunes.apple.com/de/podcast/newz-of-the-world/id492588543"
+            "directory-url-itunes": "https://apps.apple.com/podcast/newz-of-the-world/id492588543"
           },
           {
             "type": "audio",
@@ -129,9 +129,7 @@ Example:
   * [AntennaPod](https://play.google.com/store/apps/details?id=de.danoeh.antennapod)
   * [Player.fm](https://play.google.com/store/apps/details?id=fm.player)
   * [Podcast Addict](https://play.google.com/store/apps/details?id=com.bambuna.podcastaddict)
-  * [Podcatcher Deluxe](https://play.google.com/store/search?q=pub:Kevin%20Hausmann)
   * [Podkicker](https://play.google.com/store/apps/details?id=ait.podka)
-  * [uPod](https://play.google.com/store/apps/details?id=mobi.upod.app)
 
 ### Cloud
   * [gpodder.net](https://gpodder.net/)
@@ -139,26 +137,24 @@ Example:
   * [Pocket Casts](https://play.pocketcasts.com/)
 
 ### iOS
-  * [Castro](https://itunes.apple.com/app/castro-2/id1080840241)
-  * [Downcast](https://itunes.apple.com/de/app/downcast/id393858566)
-  * [iCatcher](https://itunes.apple.com/de/app/icatcher!-podcast-app/id414419105)
-  * [Instacast](https://itunes.apple.com/de/app/instacast-4-podcast-client/id577056377)
-  * [Overcast](https://itunes.apple.com/de/app/overcast-podcast-player/id888422857)
-  * [PocketCasts](https://itunes.apple.com/de/app/pocket-casts/id414834813)
-  * [Podcasts](https://itunes.apple.com/de/app/podcasts/id525463029)
-  * [Podcat](https://itunes.apple.com/app/podcat/id845960230)
-  * [PodGrasp](https://itunes.apple.com/de/app/podgrasp-podcast-player/id531648276)
-  * [RSSRadio](https://itunes.apple.com/app/rssradio-premium-podcast-downloader/id679025359)
+  * [Castro](https://apps.apple.com/app/castro-2/id1080840241)
+  * [Downcast](https://apps.apple.com/app/downcast/id393858566)
+  * [iCatcher](https://apps.apple.com/app/icatcher!-podcast-app/id414419105)
+  * [Instacast](https://apps.apple.com/app/instacast-4-podcast-client/id577056377)
+  * [Overcast](https://apps.apple.com/app/overcast-podcast-player/id888422857)
+  * [PocketCasts](https://apps.apple.com/app/pocket-casts/id414834813)
+  * [Podcasts](https://apps.apple.com/app/podcasts/id525463029)
+  * [Podcat](https://apps.apple.com/app/podcat/id845960230)
+  * [RSSRadio](https://apps.apple.com/app/rssradio-podcast-player/id386600664)
 
 ### Linux
   * [Clementine](https://www.clementine-player.org/downloads)
   * [gPodder](http://gpodder.org/downloads)
 
 ### macOS
-  * [Downcast](https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4)
-  * [Instacast](https://itunes.apple.com/de/app/instacast/id733258666?mt=12&uo=4)
+  * [Downcast](https://apps.apple.com/app/downcast/id668429425?mt=12&uo=4)
+  * [Instacast](https://apps.apple.com/app/instacast/id733258666?mt=12&uo=4)
   * [iTunes](http://www.apple.com/itunes/)
-  * [PodGrasp](https://itunes.apple.com/de/app/podgrasp-podcast-player/id530928805)
 
 ### WindowsPhone
   * [BringCast](http://windowsphone.com/s?appId=e5abef38-d413-e011-9264-00237de2db9e)
@@ -167,19 +163,10 @@ Example:
   * [Podcast Picker](http://windowsphone.com/s?appId=79b72069-b656-47d2-bab1-fa2d4061825e)
   * [Podcasts](undefined)
 
-### Windows7
+### Windows
   * [gPodder](http://gpodder.org/downloads)
   * [iTunes](http://www.apple.com/itunes/)
 
-### Windows8
-  * [gPodder](http://gpodder.org/downloads)
-  * [iTunes](http://www.apple.com/itunes/)
-  * [Podscout](http://apps.microsoft.com/windows/de-de/app/podscout/f4316b46-7682-4cea-948b-53d135b2df17)
-
-### Windows81
-  * [gPodder](http://gpodder.org/downloads)
-  * [iTunes](http://www.apple.com/itunes/)
-  * [Podscout](http://apps.microsoft.com/windows/de-de/app/podscout/f4316b46-7682-4cea-948b-53d135b2df17)
 
 ## Development
 

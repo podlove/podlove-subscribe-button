@@ -123,19 +123,19 @@ class Clients
       title: 'Castro'
       scheme: 'castro://subscribe/'
       icon: 'ios/castro.png'
-      store: 'https://itunes.apple.com/app/castro-2/id1080840241'
+      store: 'https://apps.apple.com/app/castro-2/id1080840241'
     },
     {
       title: 'Downcast'
       scheme: 'downcast://'
       icon: 'ios/downcast.png'
-      store: 'https://itunes.apple.com/de/app/downcast/id393858566'
+      store: 'https://apps.apple.com/app/downcast/id393858566'
     },
     {
       title: 'iCatcher'
       scheme: 'icatcher://'
       icon: 'ios/icatcher.png'
-      store: 'https://itunes.apple.com/de/app/icatcher!-podcast-app/id414419105'
+      store: 'https://apps.apple.com/app/icatcher!-podcast-app/id414419105'
     },
     {
       title: 'Instacast'
@@ -146,38 +146,32 @@ class Clients
       title: 'Overcast'
       scheme: 'overcast://x-callback-url/add?url='
       icon: 'ios/overcast.png'
-      store: 'https://itunes.apple.com/de/app/overcast-podcast-player/id888422857'
+      store: 'https://apps.apple.com/app/overcast-podcast-player/id888422857'
       http: true
     },
     {
       title: 'PocketCasts'
       scheme: 'pktc://subscribe/'
       icon: 'ios/pocketcasts.png'
-      store: 'https://itunes.apple.com/de/app/pocket-casts/id414834813'
+      store: 'https://apps.apple.com/app/pocket-casts/id414834813'
     },
     {
       title: 'Podcasts'
       scheme: 'podcast://'
       icon: 'ios/podcasts.png'
-      store: 'https://itunes.apple.com/de/app/podcasts/id525463029'
+      store: 'https://apps.apple.com/app/podcasts/id525463029'
     },
     {
       title: 'Podcat'
       scheme: 'podcat://'
       icon: 'ios/podcat.png'
-      store: 'https://itunes.apple.com/app/podcat/id845960230'
-    },
-    {
-      title: 'PodGrasp'
-      scheme: 'podgrasp://subscribe/'
-      icon: 'ios/podgrasp.png'
-      store: 'https://itunes.apple.com/de/app/podgrasp-podcast-player/id531648276'
+      store: 'https://apps.apple.com/app/podcat/id845960230'
     },
     {
       title: 'RSSRadio'
       scheme: 'rssradio://'
       icon: 'ios/rssradio.png'
-      store: 'https://itunes.apple.com/app/rssradio-premium-podcast-downloader/id679025359'
+      store: 'https://apps.apple.com/app/rssradio-premium-podcast-downloader/id679025359'
     }
   ]
   unix: [
@@ -199,7 +193,7 @@ class Clients
       title: 'Downcast'
       scheme: 'downcast://'
       icon: 'osx/downcast.png'
-      store: 'https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4'
+      store: 'https://apps.apple.com/app/downcast/id668429425?mt=12&uo=4'
     },
     #{
       #title: 'gPodder'
@@ -218,12 +212,6 @@ class Clients
       icon: 'osx/itunes.png'
       install: 'http://www.apple.com/itunes/'
       customFeedType: 'itunes'
-    },
-    {
-      title: 'PodGrasp'
-      scheme: 'podgrasp://subscribe/'
-      icon: 'osx/podgrasp.png'
-      store: 'https://itunes.apple.com/de/app/podgrasp-podcast-player/id530928805'
     },
   ]
 
