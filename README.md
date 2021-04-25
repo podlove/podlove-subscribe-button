@@ -53,7 +53,7 @@ To work the button needs information about the podcast, which needs to be provid
         "title": "Newz of the World",
         "subtitle": "Tim and Mark talk about the Newz™",
         "description": "Newz of the World is a weekly show about world news. Mark Fonseca Rendeiro and Tim Pritlove come together to present interesting reports and discuss their aspects and possible consequences. Newz of the world wants to be an alternative window to the common media flow and cherry picks interesting developments for you.",
-        "cover": "http://meta.metaebene.me/media/newz/newz-logo-600x600.jpg",
+        "cover": "https://media.metaebene.me/media/newz/newz-logo-600x600.jpg",
         "feeds": [
           {
             "type": "audio",
