@@ -22,6 +22,7 @@ prepareURL =(url, scheme, http, encodeHttp, encodePath) ->
 
 class ClientsPanel extends Panel
   constructor: (@container, @parent) ->
+    super()
     @podcast = @parent.podcast
     @platform = @parent.platform
     @clients = new Clients(@platform)

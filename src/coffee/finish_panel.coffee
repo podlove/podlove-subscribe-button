@@ -4,6 +4,7 @@ Panel = require('./panel.coffee')
 
 class FinishPanel extends Panel
   constructor: (@container, @parent) ->
+    super()
 
   context: (client, podcast) -> {
     client: client,

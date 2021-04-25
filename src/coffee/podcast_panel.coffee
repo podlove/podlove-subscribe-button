@@ -5,6 +5,7 @@ Panel = require('./panel.coffee')
 
 class PodcastPanel extends Panel
   constructor: (@container, @parent) ->
+    super()
     @podcast = @parent.podcast
 
     if @podcast.subtitle && @podcast.subtitle != ''

@@ -1,7 +1,6 @@
 'use strict';
 
 var gulp = require('gulp'),
-    gutil = require('gulp-util'),
     sass = require('gulp-sass'),
     coffee = require('gulp-coffee'),
     watch = require('gulp-watch'),
@@ -28,7 +27,6 @@ gulp.task('stylesheets', function() {
   return gulp.src(paths.stylesheets)
   .pipe(sourcemaps.init())
     .pipe(sass({style: 'compressed'}))
-    .pipe(autoprefixer({ browsers: ['last 5 versions'] }))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./dist/stylesheets'))
     .pipe(gzip())
