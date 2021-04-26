@@ -166,12 +166,15 @@ class SubscribeButton
     IframeClick.listen(iframe, @openPopup, @options)
 
     if @options.buttonId
-      $(".podlove-subscribe-button-#{@options.buttonId}").on 'click', (event) =>
+      customElement = document.querySelector(".podlove-subscribe-button-#{@options.buttonId}")
+      return unless customElement
+      customElement.addEventListener('click', (event) =>
         event.preventDefault()
         event.stopPropagation()
         @openPopup(@options)
         return false
-
+      )
+      
     iframe
 
   openPopup: (options) =>
