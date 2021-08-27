@@ -8,9 +8,7 @@
     "clean": "rm -rf dist/",
     "deploy:cdn": "rsync -rvt --chmod=D2755,F644 dist/ podlove@rsync.keycdn.com:applications/subscribe-button/"
   },
-  "dependencies": {},
-  "devDependencies": {
-  "dependencies": {},
+  "dependencies": {
     "coffeeify": "^3.0.1",
     "coffeescript": "^2.5.1",
     "gulp": "^3.9.1",
@@ -30,7 +28,7 @@
     "underscore": "^1.13.1"
   },
   "engines": {
-    "node": ">=8.9.4 < 9.0.0",
+    "node": ">=8.9.4 < 11.0.0",
     "yarn": ">=1.1.0"
   },
   "browserslist": [
