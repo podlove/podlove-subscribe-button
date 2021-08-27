@@ -26,7 +26,7 @@ jobs:
     - run: export PATH="$PATH:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
     - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
     - node/install:
-          version: 8.12.0
+          node-version: 8.12.0
           install-yarn: true
     - run: node --version
     - restore_cache:
