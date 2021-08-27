@@ -83,6 +83,9 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "f2:a4:32:03:dc:62:7c:dd:0d:99:ce:1c:35:88:2b:1b"
+      - run: sudo apt update
+      - run: sudo apt-get install rsync
+      - run: mkdir -p ~/.ssh/ && echo "$REMOTE_HOSTKEY" >> ~/.ssh/known_hosts
       - run: yarn deploy:cdn
 
 workflows:
