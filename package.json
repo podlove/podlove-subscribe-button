@@ -11,7 +11,7 @@
   "devDependencies": {
     "coffeeify": "^3.0.1",
     "coffeescript": "^2.5.1",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-browserify": "^0.5.1",
     "gulp-coffee": "^3.0.3",
@@ -24,11 +24,13 @@
     "gulp-uglify": "^3.0.2",
     "gulp-watch": "^5.0.1",
     "handlebars": "^4.7.7",
+    "node-sass": "^6.0.1",
+    "sass": "^1.38.1",
     "tinycolor2": "^1.4.2",
     "underscore": "^1.13.1"
   },
   "engines": {
-    "node": ">=8.9.4 < 11.0.0",
+    "node": ">=8.9.4",
     "yarn": ">=1.1.0"
   },
   "browserslist": [
