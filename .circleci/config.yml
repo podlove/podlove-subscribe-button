@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@8.12.0
+  node: circleci/node@4.7.0
 
 defaults: &defaults
   parallelism: 1
@@ -25,7 +25,7 @@ jobs:
     - checkout
     - run: export PATH="$PATH:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
     - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
-    - run: nvm alias default 8.12.0
+    - run: nvm install 8.12.0 && nvm alias default 8.12.0
     - restore_cache:
         keys:
         # This branch if available
