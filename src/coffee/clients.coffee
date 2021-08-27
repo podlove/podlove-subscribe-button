@@ -190,79 +190,21 @@ class Clients
   ],
   osx: [
     {
-      title: 'Downcast'
-      scheme: 'downcast://'
-      icon: 'osx/downcast.png'
-      store: 'https://apps.apple.com/app/downcast/id668429425?mt=12&uo=4'
-    },
-    #{
-      #title: 'gPodder'
-      #scheme: 'gpodder://'
-      #icon: 'osx/gpodder.png'
-      #install: 'http://gpodder.org/downloads'
-    #},
-    {
-      title: 'Instacast'
-      scheme: 'instacast://'
-      icon: 'osx/instacast.png'
-    },
-    {
-      title: 'iTunes'
-      scheme: 'itpc://'
-      icon: 'osx/itunes.png'
-      install: 'http://www.apple.com/itunes/'
-      customFeedType: 'itunes'
-    },
-  ]
-
-  osx_catalina: [
-    {
-      title: 'Downcast'
-      scheme: 'downcast://'
-      icon: 'osx/downcast.png'
-      store: 'https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4'
-    },
-    {
-      title: 'Instacast'
-      scheme: 'instacast://'
-      icon: 'osx/instacast.png'
-    },
-    {
-      title: 'Podcasts'
-      scheme: 'podcast://'
-      icon: 'osx/podcasts_catalina.png'
-    },
-    {
-      title: 'PodGrasp'
-      scheme: 'podgrasp://subscribe/'
-      icon: 'osx/podgrasp.png'
-      store: 'https://itunes.apple.com/de/app/podgrasp-podcast-player/id530928805'
-    },
-  ]
-
-  osx_big_sur: [
-    {
-      title: 'Downcast'
-      scheme: 'downcast://'
-      icon: 'osx/downcast.png'
-      store: 'https://itunes.apple.com/de/app/downcast/id668429425?mt=12&uo=4'
-    },
-    {
-      title: 'Instacast'
-      scheme: 'instacast://'
-      icon: 'osx/instacast.png'
-    },
-    {
       title: 'Podcasts'
       scheme: 'podcast://'
       icon: 'osx/podcasts_big_sur.png'
     },
     {
-      title: 'PodGrasp'
-      scheme: 'podgrasp://subscribe/'
-      icon: 'osx/podgrasp.png'
-      store: 'https://itunes.apple.com/de/app/podgrasp-podcast-player/id530928805'
+      title: 'Downcast'
+      scheme: 'downcast://'
+      icon: 'osx/downcast.png'
+      store: 'https://apps.apple.com/app/downcast/id668429425'
     },
+    {
+      title: 'Instacast'
+      scheme: 'instacast://'
+      icon: 'osx/instacast.png'
+    }
   ]
 
   windowsphone: [
@@ -385,19 +327,6 @@ class Clients
     }
   ]
 
-  blackBerry: [
-    #{
-      #title: 'bPod'
-      #scheme: '???:'
-      #icon: 'blackberry/bpod.png'
-    #},
-    #{
-      #title: 'gPodder'
-      #scheme: 'gpodder://'
-      #icon: 'blackberry/gpodder.png'
-      #install: 'http://gpodder.org/downloads'
-    #}
-  ]
 
 
 

@@ -15,8 +15,6 @@ UAs =
   android: /android/i
   ios: /(ipad|iphone|ipod)/i
   unix: /(linux|openbsd|freebsd|netbsd)/i
-  osx_catalina: /macintosh.+10(_|\.)15/i
-  osx_big_sur: /macintosh.+((10(_|\.)16)|(11(_|\.)))/i
   osx: /macintosh/i
 
 module.exports = UserAgent
