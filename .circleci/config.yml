@@ -27,6 +27,7 @@ jobs:
     - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
     - node/install:
           node-version: 10.24.1
+          nvm-version: 6.14.12
           install-yarn: true
     - run: node --version
     - restore_cache:
