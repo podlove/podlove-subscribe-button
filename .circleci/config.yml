@@ -1,4 +1,8 @@
-version: 2
+version: 2.1
+
+orbs:
+  node: circleci/node@4.7.0
+  rsync: germade/rsync@0.0.1
 
 defaults: &defaults
   parallelism: 1
@@ -22,7 +26,11 @@ jobs:
     - checkout
     - run: export PATH="$PATH:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
     - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
-    - run: nvm install 8.12.0 && nvm alias default 8.12.0
+    - node/install:
+          node-version: 10.24.1
+          npm-version: 6.14.12
+          install-yarn: true
+    - run: node --version
     - restore_cache:
         keys:
         # This branch if available
@@ -66,7 +74,7 @@ jobs:
         path: /tmp/circleci-test-results
     - persist_to_workspace:
         root: .
-        paths: .
+        paths: ['.']
   deploy:
     <<: *defaults-js
     steps:
