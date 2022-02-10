@@ -24,7 +24,7 @@
     "gulp-uglify": "^3.0.2",
     "gulp-watch": "^5.0.1",
     "handlebars": "^4.7.7",
-    "node-sass": "^6.0.1",
+    "node-sass": "^7.0.0",
     "sass": "^1.38.1",
     "tinycolor2": "^1.4.2",
     "underscore": "^1.13.1"
